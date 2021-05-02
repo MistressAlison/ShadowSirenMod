@@ -1,0 +1,196 @@
+{
+  "ShadowSiren:BlackKey": {
+    "NAME": "Black Key",
+    "FLAVOR": "\"Be CURSED!\" - Black Chest Demon",
+    "DESCRIPTIONS": [
+      "Chests you open contain an additional Relic. (Excludes boss chests). Whenever you open a non-boss chest, obtain a #rCurse.",
+      "Curses/Relics obtained: "
+    ]
+  },
+  "ShadowSiren:BooSheet": {
+    "NAME": "Boo's Sheet",
+    "FLAVOR": "Outta sight.",
+    "DESCRIPTIONS": [
+      "At the end of your 1st turn, enter #yshadowsiren:Veil if you are not in a #yStance. NL Right Click to change modes.",
+      "At the end of your 1st turn, enter #yshadowsiren:Veil if you are not in a #yStance, then exit #yVeil at the beginning of your 2nd turn. NL Right Click to change modes."
+    ]
+  },
+  "ShadowSiren:BottledStar": {
+    "NAME": "Bottled Star",
+    "FLAVOR": "Now you can watch for shooting stars whenever you wish.",
+    "DESCRIPTIONS": [
+      "Upon pickup, choose a card. Whenever you play this card, deal #b5 damage to ALL enemies.",
+      "Choose a card for ",
+      "Whenever you play ",", deal #b5 damage to ALL enemies.",
+      "Damage dealt: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:CourageShell": {
+    "NAME": "Courage Shell",
+    "FLAVOR": "Going home has never been faster.",
+    "DESCRIPTIONS": [
+      "At the beginning of combat, gain #b"," #yDexterity. Upon taking unblocked attack damage, this #yDexterity is removed.",
+      "Effective turns: "," NL Per combat: "," NL Upkeep: "
+    ]
+  },
+  "ShadowSiren:EarthQuake": {
+    "NAME": "Earth Quake",
+    "FLAVOR": "Magnitude 4!",
+    "DESCRIPTIONS": [
+      "#yAttacks that deal single target damage now also deal #b"," damage to non-targeted enemies.",
+      "Damage dealt: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:ElectroPop": {
+    "NAME": "Electro Pop",
+    "FLAVOR": "20000 Volts straight to your tongue!",
+    "DESCRIPTIONS": [
+      "At the start of combat, if the first card you play is a #ySkill, gain #b"," #yshadowsiren:Charge.",
+      "Charge gained: "," NL Activation rate: "
+    ]
+  },
+  "ShadowSiren:FireFlower": {
+    "NAME": "Fire Flower",
+    "FLAVOR": "Can also be used for cooking.",
+    "DESCRIPTIONS": [
+      "At the beginning of combat, apply #b"," #yshadowsiren:Burn to ALL enemies.",
+      "Burn applied: "
+    ]
+  },
+  "ShadowSiren:FirePop": {
+    "NAME": "Fire Pop",
+    "FLAVOR": "Hotter than pepper spray!",
+    "DESCRIPTIONS": [
+      "At the start of combat, if the first card you play is a #yAttack, gain #b"," #yVigor.",
+      "Vigor gained: "," NL Activation rate: "
+    ]
+  },
+  "ShadowSiren:GoldenLeaf": {
+    "NAME": "Golden Leaf",
+    "FLAVOR": "This would be worth so many berries.",
+    "DESCRIPTIONS": [
+      "Whenever you deal #b"," or more unblocked attack damage, gain #b"," additional #yGold at the end of combat.",
+      "Gold obtained: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:HotSauce": {
+    "NAME": "Hot Sauce",
+    "FLAVOR": "Can be used for cooking.",
+    "DESCRIPTIONS": [
+      "Whenever you are attacked, apply #b"," #yshadowsiren:Burn to the attacker.",
+      "Burn applied: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:IceStorm": {
+    "NAME": "Ice Storm",
+    "FLAVOR": "Portable snow day.",
+    "DESCRIPTIONS": [
+      "At the end of turn #b"," apply #b"," #yshadowsiren:Freeze to ALL enemies.",
+      "Freeze applied: "
+    ]
+  },
+  "ShadowSiren:IciclePop": {
+    "NAME": "Icicle Pop",
+    "FLAVOR": "Chilled to absolute 0!",
+    "DESCRIPTIONS": [
+      "At the start of combat, if the first card you play is a #yPower, gain #b"," #yTemporary_HP.",
+      "Temp HP gained: "," NL Activation rate: "
+    ]
+  },
+  "ShadowSiren:LetterP": {
+    "NAME": "The Letter \"P\"",
+    "FLAVOR": "Ripped it right out of their name. That's gotta hurt.",
+    "DESCRIPTIONS": [
+      "Enemies with the letter #b'","p","' in their name lose #b","% of their HP at the beginning of combat.",
+      "TRANSLATOR NOTE: p is isolated into its own string, DESCRIPTIONS[1] on purpose. You may replace this character with any other character to make it function in your language... hopefully :P",
+      "Health removed: "," NL Per combat: "," NL Activations: "
+    ]
+  },
+  "ShadowSiren:PointSwap": {
+    "NAME": "Point Swap",
+    "FLAVOR": "What's yours is mine.",
+    "DESCRIPTIONS": [
+      "The first enemy who attempts to buff has their buff stolen. If a buff cannot be stolen, it is negated instead.",
+      "Buffs stolen: "," NL Buffs negated: "
+    ]
+  },
+  "ShadowSiren:POWBlock": {
+    "NAME": "POW Block",
+    "FLAVOR": "Bonk!",
+    "DESCRIPTIONS": [
+      "For the first #b3 turns of combat, deal #b"," damage to ALL enemies.",
+      "Damage dealt: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:PowerPunch": {
+    "NAME": "Power Punch",
+    "FLAVOR": "2000% your recommended daily intake of protein.",
+    "DESCRIPTIONS": [
+      "All #yshadowsiren:Fist #yAttacks deal #b"," additional damage.",
+      "Damage added: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:RepelCape": {
+    "NAME": "Repel Cape",
+    "FLAVOR": "Not to be confused with Repel Gel.",
+    "DESCRIPTIONS": [
+      "You have a #b","% chance to avoid damage.",
+      "Damage avoided: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:RuinPowder": {
+    "NAME": "Ruin Powder",
+    "FLAVOR": "\"You thought it would have something to do with confusion? We're all out of Mr. Softener so we had to improvise.\" - Merchant",
+    "DESCRIPTIONS": [
+      "#yshadowsiren:Soft now causes creatures to take #b"," more damage rather than #b",".",
+      "Damage added: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:SpitePowder": {
+    "NAME": "Spite Powder",
+    "FLAVOR": "\"This will keep 'em in line.\" - Slaver",
+    "DESCRIPTIONS": [
+      "When taking unblocked attack damage, deal #b","% of the damage back.",
+      "Damage dealt: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:StopWatch": {
+    "NAME": "Stop Watch",
+    "FLAVOR": "Stop, Hammer time!",
+    "DESCRIPTIONS": [
+      "At the beginning of your first turn, ALL enemies who intend to attack are #yshadowsiren:Frozen.",
+      "Enemies frozen: "
+    ]
+  },
+  "ShadowSiren:SuperSheet": {
+    "NAME": "Super Sheet",
+    "FLAVOR": "Outta mind.",
+    "DESCRIPTIONS": [
+      "Start each combat in #yshadowsiren:Hyper."
+    ]
+  },
+  "ShadowSiren:TastyTonic": {
+    "NAME": "Tasty Tonic",
+    "FLAVOR": "A very tasty tonic.",
+    "DESCRIPTIONS": [
+      "Gain #b1 #yshadowsiren:Charge for each #yEnergy left at the end of your turn.",
+      "Charge gained: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:UpArrow": {
+    "NAME": "Up Arrow",
+    "FLAVOR": "Things are looking up in life.",
+    "DESCRIPTIONS": [
+      "When removing a card from your deck, gain #b"," Max HP.",
+      "HP added: "
+    ]
+  },
+  "ShadowSiren:VoltShroom": {
+    "NAME": "Volt Shroom",
+    "FLAVOR": "Doubles as a backup battery.",
+    "DESCRIPTIONS": [
+      "At the beginning of combat, gain #b"," #yshadowsiren:Electric.",
+      "Damage dealt: "," NL Per combat: "," NL Per turn: "
+    ]
+  }
+}

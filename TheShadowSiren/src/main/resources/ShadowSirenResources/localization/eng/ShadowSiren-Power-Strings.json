@@ -1,0 +1,133 @@
+{
+        "ShadowSiren:BigGlovesPower": {
+                "NAME": "Big Gloves",
+                "DESCRIPTIONS": ["All Fist Attacks deal #b"," more damage."]
+        },
+        "ShadowSiren:BlindingCounterPower": {
+                "NAME": "Blinding Counter",
+                "DESCRIPTIONS": ["When attacked, apply #b"," #yWeak to the attacker."]
+        },
+        "ShadowSiren:BurnPower": {
+                "NAME": "Burn",
+                "DESCRIPTIONS": ["This target dies at #b"," HP or less. At the start of its turn, #yBurn is increased by #b1."]
+        },
+        "ShadowSiren:ChargePower": {
+                "NAME": "Charged",
+                "DESCRIPTIONS": ["Your next Attack and/or Block is #b","% more effective."]
+        },
+        "ShadowSiren:ChillPower": {
+                "NAME": "Chill",
+                "DESCRIPTIONS": ["Once #b10 #yChill is acquired, it is consumed to apply #b1 #yFreeze."]
+        },
+        "ShadowSiren:ConfusedPower": {
+                "NAME": "Confused",
+                "DESCRIPTIONS": ["This turn, has a #b50% chance to target itself or an ally when dealing damage.","For #b"," turns, has a #b50% chance to target itself or an ally when dealing damage."]
+        },
+        "ShadowSiren:CursedFlamesPower": {
+                "NAME": "Cursed Flames",
+                "DESCRIPTIONS": ["At the beginning of your turn, all #yBurns increase by #b","."]
+        },
+        "ShadowSiren:DizzyPower": {
+                "NAME": "Dizzy",
+                "DESCRIPTIONS": ["This turn, has a #b50% chance to miss when dealing damage.","For #b"," turns, has a #b50% chance to miss when dealing damage."]
+        },
+        "ShadowSiren:DrenchPower": {
+                "NAME": "Drenched",
+                "DESCRIPTIONS": ["Upon receiving #yBurn, remove all #yDrench, then deal #b"," damage and apply #b"," #yBurn to ALL enemies. NL ",
+                                "Upon receiving #yChill, remove all #yDrench, then apply an additional #b"," #yChill. NL ",
+                                "Damage from #yElectric is increased by #b","."]
+        },
+        "ShadowSiren:ElectricPower": {
+                "NAME": "Electric",
+                "DESCRIPTIONS": ["When attacking, deal a secondary #b"," damage. When attacked, deals #b"," damage back."]
+        },
+        "ShadowSiren:ElementalEquilibriumPower": {
+                "NAME": "Elemental Equilibrium",
+                "DESCRIPTIONS": ["Applying #yFreeze has a #b","% chance to apply #b"," #yBurn. NL Applying #yBurn has a #b","% chance to gain #b"," #yCharge. NL Gaining #yCharge has a #b","% chance to gain #b"," #yElectric."]
+        },
+        "ShadowSiren:EnergyConversionPower": {
+                "NAME": "Energy Conversion",
+                "DESCRIPTIONS": ["When gaining #yCharge, also gains #b"," #yVigor."]
+        },
+        "ShadowSiren:EnergyReversionPower": {
+                "NAME": "Energy Reversion",
+                "DESCRIPTIONS": ["When gaining #yCharge, also gains #b"," #yElectric."]
+        },
+        "ShadowSiren:FadingPlayerPower": {
+                "NAME": "Fading",
+                "DESCRIPTIONS": ["This creature dies in #b"," turn."," turns."]
+        },
+        "ShadowSiren:FearPower": {
+                "NAME": "Fear",
+                "DESCRIPTIONS": ["Unused."]
+        },
+        "ShadowSiren:FreezePower": {
+                "NAME": "Freeze",
+                "DESCRIPTIONS": ["May not be damaged, but also does nothing for #b"," turn."," turns.",
+                                " NL Breaks after being attacked #b"," more time, resulting in #b3x damage.", " more times, resulting in #b3x damage."]
+        },
+        "ShadowSiren:HexingPower": {
+                "NAME": "Hex",
+                "DESCRIPTIONS": ["Whenever this target attacks, it takes #b"," damage. Hex is halved each time this target does not attack."]
+        },
+        "ShadowSiren:MoltenBodyPower": {
+                "NAME": "Molten Body",
+                "DESCRIPTIONS": ["Whenever you deal unblocked attack damage, apply #b"," #yBurn."]
+        },
+        "ShadowSiren:NewMoonPower": {
+                "NAME": "New Moon",
+                "DESCRIPTIONS": ["Whenever you enter #yVeil, gain #b"," #yEnergy."]
+        },
+        "ShadowSiren:NextTurnVeilPower": {
+                "NAME": "Next Turn Veil",
+                "DESCRIPTIONS": ["Next turn, enter #yVeil."]
+        },
+        "ShadowSiren:NextTurnVigorPower": {
+                "NAME": "Next Turn Vigor",
+                "DESCRIPTIONS": ["Next turn, gain #b"," #yVigor."]
+        },
+        "ShadowSiren:NightTerrorPower": {
+                "NAME": "Night Terror",
+                "DESCRIPTIONS": ["Deal #b","% more damage while in #yVeil."]
+        },
+        "ShadowSiren:OverchargeFormPower": {
+                "NAME": "Overcharge Form",
+                "DESCRIPTIONS": ["At the beginning of your turn, gain #b"," #yCharge and increase this gain by #b","."]
+        },
+        "ShadowSiren:PiezoCapacitorPower": {
+                "NAME": "Piezo Capacitor",
+                "DESCRIPTIONS": ["When receiving unblocked attack damage, gains #b"," #yCharge."]
+        },
+        "ShadowSiren:PocketDimensionPower": {
+                "NAME": "Pocket Dimension",
+                "DESCRIPTIONS": ["Whenever you change #yStances, draw #b"," card."," cards."]
+        },
+        "ShadowSiren:ReinforcedPlatingPower": {
+                "NAME": "Reinforced Plating",
+                "DESCRIPTIONS": ["Each turn, prevent the first time you would lose #yBlock.","Each turn, prevent the first #b"," times you would lose #yBlock."]
+        },
+        "ShadowSiren:ShadowPower": {
+                "NAME": "Shadow",
+                "DESCRIPTIONS": ["Unused."]
+        },
+        "ShadowSiren:SinisterReflectionPower": {
+                "NAME": "Sinister Reflections",
+                "DESCRIPTIONS": ["Debuffs applied to you are also applied to ALL enemies.","Debuffs applied to you are also applied to ALL enemies #b"," times."]
+        },
+        "ShadowSiren:SoftPower": {
+                "NAME": "Soft",
+                "DESCRIPTIONS": ["Takes #b"," more damage from Attacks this turn."," more damage from Attacks for #b"," turns."]
+        },
+        "ShadowSiren:SquallPower": {
+                "NAME": "Squall",
+                "DESCRIPTIONS": ["Excess cards discarded by #ySmoke deal #b"," damage to the attacker."]
+        },
+        "ShadowSiren:VigorousShiftPower": {
+                "NAME": "Vigorous Shift",
+                "DESCRIPTIONS": ["Whenever you change #yStances, gain #b"," Vigor."]
+        },
+        "ShadowSiren:WillOWispPower": {
+                "NAME": "Will-o'-Wisp",
+                "DESCRIPTIONS": ["On Death, applies its #yBurn to ALL enemies.","On Death, applies #b"," times its #yBurn to ALL enemies."]
+        }
+}

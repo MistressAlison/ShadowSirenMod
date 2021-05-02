@@ -1,0 +1,227 @@
+[
+  {
+    "NAMES": [
+      "Abyss",
+      "abyss",
+      "abyssal"
+    ],
+    "DESCRIPTION": "Upon playing a card, draw #b1 card and apply #b1 #yDrench to a random enemy (once per turn per unique cost). Upon exiting this #yStance, draw #b2 cards."
+  },
+  {
+    "NAMES": [
+      "Burn",
+      "burn",
+      "burns",
+      "burned"
+    ],
+    "DESCRIPTION": "Burned creatures turn to ash when their burn exceeds their HP. Burn application scales with #yVigor."
+  },
+  {
+    "NAMES": [
+      "Charge",
+      "charge"
+    ],
+    "DESCRIPTION": "Your next card is #b50% more effective."
+  },
+  {
+    "NAMES": [
+      "Chill",
+      "chill"
+    ],
+    "DESCRIPTION": "Once #b10 #yChill is acquired, it is consumed to apply #b1 #yFreeze."
+  },
+  {
+    "NAMES": [
+      "Confused",
+      "confused"
+    ],
+    "DESCRIPTION": "Confused creatures have a #b50% change to attack either themselves or an ally."
+  },
+  {
+    "NAMES": [
+      "Dizzy",
+      "dizzy"
+    ],
+    "DESCRIPTION": "Dizzy creatures have a #b50% chance to miss their #yAttacks."
+  },
+  {
+    "NAMES": [
+      "Dodgy",
+      "dodgy"
+    ],
+    "DESCRIPTION": "UNUSED! Dodgy creatures have a #b50% chance to evade #yAttacks."
+  },
+  {
+    "NAMES": [
+      "Drench",
+      "drench"
+    ],
+    "DESCRIPTION": "Combines with #yBurn to spread damage and additional #yBurn, accelerates #yChill application, and increases #yElectric damage."
+  },
+  {
+    "NAMES": [
+      "Duality",
+      "duality"
+    ],
+    "DESCRIPTION": "This card has an alternate form in a different #yStance."
+  },
+  {
+    "PROPER_NAME": "Shadow Duality",
+    "NAMES": [
+      "Shadow Duality",
+      "shadow_duality"
+    ],
+    "DESCRIPTION": "This card has an alternate form in #yVeil."
+  },
+  {
+    "PROPER_NAME": "Abyssal Duality",
+    "NAMES": [
+      "Void Duality",
+      "void_duality"
+    ],
+    "DESCRIPTION": "This card has an alternate form in #yAbyss."
+  },
+  {
+    "PROPER_NAME": "Ashen Duality",
+    "NAMES": [
+      "Smoke Duality",
+      "smoke_duality"
+    ],
+    "DESCRIPTION": "This card has an alternate form in #ySmoke."
+  },
+  {
+    "PROPER_NAME": "Huge Duality",
+    "NAMES": [
+      "Huge Duality",
+      "huge_duality"
+    ],
+    "DESCRIPTION": "This card has an alternate form in #yHuge."
+  },
+  {
+    "PROPER_NAME": "Hyper Duality",
+    "NAMES": [
+      "Hyper Duality",
+      "hyper_duality"
+    ],
+    "DESCRIPTION": "This card has an alternate form in #yHyper."
+  },
+  {
+    "NAMES": [
+      "Electric",
+      "electric"
+    ],
+    "DESCRIPTION": "When attacked, deals damage back. When attacking, deals additional damage. Electric application scales with #yCharge."
+  },
+  {
+    "PROPER_NAME": "Elemental Equilibrium",
+    "NAMES": [
+      "Elemental Equilibrium",
+      "elemental_equilibrium"
+    ],
+    "DESCRIPTION": "Applying #yFreeze has a #b50% chance to apply #b6 #yBurn. NL Applying #yBurn has a #b25% chance to gain #b1 #yCharge. NL Gaining #yCharge has a #b10% chance to gain #b1 #yElectric."
+  },
+  {
+    "NAMES": [
+      "Fading",
+      "fading"
+    ],
+    "DESCRIPTION": "This creature dies after this many turns."
+  },
+  {
+    "NAMES": [
+      "Fist",
+      "fist"
+    ],
+    "DESCRIPTION": "Any card with the word \"Fist\" in its name."
+  },
+  {
+    "NAMES": [
+      "Frozen",
+      "frozen",
+      "freeze"
+    ],
+    "DESCRIPTION": "Frozen creatures are unable to act, but are also invincible."
+  },
+  {
+    "NAMES": [
+      "Hex",
+      "hex",
+      "hexing"
+    ],
+    "DESCRIPTION": "Hexed creatures lose HP when they attack. If the creature does not attack, Hex is halved."
+  },
+  {
+    "NAMES": [
+      "Huge",
+      "huge"
+    ],
+    "DESCRIPTION": "Your Attacks deal double damage. Lose [E] each time you play an attack."
+  },
+  {
+    "NAMES": [
+      "Hyper",
+      "hyper"
+    ],
+    "DESCRIPTION": "Your Attacks deal #b20% more damage and you take #b20% less damage from attacks. Upon exiting this #yStance, gain 2 #yCharge."
+  },
+  {
+    "NAMES": [
+      "Ichor",
+      "ichor"
+    ],
+    "DESCRIPTION": "UNUSED! Target takes double damage from #yBurn."
+  },
+  {
+    "NAMES": [
+      "Shrink",
+      "shrink"
+    ],
+    "DESCRIPTION": "UNUSED! Shrunk creatures deal #b25% less damage and take #b50% more damage."
+  },
+  {
+    "NAMES": [
+      "Smoke",
+      "smoke"
+    ],
+    "DESCRIPTION": "Retain your hand at the end of your turn. Upon taking unblocked attack damage, discard all cards and take #b1 less damage per card discarded this way."
+  },
+  {
+    "NAMES": [
+      "Soft",
+      "soft"
+    ],
+    "DESCRIPTION": "Soft creatures take #b3 more damage from #yAttacks."
+  },
+  {
+    "NAMES": [
+      "Splash",
+      "Splash+",
+      "splash",
+      "splash+"
+    ],
+    "DESCRIPTION": "A useless card with no effect."
+  },
+  {
+    "NAMES": [
+      "Stunned",
+      "stunned",
+      "stun"
+    ],
+    "DESCRIPTION": "A stunned target does nothing this turn."
+  },
+  {
+    "NAMES": [
+      "Toggle",
+      "toggle"
+    ],
+    "DESCRIPTION": "Enter the #yStance if you are not in it. Exit the #yStance if you are in it."
+  },
+  {
+    "NAMES": [
+      "Veil",
+      "veil",
+      "veiled"
+    ],
+    "DESCRIPTION": "Your Attacks deal half damage and you take half damage from attacks."
+  }
+]

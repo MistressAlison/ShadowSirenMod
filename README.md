@@ -1,30 +1,54 @@
-# 100% Spire Juice
+# Shadow Siren Mod
 
-_**aka Orange Juice The Spire**_
+_**aka Vivian The Spire**_
 
 
-This mod currently adds Star Breaker from the game 100% Orange Juice.
+This mod currently adds Vivian from the game Paper Mario - The Thousand-Year Door.
 
 Alongside her is a full suite of 80+ cards that are not guaranteed to play well with other mods. I did my best. While I do not yet know of any incompatibilities, please let me know if you find any.
 
-All assets are from 100% Orange Juice and are property of Orange_Juice and Fruitbat Factory. 
+All assets are from Paper Mario - TTYD and are property of Nintendo and their respective owners. 
 
-This mod is a work in progress, but it is still a fully playable (if not balanced) experience at the moment. Additional relics are planned, and new cards may be added in the future.
+This mod is a work in progress, but it is still a fully playable (if not balanced) experience at the moment.
 
 Features
 ---
 
-_Norma:_ 
-Star Breaker's initial relic is the Broken Bomb, which allows her to raise her Norma Level by playing Skill cards. Many of her cards have improved and/or additional effects when played at a higher Norma Level, so her potential rises the longer she stays in one combat. Norma Levels stack up to 5, and while additional stacks can be generated, they will have no effect. Unlike in her source game, Norma is lost once combat ends, and thus needs to be re-acquired each combat. Star Breaker also starts with an additional relic, the Homemark. This relic allows her to spend gold when outside of combat to permanently raise the Norma Level she starts combat with. While costly, it may be worth spending the gold to get a head start to some of her more powerful Norma effects.
+_**Stances:**_ 
+Vivian has 5 different stances to play around. As she only has 40 base HP, utilizing these defensive stances will be paramount to survival in the spire.
 
-_Star Blasting Light:_ 
-Any time Star Breaker's starter relic generates a Norma Level, a Star Blasting Light will be added to her hand, assuming there is room to do so. If her hand is full, it will be added to the top of her draw pile instead. Star Blasting Light effects every enemy on the field with the Blasting Light debuff, melting away stacks of Artifact in the process. Any Blasting Light put on a target will do damage at the end of the turn, similar to poison. Unlike poison however, the stacks will increase rather than decrease upon turn end. These stacks do not climb without end however, as the more stacks any target has, the more unstable the Blasting Light becomes, and the more likely it is to wear off after doing damage. On average, regardless of if the target starts with 1 stack of Blasting Light or 10, the expected damage dealt will be 10; it is simply a question of how many turns it will take.
+_Veil_ - A purely defensive stance that halves damage taken but also halves damage dealt. You start with access to this stance every run.
 
-_Trap Cards:_ 
-In addition to the Artifact melting properties of Star Blasting Light, Star Breaker also has multiple Artifact _ignoring_ cards denoted by a unique card colour and the Trap tag. Trap cards are unique debuffs that often have specific activation conditions, rather than simply taking place instantly. While not every Trap card will be useful against every enemy and boss in the game, they are often incredibly effective against certain encounters.
+_Abyss_ - A supportive/defensive stance where you can draw many cards and gain Block at the end of your turn. Debuffs are easier to apply in this stance as well.
 
-_Gift Cards:_ 
-Like Trap cards, Gift cards also have a unique card colour and a Gift tag to differentiate them from other cards, though the similarities end there. Gift cards are specifically designed to not be played, and simply exert their effect by actively being in your hand. Gift cards also have a retain counter, denoting how many times they will retain before being discarded or exhausted. All Gift cards are at least Uncommon in rarity, and are often strong enough to be a backbone for certain deck builds. While Gift cards have no cost, and in fact do not even display the energy amount in the top left, they can be played to immediately discard or exhaust them. This prevents decks with large amounts of gift cards from being griefed by Runic Pyramid, and Gift cards may even have additional effects expressly achieved through playing them.
+_Smoke_ - A defensive stance where all cards retain and damage taken is reduced based on the number of cards in your hand. Reducing damage in this way will discard all of your cards however!
+
+_Huge_ - A purely offensive stace where all Attack cards deal double damage. As a downside, you lose 1 Energy after playing Attack cards, so make sure not to neglect your defences unless you can secure the kill.
+
+_Hyper_ - A all-rounder stance that has no downsides. You deal additional damage and take less damage in this stance, and leaving this stance gives you charge. This is the hardest stance to get access to.
+
+_**Buffs / Debuffs:**_
+Vivian has interacting elemental-style debuffs, as well as other debuffs designed to synergize with her stances.
+
+_Charge - Buff_ - You next Attack and/or Block is 50% more effective per stack of Charge. Electric Application increased by 1 per stack of Charge.
+
+_Vigor - Buff_ - While part of basegame, it is slightly modified for this mod. Both damage _and_ Burn application is increased by 1 per stack of Vigor.
+
+_Electric - Buff_ - Acts similar to a combination of Thorns and Strength. When attacking, a secondary hit equal to your Electric is made. When attacked, the attacker takes damage equal to your Electric as well.
+
+_Chill/Freeze - Debuff_ - Once enough Chill is applied to a target, said target is Frozen. Frozen targets are invincible, but stunned for a turn (unable to act). Stacking additional Freeze increases the amount of turns the target is unable to act for.
+
+_Burn - Debuff_ - A target immediately dies when their Burn exceeds their HP. This is capable of bypassing half-dead mechanics such as Darklings and Awakened One, but there is a catch: if you reduce them to 0 HP with your attack, this mechanic does not trigger.
+
+_Drench - Debuff_ - Interacts with the previous 3 elemental attacks. Applying Burn to a Drenched target causes a Steam Explosion, Drench accelerates Chill application, and Drench increases damage dealt by Electric.
+
+_Hexed - Debuff_ - A Hexed target takes damage equal to their Hex every time they successfully attack. If the target does not attack, Hex is halved. Will activate multiple times for multi-hit attacks.
+
+_Soft - Debuff_ - A Soft target takes 3 additional damage from attacks. Applied after all other modifiers.
+
+_Dizzy - Debuff_ - A Dizzy target has a 50% chance to miss their attack, accomplishing nothing. A missed attack does not count as a successful attack, and will not trigger any "On Attack" effects.
+
+_Confused - Debuff_ - A Confused target has a 50% chance to either attack themselves or an ally. A redirected attack is still a successful attack, assuming it does not also miss.
 
 ---
 

@@ -28,6 +28,7 @@ public class ElementalEquilibriumPower extends AbstractPower implements Cloneabl
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
+    //TODO this entire thing is awful
     public ElementalEquilibriumPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;

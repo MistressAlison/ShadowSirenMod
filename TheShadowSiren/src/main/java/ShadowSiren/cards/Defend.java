@@ -22,7 +22,7 @@ public class Defend extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Defend.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Defend.png");
 
     // /TEXT DECLARATION/
 

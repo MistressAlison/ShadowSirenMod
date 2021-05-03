@@ -20,7 +20,7 @@ public class FlameSnap extends AbstractDynamicCard implements MagicAnimation, Vi
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(FlameSnap.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("FlameSnap.png");
 
     // /TEXT DECLARATION/
 

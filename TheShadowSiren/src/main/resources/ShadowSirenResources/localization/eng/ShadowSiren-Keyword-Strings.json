@@ -14,7 +14,7 @@
       "burns",
       "burned"
     ],
-    "DESCRIPTION": "Burned creatures turn to ash when their burn exceeds their HP. Burn application scales with #yVigor."
+    "DESCRIPTION": "Burned creatures take damage equal to their number of debuffs at the end of the round."
   },
   {
     "NAMES": [
@@ -56,7 +56,7 @@
       "Drench",
       "drench"
     ],
-    "DESCRIPTION": "Combines with #yBurn to spread damage and additional #yBurn, accelerates #yChill application, and increases #yElectric damage."
+    "DESCRIPTION": "Triggers the effect of #yBurn, accelerates #yChill application, and increases #yElectric damage."
   },
   {
     "NAMES": [

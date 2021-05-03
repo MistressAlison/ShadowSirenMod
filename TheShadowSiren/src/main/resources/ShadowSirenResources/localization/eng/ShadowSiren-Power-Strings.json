@@ -9,7 +9,7 @@
         },
         "ShadowSiren:BurnPower": {
                 "NAME": "Burn",
-                "DESCRIPTIONS": ["This target dies at #b"," HP or less. At the start of its turn, #yBurn is increased by #b1."]
+                "DESCRIPTIONS": ["At the end of the round, this creature loses health equal to the number of debuffs it has. (Loses #b"," HP)"]
         },
         "ShadowSiren:ChargePower": {
                 "NAME": "Charged",
@@ -33,8 +33,8 @@
         },
         "ShadowSiren:DrenchPower": {
                 "NAME": "Drenched",
-                "DESCRIPTIONS": ["Upon receiving #yBurn, remove all #yDrench, then deal #b"," damage and apply #b"," #yBurn to ALL enemies. NL ",
-                                "Upon receiving #yChill, remove all #yDrench, then apply an additional #b"," #yChill. NL ",
+                "DESCRIPTIONS": ["Violently interacts with #yBurn, triggering it until the reaction is spent. NL ",
+                                "Cools rapidly upon contact with #yChill or #yFreeze, removing all #yDrench, and applying #b"," #yChill. NL ",
                                 "Damage from #yElectric is increased by #b","."]
         },
         "ShadowSiren:ElectricPower": {

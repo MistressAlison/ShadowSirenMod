@@ -56,9 +56,10 @@ public class DrenchPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + (STEAM_DAMAGE*amount) + DESCRIPTIONS[1] + (STEAM_BURN*amount) + DESCRIPTIONS[2]
+        /*description = DESCRIPTIONS[0] + (STEAM_DAMAGE*amount) + DESCRIPTIONS[1] + (STEAM_BURN*amount) + DESCRIPTIONS[2]
                 + DESCRIPTIONS[3] + (CHILL_BONUS*amount) + DESCRIPTIONS[4]
-                + DESCRIPTIONS[5] + (ELECTRIC_DAMAGE*amount) + DESCRIPTIONS[6];
+                + DESCRIPTIONS[5] + (ELECTRIC_DAMAGE*amount) + DESCRIPTIONS[6];*/
+        description = DESCRIPTIONS[0] + DESCRIPTIONS[1] + (CHILL_BONUS*amount) + DESCRIPTIONS[2] + DESCRIPTIONS[3] + (ELECTRIC_DAMAGE*amount) + DESCRIPTIONS[4];
     }
 
     @Override

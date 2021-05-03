@@ -30,7 +30,7 @@ _Hyper_ - A all-rounder stance that has no downsides. You deal additional damage
 _**Buffs / Debuffs:**_
 Vivian has interacting elemental-style debuffs, as well as other debuffs designed to synergize with her stances.
 
-_Charge - Buff_ - You next Attack and/or Block is 50% more effective per stack of Charge. Electric Application increased by 1 per stack of Charge.
+_Charge - Buff_ - Your next Attack and/or Block is 50% more effective per stack of Charge. Electric Application increased by 1 per stack of Charge.
 
 _Vigor - Buff_ - While part of basegame, it is slightly modified for this mod. Both damage _and_ Burn application is increased by 1 per stack of Vigor.
 
@@ -38,9 +38,9 @@ _Electric - Buff_ - Acts similar to a combination of Thorns and Strength. When a
 
 _Chill/Freeze - Debuff_ - Once enough Chill is applied to a target, said target is Frozen. Frozen targets are invincible, but stunned for a turn (unable to act). Stacking additional Freeze increases the amount of turns the target is unable to act for.
 
-_Burn - Debuff_ - A target immediately dies when their Burn exceeds their HP. This is capable of bypassing half-dead mechanics such as Darklings and Awakened One, but there is a catch: if you reduce them to 0 HP with your attack, this mechanic does not trigger.
+_Burn - Debuff_ - Burn is a turn-based power which causes a target to lose HP equal to the number of debuffs it has at the end of the round.
 
-_Drench - Debuff_ - Interacts with the previous 3 elemental attacks. Applying Burn to a Drenched target causes a Steam Explosion, Drench accelerates Chill application, and Drench increases damage dealt by Electric.
+_Drench - Debuff_ - Has no effect on its own, but interacts with the previous 3 elemental attacks. Applying Burn to a Drenched target causes a Steam Explosion, Drench accelerates Chill application, and Drench increases damage dealt by Electric.
 
 _Hexed - Debuff_ - A Hexed target takes damage equal to their Hex every time they successfully attack. If the target does not attack, Hex is halved. Will activate multiple times for multi-hit attacks.
 

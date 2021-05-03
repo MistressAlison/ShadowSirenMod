@@ -35,12 +35,15 @@ public class Hexagone extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int MULTI = 2;
+    private static final int UPGRADE_PLUS_MULTI = 1;
 
     // /STAT DECLARATION/
 
     public Hexagone() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
+        magicNumber = baseMagicNumber = MULTI;
     }
 
     // Actions the card should do.
@@ -49,7 +52,7 @@ public class Hexagone extends AbstractDynamicCard {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
         if (m.hasPower(HexingPower.POWER_ID)) {
             int amount = m.getPower(HexingPower.POWER_ID).amount;
-            amount *= upgraded ? 3: 2;
+            amount *= magicNumber;
             this.addToBot(new ApplyPowerAction(m, p, new BurnPower(m, p, amount)));
             this.addToBot(new RemoveSpecificPowerAction(m, p, m.getPower(HexingPower.POWER_ID)));
         }
@@ -69,7 +72,8 @@ public class Hexagone extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_PLUS_MULTI);
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

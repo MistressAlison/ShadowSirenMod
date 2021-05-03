@@ -128,8 +128,7 @@
   },
   "ShadowSiren:DoubleFist": {
     "NAME": "Double Fist",
-    "DESCRIPTION": "Deal !D! damage twice.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage thrice.",
+    "DESCRIPTION": "Deal !D! damage !M! times.",
     "EXTENDED_DESCRIPTION": ["Triple Fist"]
   },
   "ShadowSiren:ElementalEquilibrium": {
@@ -183,8 +182,7 @@
   },
   "ShadowSiren:Hexagone": {
     "NAME": "Hexagone",
-    "DESCRIPTION": "Deal !D! damage. NL If the target has shadowsiren:Hex, remove it and apply twice that much shadowsiren:Burn.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL If the target has shadowsiren:Hex, remove it and apply thrice that much shadowsiren:Burn.",
+    "DESCRIPTION": "Deal !D! damage. NL If the target has shadowsiren:Hex, remove it and apply !M! times that much shadowsiren:Burn.",
     "EXTENDED_DESCRIPTION": ["Hexagoner"]
   },
   "ShadowSiren:HexArmor": {

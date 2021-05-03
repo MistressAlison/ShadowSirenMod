@@ -67,7 +67,7 @@ public class DoubleFist extends AbstractDynamicCard implements FistAttack {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_HITS);
-            rawDescription = UPGRADE_DESCRIPTION;
+            //rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

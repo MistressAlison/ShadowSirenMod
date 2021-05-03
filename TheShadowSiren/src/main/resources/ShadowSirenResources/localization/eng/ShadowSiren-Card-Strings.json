@@ -161,8 +161,8 @@
     "DESCRIPTION": "Upon playing a card, apply !M! shadowsiren:Burn to an enemy."
   },
   "ShadowSiren:FlamethrowerDual": {
-    "NAME": "Frostthrower",
-    "DESCRIPTION": "Upon playing a card, apply !M! shadowsiren:Chill to an enemy."
+    "NAME": "Waterthrower",
+    "DESCRIPTION": "Upon playing a card, apply !M! shadowsiren:Drench to an enemy."
   },
   "ShadowSiren:FreezeDry": {
     "NAME": "Freeze Dry",

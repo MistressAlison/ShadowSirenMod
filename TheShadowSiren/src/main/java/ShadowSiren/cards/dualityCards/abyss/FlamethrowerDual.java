@@ -5,6 +5,7 @@ import ShadowSiren.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ChillPower;
+import ShadowSiren.powers.DrenchPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -59,7 +60,7 @@ public class FlamethrowerDual extends AbstractAbyssCard implements UniqueCard {
                 m = AbstractDungeon.getRandomMonster();
             }
             //this.addToBot(new ApplyPowerAction(m, AbstractDungeon.player, new DrenchPower(m, magicNumber), magicNumber, true));
-            this.addToBot(new ApplyPowerAction(m, AbstractDungeon.player, new ChillPower(m, magicNumber), magicNumber, true));
+            this.addToBot(new ApplyPowerAction(m, AbstractDungeon.player, new DrenchPower(m, magicNumber), magicNumber, true));
         }
     }
 

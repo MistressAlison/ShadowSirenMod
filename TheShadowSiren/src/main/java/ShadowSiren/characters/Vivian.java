@@ -10,6 +10,7 @@ import ShadowSiren.cards.ShadowCall;
 import ShadowSiren.cards.Strike;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.relics.BooSheet;
+import ShadowSiren.relics.DataCollector;
 import ShadowSiren.stances.HugeStance;
 import ShadowSiren.stances.VeilStance;
 import ShadowSiren.stances.AbyssStance;
@@ -210,6 +211,7 @@ public class Vivian extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         retVal.add(BooSheet.ID);
+        retVal.add(DataCollector.ID);
 
         UnlockTracker.markRelicAsSeen(BooSheet.ID);
 

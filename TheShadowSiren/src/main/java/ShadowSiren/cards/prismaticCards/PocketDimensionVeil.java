@@ -1,24 +1,21 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.prismaticCards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import ShadowSiren.cards.abstractCards.AbstractPrismaticCard;
-import ShadowSiren.cards.abstractCards.prismatics.AbstractPrismaticBaseCard;
-import ShadowSiren.cards.prismaticCards.*;
+import ShadowSiren.cards.abstractCards.prismatics.AbstractPrismaticVeilCard;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.NewMoonPower;
-import ShadowSiren.powers.PocketDimensionPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class PocketDimension extends AbstractPrismaticBaseCard {
+public class PocketDimensionVeil extends AbstractPrismaticVeilCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(PocketDimension.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(PocketDimensionVeil.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderPower.png");
 
     // /TEXT DECLARATION/
@@ -37,16 +34,17 @@ public class PocketDimension extends AbstractPrismaticBaseCard {
     private static final int EFFECT = 1;
 
     // /STAT DECLARATION/
-    //TODO different upgrade
-    public PocketDimension() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, null, new PocketDimensionVeil(), new PocketDimensionAbyss(), new PocketDimensionSmoke(), new PocketDimensionHuge(), new PocketDimensionHyper());
+
+    //TODO buff?
+    public PocketDimensionVeil() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new PocketDimensionPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new NewMoonPower(p, magicNumber)));
     }
 
     //Upgraded stats.

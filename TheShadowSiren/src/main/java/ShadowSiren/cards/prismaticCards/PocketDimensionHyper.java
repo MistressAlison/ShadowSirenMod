@@ -1,24 +1,21 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.prismaticCards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import ShadowSiren.cards.abstractCards.AbstractPrismaticCard;
-import ShadowSiren.cards.abstractCards.prismatics.AbstractPrismaticBaseCard;
-import ShadowSiren.cards.prismaticCards.*;
+import ShadowSiren.cards.abstractCards.prismatics.AbstractPrismaticHyperCard;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.NewMoonPower;
-import ShadowSiren.powers.PocketDimensionPower;
+import ShadowSiren.powers.ManaBody;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class PocketDimension extends AbstractPrismaticBaseCard {
+public class PocketDimensionHyper extends AbstractPrismaticHyperCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(PocketDimension.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(PocketDimensionHyper.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderPower.png");
 
     // /TEXT DECLARATION/
@@ -35,18 +32,18 @@ public class PocketDimension extends AbstractPrismaticBaseCard {
     private static final int UPGRADE_COST = 0;
 
     private static final int EFFECT = 1;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
-    //TODO different upgrade
-    public PocketDimension() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, null, new PocketDimensionVeil(), new PocketDimensionAbyss(), new PocketDimensionSmoke(), new PocketDimensionHuge(), new PocketDimensionHyper());
+    public PocketDimensionHyper() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new PocketDimensionPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new ManaBody(p, magicNumber)));
     }
 
     //Upgraded stats.
@@ -54,7 +51,8 @@ public class PocketDimension extends AbstractPrismaticBaseCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            //upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
             super.upgrade();
         }

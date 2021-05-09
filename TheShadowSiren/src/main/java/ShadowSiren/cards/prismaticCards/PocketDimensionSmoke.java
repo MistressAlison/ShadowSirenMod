@@ -1,21 +1,21 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.prismaticCards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import ShadowSiren.cards.abstractCards.AbstractShadowCard;
+import ShadowSiren.cards.abstractCards.prismatics.AbstractPrismaticSmokeCard;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.NewMoonPower;
+import ShadowSiren.powers.SquallPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class NewMoon extends AbstractShadowCard {
+public class PocketDimensionSmoke extends AbstractPrismaticSmokeCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(NewMoon.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(PocketDimensionSmoke.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderPower.png");
 
     // /TEXT DECLARATION/
@@ -29,23 +29,21 @@ public class NewMoon extends AbstractShadowCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
 
     private static final int EFFECT = 1;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
-    //TODO Innate? Make Shadow Call upgrade to Innate?
-    public NewMoon() {
+    public PocketDimensionSmoke() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
-        glowOnStance = false;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new NewMoonPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new SquallPower(p, magicNumber)));
     }
 
     //Upgraded stats.
@@ -53,8 +51,9 @@ public class NewMoon extends AbstractShadowCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
+            super.upgrade();
         }
     }
 }

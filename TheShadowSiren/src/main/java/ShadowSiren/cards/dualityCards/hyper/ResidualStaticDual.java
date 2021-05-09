@@ -1,13 +1,12 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.hyper;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.ResidualStatic;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
-import ShadowSiren.cards.dualityCards.hyper.ResidualStaticDual;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.patches.ChargeCounterPatches;
 import ShadowSiren.powers.ChargePower;
-import ShadowSiren.powers.FreezePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -19,11 +18,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class ResidualStatic extends AbstractHyperCard {
+public class ResidualStaticDual extends AbstractHyperCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(ResidualStatic.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(ResidualStaticDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderAttack.png");
 
     // /TEXT DECLARATION/
@@ -44,8 +43,8 @@ public class ResidualStatic extends AbstractHyperCard {
     // /STAT DECLARATION/
 
 
-    public ResidualStatic() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new ResidualStaticDual());
+    public ResidualStaticDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = CHARGE;
         secondMagicNumber = baseSecondMagicNumber = 0;
@@ -54,23 +53,19 @@ public class ResidualStatic extends AbstractHyperCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage*ChargeCounterPatches.getChargesThisCombat(p), damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
-        this.addToBot(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
+        for (int i = 0; i < ChargeCounterPatches.getChargesThisCombat(p) ; i++) {
+            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+            this.addToBot(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
+        }
         this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, magicNumber)));
     }
 
     @Override
     public void applyPowers() {
         super.applyPowers();
-        secondMagicNumber = damage*ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
+        secondMagicNumber = ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
         isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        secondMagicNumber = damage*ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
-        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
+        initializeDescription();
     }
 
     //Upgraded stats.

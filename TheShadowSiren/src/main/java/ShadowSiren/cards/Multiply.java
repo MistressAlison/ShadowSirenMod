@@ -2,6 +2,8 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.abstractCards.AbstractHugeCard;
+import ShadowSiren.cards.dualityCards.huge.MultiplyDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.FadingPlayerPower;
 import basemod.interfaces.CloneablePowerInterface;
@@ -18,7 +20,7 @@ import com.megacrit.cardcrawl.powers.DoubleDamagePower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Multiply extends AbstractDynamicCard {
+public class Multiply extends AbstractHugeCard {
 
     // TEXT DECLARATION
 
@@ -42,7 +44,7 @@ public class Multiply extends AbstractDynamicCard {
 
 
     public Multiply() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new MultiplyDual());
         magicNumber = baseMagicNumber = MULTIPLIER;
         exhaust = true;
     }
@@ -78,6 +80,7 @@ public class Multiply extends AbstractDynamicCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_MULTIPLIER);
             initializeDescription();
+            super.upgrade();
         }
     }
 }

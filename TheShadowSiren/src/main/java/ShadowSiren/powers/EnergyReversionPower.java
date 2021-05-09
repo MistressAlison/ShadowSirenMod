@@ -41,7 +41,7 @@ public class EnergyReversionPower extends AbstractPower implements CloneablePowe
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         super.onApplyPower(power, target, source);
-        if (power instanceof VigorPower && target == owner) {
+        if (power instanceof ChargePower && target == owner) {
             flash();
             this.addToBot(new ApplyPowerAction(owner, owner, new ElectricPower(owner, amount)));
         }

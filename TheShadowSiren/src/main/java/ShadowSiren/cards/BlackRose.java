@@ -2,6 +2,8 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.abstractCards.AbstractShadowCard;
+import ShadowSiren.cards.dualityCards.veil.BlackRoseDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.HexingPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -13,7 +15,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class BlackRose extends AbstractDynamicCard {
+public class BlackRose extends AbstractShadowCard {
 
     // TEXT DECLARATION
 
@@ -37,7 +39,7 @@ public class BlackRose extends AbstractDynamicCard {
 
 
     public BlackRose() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new BlackRoseDual());
         magicNumber = baseMagicNumber = HEX;
         exhaust = true;
     }
@@ -61,6 +63,7 @@ public class BlackRose extends AbstractDynamicCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_HEX);
             initializeDescription();
+            super.upgrade();
         }
     }
 }

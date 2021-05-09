@@ -1,11 +1,11 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.hyper;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.Discharge;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
-import ShadowSiren.cards.dualityCards.hyper.DischargeDual;
 import ShadowSiren.cards.interfaces.ChargeMultiEffect;
 import ShadowSiren.cards.interfaces.MagicAnimation;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -18,11 +18,11 @@ import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Discharge extends AbstractHyperCard implements MagicAnimation, ChargeMultiEffect {
+public class DischargeDual extends AbstractHyperCard implements MagicAnimation, ChargeMultiEffect, UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(Discharge.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(DischargeDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderAttack.png");
 
     // /TEXT DECLARATION/
@@ -36,23 +36,27 @@ public class Discharge extends AbstractHyperCard implements MagicAnimation, Char
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 0;
-    private static final int DAMAGE = 4;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int DAMAGE = 3;
+    private static final int UPGRADE_PLUS_DMG = 1;
+    private static final int HITS = 2;
 
     // /STAT DECLARATION/
 
 
-    public Discharge() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new DischargeDual());
+    public DischargeDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
+        magicNumber = baseMagicNumber = HITS;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new SFXAction("THUNDERCLAP", 0.05F));
-        this.addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
+        for (int i = 0 ; i < magicNumber ; i++) {
+            this.addToBot(new SFXAction("THUNDERCLAP", 0.05F));
+            this.addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
+            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.LIGHTNING));
+        }
     }
 
     //Upgraded stats.
@@ -68,6 +72,6 @@ public class Discharge extends AbstractHyperCard implements MagicAnimation, Char
 
     @Override
     public float getChargeMultiplier() {
-        return 2;
+        return 1.5f;
     }
 }

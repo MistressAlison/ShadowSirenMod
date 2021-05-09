@@ -1,28 +1,25 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.hyper;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.TurboCharged;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
-import ShadowSiren.cards.dualityCards.hyper.TurboChargedDual;
-import ShadowSiren.cards.interfaces.FistAttack;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ChargePower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class TurboCharged extends AbstractHyperCard {
+public class TurboChargedDual extends AbstractHyperCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(TurboCharged.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(TurboChargedDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
@@ -38,13 +35,15 @@ public class TurboCharged extends AbstractHyperCard {
     private static final int COST = -1;
     private static final int BASE_EFFECT = 0;
     private static final int UPGRADE_BASE_EFFECT = 1;
+    private static final int STRENGTH = 1;
 
     // /STAT DECLARATION/
 
 
-    public TurboCharged() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new TurboChargedDual());
+    public TurboChargedDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = BASE_EFFECT;
+        secondMagicNumber = baseSecondMagicNumber = STRENGTH;
     }
 
     // Actions the card should do.
@@ -68,6 +67,8 @@ public class TurboCharged extends AbstractHyperCard {
         if (!this.freeToPlayOnce) {
             p.energy.use(EnergyPanel.totalCount);
         }
+
+        this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, secondMagicNumber)));
     }
 
     @Override

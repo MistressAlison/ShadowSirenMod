@@ -1,6 +1,7 @@
 package ShadowSiren.patches;
 
 import ShadowSiren.powers.BurnPower;
+import ShadowSiren.stances.OnLoseHPStance;
 import ShadowSiren.stances.SmokeStance;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -18,8 +19,8 @@ public class OnLoseHPLastPatches {
     public static class DamageTakenListener {
         @SpireInsertPatch(locator = Locator.class, localvars = {"damageAmount"})
         public static void damageTakenListener(AbstractPlayer __instance, DamageInfo info, @ByRef int[] damageAmount) {
-            if (__instance.stance.ID.equals(SmokeStance.STANCE_ID)) {
-                damageAmount[0] = SmokeStance.onLoseHP(info, damageAmount[0]);
+            if (__instance.stance instanceof OnLoseHPStance) {
+                damageAmount[0] = ((OnLoseHPStance) __instance.stance).onLoseHP(info, damageAmount[0]);
             }
         }
         private static class Locator extends SpireInsertLocator {

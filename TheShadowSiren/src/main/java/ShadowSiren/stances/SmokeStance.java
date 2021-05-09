@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 
 import java.util.HashSet;
 
-public class SmokeStance extends AbstractStance {
+public class SmokeStance extends AbstractStance implements OnLoseHPStance {
     public static final String STANCE_ID = ShadowSirenMod.makeID("SmokeStance");
     private static final StanceStrings stanceString = CardCrawlGame.languagePack.getStanceString(STANCE_ID);
     private static long sfxId = -1L;
@@ -56,7 +56,8 @@ public class SmokeStance extends AbstractStance {
         }
     }
 
-    public static int onLoseHP(DamageInfo info, int damageAmount) {
+    @Override
+    public int onLoseHP(DamageInfo info, int damageAmount) {
         if (damageAmount > 0 && info.type == DamageInfo.DamageType.NORMAL) {
             if (AbstractDungeon.player.hasPower(SquallPower.POWER_ID)) {
                 int delta = (AbstractDungeon.player.hand.size() - damageAmount) * AbstractDungeon.player.getPower(SquallPower.POWER_ID).amount;

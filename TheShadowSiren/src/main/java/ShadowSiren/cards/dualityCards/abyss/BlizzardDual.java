@@ -1,27 +1,27 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.abyss;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import ShadowSiren.cards.interfaces.VigorMagicBuff;
+import ShadowSiren.cards.Blizzard;
+import ShadowSiren.cards.abstractCards.AbstractAbyssCard;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.BurnPower;
 import ShadowSiren.powers.FreezePower;
-import ShadowSiren.powers.WillOWispPower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Whiteout extends AbstractDynamicCard {
+public class BlizzardDual extends AbstractAbyssCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(Whiteout.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(BlizzardDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
@@ -36,13 +36,16 @@ public class Whiteout extends AbstractDynamicCard {
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
     private static final int FREEZE = 1;
+    private static final int WEAK = 2;
+    private static final int UPGRADE_PLUS_WEAK = 1;
 
     // /STAT DECLARATION/
 
 
-    public Whiteout() {
+    public BlizzardDual() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = FREEZE;
+        secondMagicNumber = baseSecondMagicNumber = WEAK;
         exhaust = true;
     }
 
@@ -55,6 +58,7 @@ public class Whiteout extends AbstractDynamicCard {
                 this.addToBot(new ApplyPowerAction(aM, p, new FreezePower(aM, magicNumber), magicNumber, true));
                 aM.tint.color = Color.BLUE.cpy();
                 aM.tint.changeColor(Color.WHITE.cpy());
+                this.addToBot(new ApplyPowerAction(aM, p, new WeakPower(aM, secondMagicNumber, false), secondMagicNumber, true));
             }
         }
     }
@@ -65,7 +69,9 @@ public class Whiteout extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeBaseCost(UPGRADE_COST);
+            upgradeSecondMagicNumber(UPGRADE_PLUS_WEAK);
             initializeDescription();
+            super.upgrade();
         }
     }
 }

@@ -2,6 +2,7 @@ package ShadowSiren.patches;
 
 import ShadowSiren.powers.ConfusedPower;
 import ShadowSiren.powers.DizzyPower;
+import ShadowSiren.relics.DataCollector;
 import ShadowSiren.relics.RepelCape;
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
@@ -33,6 +34,10 @@ public class DamageActionPatches {
                 }
                 __instance.target = targetList.get(AbstractDungeon.cardRandomRng.random(0, targetList.size()-1));
                 __instance.source.getPower(ConfusedPower.POWER_ID).flash();
+                if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+                    DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                    dataCollector.onConfusedDamage(info[0].output);
+                }
             }
         }
         private static class Locator extends SpireInsertLocator {
@@ -58,6 +63,10 @@ public class DamageActionPatches {
                 }
                 __instance.target = targetList.get(AbstractDungeon.cardRandomRng.random(0, targetList.size()-1));
                 __instance.source.getPower(ConfusedPower.POWER_ID).flash();
+                if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+                    DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                    dataCollector.onConfusedDamage(info[0].output);
+                }
             }
         }
         private static class Locator extends SpireInsertLocator {
@@ -72,7 +81,7 @@ public class DamageActionPatches {
     @SpirePatch(clz = VampireDamageAction.class, method = "update")
     @SpirePatch(clz = DamageAction.class, method = "update")
     public static class DamageActionMiss {
-        @SpirePrefixPatch
+        @SpirePrefixPatch()
         public static SpireReturn<?> MissTarget(AbstractGameAction __instance) {
             //If the source of the action is dizzy...
             if (__instance.source != null && __instance.source.hasPower(DizzyPower.POWER_ID) && !MissFlags.dizzyFlag.get(__instance)) {
@@ -81,6 +90,18 @@ public class DamageActionPatches {
                     //Set the instance is done, flash the power, and expressly return from the update function so nothing else happens
                     __instance.isDone = true;
                     __instance.source.getPower(DizzyPower.POWER_ID).flash();
+                    DamageInfo info = null;
+                    if (__instance instanceof DamageAction) {
+                        info = ReflectionHacks.getPrivate(__instance, DamageAction.class, "info");
+                    } else if (__instance instanceof VampireDamageAction) {
+                        info = ReflectionHacks.getPrivate(__instance, VampireDamageAction.class, "info");
+                    }
+                    if (info != null) {
+                        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+                            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                            dataCollector.onDizzyMiss(info.output);
+                        }
+                    }
                     return SpireReturn.Return(null);
                 }
                 //If we failed the check, set the flag for it so we don't keep trying each time update is called

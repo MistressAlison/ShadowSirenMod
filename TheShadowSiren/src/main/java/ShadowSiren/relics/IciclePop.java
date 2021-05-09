@@ -5,6 +5,7 @@ import ShadowSiren.powers.ChargePower;
 import ShadowSiren.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -60,7 +61,8 @@ public class IciclePop extends CustomRelic {
             activated = true;
             if (targetCard.type == AbstractCard.CardType.POWER) {
                 this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-                this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ChargePower(AbstractDungeon.player, TEMP_HP_GAINED)));
+                //this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ChargePower(AbstractDungeon.player, TEMP_HP_GAINED)));
+                this.addToBot(new AddTemporaryHPAction(AbstractDungeon.player, AbstractDungeon.player, TEMP_HP_GAINED));
                 stats.put(CHARGE_STAT, stats.get(CHARGE_STAT) + TEMP_HP_GAINED);
             }
         }

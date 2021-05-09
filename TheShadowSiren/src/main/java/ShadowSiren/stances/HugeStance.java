@@ -18,6 +18,7 @@ public class HugeStance extends AbstractStance {
     private static long sfxId = -1L;
     public static final float FACTOR = 1.5f;
 
+    //TODO Mountain? Giant? Massive? Mammoth? (I am the) Tower? Titan?
     public HugeStance() {
         this.ID = STANCE_ID;
         this.name = stanceString.NAME;

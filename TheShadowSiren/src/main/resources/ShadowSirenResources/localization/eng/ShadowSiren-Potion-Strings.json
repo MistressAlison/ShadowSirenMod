@@ -1,4 +1,32 @@
 {
+  "ShadowSiren:BurnPotion": {
+    "NAME": "Burn Potion",
+    "DESCRIPTIONS": ["Apply #b"," #yBurn to ALL enemies."]
+  },
+  "ShadowSiren:ChargePotion": {
+    "NAME": "Charge Potion",
+    "DESCRIPTIONS": ["Gain #b"," #yCharge."]
+  },
+  "ShadowSiren:ChillPotion": {
+    "NAME": "Chill Potion",
+    "DESCRIPTIONS": ["Apply #b"," #yChill to ALL enemies."]
+  },
+  "ShadowSiren:CleansingPotion": {
+    "NAME": "Cleansing Potion",
+    "DESCRIPTIONS": ["Remove any debuffs you have. #yExhaust all #yStatus and #yCurse cards in your hand."]
+  },
+  "ShadowSiren:ElectricPotion": {
+    "NAME": "Electric Potion",
+    "DESCRIPTIONS": ["Gain #b"," #yElectric."]
+  },
+  "ShadowSiren:FreezePotion": {
+    "NAME": "Freeze Potion",
+    "DESCRIPTIONS": ["Apply #b"," #yFreeze."]
+  },
+  "ShadowSiren:SoftPotion": {
+    "NAME": "Soft Potion",
+    "DESCRIPTIONS": ["Apply #b"," #ySoft."]
+  },
   "ShadowSiren:VigorPotion": {
     "NAME": "Vigor Potion",
     "DESCRIPTIONS": ["Gain #b"," #yVigor."]

@@ -20,11 +20,11 @@
   "ShadowSiren:HyperStance": {
     "NAME": "Hyper",
     "DESCRIPTION": [
-      "Your Attacks deal #b20% more damage and you take #b20% less damage from attacks. NL Upon exiting this #yStance, gain 2 #yCharge."
+      "Whenever you would lose HP, lose #b2 less. At the start of your turn, gain #b1 #yCharge if you did not lose HP last turn."
     ]
   },
   "ShadowSiren:HugeStance": {
-    "NAME": "Huge",
+    "NAME": "Giant",
     "DESCRIPTION": [
       "Your Attacks deal double damage. NL Lose [E] each time you play an attack."
     ]

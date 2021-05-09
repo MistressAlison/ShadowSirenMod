@@ -9,6 +9,13 @@
   },
   {
     "NAMES": [
+      "Anchor",
+      "anchor"
+    ],
+    "DESCRIPTION": "A #b0 Cost #yAttack that #yRetains and #yExhausts."
+  },
+  {
+    "NAMES": [
       "Burn",
       "burn",
       "burns",
@@ -19,7 +26,8 @@
   {
     "NAMES": [
       "Charge",
-      "charge"
+      "charge",
+      "charges"
     ],
     "DESCRIPTION": "Your next card is #b50% more effective."
   },
@@ -90,15 +98,15 @@
     "DESCRIPTION": "This card has an alternate form in #ySmoke."
   },
   {
-    "PROPER_NAME": "Huge Duality",
+    "PROPER_NAME": "Titanic Duality",
     "NAMES": [
       "Huge Duality",
       "huge_duality"
     ],
-    "DESCRIPTION": "This card has an alternate form in #yHuge."
+    "DESCRIPTION": "This card has an alternate form in #yGiant."
   },
   {
-    "PROPER_NAME": "Hyper Duality",
+    "PROPER_NAME": "Steadfast Duality",
     "NAMES": [
       "Hyper Duality",
       "hyper_duality"
@@ -152,8 +160,8 @@
   },
   {
     "NAMES": [
-      "Huge",
-      "huge"
+      "Giant",
+      "giant"
     ],
     "DESCRIPTION": "Your Attacks deal double damage. Lose [E] each time you play an attack."
   },
@@ -162,7 +170,7 @@
       "Hyper",
       "hyper"
     ],
-    "DESCRIPTION": "Your Attacks deal #b20% more damage and you take #b20% less damage from attacks. Upon exiting this #yStance, gain 2 #yCharge."
+    "DESCRIPTION": "Whenever you would lose HP, lose #b2 less. At the start of your turn, gain #b1 #yCharge if you did not lose HP last turn."
   },
   {
     "NAMES": [
@@ -170,6 +178,61 @@
       "ichor"
     ],
     "DESCRIPTION": "UNUSED! Target takes double damage from #yBurn."
+  },
+  {
+    "NAMES": [
+      "Prismatic",
+      "prismatic"
+    ],
+    "DESCRIPTION": "This card has an alternate form in every #yStance."
+  },
+  {
+    "PROPER_NAME": "Prismatic: Base",
+    "NAMES": [
+      "Prismatic Base",
+      "prismatic_base"
+    ],
+    "DESCRIPTION": "This card has an alternate form in every #yStance. NL Current form: #yBase."
+  },
+  {
+    "PROPER_NAME": "Prismatic: Shadow",
+    "NAMES": [
+      "Prismatic Veil",
+      "prismatic_veil"
+    ],
+    "DESCRIPTION": "This card has an alternate form in every #yStance. NL Current form: #yVeil."
+  },
+  {
+    "PROPER_NAME": "Prismatic: Abyssal",
+    "NAMES": [
+      "Prismatic Abyss",
+      "prismatic_abyss"
+    ],
+    "DESCRIPTION": "This card has an alternate form in every #yStance. NL Current form: #yAbyss."
+  },
+  {
+    "PROPER_NAME": "Prismatic: Ashen",
+    "NAMES": [
+      "Prismatic Smoke",
+      "prismatic_smoke"
+    ],
+    "DESCRIPTION": "This card has an alternate form in every #yStance. NL Current form: #ySmoke."
+  },
+  {
+    "PROPER_NAME": "Prismatic: Titanic",
+    "NAMES": [
+      "Prismatic Huge",
+      "prismatic_huge"
+    ],
+    "DESCRIPTION": "This card has an alternate form in every #yStance. NL Current form: #yGiant."
+  },
+  {
+    "PROPER_NAME": "Prismatic: Steadfast",
+    "NAMES": [
+      "Prismatic Hyper",
+      "prismatic_hyper"
+    ],
+    "DESCRIPTION": "This card has an alternate form in every #yStance. NL Current form: #yHyper."
   },
   {
     "NAMES": [

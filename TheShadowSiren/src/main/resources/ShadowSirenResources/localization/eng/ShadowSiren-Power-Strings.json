@@ -66,9 +66,21 @@
                 "DESCRIPTIONS": ["May not be damaged, but also does nothing for #b"," turn."," turns.",
                                 " NL Breaks after being attacked #b"," more time, resulting in #b3x damage.", " more times, resulting in #b3x damage."]
         },
+        "ShadowSiren:GiantsHeart": {
+                "NAME": "Giant's Heart",
+                "DESCRIPTIONS": ["Gain #b"," #yBlock for every #yEnergy spent."]
+        },
+        "ShadowSiren:HarborPower": {
+                "NAME": "Harbor",
+                "DESCRIPTIONS": ["At the beginning of your turn, add #b"," #yAnchor to your hand."]
+        },
         "ShadowSiren:HexingPower": {
                 "NAME": "Hex",
                 "DESCRIPTIONS": ["Whenever this target attacks, it takes #b"," damage. Hex is halved each time this target does not attack."]
+        },
+        "ShadowSiren:ManaBody": {
+                "NAME": "Mana Body",
+                "DESCRIPTIONS": ["Upon having your #yBlock broken, gain #b"," #yBlock."]
         },
         "ShadowSiren:MoltenBodyPower": {
                 "NAME": "Molten Body",
@@ -106,6 +118,10 @@
                 "NAME": "Reinforced Plating",
                 "DESCRIPTIONS": ["Each turn, prevent the first time you would lose #yBlock.","Each turn, prevent the first #b"," times you would lose #yBlock."]
         },
+        "ShadowSiren:RicochetPower": {
+                "NAME": "Ricochet",
+                "DESCRIPTIONS": ["The next card you play this turn is returned to your hand.","The next #b"," cards you play this turn are returned to your hand."]
+        },
         "ShadowSiren:ShadowPower": {
                 "NAME": "Shadow",
                 "DESCRIPTIONS": ["Unused."]
@@ -121,6 +137,10 @@
         "ShadowSiren:SquallPower": {
                 "NAME": "Squall",
                 "DESCRIPTIONS": ["Excess cards discarded by #ySmoke deal #b"," damage to the attacker."]
+        },
+        "ShadowSiren:TrippingCounterPower": {
+                "NAME": "Tripping Counter",
+                "DESCRIPTIONS": ["When attacked, apply #b"," #yVulnerable to the attacker."]
         },
         "ShadowSiren:VigorousShiftPower": {
                 "NAME": "Vigorous Shift",

@@ -33,6 +33,22 @@
       "Effective turns: "," NL Per combat: "," NL Upkeep: "
     ]
   },
+  "ShadowSiren:DataCollector": {
+    "NAME": "Data Collector",
+    "FLAVOR": "Does nothing without the Relic Stats mod.",
+    "DESCRIPTIONS": [
+      "Displays data for balancing purposes. (Showing Combative Data, Right Click to Swap)",
+      "Displays data for balancing purposes. (Showing Supportive Data, Right Click to Swap)",
+      " NL Per combat: ",", Per turn: "," NL Per stack: "," NL Avg: ",
+      "Burn applied: ", " NL Burn damage: ",
+      " NL Hex applied: "," NL Hex damage: ",
+      " NL Soft applied: "," NL Soft damage: ",
+      "Chill applied: "," NL Chill to Freeze: "," NL Freeze applied: ",
+      " NL Dizzy applied "," NL Damage avoided: ",
+      " NL Confused applied: "," NL Damage redirected: ",
+      " NL Electric gained: ", " NL Direct damage: "," NL Indirect damage: "
+    ]
+  },
   "ShadowSiren:EarthQuake": {
     "NAME": "Earth Quake",
     "FLAVOR": "Magnitude 4!",

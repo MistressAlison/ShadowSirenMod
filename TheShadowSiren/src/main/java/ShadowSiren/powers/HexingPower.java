@@ -1,6 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.relics.DataCollector;
 import basemod.ReflectionHacks;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
@@ -57,10 +58,32 @@ public class HexingPower extends AbstractPower implements CloneablePowerInterfac
     }
 
     @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID) && source == AbstractDungeon.player) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyHex(this.amount);
+        }
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID) && source == AbstractDungeon.player) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyHex(stackAmount);
+        }
+    }
+
+    @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             this.flashWithoutSound();
             this.addToTop(new DamageAction(owner, new DamageInfo(source, amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE));
+            if (AbstractDungeon.player.hasRelic(DataCollector.ID) && source == AbstractDungeon.player) {
+                DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                dataCollector.onHexDamage(amount);
+            }
             attackedThisTurn = true;
         }
     }

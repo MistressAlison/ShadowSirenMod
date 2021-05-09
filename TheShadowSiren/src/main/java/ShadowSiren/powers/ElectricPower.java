@@ -1,6 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.relics.DataCollector;
 import ShadowSiren.relics.VoltShroom;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -64,6 +66,17 @@ public class ElectricPower extends AbstractPower implements CloneablePowerInterf
                     this.isDone = true;
                 }
             });
+            int finalEffect = amount+bonus;
+            this.addToTop(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+                        DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                        dataCollector.onElecDirect(finalEffect);
+                    }
+                    this.isDone = true;
+                }
+            });
         }
     }
 
@@ -89,6 +102,17 @@ public class ElectricPower extends AbstractPower implements CloneablePowerInterf
                     this.isDone = true;
                 }
             });
+            int finalEffect = amount+bonus;
+            this.addToTop(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+                        DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                        dataCollector.onElecIndirect(finalEffect);
+                    }
+                    this.isDone = true;
+                }
+            });
         }
 
         return damageAmount;
@@ -98,6 +122,20 @@ public class ElectricPower extends AbstractPower implements CloneablePowerInterf
     public void onInitialApplication() {
         super.onInitialApplication();
         this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onGainElec(amount);
+        }
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onGainElec(stackAmount);
+        }
     }
 
     @Override

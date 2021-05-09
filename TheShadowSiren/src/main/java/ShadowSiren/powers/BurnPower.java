@@ -5,6 +5,7 @@ import ShadowSiren.actions.BurnToAshEffect;
 import ShadowSiren.actions.MakeTempCardInExhaustAction;
 import ShadowSiren.cards.tempCards.Ash;
 import ShadowSiren.powers.interfaces.OnRemoveOtherPowerPower;
+import ShadowSiren.relics.DataCollector;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -72,6 +73,10 @@ public class BurnPower extends AbstractPower implements CloneablePowerInterface,
         super.onInitialApplication();
         tallyDebuffs();
         drenchInteraction();
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID) && source == AbstractDungeon.player) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyBurn(this.amount);
+        }
         //deathCheck(0);
     }
 
@@ -80,12 +85,11 @@ public class BurnPower extends AbstractPower implements CloneablePowerInterface,
         super.stackPower(stackAmount);
         tallyDebuffs();
         drenchInteraction();
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID) && source == AbstractDungeon.player) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyBurn(stackAmount);
+        }
         //deathCheck(0);
-    }
-
-    @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        return super.onAttackedToChangeDamage(info, damageAmount);
     }
 
     private void drenchInteraction() {
@@ -96,6 +100,10 @@ public class BurnPower extends AbstractPower implements CloneablePowerInterface,
             this.flashWithoutSound();
             drench.flashWithoutSound();
             for (int i = 0 ; i < limit ; i++) {
+                if (AbstractDungeon.player.hasRelic(DataCollector.ID) && source == AbstractDungeon.player) {
+                    DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                    dataCollector.onBurnDamage(damagePerTurn);
+                }
                 this.addToTop(new DamageAction(owner, new DamageInfo(source, damagePerTurn, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE, true));
             }
             if (equal) {
@@ -131,6 +139,10 @@ public class BurnPower extends AbstractPower implements CloneablePowerInterface,
 
     public void triggerEffect() {
         this.flashWithoutSound();
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID) && source == AbstractDungeon.player) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onBurnDamage(damagePerTurn);
+        }
         this.addToBot(new DamageAction(owner, new DamageInfo(source, damagePerTurn, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE, true));
         if (this.amount == 1) {
             this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));

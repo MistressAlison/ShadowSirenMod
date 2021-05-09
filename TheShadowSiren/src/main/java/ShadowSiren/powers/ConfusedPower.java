@@ -1,11 +1,13 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.relics.DataCollector;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -36,6 +38,24 @@ public class ConfusedPower extends AbstractPower implements CloneablePowerInterf
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
+    }
+
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyConfused(amount);
+        }
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyConfused(stackAmount);
+        }
     }
 
     //Main functionality provided in DamageActionPatches

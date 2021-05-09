@@ -1,6 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.relics.DataCollector;
 import basemod.ReflectionHacks;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
@@ -56,6 +57,10 @@ public class FreezePower extends StunMonsterPower implements CloneablePowerInter
         AbstractDungeon.effectsQueue.add(new FrostOrbActivateEffect(owner.hb_x, owner.hb_y));
         owner.tint.color = Color.BLUE.cpy();
         owner.tint.changeColor(Color.WHITE.cpy());
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyFreeze(amount);
+        }
     }
 
     @Override
@@ -65,6 +70,10 @@ public class FreezePower extends StunMonsterPower implements CloneablePowerInter
         AbstractDungeon.effectsQueue.add(new FrostOrbActivateEffect(owner.hb_x, owner.hb_y));
         owner.tint.color = Color.BLUE.cpy();
         owner.tint.changeColor(Color.WHITE.cpy());
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyFreeze(stackAmount);
+        }
     }
 
     @Override

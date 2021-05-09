@@ -71,7 +71,7 @@ public class ChargePower extends AbstractPower implements CloneablePowerInterfac
     }
 
     private float calcMainEffect(AbstractCard card) {
-        return 1 + ((card instanceof ChargeMultiEffect ? ((ChargeMultiEffect) card).chargeMultiplier : 1) * 0.5f) * amount;
+        return 1 + ((card instanceof ChargeMultiEffect ? ((ChargeMultiEffect) card).getChargeMultiplier() : 1) * 0.5f) * amount;
     }
 
     @Override

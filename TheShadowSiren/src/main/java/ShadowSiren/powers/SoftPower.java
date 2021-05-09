@@ -1,6 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.relics.DataCollector;
 import ShadowSiren.relics.RuinPowder;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -54,6 +55,19 @@ public class SoftPower extends AbstractPower implements CloneablePowerInterface 
             this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, AbstractDungeon.player.getRelic(RuinPowder.ID)));
             AbstractDungeon.player.getRelic(RuinPowder.ID).flash();
         }
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplySoft(amount);
+        }
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplySoft(stackAmount);
+        }
     }
 
     public float atDamageReceive(float damage, DamageInfo.DamageType type) {
@@ -64,6 +78,10 @@ public class SoftPower extends AbstractPower implements CloneablePowerInterface 
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (AbstractDungeon.player.hasRelic(RuinPowder.ID) && !owner.hasPower(IntangiblePlayerPower.POWER_ID) && !owner.hasPower(FreezePower.POWER_ID)) {
             ((RuinPowder)AbstractDungeon.player.getRelic(RuinPowder.ID)).onIncreaseDamage(RuinPowder.RELIC_BONUS_DAMAGE-BONUS_DAMAGE);
+        }
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onSoftDamage(AbstractDungeon.player.hasRelic(RuinPowder.ID) ? RuinPowder.RELIC_BONUS_DAMAGE : BONUS_DAMAGE);
         }
         return super.onAttacked(info, damageAmount);
     }

@@ -1,6 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.relics.DataCollector;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -49,6 +50,10 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
         AbstractDungeon.effectsQueue.add(new FrostOrbActivateEffect(owner.hb_x, owner.hb_y));
         owner.tint.color = Color.BLUE.cpy();
         owner.tint.changeColor(Color.WHITE.cpy());
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyChill(amount);
+        }
         if (owner.hasPower(DrenchPower.POWER_ID)) {
             owner.getPower(DrenchPower.POWER_ID).flash();
             this.addToTop(new RemoveSpecificPowerAction(owner, owner, DrenchPower.POWER_ID));
@@ -58,6 +63,10 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
             int effect = amount / 10;
             this.addToBot(new ReducePowerAction(owner, owner, this, effect*10));
             this.addToBot(new ApplyPowerAction(owner, owner, new FreezePower((AbstractMonster) owner, effect)));
+            if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+                DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                dataCollector.onChillRollover(effect);
+            }
         }
     }
 
@@ -68,6 +77,10 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
         AbstractDungeon.effectsQueue.add(new FrostOrbActivateEffect(owner.hb_x, owner.hb_y));
         owner.tint.color = Color.BLUE.cpy();
         owner.tint.changeColor(Color.WHITE.cpy());
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onApplyChill(amount);
+        }
         if (owner.hasPower(DrenchPower.POWER_ID)) {
             owner.getPower(DrenchPower.POWER_ID).flash();
             this.addToTop(new RemoveSpecificPowerAction(owner, owner, DrenchPower.POWER_ID));
@@ -77,6 +90,10 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
             int effect = amount / 10;
             this.addToBot(new ReducePowerAction(owner, owner, this, effect*10));
             this.addToBot(new ApplyPowerAction(owner, owner, new FreezePower((AbstractMonster) owner, effect)));
+            if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+                DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                dataCollector.onChillRollover(effect);
+            }
         }
     }
 

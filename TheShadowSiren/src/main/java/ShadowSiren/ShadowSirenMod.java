@@ -1,5 +1,6 @@
 package ShadowSiren;
 
+import ShadowSiren.potions.*;
 import ShadowSiren.relics.*;
 import ShadowSiren.variables.DefaultInvertedNumber;
 import ShadowSiren.variables.ThirdMagicNumber;
@@ -10,6 +11,8 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.mod.widepotions.WidePotionsMod;
+import com.evacipated.cardcrawl.mod.widepotions.patches.WideRelicCompendium;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -76,7 +79,7 @@ public class ShadowSirenMod implements
     private static String modID;
 
     // Mod-settings settings. This is if you want an on/off savable button
-    public static Properties theStarBreakerDefaultSettings = new Properties();
+    public static Properties theShadowSirenDefaultSettings = new Properties();
     public static Properties normaBackupVars = new Properties();
 
     public static final String ENABLE_SELFDAMAGE_SETTING = "enableSelfDamage";
@@ -130,10 +133,37 @@ public class ShadowSirenMod implements
     //public static final Color VOID = CardHelper.getColor(149.0f, 147.0f, 150.0f);
     
     // Potion Colors in RGB
-    public static final Color OJ_POTION_LIQUID = CardHelper.getColor(255, 128, 0); // Orange
-    public static final Color OJ_POTION_HYBRID = new Color(0.0f, 0.0f, 0.0f, 0.0f); // Invisible
-    public static final Color OJ_POTION_SPOTS = new Color(0.0f, 0.0f, 0.0f, 0.0f); // Invisible
+    public static final Color VIGOR_POTION_LIQUID = CardHelper.getColor(227, 91, 0); // Orange/Red
+    public static final Color VIGOR_POTION_HYBRID = CardHelper.getColor(255, 102, 0); // Lighter Orange/Red
+    public static final Color VIGOR_POTION_SPOTS = new Color(0.0f, 0.0f, 0.0f, 0.0f); // Invisible
 
+    public static final Color BURN_POTION_LIQUID = CardHelper.getColor(168, 56, 50); // Dark Red
+    public static final Color BURN_POTION_HYBRID = CardHelper.getColor(207, 118, 35); // Lighter Orange
+    public static final Color BURN_POTION_SPOTS = CardHelper.getColor(255, 102, 0); // Lighter Orange/Red
+
+    public static final Color CHILL_POTION_LIQUID = CardHelper.getColor(37, 116, 176); // Dark Blue
+    public static final Color CHILL_POTION_HYBRID = CardHelper.getColor(0, 145, 255); // Lighter Blue
+    public static final Color CHILL_POTION_SPOTS = CardHelper.getColor(112, 193, 255); // Light Blue
+
+    public static final Color SOFT_POTION_LIQUID = CardHelper.getColor(252, 247, 227); // Off White
+    public static final Color SOFT_POTION_HYBRID = CardHelper.getColor(255, 255, 255); // White
+    public static final Color SOFT_POTION_SPOTS = CardHelper.getColor(255, 255, 200); // Offer White
+
+    public static final Color CHARGE_POTION_LIQUID = CardHelper.getColor(207, 190, 0); // Darker Yellow
+    public static final Color CHARGE_POTION_HYBRID = CardHelper.getColor(255, 255, 0); // Yellow AF
+    public static final Color CHARGE_POTION_SPOTS = CardHelper.getColor(255, 255, 0); // Yellow AF
+
+    public static final Color ELECTRIC_POTION_LIQUID = CardHelper.getColor(207, 190, 0); // Darker Yellow
+    public static final Color ELECTRIC_POTION_HYBRID = CardHelper.getColor(255, 255, 0); // Yellow AF
+    public static final Color ELECTRIC_POTION_SPOTS = new Color(0.0f, 0.0f, 0.0f, 0.0f); // Invisible
+
+    public static final Color FREEZE_POTION_LIQUID = CardHelper.getColor(161, 255, 253); // Light Cyan
+    public static final Color FREEZE_POTION_HYBRID = CardHelper.getColor(189, 255, 254); // Lighter Cyan
+    public static final Color FREEZE_POTION_SPOTS = null; // Cant pass a spots or it crashes
+
+    public static final Color CLEANSING_POTION_LIQUID = CardHelper.getColor(71, 255, 61); // Green
+    public static final Color CLEANSING_POTION_HYBRID = CardHelper.getColor(192, 255, 189); // Light Green
+    public static final Color CLEANSING_POTION_SPOTS = CardHelper.getColor(0, 255, 0); // Green AF
 
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
@@ -208,8 +238,6 @@ public class ShadowSirenMod implements
     //private static final String THE_DEFAULT_BUTTON = "ShadowSirenResources/images/charSelect/DefaultCharacterButton.png";
     private static final String VIVIAN_BUTTON = "ShadowSirenResources/images/charSelect/VivianButton4.png"; //
     //private static final String THE_DEFAULT_PORTRAIT = "ShadowSirenResources/images/charSelect/DefaultCharacterPortraitBG.png";
-    //private static final String STARBREAKER_PORTRAIT = "ShadowSirenResources/images/charSelect/Starbreaker8.png";
-    //private static final String STARBREAKER_PORTRAIT = "ShadowSirenResources/images/charSelect/Starbreaker8bg.png";
     private static final String VIVIAN_BG = "ShadowSirenResources/images/charSelect/VivianBG2.png";
     public static final String VIVIAN_SHOULDER_1 = "ShadowSirenResources/images/char/vivian/shoulder.png"; //
     public static final String VIVIAN_SHOULDER_2 = "ShadowSirenResources/images/char/vivian/shoulder2.png";
@@ -217,10 +245,6 @@ public class ShadowSirenMod implements
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "ShadowSirenResources/images/Badge.png";
-    
-    // Atlas and JSON files for the Animations
-    //public static final String THE_DEFAULT_SKELETON_ATLAS = "ShadowSirenResources/images/char/starBreaker/skeleton.atlas";
-    //public static final String THE_DEFAULT_SKELETON_JSON = "ShadowSirenResources/images/char/starBreaker/skeleton.json";
     
     // =============== MAKE IMAGE PATHS =================
     
@@ -300,10 +324,9 @@ public class ShadowSirenMod implements
         logger.info("Adding mod settings");
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
-        theStarBreakerDefaultSettings.setProperty(ENABLE_SELFDAMAGE_SETTING, "FALSE"); // This is the default setting. It's actually set...
-        //theStarBreakerDefaultSettings.setProperty(FIVE_STAR_WANTED_SETTING, "FALSE");
+        theShadowSirenDefaultSettings.setProperty(ENABLE_SELFDAMAGE_SETTING, "FALSE"); // This is the default setting. It's actually set...
         try {
-            SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings); // ...right here
+            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings); // ...right here
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             enableSelfDamage = config.getBool(ENABLE_SELFDAMAGE_SETTING);
@@ -312,9 +335,9 @@ public class ShadowSirenMod implements
             e.printStackTrace();
         }
 
-        theStarBreakerDefaultSettings.setProperty(FIVE_STAR_WANTED_SETTING, "FALSE");
+        theShadowSirenDefaultSettings.setProperty(FIVE_STAR_WANTED_SETTING, "FALSE");
         try {
-            SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             enableStrongerWantedEffect = config.getBool(FIVE_STAR_WANTED_SETTING);
@@ -322,9 +345,9 @@ public class ShadowSirenMod implements
             e.printStackTrace();
         }
 
-        theStarBreakerDefaultSettings.setProperty(DISABLE_GULL_VFX, "FALSE");
+        theShadowSirenDefaultSettings.setProperty(DISABLE_GULL_VFX, "FALSE");
         try {
-            SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             disableGullVfx = config.getBool(DISABLE_GULL_VFX);
@@ -332,9 +355,9 @@ public class ShadowSirenMod implements
             e.printStackTrace();
         }
 
-        theStarBreakerDefaultSettings.setProperty(CARD_BATTLE_TALK_SETTING, "TRUE");
+        theShadowSirenDefaultSettings.setProperty(CARD_BATTLE_TALK_SETTING, "TRUE");
         try {
-            SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             enableCardBattleTalkEffect = config.getBool(CARD_BATTLE_TALK_SETTING);
@@ -342,9 +365,9 @@ public class ShadowSirenMod implements
             e.printStackTrace();
         }
 
-        theStarBreakerDefaultSettings.setProperty(CARD_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_CARD_TALK_PROBABILITY));
+        theShadowSirenDefaultSettings.setProperty(CARD_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_CARD_TALK_PROBABILITY));
         try {
-            SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             cardTalkProbability = config.getInt(CARD_BATTLE_TALK_PROBABILITY_SETTING);
@@ -352,9 +375,9 @@ public class ShadowSirenMod implements
             e.printStackTrace();
         }
 
-        theStarBreakerDefaultSettings.setProperty(DAMAGED_BATTLE_TALK_SETTING, "TRUE");
+        theShadowSirenDefaultSettings.setProperty(DAMAGED_BATTLE_TALK_SETTING, "TRUE");
         try {
-            SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             enableDamagedBattleTalkEffect = config.getBool(DAMAGED_BATTLE_TALK_SETTING);
@@ -362,9 +385,9 @@ public class ShadowSirenMod implements
             e.printStackTrace();
         }
 
-        theStarBreakerDefaultSettings.setProperty(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_DAMAGED_TALK_PROBABILITY));
+        theShadowSirenDefaultSettings.setProperty(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_DAMAGED_TALK_PROBABILITY));
         try {
-            SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             damagedTalkProbability = config.getInt(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING);
@@ -372,9 +395,9 @@ public class ShadowSirenMod implements
             e.printStackTrace();
         }
 
-        theStarBreakerDefaultSettings.setProperty(PRE_BATTLE_TALK_SETTING, "TRUE");
+        theShadowSirenDefaultSettings.setProperty(PRE_BATTLE_TALK_SETTING, "TRUE");
         try {
-            SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             enablePreBattleTalkEffect = config.getBool(PRE_BATTLE_TALK_SETTING);
@@ -382,9 +405,9 @@ public class ShadowSirenMod implements
             e.printStackTrace();
         }
 
-        theStarBreakerDefaultSettings.setProperty(PRE_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_PRE_TALK_PROBABILITY));
+        theShadowSirenDefaultSettings.setProperty(PRE_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_PRE_TALK_PROBABILITY));
         try {
-            SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
             // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
             config.load(); // Load the setting and set the boolean to equal it
             preTalkProbability = config.getInt(PRE_BATTLE_TALK_PROBABILITY_SETTING);
@@ -446,9 +469,9 @@ public class ShadowSirenMod implements
     
     
     public static void initialize() {
-        logger.info("========================= Initializing The Star Breaker. Hi. =========================");
+        logger.info("========================= Initializing Vivian. =========================");
         ShadowSirenMod shadowSirenMod = new ShadowSirenMod();
-        logger.info("========================= /The Star Breaker Initialized. Hello World./ =========================");
+        logger.info("========================= /Vivian, The Shadow Siren, Initialized/ =========================");
     }
     
     // ============== /SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE/ =================
@@ -481,7 +504,14 @@ public class ShadowSirenMod implements
 
             //Simple Potions
 
-            //WidePotionsMod.whitelistSimplePotion(TwoHundredPercentOrangeJuicePotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(BurnPotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(ChargePotion.POTION_ID);
+            //WidePotionsMod.whitelistSimplePotion(ChillPotion.POTION_ID);
+            //WidePotionsMod.whitelistSimplePotion(CleansingPotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(ElectricPotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(FreezePotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(SoftPotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(VigorPotion.POTION_ID);
 
             //Complex Potions
 
@@ -517,7 +547,7 @@ public class ShadowSirenMod implements
             enableSelfDamage = button.enabled; // The boolean true/false will be whether the button is enabled or not
             try {
                 // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+                SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
                 config.setBool(ENABLE_SELFDAMAGE_SETTING, enableSelfDamage);
                 config.save();
             } catch (Exception e) {
@@ -535,7 +565,7 @@ public class ShadowSirenMod implements
                     enableStrongerWantedEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
                     try {
                         // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
                         config.setBool(FIVE_STAR_WANTED_SETTING, enableStrongerWantedEffect);
                         config.save();
                     } catch (Exception e) {
@@ -553,7 +583,7 @@ public class ShadowSirenMod implements
                     disableGullVfx = button.enabled; // The boolean true/false will be whether the button is enabled or not
                     try {
                         // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
                         config.setBool(DISABLE_GULL_VFX, disableGullVfx);
                         config.save();
                     } catch (Exception e) {
@@ -572,7 +602,7 @@ public class ShadowSirenMod implements
                     enableCardBattleTalkEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
                     try {
                         // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
                         config.setBool(CARD_BATTLE_TALK_SETTING, enableCardBattleTalkEffect);
                         config.save();
                     } catch (Exception e) {
@@ -588,7 +618,7 @@ public class ShadowSirenMod implements
                     cardTalkProbability = (int)slider.getValue();
                     try {
                         // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
                         config.setInt(CARD_BATTLE_TALK_PROBABILITY_SETTING, (int) slider.getValue());
                         config.save();
                     } catch (Exception e) {
@@ -607,7 +637,7 @@ public class ShadowSirenMod implements
                     enableDamagedBattleTalkEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
                     try {
                         // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
                         config.setBool(DAMAGED_BATTLE_TALK_SETTING, enableDamagedBattleTalkEffect);
                         config.save();
                     } catch (Exception e) {
@@ -623,7 +653,7 @@ public class ShadowSirenMod implements
                     damagedTalkProbability = (int)slider.getValue();
                     try {
                         // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
                         config.setInt(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING, (int) slider.getValue());
                         config.save();
                     } catch (Exception e) {
@@ -642,7 +672,7 @@ public class ShadowSirenMod implements
                     enablePreBattleTalkEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
                     try {
                         // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
                         config.setBool(PRE_BATTLE_TALK_SETTING, enablePreBattleTalkEffect);
                         config.save();
                     } catch (Exception e) {
@@ -658,7 +688,7 @@ public class ShadowSirenMod implements
                     preTalkProbability = (int)slider.getValue();
                     try {
                         // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("starbreakerMod", "StarbreakerConfig", theStarBreakerDefaultSettings);
+                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
                         config.setInt(PRE_BATTLE_TALK_PROBABILITY_SETTING, (int) slider.getValue());
                         config.save();
                     } catch (Exception e) {
@@ -720,7 +750,15 @@ public class ShadowSirenMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        //BaseMod.addPotion(TwoHundredPercentOrangeJuicePotion.class, OJ2_POTION_LIQUID, OJ2_POTION_HYBRID, OJ2_POTION_SPOTS, TwoHundredPercentOrangeJuicePotion.POTION_ID, TheStarBreaker.Enums.THE_STARBREAKER);
+
+        BaseMod.addPotion(BurnPotion.class, BURN_POTION_LIQUID, BURN_POTION_HYBRID, BURN_POTION_SPOTS, BurnPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        BaseMod.addPotion(ChargePotion.class, CHARGE_POTION_LIQUID, CHARGE_POTION_HYBRID, CHARGE_POTION_SPOTS, ChargePotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        //BaseMod.addPotion(ChillPotion.class, CHILL_POTION_LIQUID, CHILL_POTION_HYBRID, CHILL_POTION_SPOTS, ChillPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        BaseMod.addPotion(CleansingPotion.class, CLEANSING_POTION_LIQUID, CLEANSING_POTION_HYBRID, CLEANSING_POTION_SPOTS, CleansingPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        BaseMod.addPotion(ElectricPotion.class, ELECTRIC_POTION_LIQUID, ELECTRIC_POTION_HYBRID, ELECTRIC_POTION_SPOTS, ElectricPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        BaseMod.addPotion(FreezePotion.class, FREEZE_POTION_LIQUID, FREEZE_POTION_HYBRID, FREEZE_POTION_SPOTS, FreezePotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        BaseMod.addPotion(SoftPotion.class, SOFT_POTION_LIQUID, SOFT_POTION_HYBRID, SOFT_POTION_SPOTS, SoftPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        BaseMod.addPotion(VigorPotion.class, VIGOR_POTION_LIQUID, VIGOR_POTION_HYBRID, VIGOR_POTION_SPOTS, VigorPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
 
         logger.info("Done editing potions");
     }
@@ -746,6 +784,7 @@ public class ShadowSirenMod implements
         BaseMod.addRelicToCustomPool(new BooSheet(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new BottledStar(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new CourageShell(), Vivian.Enums.VOODOO_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new DataCollector(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new EarthQuake(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new ElectroPop(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new FireFlower(), Vivian.Enums.VOODOO_CARD_COLOR);
@@ -775,6 +814,7 @@ public class ShadowSirenMod implements
         UnlockTracker.markRelicAsSeen(BooSheet.ID);
         UnlockTracker.markRelicAsSeen(BottledStar.ID);
         UnlockTracker.markRelicAsSeen(CourageShell.ID);
+        UnlockTracker.markRelicAsSeen(DataCollector.ID);
         UnlockTracker.markRelicAsSeen(EarthQuake.ID);
         UnlockTracker.markRelicAsSeen(ElectroPop.ID);
         UnlockTracker.markRelicAsSeen(FireFlower.ID);

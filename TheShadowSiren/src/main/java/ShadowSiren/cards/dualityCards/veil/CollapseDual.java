@@ -1,8 +1,8 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.veil;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
-import ShadowSiren.cards.dualityCards.veil.CollapseDual;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -12,14 +12,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Collapse extends AbstractShadowCard {
+public class CollapseDual extends AbstractShadowCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(Collapse.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(CollapseDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
@@ -32,18 +33,18 @@ public class Collapse extends AbstractShadowCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = -1;
 
-    private static final int HP_LOSS = 5;
-    private static final int UPGRADE_PLUS_HP_LOSS = 3;
-    private static final int LOSS_PER_POWER = 2;
+    private static final int HP_LOSS = 4;
+    private static final int UPGRADE_PLUS_HP_LOSS = 2;
+    private static final int LOSS_PER_POWER = 1;
     private static final int UPGRADE_PLUS_LOSS_PER_POWER = 1;
 
     // /STAT DECLARATION/
 
 
-    public Collapse() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new CollapseDual());
+    public CollapseDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         secondMagicNumber = baseSecondMagicNumber = LOSS_PER_POWER;
         magicNumber = baseMagicNumber = HP_LOSS;
         thirdMagicNumber = baseThirdMagicNumber = 0;
@@ -52,6 +53,16 @@ public class Collapse extends AbstractShadowCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        //Calculate the amount of hits we will perform
+        int hits = EnergyPanel.totalCount;
+        if (this.energyOnUse != -1) {
+            hits = this.energyOnUse;
+        }
+        if (p.hasRelic("Chemical X")) {
+            hits += 2;
+            p.getRelic("Chemical X").flash();
+        }
+
         // Get the number of powers the monsters have.
         int powers = 0;
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
@@ -71,13 +82,23 @@ public class Collapse extends AbstractShadowCard {
             }
         }
 
-        //Drop our HP loss attack
-        this.addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(magicNumber+secondMagicNumber*powers, true), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE, true));
+        //Loop our HP loss attack
+        for (int i = 0 ; i < hits ; i++) {
+            this.addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(magicNumber+secondMagicNumber*powers, true), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE, true));
+        }
+
+        //Consume all energy
+        if (!this.freeToPlayOnce) {
+            p.energy.use(EnergyPanel.totalCount);
+        }
     }
 
     @Override
     public void applyPowers() {
-        thirdMagicNumber = 0;
+        thirdMagicNumber = baseThirdMagicNumber = EnergyPanel.totalCount;
+        if (AbstractDungeon.player.hasRelic("Chemical X")) {
+            thirdMagicNumber += 2;
+        }
         int powers = 0;
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
@@ -94,7 +115,7 @@ public class Collapse extends AbstractShadowCard {
                 powers++;
             }
         }
-        thirdMagicNumber += (magicNumber+secondMagicNumber*powers);
+        thirdMagicNumber *= (magicNumber+secondMagicNumber*powers);
         isThirdMagicNumberModified = thirdMagicNumber != baseThirdMagicNumber;
         super.applyPowers();
     }

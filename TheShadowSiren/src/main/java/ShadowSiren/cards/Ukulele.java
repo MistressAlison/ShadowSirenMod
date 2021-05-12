@@ -1,8 +1,8 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractShadowCard;
-import ShadowSiren.cards.dualityCards.veil.UkuleleDual;
+import ShadowSiren.cards.abstractCards.AbstractHyperCard;
+import ShadowSiren.cards.dualityCards.hyper.UkuleleDual;
 import ShadowSiren.cards.interfaces.ChargeMagicBuff;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ElectricPower;
@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Ukulele extends AbstractShadowCard implements ChargeMagicBuff {
+public class Ukulele extends AbstractHyperCard implements ChargeMagicBuff {
 
     // TEXT DECLARATION
 

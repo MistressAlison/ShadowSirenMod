@@ -1,7 +1,9 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.smoke;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.PlanAhead;
+import ShadowSiren.cards.abstractCards.AbstractSmokeCard;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -13,11 +15,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Improvise extends AbstractDynamicCard {
+public class PlanAheadDual extends AbstractSmokeCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(Improvise.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(PlanAheadDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderAttack.png");
 
     // /TEXT DECLARATION/
@@ -38,7 +40,7 @@ public class Improvise extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
 
-    public Improvise() {
+    public PlanAheadDual() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
     }
@@ -62,6 +64,7 @@ public class Improvise extends AbstractDynamicCard {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DAMAGE);
             initializeDescription();
+            super.upgrade();
         }
     }
 }

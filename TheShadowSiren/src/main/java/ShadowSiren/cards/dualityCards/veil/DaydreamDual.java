@@ -1,7 +1,8 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.veil;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.NightTerrorPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -12,11 +13,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class NightTerror extends AbstractShadowCard {
+public class DaydreamDual extends AbstractShadowCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(NightTerror.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(DaydreamDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderPower.png");
 
     // /TEXT DECLARATION/
@@ -33,9 +34,8 @@ public class NightTerror extends AbstractShadowCard {
 
     // /STAT DECLARATION/
 
-    public NightTerror() {
+    public DaydreamDual() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        glowOnStance = false;
     }
 
     // Actions the card should do.
@@ -52,6 +52,7 @@ public class NightTerror extends AbstractShadowCard {
             upgradeName();
             upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
+            super.upgrade();
         }
     }
 }

@@ -2,20 +2,24 @@ package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class WillOWispPower extends AbstractPower implements CloneablePowerInterface {
+public class FoxFirePower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower {
 
-    public static final String POWER_ID = ShadowSirenMod.makeID("WillOWispPower");
+    public static final String POWER_ID = ShadowSirenMod.makeID("FoxFirePower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+
+    private final Color hpBarColor = new Color(-2686721);
 
     private final AbstractCreature source;
 
@@ -24,11 +28,7 @@ public class WillOWispPower extends AbstractPower implements CloneablePowerInter
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public WillOWispPower(AbstractCreature owner, AbstractCreature source) {
-        this(owner, source, 1);
-    }
-
-    public WillOWispPower(AbstractCreature owner, AbstractCreature source, int amount) {
+    public FoxFirePower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -48,31 +48,30 @@ public class WillOWispPower extends AbstractPower implements CloneablePowerInter
         updateDescription();
     }
 
-    public void onDeath() {
-        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead() && this.owner.currentHealth <= 0) {
-            if (owner.hasPower(BurnPower.POWER_ID)) {
-                int stacks = amount * owner.getPower(BurnPower.POWER_ID).amount;
-                for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                    if (!m.isDeadOrEscaped()) {
-                        this.addToTop(new ApplyPowerAction(m, owner, new BurnPower(m, source, stacks)));
-                    }
-                }
-            }
-        }
+    @Override
+    public void atStartOfTurn() {
+        flash();
+        this.addToTop(new DamageAction(owner, new DamageInfo(source, amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE, true));
     }
 
     @Override
     public void updateDescription() {
-        if (this.amount == 1) {
-            description = DESCRIPTIONS[0];
-        } else {
-            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
-        }
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new WillOWispPower(owner, source, amount);
+        return new FoxFirePower(owner, source, amount);
+    }
+
+    @Override
+    public int getHealthBarAmount() {
+        return amount;
+    }
+
+    @Override
+    public Color getColor() {
+        return hpBarColor;
     }
 
 }

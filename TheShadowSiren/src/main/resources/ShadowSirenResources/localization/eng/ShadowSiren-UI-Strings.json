@@ -1,6 +1,12 @@
 {
-  "ShadowSiren:RestoreGift": {
-    "TEXT": ["Select a Gift to restore to your Draw Pile."]
+  "ShadowSiren:ChooseStance": {
+    "TEXT": ["Choose a Stance to enter.",
+      "Encore","Remain in your current Stance.",
+      "Shadowy Dance","Enter shadowsiren:Veil.",
+      "Abyssal Dance","Enter shadowsiren:Abyss.",
+      "Ashen Dance","Enter shadowsiren:Smoke.",
+      "Titan's Dance","Enter shadowsiren:Giant",
+      "Steadfast Dance","Enter shadowsiren:Hyper."]
   },
   "ShadowSiren:FetchFromAnywhere": {
     "TEXT": ["Select a card to add to your hand. All Draw Pile cards are shown before Discard Pile and then Exhaust Pile cards"]

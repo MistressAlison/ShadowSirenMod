@@ -47,6 +47,13 @@
   },
   {
     "NAMES": [
+      "Detonate",
+      "detonate"
+    ],
+    "DESCRIPTION": "Immediately activate ALL #yBurns stacks."
+  },
+  {
+    "NAMES": [
       "Dizzy",
       "dizzy"
     ],
@@ -141,6 +148,14 @@
       "fist"
     ],
     "DESCRIPTION": "Any card with the word \"Fist\" in its name."
+  },
+  {
+    "PROPER_NAME": "Fox-Fire",
+    "NAMES": [
+      "Fox-Fire",
+      "fox-fire"
+    ],
+    "DESCRIPTION": "Deals damage at the beginning of the turn and increases damage taken from #yBurn."
   },
   {
     "NAMES": [
@@ -278,6 +293,13 @@
       "toggle"
     ],
     "DESCRIPTION": "Enter the #yStance if you are not in it. Exit the #yStance if you are in it."
+  },
+  {
+    "NAMES": [
+      "Trigger",
+      "trigger"
+    ],
+    "DESCRIPTION": "Automatically activate the effect."
   },
   {
     "NAMES": [

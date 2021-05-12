@@ -86,6 +86,10 @@
                 "NAME": "Molten Body",
                 "DESCRIPTIONS": ["Whenever you deal unblocked attack damage, apply #b"," #yBurn."]
         },
+        "ShadowSiren:MoltenCorePower": {
+                "NAME": "Molten Core",
+                "DESCRIPTIONS": ["When attacking, apply #b"," #yBurn. When attacked, apply #b"," #yBurn to the attacker."]
+        },
         "ShadowSiren:NewMoonPower": {
                 "NAME": "New Moon",
                 "DESCRIPTIONS": ["Whenever you enter #yVeil, gain #b"," #yEnergy."]
@@ -146,8 +150,8 @@
                 "NAME": "Vigorous Shift",
                 "DESCRIPTIONS": ["Whenever you change #yStances, gain #b"," Vigor."]
         },
-        "ShadowSiren:WillOWispPower": {
-                "NAME": "Will-o'-Wisp",
-                "DESCRIPTIONS": ["On Death, applies its #yBurn to ALL enemies.","On Death, applies #b"," times its #yBurn to ALL enemies."]
+        "ShadowSiren:FoxFirePower": {
+                "NAME": "Fox-Fire",
+                "DESCRIPTIONS": ["At the beginning of its turn, this creature loses #b"," HP. Each stack of this power increases the effect of #yBurn by #b1."]
         }
 }

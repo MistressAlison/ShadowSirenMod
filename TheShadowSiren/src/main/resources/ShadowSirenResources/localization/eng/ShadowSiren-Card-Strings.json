@@ -29,7 +29,7 @@
   },
   "ShadowSiren:Anchor": {
     "NAME": "Anchor",
-    "DESCRIPTION": "Retain. NL Deal !D! damage. NL Gain !B! Block. NL When Retained, increase these values by !M! this combat. NL Exhaust."
+    "DESCRIPTION": "Retain. NL Deal !D! damage and Gain !B! Block. NL When Retained, increase these amounts by !M! this combat. NL Exhaust."
   },
   "ShadowSiren:Ash": {
     "NAME": "Ash",
@@ -74,6 +74,10 @@
     "NAME": "Big Gloves",
     "DESCRIPTION": "All Fist Attacks deal !M! more damage."
   },
+  "ShadowSiren:BigGlovesDual": {
+    "NAME": "Gains",
+    "DESCRIPTION": "Gain !M! Strength."
+  },
   "ShadowSiren:BlackRose": {
     "NAME": "Black Roses",
     "DESCRIPTION": "Apply !M! shadowsiren:Hex to ALL enemies. NL Exhaust."
@@ -81,10 +85,6 @@
   "ShadowSiren:BlackRoseDual": {
     "NAME": "In The Shadows",
     "DESCRIPTION": "Apply !M! shadowsiren:Hex to ALL enemies. NL Gain !ShadowSiren:SecondMagic! Intangible. NL Exhaust."
-  },
-  "ShadowSiren:BlastBurn": {
-    "NAME": "Blast Burn",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. Apply shadowsiren:Burn to ALL enemies equal to unblocked damage dealt."
   },
   "ShadowSiren:BlindingCounter": {
     "NAME": "Blinding Counter",
@@ -156,15 +156,17 @@
     "NAME": "Dark Enfold",
     "DESCRIPTION": "Deal !D! damage twice."
   },
+  "ShadowSiren:Daydream": {
+    "NAME": "Daydream",
+    "DESCRIPTION": "Draw !M! cards."
+  },
+  "ShadowSiren:DaydreamDual": {
+    "NAME": "Night Terror",
+    "DESCRIPTION": "Deal 25% more damage while in shadowsiren:Veil. NL Add a copy of this card to the top of your draw pile."
+  },
   "ShadowSiren:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
-  },
-  "ShadowSiren:DiamondInTheRough": {
-    "NAME": "Prismatic Diamond",
-    "DESCRIPTION": "Ethereal.",
-    "UPGRADE_DESCRIPTION": "Choose 1: NL Enter shadowsiren:Veil. NL Enter shadowsiren:Abyss. NL Enter shadowsiren:Giant. NL Enter shadowsiren:Hyper.",
-    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
   },
   "ShadowSiren:Discharge": {
     "NAME": "Discharge",
@@ -182,6 +184,11 @@
     "NAME": "Double Fist",
     "DESCRIPTION": "Deal !D! damage !M! times.",
     "EXTENDED_DESCRIPTION": ["Triple Fist"]
+  },
+  "ShadowSiren:DoubleFistDual": {
+    "NAME": "Omni Fist",
+    "DESCRIPTION": "Deal !D! damage !M! times. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": ["ORA ORA ORA"]
   },
   "ShadowSiren:ElementalEquilibrium": {
     "NAME": "Elementalist",
@@ -234,6 +241,28 @@
     "NAME": "Fiery Jinx",
     "DESCRIPTION": "Apply !M! shadowsiren:Burn to ALL enemies."
   },
+  "ShadowSiren:FieryJinxDual": {
+    "NAME": "Ardent Jinx",
+    "DESCRIPTION": "Apply !M! shadowsiren:Burn and shadowsiren:Trigger !ShadowSiren:SecondMagic! shadowsiren:Burn to ALL enemies."
+  },
+  "ShadowSiren:FlameCurse": {
+    "NAME": "Flame Curse",
+    "DESCRIPTION": "Apply !M! shadowsiren:Burn and !ShadowSiren:SecondMagic! shadowsiren:Hex. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply !M! shadowsiren:Burn and !ShadowSiren:SecondMagic! shadowsiren:Hex to ALL enemies. NL Exhaust."
+  },
+  "ShadowSiren:FlameCurseDual": {
+    "NAME": "Frost Curse",
+    "DESCRIPTION": "Apply !M! shadowsiren:Chill and !ShadowSiren:SecondMagic! shadowsiren:Hex. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply !M! shadowsiren:Chill and !ShadowSiren:SecondMagic! shadowsiren:Hex to ALL enemies. NL Exhaust."
+  },
+  "ShadowSiren:FlameSnap": {
+    "NAME": "Flame Snap",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! shadowsiren:Burn."
+  },
+  "ShadowSiren:FlameSnapDual": {
+    "NAME": "Flame Burst",
+    "DESCRIPTION": "Deal !D! damage. NL shadowsiren:Trigger !M! shadowsiren:Burn."
+  },
   "ShadowSiren:Flamethrower": {
     "NAME": "Flamethrower",
     "DESCRIPTION": "Upon playing a card, apply !M! shadowsiren:Burn to an enemy."
@@ -249,20 +278,6 @@
   "ShadowSiren:FreezeDryDual": {
     "NAME": "Frostbite",
     "DESCRIPTION": "Deal !D! damage. If the target has shadowsiren:Drench, deal !D! damage again. NL Apply !M! shadowsiren:Freeze."
-  },
-  "ShadowSiren:FlameCurse": {
-    "NAME": "Flame Curse",
-    "DESCRIPTION": "Apply !M! shadowsiren:Burn and !ShadowSiren:SecondMagic! shadowsiren:Hex. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Apply !M! shadowsiren:Burn and !ShadowSiren:SecondMagic! shadowsiren:Hex to ALL enemies. NL Exhaust."
-  },
-  "ShadowSiren:FlameCurseDual": {
-    "NAME": "Frost Curse",
-    "DESCRIPTION": "Apply !M! shadowsiren:Chill and !ShadowSiren:SecondMagic! shadowsiren:Hex. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Apply !M! shadowsiren:Chill and !ShadowSiren:SecondMagic! shadowsiren:Hex to ALL enemies. NL Exhaust."
-  },
-  "ShadowSiren:FlameSnap": {
-    "NAME": "Flame Snap",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! shadowsiren:Burn."
   },
   "ShadowSiren:Grab": {
     "NAME": "Grab",
@@ -289,6 +304,10 @@
     "NAME": "Hexing Strike",
     "DESCRIPTION": "Deal !D! damage. NL Apply shadowsiren:Hex equal to unblocked damage dealt."
   },
+  "ShadowSiren:HexingStrikeDual": {
+    "NAME": "Blazing Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Apply shadowsiren:Burn equal to unblocked damage dealt."
+  },
   "ShadowSiren:Hide": {
     "NAME": "Hide",
     "DESCRIPTION": "Gain !B! Block. NL Exhaust."
@@ -307,7 +326,7 @@
   },
   "ShadowSiren:HyperMode": {
     "NAME": "Hyper Mode",
-    "DESCRIPTION": "Enter shadowsiren:Hyper. NL Costs 1 less [E] for each shadowsiren:Charge generated this combat."
+    "DESCRIPTION": "Enter shadowsiren:Hyper. NL Gain !B! Block."
   },
   "ShadowSiren:HyperModeDual": {
     "NAME": "Hyper Armor",
@@ -321,13 +340,21 @@
     "NAME": "Entomb",
     "DESCRIPTION": "Apply !M! Vulnerable, Weak, shadowsiren:Soft, and shadowsiren:Drench."
   },
-  "ShadowSiren:Improvise": {
-    "NAME": "Improvise",
-    "DESCRIPTION": "Discard your hand, then deal !D! damage for every card discarded this way."
+  "ShadowSiren:Incinerate": {
+    "NAME": "Incinerate",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Each Enemy receives shadowsiren:Burn equal its unblocked damage taken."
+  },
+  "ShadowSiren:IncinerateDual": {
+    "NAME": "Blast Burn",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL shadowsiren:Detonate."
   },
   "ShadowSiren:Infatuate": {
     "NAME": "Infatuate",
     "DESCRIPTION": "Apply !M! shadowsiren:Confused to ALL enemies."
+  },
+  "ShadowSiren:InfatuateDual": {
+    "NAME": "Mesmerize",
+    "DESCRIPTION": "Apply !M! shadowsiren:Confused and Vulnerable to ALL enemies."
   },
   "ShadowSiren:Manjushage": {
     "NAME": "Manjushage",
@@ -349,6 +376,10 @@
     "NAME": "Molten Body",
     "DESCRIPTION": "Whenever an Attack deals unblocked damage, apply !M! shadowsiren:Burn."
   },
+  "ShadowSiren:MoltenBodyDual": {
+    "NAME": "Molten Core",
+    "DESCRIPTION": "Apply !M! shadowsiren:Burn whenever you attack or are attacked."
+  },
   "ShadowSiren:Multiply": {
     "NAME": "Multiply",
     "DESCRIPTION": "Multiply the debuffs of ALL enemies by !M!. NL Exhaust."
@@ -357,10 +388,6 @@
     "NAME": "Divide",
     "DESCRIPTION": "Deal !D! % of the targets Max HP as damage. Damage capped at !M!. NL (Deals !ShadowSiren:SecondMagic! damage). NL Exhaust."
   },
-  "ShadowSiren:NightTerror": {
-    "NAME": "Night Terror",
-    "DESCRIPTION": "Deal 25% more damage while in shadowsiren:Veil. NL Add a copy of this card to the top of your draw pile."
-  },
   "ShadowSiren:OverchargeForm": {
     "NAME": "Overcharge Form",
     "DESCRIPTION": "Ethereal. NL At the beginning of your turn, gain !M! shadowsiren:Charge and increase this gain by !M!.",
@@ -368,16 +395,33 @@
   },
   "ShadowSiren:ParadigmShift": {
     "NAME": "Paradigm Shift",
-    "DESCRIPTION": "Deal !D! damage. NL Costs 1 less [E] for each time you change Stances this combat."
+    "DESCRIPTION": "Enter shadowsiren:Hyper. NL Costs 1 less [E] for each time you change Stances this combat."
+  },
+  "ShadowSiren:ParadigmShiftDual": {
+    "NAME": "Feedback Loop",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! shadowsiren:Charge. NL Costs 1 less [E] for each shadowsiren:Charge generated this combat"
   },
   "ShadowSiren:PhasingStrike": {
     "NAME": "Phasing Strike",
-    "DESCRIPTION": "Deal !D! damage. NL If you changed Stances this turn, gain !M! [E]."
+    "DESCRIPTION": "Deal !D! damage. NL If you changed Stances this turn, gain !M! [E] ."
+  },
+  "ShadowSiren:PhasingStrikeDual": {
+    "NAME": "Accelerating Strike",
+    "DESCRIPTION": "Deal !D! damage. NL If you changed Stances this turn, draw !M! card."
   },
   "ShadowSiren:PiezoCapacitor": {
     "NAME": "Piezo Capacitor",
     "DESCRIPTION": "Whenever you receive unblocked attack damage, gain 1 shadowsiren:Charge.",
     "UPGRADE_DESCRIPTION": "Innate. NL Whenever you receive unblocked attack damage, gain 1 shadowsiren:Charge."
+  },
+  "ShadowSiren:PlanAhead": {
+    "NAME": "Plan Ahead",
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card. NL Enter shadowsiren:Smoke.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards. NL Enter shadowsiren:Smoke."
+  },
+  "ShadowSiren:PlanAheadDual": {
+    "NAME": "Improvise",
+    "DESCRIPTION": "Discard your hand, then deal !D! damage for every card discarded this way."
   },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",
@@ -414,7 +458,11 @@
   },
   "ShadowSiren:PreemptiveStrike": {
     "NAME": "Preemptive Strike",
-    "DESCRIPTION": "Innate. Ethereal. NL Deal !D! damage. NL Damage doubles if this is the first card played this turn."
+    "DESCRIPTION": "Innate. Ethereal. NL Deal !D! damage. NL Deals double damage if this is the first card played this turn."
+  },
+  "ShadowSiren:PreemptiveStrikeDual": {
+    "NAME": "Electric Strike",
+    "DESCRIPTION": "Innate. Ethereal. NL Deal !D! damage. NL Gain !M! shadowsiren:Electric and deal !D! damage again if this is the first card played this turn."
   },
   "ShadowSiren:Preparation": {
     "NAME": "Preparation",
@@ -441,9 +489,17 @@
     "NAME": "Quick Fist",
     "DESCRIPTION": "Deal X damage !M! times. NL (Deals !ShadowSiren:SecondMagic! damage)"
   },
+  "ShadowSiren:QuickFistDual": {
+    "NAME": "Power Fist",
+    "DESCRIPTION": "Deal !D! damage X times. NL (Deals !ShadowSiren:SecondMagic! damage)"
+  },
   "ShadowSiren:Recuperate": {
     "NAME": "Recuperate",
-    "DESCRIPTION": "Gain !B! Block. NL Remove !M! debuff if you have any, otherwise draw !M! card."
+    "DESCRIPTION": "Gain !B! Block. NL Remove 1 debuff if you have any, otherwise draw !M! card."
+  },
+  "ShadowSiren:RecuperateDual": {
+    "NAME": "Electrolyze",
+    "DESCRIPTION": "Gain !B! Block. NL Remove 1 debuff if you have any, otherwise gain !M! shadowsiren:Electric."
   },
   "ShadowSiren:ReinforcedPlating": {
     "NAME": "Reinforced Plating",
@@ -460,6 +516,10 @@
   "ShadowSiren:ShadeFist": {
     "NAME": "Shade Fist",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! shadowsiren:Burn."
+  },
+  "ShadowSiren:ShadeFistDual": {
+    "NAME": "Brutal Fist",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable. NL If the target has Vulnerable, repeat this effect once."
   },
   "ShadowSiren:ShadowCall": {
     "NAME": "Shadow Call",
@@ -497,6 +557,11 @@
     "DESCRIPTION": "Apply !M! shadowsiren:Soft.",
     "UPGRADE_DESCRIPTION": "Apply !M! shadowsiren:Soft to ALL enemies."
   },
+  "ShadowSiren:SoftenDual": {
+    "NAME": "Enfeeble",
+    "DESCRIPTION": "Apply !M! shadowsiren:Soft and Vulnerable.",
+    "UPGRADE_DESCRIPTION": "Apply !M! shadowsiren:Soft and Vulnerable to ALL enemies."
+  },
   "ShadowSiren:Spite": {
     "NAME": "Spite",
     "DESCRIPTION": "Apply !ShadowSiren:SecondMagic! Weak and !M! shadowsiren:Hex."
@@ -518,6 +583,36 @@
     "NAME": "Terrorize",
     "DESCRIPTION": "Gain !B! Block. NL Apply !M! Vulnerable to ALL enemies."
   },
+  "ShadowSiren:StanceDance": {
+    "NAME": "Prismatic Dance",
+    "DESCRIPTION": "Enter any Stance. NL Draw !M! card for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
+    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+  },
+  "ShadowSiren:StanceDanceVeil": {
+    "NAME": "Shadowy Dance",
+    "DESCRIPTION": "Enter any Stance. NL Gain !B! Block for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
+    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+  },
+  "ShadowSiren:StanceDanceAbyss": {
+    "NAME": "Abyssal Dance",
+    "DESCRIPTION": "Enter any Stance. NL Apply !M! shadowsiren:Drench for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
+    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+  },
+  "ShadowSiren:StanceDanceSmoke": {
+    "NAME": "Ashen Dance",
+    "DESCRIPTION": "Enter any Stance. NL Apply !M! shadowsiren:Burn for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
+    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+  },
+  "ShadowSiren:StanceDanceHuge": {
+    "NAME": "Titan's Dance",
+    "DESCRIPTION": "Enter any Stance. NL Deal !D! damage for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
+    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+  },
+  "ShadowSiren:StanceDanceHyper": {
+    "NAME": "Steadfast Dance",
+    "DESCRIPTION": "Enter any Stance. NL Gain !M! shadowsiren:Electric for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
+    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+  },
   "ShadowSiren:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
@@ -537,6 +632,10 @@
   "ShadowSiren:Tenderize": {
     "NAME": "Tenderize",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! shadowsiren:Soft."
+  },
+  "ShadowSiren:TenderizeDual": {
+    "NAME": "Pulverize",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
   },
   "ShadowSiren:Throw": {
     "NAME": "Throw",
@@ -570,17 +669,17 @@
     "UPGRADE_DESCRIPTION": "Gain X+1 shadowsiren:Charge. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge)"
   },
   "ShadowSiren:TurboChargedDual": {
-    "NAME": "Super Charged",
-    "DESCRIPTION": "Gain X shadowsiren:Charge and !Shadowsiren:SecondMagic! Strength. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge)",
-    "UPGRADE_DESCRIPTION": "Gain X+1 shadowsiren:Charge and !Shadowsiren:SecondMagic! Strength. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge)"
+    "NAME": "Electro Charged",
+    "DESCRIPTION": "Gain X shadowsiren:Electric. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Electric) NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain X+1 shadowsiren:Electric. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Electric) NL Exhaust."
   },
   "ShadowSiren:Ukulele": {
     "NAME": "Ukulele",
     "DESCRIPTION": "Gain !M! shadowsiren:Electric."
   },
   "ShadowSiren:UkuleleDual": {
-    "NAME": "Dark Ukulele",
-    "DESCRIPTION": "Gain !M! shadowsiren:Electric."
+    "NAME": "High Voltage",
+    "DESCRIPTION": "Deal !D! damage. NL Damage increased by !M! for each shadowsiren:Electric you have."
   },
   "ShadowSiren:VacuumFist": {
     "NAME": "Vacuum Fist",
@@ -596,7 +695,11 @@
   },
   "ShadowSiren:WillOWisp": {
     "NAME": "Will-o'-Wisp",
-    "DESCRIPTION": "Apply !M! shadowsiren:Burn. NL When the enemy dies, apply its shadowsiren:Burn to ALL enemies."
+    "DESCRIPTION": "ALL enemies take damage equal to their shadowsiren:Burn and shadowsiren:Fox-Fire amounts. NL Apply !M! shadowsiren:Burn to ALL enemies."
+  },
+  "ShadowSiren:WillOWispDual": {
+    "NAME": "Kitsunebi",
+    "DESCRIPTION": "Apply !M! shadowsiren:Burn. NL Apply !ShadowSiren:SecondMagic! shadowsiren:Fox-Fire."
   },
   "ShadowSiren:AttackTextContainer": {
     "NAME": "Generic Attack Text",

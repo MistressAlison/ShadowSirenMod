@@ -1,7 +1,8 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.abstractCards.AbstractSmokeCard;
+import ShadowSiren.cards.dualityCards.smoke.MoltenBodyDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.MoltenBodyPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class MoltenBody extends AbstractDynamicCard {
+public class MoltenBody extends AbstractSmokeCard {
 
     // TEXT DECLARATION
 
@@ -27,7 +28,7 @@ public class MoltenBody extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     private static final int EFFECT = 1;
     private static final int UPGRADE_PLUS_EFFECT = 1;
@@ -36,7 +37,7 @@ public class MoltenBody extends AbstractDynamicCard {
 
 
     public MoltenBody() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new MoltenBodyDual());
         magicNumber = baseMagicNumber = EFFECT;
     }
 
@@ -53,6 +54,7 @@ public class MoltenBody extends AbstractDynamicCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
+            super.upgrade();
         }
     }
 }

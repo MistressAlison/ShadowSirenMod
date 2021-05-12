@@ -2,18 +2,17 @@ package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.BurnToAshEffect;
-import ShadowSiren.actions.MakeTempCardInExhaustAction;
-import ShadowSiren.cards.tempCards.Ash;
 import ShadowSiren.powers.interfaces.OnRemoveOtherPowerPower;
 import ShadowSiren.relics.DataCollector;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -21,14 +20,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.beyond.AwakenedOne;
-import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.vfx.combat.DeckPoofEffect;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 public class BurnPower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower, OnRemoveOtherPowerPower, OnReceivePowerPower {
 
@@ -152,6 +145,19 @@ public class BurnPower extends AbstractPower implements CloneablePowerInterface,
         updateDescription();
     }
 
+    public void detonate() {
+        this.flashWithoutSound();
+        if (AbstractDungeon.player.hasRelic(DataCollector.ID) && source == AbstractDungeon.player) {
+            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+            dataCollector.onBurnDamage(damagePerTurn*amount);
+        }
+        this.addToBot(new VFXAction(new ExplosionSmallEffect(owner.hb.cX, owner.hb.cY), 0.1F));
+        this.addToBot(new SFXAction("GHOST_ORB_IGNITE_2", 0.3F));
+        this.addToBot(new SFXAction("GHOST_ORB_IGNITE_1", 0.3F));
+        this.addToBot(new DamageAction(owner, new DamageInfo(source, damagePerTurn*amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE, true));
+        this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+    }
+
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + damagePerTurn + DESCRIPTIONS[1];
@@ -185,6 +191,9 @@ public class BurnPower extends AbstractPower implements CloneablePowerInterface,
         for (AbstractPower pow : owner.powers) {
             if (pow.type == PowerType.DEBUFF) {
                 damagePerTurn++;
+                if (pow instanceof FoxFirePower && pow.amount > 1) {
+                    damagePerTurn += (pow.amount - 1);
+                }
             }
         }
         updateDescription();

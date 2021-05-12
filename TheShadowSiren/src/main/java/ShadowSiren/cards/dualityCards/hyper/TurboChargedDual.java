@@ -3,19 +3,19 @@ package ShadowSiren.cards.dualityCards.hyper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.TurboCharged;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
+import ShadowSiren.cards.interfaces.ChargeMagicBuff;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ChargePower;
+import ShadowSiren.powers.ElectricPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class TurboChargedDual extends AbstractHyperCard implements UniqueCard {
+public class TurboChargedDual extends AbstractHyperCard implements UniqueCard, ChargeMagicBuff {
 
     // TEXT DECLARATION
 
@@ -35,7 +35,6 @@ public class TurboChargedDual extends AbstractHyperCard implements UniqueCard {
     private static final int COST = -1;
     private static final int BASE_EFFECT = 0;
     private static final int UPGRADE_BASE_EFFECT = 1;
-    private static final int STRENGTH = 1;
 
     // /STAT DECLARATION/
 
@@ -43,7 +42,8 @@ public class TurboChargedDual extends AbstractHyperCard implements UniqueCard {
     public TurboChargedDual() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = BASE_EFFECT;
-        secondMagicNumber = baseSecondMagicNumber = STRENGTH;
+        secondMagicNumber = baseSecondMagicNumber = 0;
+        exhaust = true;
     }
 
     // Actions the card should do.
@@ -61,14 +61,12 @@ public class TurboChargedDual extends AbstractHyperCard implements UniqueCard {
         }
 
         if (effect > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, magicNumber+effect)));
+            this.addToBot(new ApplyPowerAction(p, p, new ElectricPower(p, magicNumber+effect)));
         }
 
         if (!this.freeToPlayOnce) {
             p.energy.use(EnergyPanel.totalCount);
         }
-
-        this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, secondMagicNumber)));
     }
 
     @Override

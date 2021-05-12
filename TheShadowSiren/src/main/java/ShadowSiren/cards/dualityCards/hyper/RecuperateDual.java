@@ -1,31 +1,27 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.hyper;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
-import ShadowSiren.cards.dualityCards.hyper.RecuperateDual;
+import ShadowSiren.cards.interfaces.ChargeMagicBuff;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.stances.VeilStance;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import ShadowSiren.powers.ElectricPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
-import com.megacrit.cardcrawl.actions.watcher.NotStanceCheckAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.combat.EmptyStanceEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Recuperate extends AbstractHyperCard {
+public class RecuperateDual extends AbstractHyperCard implements UniqueCard, ChargeMagicBuff {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(Recuperate.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(RecuperateDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
@@ -40,15 +36,15 @@ public class Recuperate extends AbstractHyperCard {
     private static final int COST = 1;
     private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 2;
-    private static final int CARDS = 1;
+    private static final int ELEC = 1;
 
     // /STAT DECLARATION/
 
 
-    public Recuperate() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new RecuperateDual());
+    public RecuperateDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
-        magicNumber = baseMagicNumber = CARDS;
+        magicNumber = baseMagicNumber = ELEC;
     }
 
     // Actions the card should do.
@@ -64,7 +60,7 @@ public class Recuperate extends AbstractHyperCard {
             }
         }
         if (!cleansed) {
-            this.addToBot(new DrawCardAction(magicNumber));
+            this.addToBot(new ApplyPowerAction(p, p, new ElectricPower(p, magicNumber)));
         }
     }
 

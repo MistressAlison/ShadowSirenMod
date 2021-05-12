@@ -1,22 +1,21 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.huge;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractHugeCard;
-import ShadowSiren.cards.dualityCards.huge.BigGlovesDual;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.BigGlovesPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class BigGloves extends AbstractHugeCard {
+public class BigGlovesDual extends AbstractHugeCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(BigGloves.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(BigGlovesDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderPower.png");
 
     // /TEXT DECLARATION/
@@ -36,15 +35,15 @@ public class BigGloves extends AbstractHugeCard {
 
     // /STAT DECLARATION/
 
-    public BigGloves() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new BigGlovesDual());
+    public BigGlovesDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new BigGlovesPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber)));
     }
 
     //Upgraded stats.

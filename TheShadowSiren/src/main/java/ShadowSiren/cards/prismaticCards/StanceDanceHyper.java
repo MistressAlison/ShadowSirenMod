@@ -33,7 +33,7 @@ public class StanceDanceHyper extends AbstractPrismaticHyperCard implements Uniq
 
     private static final int COST = 2;
     private static final int UPGRADE_COST = 1;
-    private static final int ELEC = 2;
+    private static final int ELEC = 1;
 
 
     // /STAT DECLARATION/

@@ -1,10 +1,9 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.huge;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractHugeCard;
-import ShadowSiren.cards.dualityCards.huge.QuickFistDual;
 import ShadowSiren.cards.interfaces.FistAttack;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -16,11 +15,11 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class QuickFist extends AbstractHugeCard implements FistAttack {
+public class QuickFistDual extends AbstractHugeCard implements FistAttack, UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(QuickFist.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(QuickFistDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderAttack.png");
 
     // /TEXT DECLARATION/
@@ -35,16 +34,16 @@ public class QuickFist extends AbstractHugeCard implements FistAttack {
 
     private static final int COST = -1;
 
-    private static final int HITS = 3;
-    private static final int UPGRADE_PLUS_HITS = 1;
+    private static final int DAMAGE = 5;
+    private static final int UPGRADE_PLUS_DAMAGE = 2;
 
     // /STAT DECLARATION/
 
 
-    public QuickFist() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new QuickFistDual());
-        damage = baseDamage = secondMagicNumber = baseSecondMagicNumber = 0;
-        magicNumber = baseMagicNumber = HITS;
+    public QuickFistDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        damage = baseDamage = DAMAGE;
+        magicNumber = baseMagicNumber = 0;
     }
 
     // Actions the card should do.
@@ -62,7 +61,7 @@ public class QuickFist extends AbstractHugeCard implements FistAttack {
         }
 
         for(int i = 0; i < magicNumber; ++i) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage+effect, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+            this.addToBot(new DamageAction(m, new DamageInfo(p, damage*effect, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
         }
 
         if (!this.freeToPlayOnce) {
@@ -72,18 +71,24 @@ public class QuickFist extends AbstractHugeCard implements FistAttack {
 
     @Override
     public void applyPowers() {
-        secondMagicNumber = baseSecondMagicNumber = EnergyPanel.totalCount;
+        magicNumber = baseMagicNumber = EnergyPanel.totalCount;
         if (AbstractDungeon.player.hasRelic("Chemical X")) {
             secondMagicNumber += 2;
         }
         super.applyPowers();
+        magicNumber *= damage;
+        isMagicNumberModified = magicNumber != baseMagicNumber;
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        magicNumber = baseMagicNumber = EnergyPanel.totalCount;
+        if (AbstractDungeon.player.hasRelic("Chemical X")) {
+            secondMagicNumber += 2;
+        }
         super.calculateCardDamage(mo);
-        secondMagicNumber += damage;
-        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
+        magicNumber *= damage;
+        isMagicNumberModified = magicNumber != baseMagicNumber;
     }
 
     //Upgraded stats.
@@ -91,7 +96,7 @@ public class QuickFist extends AbstractHugeCard implements FistAttack {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_HITS);
+            upgradeDamage(UPGRADE_PLUS_DAMAGE);
             initializeDescription();
             super.upgrade();
         }

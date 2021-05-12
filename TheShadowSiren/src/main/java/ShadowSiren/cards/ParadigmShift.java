@@ -2,11 +2,17 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.abstractCards.AbstractHyperCard;
+import ShadowSiren.cards.dualityCards.hyper.ParadigmShiftDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.patches.StanceCounterPatches;
+import ShadowSiren.powers.ChargePower;
+import ShadowSiren.stances.HyperStance;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,12 +21,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class ParadigmShift extends AbstractDynamicCard {
+public class ParadigmShift extends AbstractHyperCard {
 
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(ParadigmShift.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
 
@@ -28,26 +34,24 @@ public class ParadigmShift extends AbstractDynamicCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 5;
-    private static final int DAMAGE = 20;
-    private static final int UPGRADE_PLUS_DMG = 6;
+    private static final int COST = 4;
+    private static final int UPGRADE_COST = 3;
 
     // /STAT DECLARATION/
 
 
     public ParadigmShift() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = DAMAGE;
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new ParadigmShiftDual());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SMASH));
+        this.addToBot(new ChangeStanceAction(new HyperStance()));
     }
 
     @Override
@@ -77,8 +81,9 @@ public class ParadigmShift extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
+            super.upgrade();
         }
     }
 }

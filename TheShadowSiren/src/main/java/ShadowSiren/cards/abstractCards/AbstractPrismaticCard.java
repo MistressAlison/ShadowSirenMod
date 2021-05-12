@@ -134,10 +134,10 @@ public abstract class AbstractPrismaticCard extends AbstractDynamicCard implemen
         }
     }
 
-    @Override
+    /*@Override
     public AbstractCard getCurrentPreview(AbstractCard oldPreview) {
         return CardChainHelper.findCardInList((AbstractPrismaticCard) oldPreview);
-    }
+    }*/
 
     public void initializeFormCards(AbstractPrismaticBaseCard baseCard, AbstractPrismaticVeilCard veilCard, AbstractPrismaticAbyssCard abyssCard, AbstractPrismaticSmokeCard smokeCard, AbstractPrismaticHugeCard hugeCard, AbstractPrismaticHyperCard hyperCard) {
         if (baseCard != null) {

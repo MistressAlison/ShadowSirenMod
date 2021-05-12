@@ -21,7 +21,6 @@ public class ReinforcedPlatingPower extends AbstractPower implements CloneablePo
     private final Color greenColor = new Color(0.0F, 1.0F, 0.0F, 1.0F);
 
     public int hitsBlockedThisTurn = 0;
-    int blockVal;
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
@@ -45,7 +44,7 @@ public class ReinforcedPlatingPower extends AbstractPower implements CloneablePo
         updateDescription();
     }
 
-    //Functionality provided by patch
+    //Main Functionality provided by ReinforcedPlatingPatches
 
     @Override
     public void onEnergyRecharge() {

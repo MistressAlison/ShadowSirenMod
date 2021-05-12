@@ -1,10 +1,9 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.huge;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractHugeCard;
-import ShadowSiren.cards.dualityCards.huge.DoubleFistDual;
 import ShadowSiren.cards.interfaces.FistAttack;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -15,11 +14,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class DoubleFist extends AbstractHugeCard implements FistAttack {
+public class DoubleFistDual extends AbstractHugeCard implements FistAttack, UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(DoubleFist.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(DoubleFistDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderAttack.png");
 
     // /TEXT DECLARATION/
@@ -32,36 +31,56 @@ public class DoubleFist extends AbstractHugeCard implements FistAttack {
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 4;
-    private static final int HITS = 2;
-    private static final int UPGRADE_PLUS_HITS = 1;
+    private static final int DAMAGE = 1;
+    private static final int HITS = 6;
+    private static final int UPGRADE_PLUS_HITS = 2;
 
     // /STAT DECLARATION/
 
 
-    public DoubleFist() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new DoubleFistDual());
+    public DoubleFistDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
+        exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL, true));
+        int anim = 0;
+        AbstractGameAction.AttackEffect effect;
+        for (int i = 0 ; i < magicNumber ; i++) {
+            //Get the next animation to play
+            switch (anim) {
+                default:
+                    effect = AbstractGameAction.AttackEffect.BLUNT_HEAVY;
+                    break;
+                case 1:
+                    effect = AbstractGameAction.AttackEffect.BLUNT_LIGHT;
+                    break;
+                /*case 2:
+                    effect = AbstractGameAction.AttackEffect.SLASH_HORIZONTAL;
+                    break;
+                case 3:
+                    effect = AbstractGameAction.AttackEffect.SLASH_VERTICAL;
+                    break;*/
+            }
+            //Increment and mod our index
+            anim = (anim + 1) % 2;
+
+            //Do the hit
+            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), effect, true));
         }
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
-    @Override
+    /*@Override
     protected void upgradeName() {
         ++this.timesUpgraded;
         this.upgraded = true;
         this.name = EXTENDED_DESCRIPTION[0];
         this.initializeTitle();
-    }
+    }*/
 
     //Upgraded stats.
     @Override
@@ -69,7 +88,6 @@ public class DoubleFist extends AbstractHugeCard implements FistAttack {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_HITS);
-            //rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
             super.upgrade();
         }

@@ -1,10 +1,9 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.smoke;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.actions.HexingAction;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.actions.BlazingAction;
 import ShadowSiren.cards.abstractCards.AbstractSmokeCard;
-import ShadowSiren.cards.dualityCards.smoke.HexingStrikeDual;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,11 +11,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class HexingStrike extends AbstractSmokeCard {
+public class HexingStrikeDual extends AbstractSmokeCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(HexingStrike.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(HexingStrikeDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderAttack.png");
 
     // /TEXT DECLARATION/
@@ -37,8 +36,8 @@ public class HexingStrike extends AbstractSmokeCard {
     // /STAT DECLARATION/
 
 
-    public HexingStrike() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new HexingStrikeDual());
+    public HexingStrikeDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         this.tags.add(CardTags.STRIKE);
     }
@@ -46,7 +45,7 @@ public class HexingStrike extends AbstractSmokeCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new HexingAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
+        this.addToBot(new BlazingAction(m, new DamageInfo(p, damage, damageTypeForTurn)));
     }
 
     //Upgraded stats.

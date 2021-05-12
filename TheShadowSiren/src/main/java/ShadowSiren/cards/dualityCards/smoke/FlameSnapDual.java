@@ -1,15 +1,12 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.smoke;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.actions.TriggerBurnAction;
 import ShadowSiren.cards.abstractCards.AbstractSmokeCard;
-import ShadowSiren.cards.dualityCards.smoke.FlameSnapDual;
 import ShadowSiren.cards.interfaces.MagicAnimation;
-import ShadowSiren.cards.interfaces.VigorMagicBuff;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.BurnPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,11 +14,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class FlameSnap extends AbstractSmokeCard implements MagicAnimation, VigorMagicBuff {
+public class FlameSnapDual extends AbstractSmokeCard implements MagicAnimation, UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(FlameSnap.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(FlameSnapDual.class.getSimpleName());
     public static final String IMG = makeCardPath("FlameSnap.png");
 
     // /TEXT DECLARATION/
@@ -37,22 +34,22 @@ public class FlameSnap extends AbstractSmokeCard implements MagicAnimation, Vigo
     private static final int COST = 0;
     private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 2;
-    private static final int BURN = 1;
+    private static final int TRIGGER = 2;
 
     // /STAT DECLARATION/
 
 
-    public FlameSnap() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new FlameSnapDual());
+    public FlameSnapDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = BURN;
+        magicNumber = baseMagicNumber = TRIGGER;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-        this.addToBot(new ApplyPowerAction(m, p, new BurnPower(m, p, magicNumber)));
+        this.addToBot(new TriggerBurnAction(m, magicNumber));
     }
 
     //Upgraded stats.

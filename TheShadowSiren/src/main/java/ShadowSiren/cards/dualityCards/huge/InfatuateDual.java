@@ -1,9 +1,9 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.huge;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.Infatuate;
 import ShadowSiren.cards.abstractCards.AbstractHugeCard;
-import ShadowSiren.cards.dualityCards.huge.InfatuateDual;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ConfusedPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,14 +11,15 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Infatuate extends AbstractHugeCard {
+public class InfatuateDual extends AbstractHugeCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(Infatuate.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(InfatuateDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
@@ -37,8 +38,8 @@ public class Infatuate extends AbstractHugeCard {
     // /STAT DECLARATION/
 
 
-    public Infatuate() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new InfatuateDual());
+    public InfatuateDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = CONFUSED;
     }
 
@@ -48,6 +49,7 @@ public class Infatuate extends AbstractHugeCard {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
                 this.addToBot(new ApplyPowerAction(aM, p, new ConfusedPower(aM, magicNumber)));
+                this.addToBot(new ApplyPowerAction(aM, p, new VulnerablePower(aM, magicNumber, false), magicNumber, true));
             }
         }
     }

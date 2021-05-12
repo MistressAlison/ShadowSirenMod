@@ -1,13 +1,13 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.dualityCards.hyper;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
-import ShadowSiren.cards.dualityCards.hyper.PhasingStrikeDual;
+import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.patches.StanceCounterPatches;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -17,11 +17,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class PhasingStrike extends AbstractHyperCard {
+public class PhasingStrikeDual extends AbstractHyperCard implements UniqueCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(PhasingStrike.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(PhasingStrikeDual.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderAttack.png");
 
     // /TEXT DECLARATION/
@@ -34,19 +34,19 @@ public class PhasingStrike extends AbstractHyperCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int DAMAGE = 8;
+    private static final int COST = 0;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 2;
 
-    private static final int ENERGY = 1;
+    private static final int CARDS = 1;
 
     // /STAT DECLARATION/
 
 
-    public PhasingStrike() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new PhasingStrikeDual());
+    public PhasingStrikeDual() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = ENERGY;
+        magicNumber = baseMagicNumber = CARDS;
         this.tags.add(CardTags.STRIKE);
     }
 
@@ -55,7 +55,7 @@ public class PhasingStrike extends AbstractHyperCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         if (StanceCounterPatches.getTurnStanceChanges(p) > 0) {
-            this.addToBot(new GainEnergyAction(magicNumber));
+            this.addToBot(new DrawCardAction(magicNumber));
         }
     }
 

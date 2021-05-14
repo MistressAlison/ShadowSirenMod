@@ -28,7 +28,8 @@ public class ChillPotion extends CustomPotion {
         super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.SPHERE, PotionColor.FIRE);
 
         // Do you throw this potion at an enemy or do you just consume it.
-        isThrown = false;
+        isThrown = true;
+        targetRequired = false;
     }
 
     @Override

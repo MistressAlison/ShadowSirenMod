@@ -34,6 +34,7 @@ public class CleansingPotion extends CustomPotion {
 
         // Do you throw this potion at an enemy or do you just consume it.
         isThrown = false;
+        targetRequired = false;
     }
 
     @Override

@@ -31,6 +31,7 @@ public class SoftPotion extends CustomPotion {
 
         // Do you throw this potion at an enemy or do you just consume it.
         isThrown = true;
+        targetRequired = true;
     }
 
     @Override

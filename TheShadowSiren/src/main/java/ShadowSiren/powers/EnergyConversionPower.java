@@ -43,7 +43,7 @@ public class EnergyConversionPower extends AbstractPower implements CloneablePow
         super.onApplyPower(power, target, source);
         if (power instanceof ChargePower && target == owner) {
             flash();
-            this.addToBot(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount)));
+            this.addToTop(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount)));
         }
     }
 

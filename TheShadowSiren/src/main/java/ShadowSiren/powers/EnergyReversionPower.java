@@ -43,7 +43,7 @@ public class EnergyReversionPower extends AbstractPower implements CloneablePowe
         super.onApplyPower(power, target, source);
         if (power instanceof ChargePower && target == owner) {
             flash();
-            this.addToBot(new ApplyPowerAction(owner, owner, new ElectricPower(owner, amount)));
+            this.addToTop(new ApplyPowerAction(owner, owner, new ElectricPower(owner, amount)));
         }
     }
 

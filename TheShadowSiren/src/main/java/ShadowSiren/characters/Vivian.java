@@ -11,6 +11,7 @@ import ShadowSiren.cards.Strike;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.relics.BooSheet;
 import ShadowSiren.relics.DataCollector;
+import ShadowSiren.relics.StarPiece;
 import ShadowSiren.stances.HugeStance;
 import ShadowSiren.stances.VeilStance;
 import ShadowSiren.stances.AbyssStance;
@@ -39,7 +40,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -211,7 +211,8 @@ public class Vivian extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         retVal.add(BooSheet.ID);
-        retVal.add(DataCollector.ID);
+        //retVal.add(DataCollector.ID);
+        //retVal.add(StarPiece.ID);
 
         UnlockTracker.markRelicAsSeen(BooSheet.ID);
 
@@ -249,7 +250,7 @@ public class Vivian extends CustomPlayer {
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return VOODOO;
+        return VOODOO.cpy();
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -293,7 +294,7 @@ public class Vivian extends CustomPlayer {
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return ShadowSirenMod.VOODOO;
+        return ShadowSirenMod.VOODOO.cpy();
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

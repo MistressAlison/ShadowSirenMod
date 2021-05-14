@@ -800,6 +800,7 @@ public class ShadowSirenMod implements
         BaseMod.addRelicToCustomPool(new RepelCape(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new RuinPowder(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new SpitePowder(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new StarPiece(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new StopWatch(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new SuperSheet(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new TastyTonic(), Vivian.Enums.VOODOO_CARD_COLOR);
@@ -830,6 +831,7 @@ public class ShadowSirenMod implements
         UnlockTracker.markRelicAsSeen(RepelCape.ID);
         UnlockTracker.markRelicAsSeen(RuinPowder.ID);
         UnlockTracker.markRelicAsSeen(SpitePowder.ID);
+        //UnlockTracker.markRelicAsSeen(StarPiece.ID);
         UnlockTracker.markRelicAsSeen(StopWatch.ID);
         UnlockTracker.markRelicAsSeen(SuperSheet.ID);
         UnlockTracker.markRelicAsSeen(TastyTonic.ID);

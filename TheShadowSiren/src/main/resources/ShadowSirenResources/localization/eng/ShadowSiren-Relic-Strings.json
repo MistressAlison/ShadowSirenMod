@@ -77,7 +77,7 @@
     "NAME": "Fire Pop",
     "FLAVOR": "Hotter than pepper spray!",
     "DESCRIPTIONS": [
-      "At the start of combat, if the first card you play is a #yAttack, gain #b"," #yVigor.",
+      "At the start of combat, if the first card you play is an #yAttack, gain #b"," #yVigor.",
       "Vigor gained: "," NL Activation rate: "
     ]
   },
@@ -168,6 +168,14 @@
     "DESCRIPTIONS": [
       "When taking unblocked attack damage, deal #b","% of the damage back.",
       "Damage dealt: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "ShadowSiren:StarPiece": {
+    "NAME": "Star Pieces",
+    "FLAVOR": "Glittery!",
+    "DESCRIPTIONS": [
+      "Right Click to open the Star Piece Store. NL Star Pieces are obtained whenever you climb a floor.",
+      "Purchases: "
     ]
   },
   "ShadowSiren:StopWatch": {

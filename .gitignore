@@ -80,3 +80,6 @@ $RECYCLE.BIN/
 
 # Spriter files
 *.autosave.scml
+
+# Send to Devs stuff
+sendToDevs/

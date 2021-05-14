@@ -90,9 +90,10 @@ public class ApplyPowerPatches
                         powerToApply[0] = new ThornsPower(target[0], powerToApply[0].amount);
                     }
                     ((PointSwap) AbstractDungeon.player.getRelic(PointSwap.ID)).onStealPower();
-                } else {
+                } else if (!(powerToApply[0] instanceof RegrowPower) && !(powerToApply[0] instanceof MinionPower)){
                     //We need to negate the power instead
                     //negate the power by setting the action as done and simply returning before anything happens
+                    //TODO negating Regrow does nothing same dice with Minion
                     ((PointSwap) AbstractDungeon.player.getRelic(PointSwap.ID)).onNegatePower();
                     __instance.isDone = true;
                     return SpireReturn.Return(null);

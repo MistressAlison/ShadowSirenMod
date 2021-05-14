@@ -54,7 +54,7 @@ public class NerfedBlastBurnAction extends AbstractGameAction {
                 }
 
                 for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                    if (!aM.isDeadOrEscaped()) {
+                    if (!aM.isDeadOrEscaped() && aM.lastDamageTaken > 0) {
                         this.addToTop(new ApplyPowerAction(aM, source, new BurnPower(aM, source, aM.lastDamageTaken), aM.lastDamageTaken, true));
                     }
                 }

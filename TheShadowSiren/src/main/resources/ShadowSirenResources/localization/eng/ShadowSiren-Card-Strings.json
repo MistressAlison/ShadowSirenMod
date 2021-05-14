@@ -78,6 +78,10 @@
     "NAME": "Gains",
     "DESCRIPTION": "Gain !M! Strength."
   },
+  "ShadowSiren:BlackMagic": {
+    "NAME": "Black Magic",
+    "DESCRIPTION": "Whenever you apply a debuff, apply an additional stack."
+  },
   "ShadowSiren:BlackRose": {
     "NAME": "Black Roses",
     "DESCRIPTION": "Apply !M! shadowsiren:Hex to ALL enemies. NL Exhaust."
@@ -189,10 +193,6 @@
     "NAME": "Omni Fist",
     "DESCRIPTION": "Deal !D! damage !M! times. NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["ORA ORA ORA"]
-  },
-  "ShadowSiren:ElementalEquilibrium": {
-    "NAME": "Elementalist",
-    "DESCRIPTION": "Gain !M! shadowsiren:Elemental_Equilibrium."
   },
   "ShadowSiren:EnergyConversion": {
     "NAME": "Energy Conversion",

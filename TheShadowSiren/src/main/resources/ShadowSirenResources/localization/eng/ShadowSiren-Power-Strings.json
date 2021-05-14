@@ -34,16 +34,16 @@
         "ShadowSiren:DrenchPower": {
                 "NAME": "Drenched",
                 "DESCRIPTIONS": ["Violently interacts with #yBurn, triggering it until the reaction is spent. NL ",
-                                "Cools rapidly upon contact with #yChill or #yFreeze, removing all #yDrench, and applying #b"," #yChill. NL ",
+                                "Cools rapidly when #yChill is applied, removing all #yDrench, and applying an additional #b"," #yChill. NL ",
                                 "Damage from #yElectric is increased by #b","."]
         },
         "ShadowSiren:ElectricPower": {
                 "NAME": "Electric",
                 "DESCRIPTIONS": ["When attacking, deal a secondary #b"," damage. When attacked, deals #b"," damage back."]
         },
-        "ShadowSiren:ElementalEquilibriumPower": {
-                "NAME": "Elemental Equilibrium",
-                "DESCRIPTIONS": ["Applying #yFreeze has a #b","% chance to apply #b"," #yBurn. NL Applying #yBurn has a #b","% chance to gain #b"," #yCharge. NL Gaining #yCharge has a #b","% chance to gain #b"," #yElectric."]
+        "ShadowSiren:BlackMagicPower": {
+                "NAME": "Black Magic",
+                "DESCRIPTIONS": ["When applying a debuff, apply an additional"," stack."," #b"," stacks."]
         },
         "ShadowSiren:EnergyConversionPower": {
                 "NAME": "Energy Conversion",
@@ -63,8 +63,7 @@
         },
         "ShadowSiren:FreezePower": {
                 "NAME": "Freeze",
-                "DESCRIPTIONS": ["May not be damaged, but also does nothing for #b"," turn."," turns.",
-                                " NL Breaks after being attacked #b"," more time, resulting in #b3x damage.", " more times, resulting in #b3x damage."]
+                "DESCRIPTIONS": ["May not be damaged, but also does nothing for #b"," turn."," turns."]
         },
         "ShadowSiren:GiantsHeart": {
                 "NAME": "Giant's Heart",

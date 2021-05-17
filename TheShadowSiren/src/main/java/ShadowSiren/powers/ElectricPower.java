@@ -1,6 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.ElectricDamageAction;
 import ShadowSiren.relics.DataCollector;
 import ShadowSiren.relics.VoltShroom;
 import basemod.interfaces.CloneablePowerInterface;
@@ -54,29 +55,7 @@ public class ElectricPower extends AbstractPower implements CloneablePowerInterf
                 target.getPower(DrenchPower.POWER_ID).flash();
                 bonus = target.getPower(DrenchPower.POWER_ID).amount*DrenchPower.ELECTRIC_DAMAGE;
             }
-            this.addToTop(new DamageAction(target, new DamageInfo(owner, amount+bonus, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
-            //this.addToTop(new SFXAction("ORB_LIGHTNING_EVOKE", 0.1F));
-            this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
-            this.addToTop(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    if (owner instanceof AbstractPlayer && ((AbstractPlayer) owner).hasRelic(VoltShroom.ID)) {
-                        ((VoltShroom) ((AbstractPlayer) owner).getRelic(VoltShroom.ID)).electricHook();
-                    }
-                    this.isDone = true;
-                }
-            });
-            int finalEffect = amount+bonus;
-            this.addToTop(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
-                        DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
-                        dataCollector.onElecDirect(finalEffect);
-                    }
-                    this.isDone = true;
-                }
-            });
+            this.addToTop(new ElectricDamageAction(info.owner, new DamageInfo(this.owner, amount+bonus, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
         }
     }
 
@@ -90,29 +69,7 @@ public class ElectricPower extends AbstractPower implements CloneablePowerInterf
                 info.owner.getPower(DrenchPower.POWER_ID).flash();
                 bonus = info.owner.getPower(DrenchPower.POWER_ID).amount*DrenchPower.ELECTRIC_DAMAGE;
             }
-            this.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, amount+bonus, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
-            //this.addToTop(new SFXAction("ORB_LIGHTNING_EVOKE", 0.1F));
-            this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
-            this.addToTop(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    if (owner instanceof AbstractPlayer && ((AbstractPlayer) owner).hasRelic(VoltShroom.ID)) {
-                        ((VoltShroom) ((AbstractPlayer) owner).getRelic(VoltShroom.ID)).electricHook();
-                    }
-                    this.isDone = true;
-                }
-            });
-            int finalEffect = amount+bonus;
-            this.addToTop(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
-                        DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
-                        dataCollector.onElecIndirect(finalEffect);
-                    }
-                    this.isDone = true;
-                }
-            });
+            this.addToTop(new ElectricDamageAction(info.owner, new DamageInfo(this.owner, amount+bonus, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
         }
 
         return damageAmount;

@@ -1,10 +1,12 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.cards.dualityCards.hyper.PowerBoostDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ChargePower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -43,6 +45,7 @@ public class PowerBoost extends AbstractHyperCard {
         magicNumber = baseMagicNumber = CHARGE;
         secondMagicNumber = baseSecondMagicNumber = VIGOR;
         exhaust = true;
+        CardModifierManager.addModifier(this, new BideModifier(3, 0, 0, UPGRADE_PLUS_CHARGE, UPGRADE_PLUS_VIGOR, 0));
     }
 
     // Actions the card should do.

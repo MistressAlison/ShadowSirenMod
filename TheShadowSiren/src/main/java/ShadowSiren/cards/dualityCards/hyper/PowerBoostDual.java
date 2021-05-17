@@ -1,11 +1,13 @@
 package ShadowSiren.cards.dualityCards.hyper;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.PowerBoost;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ChargePower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -45,6 +47,7 @@ public class PowerBoostDual extends AbstractHyperCard implements UniqueCard {
         magicNumber = baseMagicNumber = CHARGE;
         secondMagicNumber = baseSecondMagicNumber = VIGOR;
         exhaust = true;
+        CardModifierManager.addModifier(this, new BideModifier(3, 0, 0, UPGRADE_PLUS_CHARGE, UPGRADE_PLUS_VIGOR, 0));
     }
 
     // Actions the card should do.

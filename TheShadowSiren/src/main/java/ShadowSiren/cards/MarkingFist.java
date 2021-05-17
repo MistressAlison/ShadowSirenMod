@@ -1,9 +1,11 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.interfaces.FistAttack;
 import ShadowSiren.characters.Vivian;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -45,6 +47,7 @@ public class MarkingFist extends AbstractDynamicCard implements FistAttack {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = WEAK;
+        CardModifierManager.addModifier(this, new BideModifier(2, UPGRADE_PLUS_DMG, 0, UPGRADE_PLUS_WEAK));
     }
 
     // Actions the card should do.

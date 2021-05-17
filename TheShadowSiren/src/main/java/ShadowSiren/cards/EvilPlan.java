@@ -5,8 +5,10 @@ import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.cards.dualityCards.veil.EvilPlanDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.NextTurnVeilPower;
+import ShadowSiren.stances.VeilStance;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -48,9 +50,10 @@ public class EvilPlan extends AbstractShadowCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new ChangeStanceAction(new VeilStance()));
         this.addToBot(new GainBlockAction(p, block));
         this.addToBot(new ApplyPowerAction(p, p, new VigorPower(p, magicNumber)));
-        this.addToBot(new ApplyPowerAction(p, p, new NextTurnVeilPower(p)));
+        //this.addToBot(new ApplyPowerAction(p, p, new NextTurnVeilPower(p)));
     }
 
     //Upgraded stats.

@@ -1,5 +1,6 @@
 package ShadowSiren.actions;
 
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractDualityCard;
 import ShadowSiren.patches.relics.BottleFields;
 import basemod.BaseMod;
@@ -41,6 +42,7 @@ public class SwapDualityCardsAction extends AbstractGameAction {
             index++;
         }
         if(found) {
+            BideModifier.resetMultiFormCard(toReplace);
             AbstractDualityCard copy = (AbstractDualityCard) toReplace.makeStatEquivalentCopy();
             newCard.dualCard = copy;
             newCard.cardsToPreview = copy;

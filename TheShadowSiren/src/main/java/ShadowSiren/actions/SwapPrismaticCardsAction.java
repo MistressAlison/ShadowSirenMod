@@ -1,5 +1,6 @@
 package ShadowSiren.actions;
 
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractPrismaticCard;
 import ShadowSiren.cards.abstractCards.prismatics.*;
 import ShadowSiren.patches.relics.BottleFields;
@@ -32,12 +33,13 @@ public class SwapPrismaticCardsAction extends AbstractGameAction {
             index++;
         }
         if(found) {
-            AbstractPrismaticBaseCard base = toReplace instanceof AbstractPrismaticBaseCard ? (AbstractPrismaticBaseCard) toReplace.makeStatEquivalentCopy() : newCard instanceof  AbstractPrismaticBaseCard ? null : toReplace.baseCard;
-            AbstractPrismaticVeilCard veil = toReplace instanceof AbstractPrismaticVeilCard ? (AbstractPrismaticVeilCard) toReplace.makeStatEquivalentCopy() : newCard instanceof  AbstractPrismaticVeilCard ? null : toReplace.veilCard;
-            AbstractPrismaticAbyssCard abyss = toReplace instanceof AbstractPrismaticAbyssCard ? (AbstractPrismaticAbyssCard) toReplace.makeStatEquivalentCopy() : newCard instanceof  AbstractPrismaticAbyssCard ? null : toReplace.abyssCard;
-            AbstractPrismaticSmokeCard smoke = toReplace instanceof AbstractPrismaticSmokeCard ? (AbstractPrismaticSmokeCard) toReplace.makeStatEquivalentCopy() : newCard instanceof  AbstractPrismaticSmokeCard ? null : toReplace.smokeCard;
-            AbstractPrismaticHugeCard huge = toReplace instanceof AbstractPrismaticHugeCard ? (AbstractPrismaticHugeCard) toReplace.makeStatEquivalentCopy() : newCard instanceof  AbstractPrismaticHugeCard ? null : toReplace.hugeCard;
-            AbstractPrismaticHyperCard hyper = toReplace instanceof AbstractPrismaticHyperCard ? (AbstractPrismaticHyperCard) toReplace.makeStatEquivalentCopy() : newCard instanceof  AbstractPrismaticHyperCard ? null : toReplace.hyperCard;
+            BideModifier.resetMultiFormCard(toReplace);
+            AbstractPrismaticBaseCard base = toReplace instanceof AbstractPrismaticBaseCard ? (AbstractPrismaticBaseCard) toReplace.makeStatEquivalentCopy() : newCard instanceof AbstractPrismaticBaseCard ? null : toReplace.baseCard;
+            AbstractPrismaticVeilCard veil = toReplace instanceof AbstractPrismaticVeilCard ? (AbstractPrismaticVeilCard) toReplace.makeStatEquivalentCopy() : newCard instanceof AbstractPrismaticVeilCard ? null : toReplace.veilCard;
+            AbstractPrismaticAbyssCard abyss = toReplace instanceof AbstractPrismaticAbyssCard ? (AbstractPrismaticAbyssCard) toReplace.makeStatEquivalentCopy() : newCard instanceof AbstractPrismaticAbyssCard ? null : toReplace.abyssCard;
+            AbstractPrismaticSmokeCard smoke = toReplace instanceof AbstractPrismaticSmokeCard ? (AbstractPrismaticSmokeCard) toReplace.makeStatEquivalentCopy() : newCard instanceof AbstractPrismaticSmokeCard ? null : toReplace.smokeCard;
+            AbstractPrismaticHugeCard huge = toReplace instanceof AbstractPrismaticHugeCard ? (AbstractPrismaticHugeCard) toReplace.makeStatEquivalentCopy() : newCard instanceof AbstractPrismaticHugeCard ? null : toReplace.hugeCard;
+            AbstractPrismaticHyperCard hyper = toReplace instanceof AbstractPrismaticHyperCard ? (AbstractPrismaticHyperCard) toReplace.makeStatEquivalentCopy() : newCard instanceof AbstractPrismaticHyperCard ? null : toReplace.hyperCard;
 
             newCard.initializeFormCards(base, veil, abyss, smoke, huge, hyper);
             newCard.applyPowers();

@@ -1,9 +1,11 @@
 package ShadowSiren.cards.dualityCards.huge;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractHugeCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -44,6 +46,7 @@ public class BigGlovesDual extends AbstractHugeCard implements UniqueCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber)));
+        CardModifierManager.addModifier(this, new BideModifier(2, 0, 0, 2));
     }
 
     //Upgraded stats.

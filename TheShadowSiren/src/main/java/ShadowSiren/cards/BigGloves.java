@@ -6,9 +6,12 @@ import ShadowSiren.cards.abstractCards.AbstractHugeCard;
 import ShadowSiren.cards.dualityCards.huge.BigGlovesDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.BigGlovesPower;
+import ShadowSiren.stances.HugeStance;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -17,7 +20,7 @@ public class BigGloves extends AbstractHugeCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(BigGloves.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
 
@@ -26,13 +29,13 @@ public class BigGloves extends AbstractHugeCard {
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.POWER;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
 
-    private static final int EFFECT = 2;
-    private static final int UPGRADE_PLUS_EFFECT = 1;
+    private static final int EFFECT = 5;
+    private static final int UPGRADE_PLUS_EFFECT = 2;
 
     // /STAT DECLARATION/
 
@@ -44,7 +47,8 @@ public class BigGloves extends AbstractHugeCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new BigGlovesPower(p, magicNumber)));
+        this.addToBot(new ChangeStanceAction(new HugeStance()));
+        this.addToBot(new ApplyPowerAction(p, p, new VigorPower(p, magicNumber)));
     }
 
     //Upgraded stats.

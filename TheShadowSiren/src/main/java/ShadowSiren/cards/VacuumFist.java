@@ -1,11 +1,13 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.cards.dualityCards.abyss.VacuumFistDual;
 import ShadowSiren.cards.interfaces.FistAttack;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.stances.AbyssStance;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -47,6 +49,7 @@ public class VacuumFist extends AbstractAbyssCard implements FistAttack {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new VacuumFistDual());
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = VULN;
+        CardModifierManager.addModifier(this, new BideModifier(2, UPGRADE_PLUS_DMG, 0, UPGRADE_PLUS_VULN));
     }
 
     // Actions the card should do.
@@ -54,7 +57,6 @@ public class VacuumFist extends AbstractAbyssCard implements FistAttack {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
-        this.addToBot(new ChangeStanceAction(new AbyssStance()));
     }
 
     //Upgraded stats.

@@ -1,11 +1,13 @@
 package ShadowSiren.cards.dualityCards.abyss;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.cards.interfaces.FistAttack;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.DrenchPower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -49,6 +51,7 @@ public class VacuumFistDual extends AbstractAbyssCard implements FistAttack, Uni
         damage = baseDamage = DAMAGE;
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = WATER;
+        CardModifierManager.addModifier(this, new BideModifier(2, UPGRADE_PLUS_DMG, UPGRADE_PLUS_BLOCK, UPGRADE_PLUS_WATER));
     }
 
     // Actions the card should do.

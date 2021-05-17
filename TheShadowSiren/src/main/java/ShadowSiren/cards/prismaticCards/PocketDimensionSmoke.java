@@ -1,10 +1,12 @@
 package ShadowSiren.cards.prismaticCards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.prismatics.AbstractPrismaticSmokeCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.SquallPower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -38,6 +40,7 @@ public class PocketDimensionSmoke extends AbstractPrismaticSmokeCard implements 
     public PocketDimensionSmoke() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
+        CardModifierManager.addModifier(this, new BideModifier(1, 0, 0, 1));
     }
 
     // Actions the card should do.

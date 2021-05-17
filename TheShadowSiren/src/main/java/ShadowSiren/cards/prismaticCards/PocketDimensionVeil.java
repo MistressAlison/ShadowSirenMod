@@ -1,17 +1,20 @@
 package ShadowSiren.cards.prismaticCards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.prismatics.AbstractPrismaticVeilCard;
+import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.NewMoonPower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class PocketDimensionVeil extends AbstractPrismaticVeilCard implements UniqueCard {
+public class PocketDimensionVeil extends AbstractPrismaticVeilCard implements UniqueCard, ModularDescription {
 
     // TEXT DECLARATION
 
@@ -35,10 +38,10 @@ public class PocketDimensionVeil extends AbstractPrismaticVeilCard implements Un
 
     // /STAT DECLARATION/
 
-    //TODO buff?
     public PocketDimensionVeil() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
+        CardModifierManager.addModifier(this, new BideModifier(1, 0, 0, 1));
     }
 
     // Actions the card should do.
@@ -56,5 +59,11 @@ public class PocketDimensionVeil extends AbstractPrismaticVeilCard implements Un
             initializeDescription();
             super.upgrade();
         }
+    }
+
+    @Override
+    public void changeDescription() {
+        rawDescription = magicNumber == 1 ? DESCRIPTION : UPGRADE_DESCRIPTION;
+        initializeDescription();
     }
 }

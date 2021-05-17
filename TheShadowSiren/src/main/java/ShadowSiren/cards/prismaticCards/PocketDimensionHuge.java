@@ -1,10 +1,12 @@
 package ShadowSiren.cards.prismaticCards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.prismatics.AbstractPrismaticHugeCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.GiantsHeart;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -35,10 +37,10 @@ public class PocketDimensionHuge extends AbstractPrismaticHugeCard implements Un
     private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
-    //TODO different upgrade
     public PocketDimensionHuge() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
+        CardModifierManager.addModifier(this, new BideModifier(2, 0, 0, 1));
     }
 
     // Actions the card should do.

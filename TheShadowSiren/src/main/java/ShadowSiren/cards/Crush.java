@@ -1,6 +1,7 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.CrushAction;
 import ShadowSiren.actions.MakeTempCardInExhaustAction;
 import ShadowSiren.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.cards.dualityCards.abyss.CrushDual;
@@ -55,31 +56,7 @@ public class Crush extends AbstractAbyssCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractPower pow : AbstractDungeon.player.powers) {
-            pow.onDamageAllEnemies(multiDamage);
-        }
-
-        CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
-
-        int i = 0, sum = 0;
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (!aM.isDeadOrEscaped()) {
-                AbstractDungeon.effectList.add(new FlashAtkImgEffect(aM.hb.cX, aM.hb.cY, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-                aM.tint.color.set(Color.BLUE.cpy());
-                aM.tint.changeColor(Color.WHITE.cpy());
-                aM.damage(new DamageInfo(p, multiDamage[i], damageType));
-                if (aM.lastDamageTaken > 0) sum++;
-            }
-            i++;
-        }
-
-        this.addToBot(new MakeTempCardInExhaustAction(new Splash(), sum));
-
-        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-            AbstractDungeon.actionManager.clearPostCombatActions();
-        } else {
-            this.addToTop(new WaitAction(0.1F));
-        }
+        this.addToBot(new CrushAction(p, multiDamage, damageTypeForTurn));
     }
 
     //Upgraded stats.

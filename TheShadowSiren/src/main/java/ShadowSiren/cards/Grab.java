@@ -2,13 +2,19 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.interfaces.MagicAnimation;
+import ShadowSiren.cards.interfaces.ModularDescription;
+import ShadowSiren.cards.interfaces.MultiCardPreviewHack;
 import ShadowSiren.cards.tempCards.Pummel;
+import ShadowSiren.cards.tempCards.Throw;
 import ShadowSiren.characters.Vivian;
+import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.actions.watcher.NotStanceCheckAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -19,14 +25,16 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.stances.NeutralStance;
 import com.megacrit.cardcrawl.vfx.combat.EmptyStanceEffect;
 
+import java.util.ArrayList;
+
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Grab extends AbstractDynamicCard {
+public class Grab extends AbstractDynamicCard implements MagicAnimation, MultiCardPreviewHack {
 
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Grab.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
 
@@ -34,39 +42,54 @@ public class Grab extends AbstractDynamicCard {
 
     private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
-    private static final AbstractCard.CardType TYPE = CardType.ATTACK;
+    private static final AbstractCard.CardType TYPE = CardType.SKILL;
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 8;
-    private static final int UPGRADE_PLUS_DAMAGE = 2;
-    private static final int CARDS = 1;
+
+    private final ArrayList<AbstractCard> previews = new ArrayList<>();
+    public float duration = 0;
+    public int state = 0;
+
+    //private AbstractCard useCard = new Pummel();
 
     // /STAT DECLARATION/
-
-
     public Grab() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = CARDS;
-        cardsToPreview = new Pummel();
+        previews.add(new Pummel());
+        previews.add(new Throw());
+        cardsToPreview = previews.get(0);
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        if (!AbstractDungeon.player.stance.ID.equals(NeutralStance.STANCE_ID)) {
-            this.addToBot(new NotStanceCheckAction("Neutral", new VFXAction(new EmptyStanceEffect(p.hb.cX, p.hb.cY), 0.1F)));
-            this.addToBot(new ChangeStanceAction("Neutral"));
-            this.addToBot(new MakeTempCardInHandAction(cardsToPreview.makeStatEquivalentCopy(), magicNumber));
-        }
+        this.addToBot(new RemoveAllBlockAction(m, p));
+        this.addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (!m.isDeadOrEscaped() && m.currentHealth > 0) {
+                    AbstractCard card = new Pummel();
+                    if (upgraded) card.upgrade();
+                    card.applyPowers();
+                    card.calculateCardDamage(m);
+                    card.use(p, m);
+                }
+                this.isDone = true;
+            }
+        });
     }
 
-    public void triggerOnGlowCheck() {
-        this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-        if (!AbstractDungeon.player.stance.ID.equals(NeutralStance.STANCE_ID)) {
-            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+    @Override
+    public void update() {
+        super.update();
+        if (previews.size() > 0) {
+            duration += Gdx.graphics.getDeltaTime();
+            if (duration > 3.0f) {
+                state = (state + 1) % previews.size();
+                cardsToPreview = previews.get(state);
+                duration = 0.0f;
+            }
         }
     }
 
@@ -75,8 +98,9 @@ public class Grab extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DAMAGE);
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
+            cardsToPreview.upgrade();
         }
     }
 }

@@ -3,6 +3,7 @@ package ShadowSiren.cards.tempCards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractModdedCard;
+import ShadowSiren.cards.interfaces.MultiCardPreviewHack;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.SoftPower;
 import basemod.AutoAdd;
@@ -15,13 +16,14 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.Callback {
+public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.Callback, MultiCardPreviewHack {
 
     // TEXT DECLARATION
 
@@ -33,7 +35,7 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
     // STAT DECLARATION
 
     private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
-    private static final AbstractCard.CardTarget OPTION_TARGET = CardTarget.ENEMY;
+    private static final AbstractCard.CardTarget OPTION_TARGET = CardTarget.NONE;
     private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
     private static final AbstractCard.CardType TYPE = CardType.ATTACK;
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
@@ -41,26 +43,30 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
     private static final int COST = 0;
     private static final int UP_DAMAGE = 2;
     private static final int DOWN_DAMAGE = 2;
-    private static final int BACK_DAMAGE = 3;
+    private static final int BACK_DAMAGE = 2;
     private static final int FORWARD_DAMAGE = 5;
     private static final int VULN = 1;
     private static final int SOFT = 1;
     private static final int WEAK = 1;
 
     private ModalChoice modal;
+    public AbstractMonster enemyToHit;
 
     // /STAT DECLARATION/
 
-
+    //TODO make it preview Throw as well
     public Throw() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         exhaust = true;
         isEthereal = true;
+        magicNumber = baseMagicNumber = VULN;
+        damage = baseDamage = UP_DAMAGE;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        enemyToHit = m;
         AbstractCard option1 = new UpThrow(EXTENDED_DESCRIPTION[0], EXTENDED_DESCRIPTION[4]);
         AbstractCard option2 = new DownThrow(EXTENDED_DESCRIPTION[1], EXTENDED_DESCRIPTION[5]);
         AbstractCard option3 = new BackThrow(EXTENDED_DESCRIPTION[2], EXTENDED_DESCRIPTION[6]);
@@ -107,8 +113,12 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
 
         @Override
         public void use(AbstractPlayer p, AbstractMonster m) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-            this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
+            if (enemyToHit != null) {
+                applyPowers();
+                calculateCardDamage(enemyToHit);
+                this.addToBot(new DamageAction(enemyToHit, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                this.addToBot(new ApplyPowerAction(enemyToHit, p, new VulnerablePower(enemyToHit, magicNumber, false)));
+            }
         }
 
         @Override
@@ -130,8 +140,12 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
 
         @Override
         public void use(AbstractPlayer p, AbstractMonster m) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-            this.addToBot(new ApplyPowerAction(m, p, new SoftPower(m, magicNumber)));
+            if (enemyToHit != null) {
+                applyPowers();
+                calculateCardDamage(enemyToHit);
+                this.addToBot(new DamageAction(enemyToHit, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                this.addToBot(new ApplyPowerAction(enemyToHit, p, new SoftPower(enemyToHit, magicNumber)));
+            }
         }
 
         @Override
@@ -153,8 +167,12 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
 
         @Override
         public void use(AbstractPlayer p, AbstractMonster m) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-            this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
+            if (enemyToHit != null) {
+                applyPowers();
+                calculateCardDamage(enemyToHit);
+                this.addToBot(new DamageAction(enemyToHit, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                this.addToBot(new ApplyPowerAction(enemyToHit, p, new WeakPower(enemyToHit, magicNumber, false)));
+            }
         }
 
         @Override
@@ -175,7 +193,12 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
 
         @Override
         public void use(AbstractPlayer p, AbstractMonster m) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+            if (enemyToHit != null) {
+                applyPowers();
+                calculateCardDamage(enemyToHit);
+                this.addToBot(new DamageAction(enemyToHit, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+            }
+
         }
 
         @Override

@@ -58,6 +58,7 @@ public class Anchor extends AbstractAbyssCard implements TempCard {
 
     @Override
     public void onRetained() {
+        superFlash();
         this.upgradeDamage(this.magicNumber);
         this.upgradeBlock(this.magicNumber);
     }

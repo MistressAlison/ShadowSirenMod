@@ -1,10 +1,12 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.cards.dualityCards.abyss.HexArmorDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.HexingPower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -42,6 +44,7 @@ public class HexArmor extends AbstractAbyssCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new HexArmorDual());
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = HEX;
+        CardModifierManager.addModifier(this, new BideModifier(1, 0, 3, 2));
     }
 
     // Actions the card should do.

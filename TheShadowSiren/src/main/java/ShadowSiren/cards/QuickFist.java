@@ -8,6 +8,7 @@ import ShadowSiren.cards.interfaces.FistAttack;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -50,6 +51,12 @@ public class QuickFist extends AbstractHugeCard implements FistAttack {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() == 1) {
+            baseDamage += 3;
+            calculateCardDamage(m);
+            baseDamage -= 3;
+        }
+
         int effect = EnergyPanel.totalCount;
 
         if (this.energyOnUse != -1) {
@@ -76,14 +83,44 @@ public class QuickFist extends AbstractHugeCard implements FistAttack {
         if (AbstractDungeon.player.hasRelic("Chemical X")) {
             secondMagicNumber += 2;
         }
+        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() == 0) {
+            baseDamage += 3;
+        }
         super.applyPowers();
+        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() == 0) {
+            baseDamage -= 3;
+        }
+        secondMagicNumber += damage;
+        secondMagicNumber *= magicNumber;
+        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
+        isDamageModified = damage != baseDamage;
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        secondMagicNumber = baseSecondMagicNumber = EnergyPanel.totalCount;
+        if (AbstractDungeon.player.hasRelic("Chemical X")) {
+            secondMagicNumber += 2;
+        }
+        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() == 0) {
+            baseDamage += 3;
+        }
         super.calculateCardDamage(mo);
+        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() == 0) {
+            baseDamage -= 3;
+        }
         secondMagicNumber += damage;
+        secondMagicNumber *= magicNumber;
         isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
+        isDamageModified = damage != baseDamage;
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() == 0) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        }
     }
 
     //Upgraded stats.

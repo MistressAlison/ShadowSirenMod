@@ -7,6 +7,7 @@ import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -43,7 +44,7 @@ public class QuickFistDual extends AbstractHugeCard implements FistAttack, Uniqu
     public QuickFistDual() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = 0;
+        secondMagicNumber = baseSecondMagicNumber = 0;
     }
 
     // Actions the card should do.
@@ -60,8 +61,13 @@ public class QuickFistDual extends AbstractHugeCard implements FistAttack, Uniqu
             p.getRelic("Chemical X").flash();
         }
 
-        for(int i = 0; i < magicNumber; ++i) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage*effect, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
+        //For some reason, while the cards played goes up before the action, the card isnt removed from the hand before the action, so we still check if equals 1
+        if (AbstractDungeon.player.hand.size() == 1) {
+            effect += 1;
+        }
+
+        for(int i = 0; i < effect; ++i) {
+            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
         }
 
         if (!this.freeToPlayOnce) {
@@ -71,24 +77,38 @@ public class QuickFistDual extends AbstractHugeCard implements FistAttack, Uniqu
 
     @Override
     public void applyPowers() {
-        magicNumber = baseMagicNumber = EnergyPanel.totalCount;
+        secondMagicNumber = baseSecondMagicNumber = EnergyPanel.totalCount;
         if (AbstractDungeon.player.hasRelic("Chemical X")) {
             secondMagicNumber += 2;
         }
+        if (AbstractDungeon.player.hand.size() == 1) {
+            secondMagicNumber += 1;
+        }
         super.applyPowers();
-        magicNumber *= damage;
-        isMagicNumberModified = magicNumber != baseMagicNumber;
+        secondMagicNumber *= damage;
+        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        magicNumber = baseMagicNumber = EnergyPanel.totalCount;
+        secondMagicNumber = baseSecondMagicNumber = EnergyPanel.totalCount;
         if (AbstractDungeon.player.hasRelic("Chemical X")) {
             secondMagicNumber += 2;
         }
+        if (AbstractDungeon.player.hand.size() == 1) {
+            secondMagicNumber += 1;
+        }
         super.calculateCardDamage(mo);
-        magicNumber *= damage;
-        isMagicNumberModified = magicNumber != baseMagicNumber;
+        secondMagicNumber *= damage;
+        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        if (AbstractDungeon.player.hand.size() == 1) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        }
     }
 
     //Upgraded stats.

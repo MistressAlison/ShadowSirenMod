@@ -6,9 +6,11 @@ import ShadowSiren.cards.dualityCards.smoke.AshCloudDual;
 import ShadowSiren.cards.interfaces.VigorMagicBuff;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.BurnPower;
+import ShadowSiren.stances.SmokeStance;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -40,7 +42,6 @@ public class AshCloud extends AbstractSmokeCard implements VigorMagicBuff {
 
     // /STAT DECLARATION/
 
-
     public AshCloud() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new AshCloudDual());
         damage = baseDamage = DAMAGE;
@@ -51,6 +52,7 @@ public class AshCloud extends AbstractSmokeCard implements VigorMagicBuff {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new ChangeStanceAction(new SmokeStance()));
         this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if(!aM.isDeadOrEscaped()) {

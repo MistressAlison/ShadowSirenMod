@@ -61,7 +61,7 @@ public class PreemptiveStrikeDual extends AbstractHyperCard implements UniqueCar
         //Once we play this card, it will recalculate the damage AFTER adding this to the cardPlayed array, so we need a different check
         if (AbstractDungeon.actionManager.cardsPlayedThisTurn.size() == 1) {
             this.addToBot(new ApplyPowerAction(p, p, new ElectricPower(p, magicNumber)));
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+            //this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
         }
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }

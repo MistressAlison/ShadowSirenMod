@@ -29,7 +29,7 @@
   },
   "ShadowSiren:Anchor": {
     "NAME": "Anchor",
-    "DESCRIPTION": "Retain. NL Deal !D! damage and Gain !B! Block. NL When Retained, increase these amounts by !M! this combat. NL Exhaust."
+    "DESCRIPTION": "Retain. NL Deal !D! damage. NL Gain !B! Block. NL On Retain: Increase these amounts by !M! this combat. NL Exhaust."
   },
   "ShadowSiren:Ash": {
     "NAME": "Ash",
@@ -40,7 +40,7 @@
   },
   "ShadowSiren:AshCloud": {
     "NAME": "Ash Cloud",
-    "DESCRIPTION": "Deal !D! damage and apply !M! shadowsiren:Burn to ALL enemies."
+    "DESCRIPTION": "Enter shadowsiren:Smoke. NL Deal !D! damage and apply !M! shadowsiren:Burn to ALL enemies."
   },
   "ShadowSiren:AshCloudDual": {
     "NAME": "Pyroclast",
@@ -72,7 +72,7 @@
   },
   "ShadowSiren:BigGloves": {
     "NAME": "Big Gloves",
-    "DESCRIPTION": "All Fist Attacks deal !M! more damage."
+    "DESCRIPTION": "Enter shadowsiren:Giant. NL Gain !M! Vigor."
   },
   "ShadowSiren:BigGlovesDual": {
     "NAME": "Gains",
@@ -204,7 +204,7 @@
   },
   "ShadowSiren:EvilPlan": {
     "NAME": "Evil Plan",
-    "DESCRIPTION": "Gain !B! Block and !M! Vigor. NL Next turn, enter shadowsiren:Veil."
+    "DESCRIPTION": "Enter shadowsiren:Veil. NL Gain !B! Block and !M! Vigor."
   },
   "ShadowSiren:EvilPlanDual": {
     "NAME": "Nasty Plot",
@@ -281,7 +281,22 @@
   },
   "ShadowSiren:Grab": {
     "NAME": "Grab",
-    "DESCRIPTION": "Deal !D! damage. NL If you are in a Stance, exit it and add !M! *Pummel to your hand."
+    "DESCRIPTION": "Remove all Block from the enemy. NL *Pummel the target if it survives.",
+    "UPGRADE_DESCRIPTION": "Remove all Block from the enemy. NL *Pummel+ the target if it survives."
+  },
+  "ShadowSiren:Pummel": {
+    "NAME": "Pummel",
+    "DESCRIPTION": "Deal !D! damage !M! to !ShadowSiren:SecondMagic! times. Deals more hits to low HP targets. NL *Throw the target if it survives."
+  },
+  "ShadowSiren:Throw": {
+    "NAME": "Throw",
+    "DESCRIPTION": "Deal !D! damage. NL Choose 1: NL Apply !M! Vulnerable. NL Apply !M! shadowsiren:Soft. NL Apply !M! Weak. NL +3 damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Choose 1: NL Apply !M! Vulnerable. NL Apply !M! shadowsiren:Soft. NL Apply !M! Weak. NL +3 damage.",
+    "EXTENDED_DESCRIPTION": ["Up Throw","Down Throw","Back Throw","Forward Throw",
+      "Deal !D! damage. NL Apply !M! Vulnerable.",
+      "Deal !D! damage. NL Apply !M! shadowsiren:Soft.",
+      "Deal !D! damage. NL Apply !M! Weak.",
+      "Deal !D! damage."]
   },
   "ShadowSiren:Hexagone": {
     "NAME": "Hexagone",
@@ -416,8 +431,8 @@
   },
   "ShadowSiren:PlanAhead": {
     "NAME": "Plan Ahead",
-    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card. NL Enter shadowsiren:Smoke.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards. NL Enter shadowsiren:Smoke."
+    "DESCRIPTION": "Enter shadowsiren:Smoke. NL Gain !B! Block. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Enter shadowsiren:Smoke. NL Gain !B! Block. NL Draw !M! cards."
   },
   "ShadowSiren:PlanAheadDual": {
     "NAME": "Improvise",
@@ -425,11 +440,13 @@
   },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",
-    "DESCRIPTION": "Whenever you change Stances, draw !M! card."
+    "DESCRIPTION": "Whenever you change Stances, draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Whenever you change Stances, draw !M! cards."
   },
   "ShadowSiren:PocketDimensionVeil": {
     "NAME": "New Moon",
-    "DESCRIPTION": "Whenever you enter shadowsiren:Veil, gain [E] ."
+    "DESCRIPTION": "Whenever you enter shadowsiren:Veil, gain [E] .",
+    "UPGRADE_DESCRIPTION": "Whenever you enter shadowsiren:Veil, gain [E] [E] ."
   },
   "ShadowSiren:PocketDimensionAbyss": {
     "NAME": "Harbor",
@@ -458,11 +475,11 @@
   },
   "ShadowSiren:PreemptiveStrike": {
     "NAME": "Preemptive Strike",
-    "DESCRIPTION": "Innate. Ethereal. NL Deal !D! damage. NL Deals double damage if this is the first card played this turn."
+    "DESCRIPTION": "Innate. Ethereal. NL Deal !D! damage. NL shadowsiren:Opener: Deals double damage."
   },
   "ShadowSiren:PreemptiveStrikeDual": {
     "NAME": "Electric Strike",
-    "DESCRIPTION": "Innate. Ethereal. NL Deal !D! damage. NL Gain !M! shadowsiren:Electric and deal !D! damage again if this is the first card played this turn."
+    "DESCRIPTION": "Innate. Ethereal. NL Deal !D! damage. NL shadowsiren:Opener: Gain !M! shadowsiren:Electric."
   },
   "ShadowSiren:Preparation": {
     "NAME": "Preparation",
@@ -472,10 +489,6 @@
   "ShadowSiren:PreparationDual": {
     "NAME": "Discipline",
     "DESCRIPTION": "When Retained, increase the damage of all cards in your hand by !M! this combat."
-  },
-  "ShadowSiren:Pummel": {
-    "NAME": "Pummel",
-    "DESCRIPTION": "Ethereal. NL Deal !D! damage. NL Add one *Throw to your hand. NL Exhaust."
   },
   "ShadowSiren:PurifyingFlame": {
     "NAME": "Purifying Flame",
@@ -487,19 +500,21 @@
   },
   "ShadowSiren:QuickFist": {
     "NAME": "Quick Fist",
-    "DESCRIPTION": "Deal X damage !M! times. NL (Deals !ShadowSiren:SecondMagic! damage)"
+    "DESCRIPTION": "Deal X damage !M! times. NL shadowsiren:Opener: +3 base damage. NL (Deals !ShadowSiren:SecondMagic! damage)"
   },
   "ShadowSiren:QuickFistDual": {
     "NAME": "Power Fist",
-    "DESCRIPTION": "Deal !D! damage X times. NL (Deals !ShadowSiren:SecondMagic! damage)"
+    "DESCRIPTION": "Deal !D! damage X times. NL shadowsiren:Finisher: +1 hit. NL (Deals !ShadowSiren:SecondMagic! damage)"
   },
   "ShadowSiren:Recuperate": {
     "NAME": "Recuperate",
-    "DESCRIPTION": "Gain !B! Block. NL Remove 1 debuff if you have any, otherwise draw !M! card."
+    "DESCRIPTION": "Gain !B! Block. NL Remove !M! debuff if you have any, otherwise draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Remove !M! debuffs if you have any, otherwise draw !M! cards."
   },
   "ShadowSiren:RecuperateDual": {
     "NAME": "Electrolyze",
-    "DESCRIPTION": "Gain !B! Block. NL Remove 1 debuff if you have any, otherwise gain !M! shadowsiren:Electric."
+    "DESCRIPTION": "Gain !B! Block. NL Remove !M! debuff if you have any, otherwise gain !M! shadowsiren:Electric.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Remove !M! debuffs if you have any, otherwise gain !M! shadowsiren:Electric."
   },
   "ShadowSiren:ReinforcedPlating": {
     "NAME": "Reinforced Plating",
@@ -507,11 +522,11 @@
   },
   "ShadowSiren:ResidualStatic": {
     "NAME": "Residual Static",
-    "DESCRIPTION": "Deal !D! damage times your amount of shadowsiren:Charge generated this combat. NL Gain !M! shadowsiren:Charge. NL (Deals !ShadowSiren:SecondMagic! damage)"
+    "DESCRIPTION": "Gain !B! Block plus !ShadowSiren:SecondMagic! for each shadowsiren:Charge generated this combat. NL Gain !M! shadowsiren:Charge."
   },
   "ShadowSiren:ResidualStaticDual": {
-    "NAME": "Lingering Static",
-    "DESCRIPTION": "Deal !D! damage once for each shadowsiren:Charge generated this combat. NL Gain !M! shadowsiren:Charge. NL (Hits !ShadowSiren:SecondMagic! times)"
+    "NAME": "Static Blast",
+    "DESCRIPTION": "Deal !D! damage plus !ShadowSiren:SecondMagic! for each shadowsiren:Charge generated this combat. NL Gain !M! shadowsiren:Charge."
   },
   "ShadowSiren:ShadeFist": {
     "NAME": "Shade Fist",
@@ -585,33 +600,27 @@
   },
   "ShadowSiren:StanceDance": {
     "NAME": "Prismatic Dance",
-    "DESCRIPTION": "Enter any Stance. NL Draw !M! card for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
-    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+    "DESCRIPTION": "Enter any Stance. NL Draw !M! card for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)"
   },
   "ShadowSiren:StanceDanceVeil": {
     "NAME": "Shadowy Dance",
-    "DESCRIPTION": "Enter any Stance. NL Gain !B! Block for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
-    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+    "DESCRIPTION": "Enter any Stance. NL Gain !B! Block for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)"
   },
   "ShadowSiren:StanceDanceAbyss": {
     "NAME": "Abyssal Dance",
-    "DESCRIPTION": "Enter any Stance. NL Apply !M! shadowsiren:Drench for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
-    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+    "DESCRIPTION": "Enter any Stance. NL Apply !M! shadowsiren:Drench for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)"
   },
   "ShadowSiren:StanceDanceSmoke": {
     "NAME": "Ashen Dance",
-    "DESCRIPTION": "Enter any Stance. NL Apply !M! shadowsiren:Burn for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
-    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+    "DESCRIPTION": "Enter any Stance. NL Apply !M! shadowsiren:Burn for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)"
   },
   "ShadowSiren:StanceDanceHuge": {
     "NAME": "Titan's Dance",
-    "DESCRIPTION": "Enter any Stance. NL Deal !D! damage for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
-    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+    "DESCRIPTION": "Enter any Stance. NL Deal !D! damage for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)"
   },
   "ShadowSiren:StanceDanceHyper": {
     "NAME": "Steadfast Dance",
-    "DESCRIPTION": "Enter any Stance. NL Gain !M! shadowsiren:Electric for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)",
-    "EXTENDED_DESCRIPTION": ["Enter shadowsiren:Veil.","Enter shadowsiren:Abyss.","Enter shadowsiren:Giant.","Enter shadowsiren:Hyper."]
+    "DESCRIPTION": "Enter any Stance. NL Gain !M! shadowsiren:Electric for each unique Stance visited this combat. NL (Stances visited: !ShadowSiren:SecondMagic!)"
   },
   "ShadowSiren:Strike": {
     "NAME": "Strike",
@@ -636,16 +645,6 @@
   "ShadowSiren:TenderizeDual": {
     "NAME": "Pulverize",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
-  },
-  "ShadowSiren:Throw": {
-    "NAME": "Throw",
-    "DESCRIPTION": "Ethereal. NL Choose 1 Throw. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL Choose 1 Throw. NL Draw 1 card. NL Exhaust.",
-    "EXTENDED_DESCRIPTION": ["Up Throw","Down Throw","Back Throw","Forward Throw",
-                            "Deal !D! damage. NL Apply !M! Vulnerable.",
-                            "Deal !D! damage. NL Apply !M! shadowsiren:Soft.",
-                            "Deal !D! damage. NL Apply !M! Weak.",
-                            "Deal !D! damage."]
   },
   "ShadowSiren:TidalCall": {
     "NAME": "Tidal Call",
@@ -683,7 +682,7 @@
   },
   "ShadowSiren:VacuumFist": {
     "NAME": "Vacuum Fist",
-    "DESCRIPTION": "Enter shadowsiren:Abyss. NL Deal !D! damage. NL Apply !M! Vulnerable."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
   },
   "ShadowSiren:VacuumFistDual": {
     "NAME": "Abyssal Fist",

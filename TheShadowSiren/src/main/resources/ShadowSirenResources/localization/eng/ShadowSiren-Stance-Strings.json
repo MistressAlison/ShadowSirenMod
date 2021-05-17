@@ -14,7 +14,7 @@
   "ShadowSiren:SmokeStance": {
     "NAME": "Smoke",
     "DESCRIPTION": [
-      "Retain your hand at the end of your turn. NL Upon taking unblocked attack damage, discard your hand and reduce the damage taken for each card discarded this way."
+      "Retain your hand at the end of your turn. NL Upon taking unblocked attack damage, discard your hand and reduce the damage taken by each card discarded this way."
     ]
   },
   "ShadowSiren:HyperStance": {

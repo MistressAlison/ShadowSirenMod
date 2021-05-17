@@ -5,7 +5,7 @@
       "abyss",
       "abyssal"
     ],
-    "DESCRIPTION": "Upon playing a card, draw #b1 card and apply #b1 #yDrench to a random enemy (once per turn per unique cost). Upon exiting this #yStance, draw #b2 cards."
+    "DESCRIPTION": "Upon playing a card, draw #b1 card and apply #b1 #yDrench to a random enemy (once per turn per unique cost). At the end of your turn, gain #yBlock equal to the number of cards in your hand."
   },
   {
     "NAMES": [
@@ -13,6 +13,13 @@
       "anchor"
     ],
     "DESCRIPTION": "A #b0 Cost #yAttack that #yRetains and #yExhausts."
+  },
+  {
+    "NAMES": [
+      "Bide",
+      "bide"
+    ],
+    "DESCRIPTION": "This card can right clicked in-hand to cycle its cost and effect."
   },
   {
     "NAMES": [
@@ -196,6 +203,20 @@
   },
   {
     "NAMES": [
+      "Opener",
+      "opener"
+    ],
+    "DESCRIPTION": "An extra effect triggered if this is the first card played in a turn."
+  },
+  {
+    "NAMES": [
+      "Finisher",
+      "finisher"
+    ],
+    "DESCRIPTION": "An extra effect triggered if this is the last card in your hand."
+  },
+  {
+    "NAMES": [
       "Prismatic",
       "prismatic"
     ],
@@ -261,7 +282,7 @@
       "Smoke",
       "smoke"
     ],
-    "DESCRIPTION": "Retain your hand at the end of your turn. Upon taking unblocked attack damage, discard all cards and take #b1 less damage per card discarded this way."
+    "DESCRIPTION": "Retain your hand at the end of your turn. Upon taking unblocked attack damage, discard your hand and take #b1 less damage per card discarded this way."
   },
   {
     "NAMES": [

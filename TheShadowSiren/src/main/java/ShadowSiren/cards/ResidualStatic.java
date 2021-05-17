@@ -1,16 +1,15 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.cards.dualityCards.hyper.ResidualStaticDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.patches.ChargeCounterPatches;
 import ShadowSiren.powers.ChargePower;
-import ShadowSiren.powers.FreezePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -24,7 +23,7 @@ public class ResidualStatic extends AbstractHyperCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(ResidualStatic.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
 
@@ -32,45 +31,41 @@ public class ResidualStatic extends AbstractHyperCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.SELF_AND_ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int BLOCK = 6;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
     private static final int CHARGE = 1;
+    private static final int BPC = 2;
+    private static final int UPGRADE_PLUS_BPC = 1;
 
     // /STAT DECLARATION/
 
 
     public ResidualStatic() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new ResidualStaticDual());
-        damage = baseDamage = DAMAGE;
+        block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = CHARGE;
-        secondMagicNumber = baseSecondMagicNumber = 0;
+        secondMagicNumber = baseSecondMagicNumber = BPC;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage*ChargeCounterPatches.getChargesThisCombat(p), damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+        this.addToBot(new GainBlockAction(p, p, block));
         this.addToBot(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
         this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, magicNumber)));
     }
 
     @Override
     public void applyPowers() {
+        baseBlock += secondMagicNumber * ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
         super.applyPowers();
-        secondMagicNumber = damage*ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
-        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        super.calculateCardDamage(mo);
-        secondMagicNumber = damage*ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
-        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
+        baseBlock -= secondMagicNumber * ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
+        isBlockModified = block != baseBlock;
     }
 
     //Upgraded stats.
@@ -78,7 +73,8 @@ public class ResidualStatic extends AbstractHyperCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            upgradeSecondMagicNumber(UPGRADE_PLUS_BPC);
             initializeDescription();
             super.upgrade();
         }

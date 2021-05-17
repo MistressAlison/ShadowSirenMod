@@ -37,8 +37,10 @@ public class ResidualStaticDual extends AbstractHyperCard implements UniqueCard 
 
     private static final int COST = 1;
     private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int UPGRADE_PLUS_DMG = 3;
     private static final int CHARGE = 1;
+    private static final int DPC = 2;
+    private static final int UPGRADE_PLUS_DPC = 1;
 
     // /STAT DECLARATION/
 
@@ -47,25 +49,31 @@ public class ResidualStaticDual extends AbstractHyperCard implements UniqueCard 
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = CHARGE;
-        secondMagicNumber = baseSecondMagicNumber = 0;
+        secondMagicNumber = baseSecondMagicNumber = DPC;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < ChargeCounterPatches.getChargesThisCombat(p) ; i++) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
-            this.addToBot(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
-        }
+        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+        this.addToBot(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
         this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, magicNumber)));
     }
 
     @Override
     public void applyPowers() {
+        baseDamage += secondMagicNumber * ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
         super.applyPowers();
-        secondMagicNumber = ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
-        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
-        initializeDescription();
+        baseDamage -= secondMagicNumber * ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
+        isDamageModified = damage != baseDamage;
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        baseDamage += secondMagicNumber * ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
+        super.calculateCardDamage(mo);
+        baseDamage -= secondMagicNumber * ChargeCounterPatches.getChargesThisCombat(AbstractDungeon.player);
+        isDamageModified = damage != baseDamage;
     }
 
     //Upgraded stats.
@@ -74,6 +82,7 @@ public class ResidualStaticDual extends AbstractHyperCard implements UniqueCard 
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeSecondMagicNumber(UPGRADE_PLUS_DPC);
             initializeDescription();
             super.upgrade();
         }

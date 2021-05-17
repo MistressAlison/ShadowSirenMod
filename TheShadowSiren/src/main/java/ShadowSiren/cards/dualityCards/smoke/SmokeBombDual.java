@@ -1,10 +1,12 @@
 package ShadowSiren.cards.dualityCards.smoke;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractSmokeCard;
 import ShadowSiren.cards.dualityCards.abyss.AbyssalSurgeDual;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -43,6 +45,7 @@ public class SmokeBombDual extends AbstractSmokeCard implements UniqueCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = WEAK;
+        CardModifierManager.addModifier(this, new BideModifier(1, 0, 3, 0));
     }
 
     // Actions the card should do.

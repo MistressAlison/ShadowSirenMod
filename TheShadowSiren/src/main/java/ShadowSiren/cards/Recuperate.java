@@ -1,11 +1,14 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.cards.dualityCards.hyper.RecuperateDual;
+import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.stances.VeilStance;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -21,7 +24,7 @@ import com.megacrit.cardcrawl.vfx.combat.EmptyStanceEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Recuperate extends AbstractHyperCard {
+public class Recuperate extends AbstractHyperCard implements ModularDescription {
 
     // TEXT DECLARATION
 
@@ -49,22 +52,25 @@ public class Recuperate extends AbstractHyperCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new RecuperateDual());
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = CARDS;
+        CardModifierManager.addModifier(this, new BideModifier(1, 0, 0, 1));
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, block));
-        boolean cleansed = false;
+        int cleansed = 0;
         for (AbstractPower pow : p.powers) {
             if (pow.type == AbstractPower.PowerType.DEBUFF) {
-                cleansed = true;
+                cleansed++;
                 this.addToBot(new RemoveSpecificPowerAction(p, p, pow));
-                break;
+                if (cleansed == magicNumber) {
+                    break;
+                }
             }
         }
-        if (!cleansed) {
-            this.addToBot(new DrawCardAction(magicNumber));
+        if (cleansed < magicNumber) {
+            this.addToBot(new DrawCardAction(magicNumber-cleansed));
         }
     }
 
@@ -77,5 +83,11 @@ public class Recuperate extends AbstractHyperCard {
             initializeDescription();
             super.upgrade();
         }
+    }
+
+    @Override
+    public void changeDescription() {
+        rawDescription = magicNumber == 1 ? DESCRIPTION : UPGRADE_DESCRIPTION;
+        initializeDescription();
     }
 }

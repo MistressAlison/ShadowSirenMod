@@ -1,11 +1,13 @@
 package ShadowSiren.cards.dualityCards.hyper;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.cards.interfaces.ChargeMagicBuff;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ElectricPower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -45,6 +47,7 @@ public class RecuperateDual extends AbstractHyperCard implements UniqueCard, Cha
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = ELEC;
+        CardModifierManager.addModifier(this, new BideModifier(1, 0, 0, 1));
     }
 
     // Actions the card should do.

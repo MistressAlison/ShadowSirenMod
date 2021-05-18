@@ -75,7 +75,7 @@
         },
         "ShadowSiren:HexingPower": {
                 "NAME": "Hex",
-                "DESCRIPTIONS": ["Whenever this target attacks, it takes #b"," damage. Hex is halved each time this target does not attack."]
+                "DESCRIPTIONS": ["After this target attacks, it takes #b"," damage. Hex is halved each time this target does not attack."]
         },
         "ShadowSiren:ManaBody": {
                 "NAME": "Mana Body",

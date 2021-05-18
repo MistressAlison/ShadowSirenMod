@@ -1,5 +1,5 @@
 package ShadowSiren.patches;
-
+/*
 import ShadowSiren.powers.ConfusedPower;
 import ShadowSiren.powers.DizzyPower;
 import ShadowSiren.relics.DataCollector;
@@ -24,20 +24,24 @@ public class DamageActionPatches {
     public static class DamageActionRetarget {
         @SpireInsertPatch(locator = DamageActionRetarget.Locator.class, localvars = {"info"})
         public static void ChangeTarget(DamageAction __instance, @ByRef DamageInfo[] info) {
-            if (__instance.source != null && __instance.source.hasPower(ConfusedPower.POWER_ID) && AbstractDungeon.cardRandomRng.random(0, 1) == 0) {
-                ArrayList<AbstractCreature> targetList = new ArrayList<>();
-                targetList.add(__instance.source);
-                for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                    if (!aM.isDeadOrEscaped() && aM != __instance.source) {
-                        targetList.add(aM);
+            if (__instance.source != null && __instance.source.hasPower(ConfusedPower.POWER_ID) && !MissFlags.confusedFlag.get(__instance)) {
+                if (AbstractDungeon.cardRandomRng.random(0, 1) == 0) {
+                    ArrayList<AbstractCreature> targetList = new ArrayList<>();
+                    targetList.add(__instance.source);
+                    for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+                        if (!aM.isDeadOrEscaped() && aM != __instance.source) {
+                            targetList.add(aM);
+                        }
+                    }
+                    __instance.target = targetList.get(AbstractDungeon.cardRandomRng.random(0, targetList.size()-1));
+                    __instance.source.getPower(ConfusedPower.POWER_ID).flash();
+                    if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+                        DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                        dataCollector.onConfusedDamage(info[0].output);
                     }
                 }
-                __instance.target = targetList.get(AbstractDungeon.cardRandomRng.random(0, targetList.size()-1));
-                __instance.source.getPower(ConfusedPower.POWER_ID).flash();
-                if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
-                    DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
-                    dataCollector.onConfusedDamage(info[0].output);
-                }
+                //If we failed the check, set the flag for it so we don't keep trying each time update is called
+                MissFlags.confusedFlag.set(__instance, true);
             }
         }
         private static class Locator extends SpireInsertLocator {
@@ -53,20 +57,24 @@ public class DamageActionPatches {
     public static class VampireDamageActionRetarget {
         @SpireInsertPatch(locator = VampireDamageActionRetarget.Locator.class, localvars = {"info"})
         public static void ChangeTarget(VampireDamageAction __instance, @ByRef DamageInfo[] info) {
-            if (__instance.source != null && __instance.source.hasPower(ConfusedPower.POWER_ID) && AbstractDungeon.cardRandomRng.random(0, 1) == 0) {
-                ArrayList<AbstractCreature> targetList = new ArrayList<>();
-                targetList.add(__instance.source);
-                for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                    if (!aM.isDeadOrEscaped() && aM != __instance.source) {
-                        targetList.add(aM);
+            if (__instance.source != null && __instance.source.hasPower(ConfusedPower.POWER_ID) && !MissFlags.confusedFlag.get(__instance)) {
+                if (AbstractDungeon.cardRandomRng.random(0, 1) == 0) {
+                    ArrayList<AbstractCreature> targetList = new ArrayList<>();
+                    targetList.add(__instance.source);
+                    for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+                        if (!aM.isDeadOrEscaped() && aM != __instance.source) {
+                            targetList.add(aM);
+                        }
+                    }
+                    __instance.target = targetList.get(AbstractDungeon.cardRandomRng.random(0, targetList.size()-1));
+                    __instance.source.getPower(ConfusedPower.POWER_ID).flash();
+                    if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
+                        DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
+                        dataCollector.onConfusedDamage(info[0].output);
                     }
                 }
-                __instance.target = targetList.get(AbstractDungeon.cardRandomRng.random(0, targetList.size()-1));
-                __instance.source.getPower(ConfusedPower.POWER_ID).flash();
-                if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
-                    DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
-                    dataCollector.onConfusedDamage(info[0].output);
-                }
+                //If we failed the check, set the flag for it so we don't keep trying each time update is called
+                MissFlags.confusedFlag.set(__instance, true);
             }
         }
         private static class Locator extends SpireInsertLocator {
@@ -108,13 +116,13 @@ public class DamageActionPatches {
                 MissFlags.dizzyFlag.set(__instance, true);
             }
             //Removed this functionality, but Im keeping it for future reference if I want to reimplement it in a better way
-            /*if (__instance.source != null && __instance.target instanceof AbstractPlayer && ((AbstractPlayer) __instance.target).stance.ID.equals(VoidStance.STANCE_ID) && !MissFlags.dodgyFlag.get(__instance)) {
+            if (__instance.source != null && __instance.target instanceof AbstractPlayer && ((AbstractPlayer) __instance.target).stance.ID.equals(VoidStance.STANCE_ID) && !MissFlags.dodgyFlag.get(__instance)) {
                 if (AbstractDungeon.cardRandomRng.random(0, 1) == 0) {
                     __instance.isDone = true;
                     return SpireReturn.Return(null);
                 }
                 MissFlags.dodgyFlag.set(__instance, true);
-            }*/
+            }
             //Likewise, check if we have the Repel Cape
             if (__instance.source != null && __instance.target instanceof AbstractPlayer && ((AbstractPlayer) __instance.target).hasRelic(RepelCape.ID) && !MissFlags.capeFlag.get(__instance)) {
                 //Compare its percent chance to avoid...
@@ -147,10 +155,11 @@ public class DamageActionPatches {
         //Used to hold the boolean for if we tried Dizzy already
         public static SpireField<Boolean> dizzyFlag = new SpireField<>(() -> false);
 
-        //Used to hold the boolean for if we tried Void already
-        //public static SpireField<Boolean> dodgyFlag = new SpireField<>(() -> false);
+        //Used to hold the boolean for if we tried Confused already
+        public static SpireField<Boolean> confusedFlag = new SpireField<>(() -> false);
 
         //Used to hold the boolean for if we tried Repel Cape already
         public static SpireField<Boolean> capeFlag = new SpireField<>(() -> false);
     }
 }
+*/

@@ -1,5 +1,5 @@
 package ShadowSiren.patches;
-
+/*
 import ShadowSiren.powers.HexingPower;
 import ShadowSiren.powers.SinisterReflectionPower;
 import ShadowSiren.relics.PointSwap;
@@ -102,4 +102,4 @@ public class ApplyPowerPatches
         }
         return SpireReturn.Continue();
     }
-}
+}*/

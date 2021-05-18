@@ -11,7 +11,7 @@
     "NAME": "Boo's Sheet",
     "FLAVOR": "Outta sight.",
     "DESCRIPTIONS": [
-      "At the end of your 1st turn, enter #yshadowsiren:Veil if you are not in a #yStance. NL Right Click to change modes.",
+      "Start each combat in #yshadowsiren:Veil.",
       "At the end of your 1st turn, enter #yshadowsiren:Veil if you are not in a #yStance, then exit #yVeil at the beginning of your 2nd turn. NL Right Click to change modes."
     ]
   },

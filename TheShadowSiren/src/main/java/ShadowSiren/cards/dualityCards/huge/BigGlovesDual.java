@@ -40,13 +40,13 @@ public class BigGlovesDual extends AbstractHugeCard implements UniqueCard {
     public BigGlovesDual() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
+        CardModifierManager.addModifier(this, new BideModifier(2, 0, 0, 2));
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber)));
-        CardModifierManager.addModifier(this, new BideModifier(2, 0, 0, 2));
     }
 
     //Upgraded stats.

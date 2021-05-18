@@ -178,7 +178,7 @@
       "hex",
       "hexing"
     ],
-    "DESCRIPTION": "Hexed creatures lose HP when they attack. If the creature does not attack, Hex is halved."
+    "DESCRIPTION": "Hexed creatures lose HP after they attack. If the creature does not attack, Hex is halved."
   },
   {
     "NAMES": [
@@ -328,6 +328,6 @@
       "veil",
       "veiled"
     ],
-    "DESCRIPTION": "Your Attacks deal half damage and you take half damage from attacks."
+    "DESCRIPTION": "Damage taken is halved. Exit this #yStance at the start of your next turn."
   }
 ]

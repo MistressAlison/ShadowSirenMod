@@ -3,6 +3,7 @@ package ShadowSiren.stances;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.characters.Vivian;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -48,13 +49,16 @@ public class VeilStance extends AbstractStance {
             sfxId = -1L;
         }
     }
-
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        return type == DamageInfo.DamageType.NORMAL ? damage * 0.5F : damage;
+    public void atStartOfTurn() {
+        AbstractDungeon.actionManager.addToBottom(new ChangeStanceAction("Neutral"));
     }
 
-    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
+    /*public float atDamageGive(float damage, DamageInfo.DamageType type) {
         return type == DamageInfo.DamageType.NORMAL ? damage * 0.5F : damage;
+    }*/
+
+    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
+        return damage * 0.5F;
     }
 
     @Override

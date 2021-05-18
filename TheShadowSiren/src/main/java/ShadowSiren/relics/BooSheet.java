@@ -1,6 +1,7 @@
 package ShadowSiren.relics;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.stances.HyperStance;
 import ShadowSiren.stances.VeilStance;
 import ShadowSiren.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
@@ -21,7 +22,7 @@ import com.megacrit.cardcrawl.vfx.combat.EmptyStanceEffect;
 import static ShadowSiren.ShadowSirenMod.makeRelicOutlinePath;
 import static ShadowSiren.ShadowSirenMod.makeRelicPath;
 
-public class BooSheet extends CustomRelic implements CustomSavable<Integer>, ClickableRelic {
+public class BooSheet extends CustomRelic /*implements CustomSavable<Integer>, ClickableRelic*/ {
 
     // ID, images, text.
     public static final String ID = ShadowSirenMod.makeID("BooSheet");
@@ -29,11 +30,11 @@ public class BooSheet extends CustomRelic implements CustomSavable<Integer>, Cli
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("BooSheet.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("BooSheet.png"));
 
-    private boolean activated;
+    /*private boolean activated;
     private boolean enteredVeil;
     private int mode;
     private static final int maxModes = 2;
-    private int turns;
+    private int turns;*/
 
     public BooSheet() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
@@ -45,7 +46,14 @@ public class BooSheet extends CustomRelic implements CustomSavable<Integer>, Cli
         return DESCRIPTIONS[0];
     }
 
-    public void setDescriptionAfterLoading() {
+    @Override
+    public void atBattleStart() {
+        flash();
+        this.addToBot(new ChangeStanceAction(new VeilStance()));
+        this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+    }
+
+    /*public void setDescriptionAfterLoading() {
         this.description = this.DESCRIPTIONS[mode];
         this.tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));
@@ -109,5 +117,5 @@ public class BooSheet extends CustomRelic implements CustomSavable<Integer>, Cli
         mode++;
         mode %= maxModes;
         setDescriptionAfterLoading();
-    }
+    }*/
 }

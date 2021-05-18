@@ -2,7 +2,7 @@
   "ShadowSiren:VeilStance": {
     "NAME": "Veil",
     "DESCRIPTION": [
-      "Your Attacks deal half damage and you take half damage from attacks."
+      "Damage taken is halved. Exit this #yStance at the start of your next turn."
     ]
   },
   "ShadowSiren:AbyssStance": {

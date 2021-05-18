@@ -10,11 +10,6 @@ import java.util.List;
 public abstract class AbstractDualityCard extends AbstractDynamicCard {
 
     public AbstractDualityCard dualCard;
-    private static ArrayList<TooltipInfo> dualityTooltip;
-
-    public AbstractDualityCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
-        this(id, img, cost, type, color, rarity, target, null);
-    }
 
     public AbstractDualityCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target, AbstractDualityCard dualCard) {
         super(id, img, cost, type, color, rarity, target);

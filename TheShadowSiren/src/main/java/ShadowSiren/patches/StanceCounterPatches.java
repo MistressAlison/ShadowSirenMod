@@ -5,7 +5,10 @@ import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.stances.NeutralStance;
 import javassist.CtBehavior;
+
+import java.util.HashSet;
 
 public class StanceCounterPatches {
 
@@ -20,7 +23,10 @@ public class StanceCounterPatches {
         //Used to hold the stance changes this combat
         public static SpireField<Integer> combatStanceChanges = new SpireField<>(() -> 0);
 
-        //Used to hold if we entered Veil
+        //Used to hold the unique stances we visit
+        public static SpireField<HashSet<String>> stancesVisited = new SpireField<>(HashSet::new);
+
+        /*//Used to hold if we entered Veil
         public static SpireField<Boolean> enteredVeilThisCombat = new SpireField<>(() -> Boolean.FALSE);
 
         //Used to hold if we entered Abyss
@@ -33,7 +39,7 @@ public class StanceCounterPatches {
         public static SpireField<Boolean> enteredHugeThisCombat = new SpireField<>(() -> Boolean.FALSE);
 
         //Used to hold if we entered Hyper
-        public static SpireField<Boolean> enteredHyperThisCombat = new SpireField<>(() -> Boolean.FALSE);
+        public static SpireField<Boolean> enteredHyperThisCombat = new SpireField<>(() -> Boolean.FALSE);*/
 
     }
 
@@ -46,13 +52,13 @@ public class StanceCounterPatches {
     }
 
     public static int getCombatUniqueStances(AbstractPlayer p) {
-        int retVal = 0;
+        /*int retVal = 0;
         retVal += StanceVar.enteredVeilThisCombat.get(p) ? 1 : 0;
         retVal += StanceVar.enteredAbyssThisCombat.get(p) ? 1 : 0;
         retVal += StanceVar.enteredSmokeThisCombat.get(p) ? 1 : 0;
         retVal += StanceVar.enteredHugeThisCombat.get(p) ? 1 : 0;
-        retVal += StanceVar.enteredHyperThisCombat.get(p) ? 1 : 0;
-        return retVal;
+        retVal += StanceVar.enteredHyperThisCombat.get(p) ? 1 : 0;*/
+        return StanceVar.stancesVisited.get(p).size();
     }
 
     @SpirePatch(clz = AbstractPlayer.class, method = "switchedStance")
@@ -60,7 +66,11 @@ public class StanceCounterPatches {
         public static void Prefix(AbstractPlayer __instance) {
             StanceVar.turnStanceChanges.set(__instance, StanceVar.turnStanceChanges.get(__instance)+1);
             StanceVar.combatStanceChanges.set(__instance, StanceVar.combatStanceChanges.get(__instance)+1);
-            if (__instance.stance.ID.equals(VeilStance.STANCE_ID)) {
+            //We don't consider Neutral to be a stance, since it is the lack of a stance
+            if (!__instance.stance.ID.equals(NeutralStance.STANCE_ID)) {
+                StanceVar.stancesVisited.get(__instance).add(__instance.stance.ID);
+            }
+            /*if (__instance.stance.ID.equals(VeilStance.STANCE_ID)) {
                 StanceVar.enteredVeilThisCombat.set(__instance, true);
             } else if (__instance.stance.ID.equals(AbyssStance.STANCE_ID)) {
                 StanceVar.enteredAbyssThisCombat.set(__instance, true);
@@ -70,7 +80,7 @@ public class StanceCounterPatches {
                 StanceVar.enteredHugeThisCombat.set(__instance, true);
             } else if (__instance.stance.ID.equals(HyperStance.STANCE_ID)) {
                 StanceVar.enteredHyperThisCombat.set(__instance, true);
-            }
+            }*/
         }
     }
 
@@ -80,11 +90,13 @@ public class StanceCounterPatches {
         public static void Prefix(AbstractPlayer __instance) {
             StanceVar.turnStanceChanges.set(__instance, 0);
             StanceVar.combatStanceChanges.set(__instance, 0);
+            StanceVar.stancesVisited.get(__instance).clear();
+            /*
             StanceVar.enteredVeilThisCombat.set(__instance, false);
             StanceVar.enteredAbyssThisCombat.set(__instance, false);
             StanceVar.enteredSmokeThisCombat.set(__instance, false);
             StanceVar.enteredHugeThisCombat.set(__instance, false);
-            StanceVar.enteredHyperThisCombat.set(__instance, false);
+            StanceVar.enteredHyperThisCombat.set(__instance, false);*/
         }
     }
 

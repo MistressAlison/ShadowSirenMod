@@ -57,8 +57,6 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
     //TODO make it preview Throw as well
     public Throw() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        exhaust = true;
-        isEthereal = true;
         magicNumber = baseMagicNumber = VULN;
         damage = baseDamage = UP_DAMAGE;
     }

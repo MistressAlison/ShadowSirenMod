@@ -265,11 +265,11 @@
   },
   "ShadowSiren:Flamethrower": {
     "NAME": "Flamethrower",
-    "DESCRIPTION": "Upon playing a card, apply !M! shadowsiren:Burn to an enemy."
+    "DESCRIPTION": "Unplayable. NL While in hand, apply !M! shadowsiren:Burn to an enemy whenever you play another card."
   },
   "ShadowSiren:FlamethrowerDual": {
     "NAME": "Waterthrower",
-    "DESCRIPTION": "Upon playing a card, apply !M! shadowsiren:Drench to an enemy."
+    "DESCRIPTION": "Unplayable. NL While in hand, apply !M! shadowsiren:Drench to an enemy whenever you play another card."
   },
   "ShadowSiren:FreezeDry": {
     "NAME": "Freeze Dry",

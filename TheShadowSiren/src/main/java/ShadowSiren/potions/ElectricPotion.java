@@ -2,6 +2,7 @@ package ShadowSiren.potions;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.powers.ChargePower;
+import ShadowSiren.powers.ElectricPower;
 import basemod.BaseMod;
 import basemod.abstracts.CustomPotion;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -35,7 +36,7 @@ public class ElectricPotion extends CustomPotion {
     public void use(AbstractCreature target) {
         this.getPotency(AbstractDungeon.ascensionLevel);
         AbstractPlayer p = AbstractDungeon.player;
-        this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, potency), potency, true));
+        this.addToBot(new ApplyPowerAction(p, p, new ElectricPower(p, potency), potency, true));
     }
 
     // This is your potency.

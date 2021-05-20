@@ -51,7 +51,7 @@ public class MonsterActionRedirectionPatches {
     }
 
     @SpirePatch(clz = GameActionManager.class, method = "getNextAction")
-    public static class OverrideTypeRender {
+    public static class ResetFlags {
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(GameActionManager __instance) {
             //Reset everyone's flags. We don't care if they are dead or not because they could come back to life, so play it safe and reset everything
@@ -80,7 +80,7 @@ public class MonsterActionRedirectionPatches {
     }
 
     @SpirePatch(clz = GameActionManager.class, method = "getNextAction")
-    public static class ResetFlags {
+    public static class SetFlags {
         //Pls grab the correct local var...
         @SpireInsertPatch(locator = Locator.class, localvars = {"m"})
         public static void Insert(GameActionManager __instance, @ByRef AbstractMonster[] m) {
@@ -90,6 +90,8 @@ public class MonsterActionRedirectionPatches {
                 if (AbstractDungeon.monsterRng.randomBoolean()) {
                     MissFlags.dizzyFlag.set(m[0], true);
                     MakeCardFlags.attackMissed.set(__instance, true);
+                    //Flash the power so the player knows something happened that will influence the turn
+                    m[0].getPower(DizzyPower.POWER_ID).flash();
                 }
             }
             //Do the same with Confused, but also grab a new target
@@ -108,6 +110,8 @@ public class MonsterActionRedirectionPatches {
                     }
                     //Set our new target for use in redirection attacks
                     MissFlags.targetField.set(m[0], targetList.get(AbstractDungeon.cardRandomRng.random(0, targetList.size()-1)));
+                    //Flash the power so the player knows something happened that will influence the turn
+                    m[0].getPower(ConfusedPower.POWER_ID).flash();
                 }
             }
             //A slightly different one, this will set if the monster will miss thanks to the player's relic
@@ -115,6 +119,8 @@ public class MonsterActionRedirectionPatches {
                 if (AbstractDungeon.monsterRng.random(0, 99) < RepelCape.DODGE_PERCENT) {
                     MissFlags.capeFlag.set(m[0], true);
                     MakeCardFlags.attackMissed.set(__instance, true);
+                    //Flash the relic so the player knows something happened that will influence the turn
+                    ((RepelCape) AbstractDungeon.player.getRelic(RepelCape.ID)).flashRelicAbovePlayer();
                 }
             }
         }
@@ -173,8 +179,8 @@ public class MonsterActionRedirectionPatches {
             if (__instance.source != null && MissFlags.confusedFlag.get(__instance.source)) {
                 //Set the target of this damage action to the previously stored target
                 __instance.target = MissFlags.targetField.get(__instance.source);
-                //flag the power on the confused monster
-                __instance.source.getPower(ConfusedPower.POWER_ID).flash();
+                //Flash the power on the confused monster
+                //__instance.source.getPower(ConfusedPower.POWER_ID).flash();
                 //Increment data collector if we have it
                 if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
                     DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
@@ -200,8 +206,8 @@ public class MonsterActionRedirectionPatches {
             if (__instance.source != null && MissFlags.confusedFlag.get(__instance.source)) {
                 //Set the target of this damage action to the previously stored target
                 __instance.target = MissFlags.targetField.get(__instance.source);
-                //flag the power on the confused monster
-                __instance.source.getPower(ConfusedPower.POWER_ID).flash();
+                //Flash the power on the confused monster
+                //__instance.source.getPower(ConfusedPower.POWER_ID).flash();
                 //Increment data collector if we have it
                 if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
                     DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
@@ -224,12 +230,12 @@ public class MonsterActionRedirectionPatches {
         @SpirePrefixPatch()
         public static SpireReturn<?> MissTarget(AbstractGameAction __instance) {
             //Here we prefix check for dizzy flags. This way confusion shouldn't proc if dizzy does.
-            //If the cape proc triggered...
-            if (__instance.source != null && MissFlags.capeFlag.get(__instance.source)) {
+            //If the cape proc triggered... (But not confusion!)
+            if (__instance.source != null && MissFlags.capeFlag.get(__instance.source) && !MissFlags.confusedFlag.get(__instance.source)) {
                 //Set this action as finished
                 __instance.isDone = true;
                 //Flash the relic above the player
-                ((RepelCape) ((AbstractPlayer) __instance.target).getRelic(RepelCape.ID)).flashRelicAbovePlayer();
+                //((RepelCape) ((AbstractPlayer) __instance.target).getRelic(RepelCape.ID)).flashRelicAbovePlayer();
                 //Grab the damage we were going to take and pass it back for Relic Stats purposes
                 DamageInfo info = null;
                 if (__instance instanceof DamageAction) {
@@ -248,7 +254,7 @@ public class MonsterActionRedirectionPatches {
                 //Set the action as done
                 __instance.isDone = true;
                 //Flash the dizzy power
-                __instance.source.getPower(DizzyPower.POWER_ID).flash();
+                //__instance.source.getPower(DizzyPower.POWER_ID).flash();
                 //Pass the damage back to the data collector
                 DamageInfo info = null;
                 if (__instance instanceof DamageAction) {
@@ -284,23 +290,24 @@ public class MonsterActionRedirectionPatches {
     public static class ApplyPowerPatches {
         @SpirePrefixPatch
         public static SpireReturn<?> ApplyPowerReader(ApplyPowerAction __instance, @ByRef AbstractCreature[] target, @ByRef AbstractCreature[] source, @ByRef AbstractPower[] powerToApply, int stackAmount, boolean isFast, AbstractGameAction.AttackEffect effect) {
-            //If the source if dizzy or we passed the cape check...
-            if (MissFlags.capeFlag.get(source[0])) {
+            //If the source gets caped while trying to apply to the player, but the attack isn't redirected
+            if (source[0] != null && MissFlags.capeFlag.get(source[0]) && !MissFlags.confusedFlag.get(source[0]) && target[0] instanceof AbstractPlayer) {
                 //Set the action as done and return immediately
                 __instance.isDone = true;
                 //Flash the relic above the player
-                ((RepelCape) ((AbstractPlayer) __instance.target).getRelic(RepelCape.ID)).flashRelicAbovePlayer();
+                //((RepelCape) ((AbstractPlayer) __instance.target).getRelic(RepelCape.ID)).flashRelicAbovePlayer();
                 SpireReturn.Return(null);
             }
-            if (MissFlags.dizzyFlag.get(source[0])) {
+            //If the source is dizzy and it isnt targeting itself, we end the action
+            if (source[0] != null && MissFlags.dizzyFlag.get(source[0]) && target[0] != source[0]) {
                 //Set the action as done and return immediately
                 __instance.isDone = true;
                 //Flash the dizzy power
-                __instance.source.getPower(DizzyPower.POWER_ID).flash();
+                //__instance.source.getPower(DizzyPower.POWER_ID).flash();
                 SpireReturn.Return(null);
             }
             //If the source is confused...
-            if (MissFlags.confusedFlag.get(source[0])) {
+            if (source[0] != null && MissFlags.confusedFlag.get(source[0])) {
                 //Set the new target and the new owner as the target we previously set
                 target[0] = MissFlags.targetField.get(source[0]);
                 powerToApply[0].owner = MissFlags.targetField.get(source[0]);
@@ -309,6 +316,8 @@ public class MonsterActionRedirectionPatches {
                     //If its Hex, we need to bounce back a Hexing. I decided to go with a 1 to 5 ratio
                     powerToApply[0] = new HexingPower(powerToApply[0].owner, source[0], powerToApply[0].amount * HexingPower.HEX_TO_HEXING_RATIO);
                 }
+                //Flash the confusion power
+                //__instance.source.getPower(ConfusedPower.POWER_ID).flash();
             }
             //If the power is a debuff...
             if (powerToApply[0].type == AbstractPower.PowerType.DEBUFF) {

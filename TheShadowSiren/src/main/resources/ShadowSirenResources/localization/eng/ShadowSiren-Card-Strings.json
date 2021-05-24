@@ -154,11 +154,11 @@
   },
   "ShadowSiren:DarkEmbrace": {
     "NAME": "Dark Embrace",
-    "DESCRIPTION": "Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !B! Block."
   },
   "ShadowSiren:DarkEmbraceDual": {
     "NAME": "Dark Enfold",
-    "DESCRIPTION": "Deal !D! damage twice."
+    "DESCRIPTION": "Deal !D! damage twice. NL Gain !B! Block."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
@@ -191,7 +191,7 @@
   },
   "ShadowSiren:DoubleFistDual": {
     "NAME": "Omni Fist",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage. NL Activates on-hit effects !M! times.",
     "EXTENDED_DESCRIPTION": ["ORA ORA ORA"]
   },
   "ShadowSiren:EnergyConversion": {
@@ -300,7 +300,7 @@
   },
   "ShadowSiren:Hexagone": {
     "NAME": "Hexagone",
-    "DESCRIPTION": "Deal !D! damage. NL If the target has shadowsiren:Hex, remove it and apply !M! times that much shadowsiren:Burn.",
+    "DESCRIPTION": "Deal !D! damage. NL If the target has shadowsiren:Hex, shadowsiren:Trigger its effect !M! times then remove it.",
     "EXTENDED_DESCRIPTION": ["Hexagoner"]
   },
   "ShadowSiren:HexArmor": {
@@ -569,12 +569,12 @@
   },
   "ShadowSiren:Soften": {
     "NAME": "Soften",
-    "DESCRIPTION": "Apply !M! shadowsiren:Soft.",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! shadowsiren:Soft.",
     "UPGRADE_DESCRIPTION": "Apply !M! shadowsiren:Soft to ALL enemies."
   },
   "ShadowSiren:SoftenDual": {
     "NAME": "Enfeeble",
-    "DESCRIPTION": "Apply !M! shadowsiren:Soft and Vulnerable.",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! shadowsiren:Soft and Vulnerable.",
     "UPGRADE_DESCRIPTION": "Apply !M! shadowsiren:Soft and Vulnerable to ALL enemies."
   },
   "ShadowSiren:Spite": {
@@ -592,7 +592,7 @@
   },
   "ShadowSiren:Spook": {
     "NAME": "Spook",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! Vulnerable."
+    "DESCRIPTION": "Gain !ShadowSiren:SecondMagic! Block for each debuff on the target. NL Apply !M! Vulnerable. NL (Gain !B! Block)"
   },
   "ShadowSiren:SpookDual": {
     "NAME": "Terrorize",

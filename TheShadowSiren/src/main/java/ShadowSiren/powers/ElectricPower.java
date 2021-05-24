@@ -47,32 +47,27 @@ public class ElectricPower extends AbstractPower implements CloneablePowerInterf
     }
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (target != this.owner && info.type == DamageInfo.DamageType.NORMAL) {
-            this.flash();
-            target.tint.color = Color.YELLOW.cpy();
-            target.tint.changeColor(Color.WHITE.cpy());
-            int bonus = 0;
-            if (target.hasPower(DrenchPower.POWER_ID)) {
-                target.getPower(DrenchPower.POWER_ID).flash();
-                bonus = target.getPower(DrenchPower.POWER_ID).amount*DrenchPower.ELECTRIC_DAMAGE;
-            }
-            this.addToTop(new ElectricDamageAction(info.owner, new DamageInfo(this.owner, amount+bonus, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
+            triggerEffect(target);
         }
     }
 
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
-            this.flash();
-            info.owner.tint.color = Color.YELLOW.cpy();
-            info.owner.tint.changeColor(Color.WHITE.cpy());
-            int bonus = 0;
-            if (info.owner.hasPower(DrenchPower.POWER_ID)) {
-                info.owner.getPower(DrenchPower.POWER_ID).flash();
-                bonus = info.owner.getPower(DrenchPower.POWER_ID).amount*DrenchPower.ELECTRIC_DAMAGE;
-            }
-            this.addToTop(new ElectricDamageAction(info.owner, new DamageInfo(this.owner, amount+bonus, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
+        if (info.type == DamageInfo.DamageType.NORMAL && info.owner != null && info.owner != this.owner) {
+            triggerEffect(info.owner);
         }
-
         return damageAmount;
+    }
+
+    public void triggerEffect(AbstractCreature target) {
+        this.flash();
+        target.tint.color = Color.YELLOW.cpy();
+        target.tint.changeColor(Color.WHITE.cpy());
+        int bonus = 0;
+        if (target.hasPower(DrenchPower.POWER_ID)) {
+            target.getPower(DrenchPower.POWER_ID).flash();
+            bonus = target.getPower(DrenchPower.POWER_ID).amount*DrenchPower.ELECTRIC_DAMAGE;
+        }
+        this.addToTop(new ElectricDamageAction(target, new DamageInfo(this.owner, amount+bonus, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE));
     }
 
     @Override

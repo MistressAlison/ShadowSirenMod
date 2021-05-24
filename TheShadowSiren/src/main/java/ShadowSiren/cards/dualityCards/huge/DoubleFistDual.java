@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -31,8 +33,9 @@ public class DoubleFistDual extends AbstractHugeCard implements FistAttack, Uniq
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 1;
-    private static final int HITS = 6;
+    private static final int DAMAGE = 7;
+    private static final int UPGRADE_PLUS_DAMAGE = 2;
+    private static final int HITS = 4;
     private static final int UPGRADE_PLUS_HITS = 2;
 
     // /STAT DECLARATION/
@@ -48,45 +51,34 @@ public class DoubleFistDual extends AbstractHugeCard implements FistAttack, Uniq
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int anim = 0;
-        AbstractGameAction.AttackEffect effect;
-        for (int i = 0 ; i < magicNumber ; i++) {
-            //Get the next animation to play
-            switch (anim) {
-                default:
-                    effect = AbstractGameAction.AttackEffect.BLUNT_HEAVY;
-                    break;
-                case 1:
-                    effect = AbstractGameAction.AttackEffect.BLUNT_LIGHT;
-                    break;
-                /*case 2:
-                    effect = AbstractGameAction.AttackEffect.SLASH_HORIZONTAL;
-                    break;
-                case 3:
-                    effect = AbstractGameAction.AttackEffect.SLASH_VERTICAL;
-                    break;*/
+        DamageInfo info = new DamageInfo(p, damage, damageTypeForTurn);
+        this.addToBot(new DamageAction(m, info, AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+        this.addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                //Subtract 1 since we automatically do onHit stuff once
+                for (int i = 0 ; i < magicNumber-1 ; i++) {
+                    for (AbstractPower pow : p.powers) {
+                        pow.onAttack(info, damage, m);
+                    }
+                    for (AbstractPower pow : m.powers) {
+                        pow.onAttacked(info, damage);
+                    }
+                    for (AbstractRelic r : p.relics) {
+                        r.onAttack(info, damage, m);
+                    }
+                }
+                this.isDone = true;
             }
-            //Increment and mod our index
-            anim = (anim + 1) % 2;
-
-            //Do the hit
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), effect, true));
-        }
+        });
     }
-
-    /*@Override
-    protected void upgradeName() {
-        ++this.timesUpgraded;
-        this.upgraded = true;
-        this.name = EXTENDED_DESCRIPTION[0];
-        this.initializeTitle();
-    }*/
 
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            //upgradeDamage(UPGRADE_PLUS_DAMAGE);
             upgradeMagicNumber(UPGRADE_PLUS_HITS);
             initializeDescription();
             super.upgrade();

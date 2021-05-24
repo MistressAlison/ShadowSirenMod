@@ -9,8 +9,10 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
@@ -31,7 +33,7 @@ public class Pummel extends AbstractDynamicCard implements TempCard, MultiCardPr
     private static final AbstractCard.CardType TYPE = CardType.ATTACK;
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 0;
+    private static final int COST = -2;
     private static final int DAMAGE = 2;
     private static final int UPGRADE_PLUS_DAMAGE = 1;
     private static final int BASE_HITS = 1;
@@ -75,8 +77,20 @@ public class Pummel extends AbstractDynamicCard implements TempCard, MultiCardPr
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                if (!m.isDeadOrEscaped() && m.currentHealth > 0) {
+                /*if (!m.isDeadOrEscaped() && m.currentHealth > 0) {
                     cardsToPreview.use(p, m);
+                }
+                this.isDone = true;*/
+                if (!m.isDeadOrEscaped() && m.currentHealth > 0) {
+                    AbstractCard card = new Throw();
+                    //if (upgraded) card.upgrade();
+                    card.applyPowers();
+                    card.calculateCardDamage(m);
+                    card.purgeOnUse = true;
+                    card.isInAutoplay = true;
+                    //card.use(p, m);
+                    //this.addToTop(new QueueCardAction(card, m));
+                    AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(card, m));
                 }
                 this.isDone = true;
             }

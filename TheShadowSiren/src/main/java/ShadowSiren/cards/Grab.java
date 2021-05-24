@@ -3,27 +3,18 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
-import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.cards.interfaces.MultiCardPreviewHack;
 import ShadowSiren.cards.tempCards.Pummel;
 import ShadowSiren.cards.tempCards.Throw;
 import ShadowSiren.characters.Vivian;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
-import com.megacrit.cardcrawl.actions.watcher.NotStanceCheckAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.stances.NeutralStance;
-import com.megacrit.cardcrawl.vfx.combat.EmptyStanceEffect;
 
 import java.util.ArrayList;
 
@@ -73,7 +64,11 @@ public class Grab extends AbstractDynamicCard implements MagicAnimation, MultiCa
                     if (upgraded) card.upgrade();
                     card.applyPowers();
                     card.calculateCardDamage(m);
-                    card.use(p, m);
+                    card.purgeOnUse = true;
+                    card.isInAutoplay = true;
+                    //card.use(p, m);
+                    //this.addToTop(new QueueCardAction(card, m));
+                    AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(card, m));
                 }
                 this.isDone = true;
             }

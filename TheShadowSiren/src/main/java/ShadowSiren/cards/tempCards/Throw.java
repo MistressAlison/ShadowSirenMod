@@ -40,7 +40,7 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
     private static final AbstractCard.CardType TYPE = CardType.ATTACK;
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 0;
+    private static final int COST = -2;
     private static final int UP_DAMAGE = 2;
     private static final int DOWN_DAMAGE = 2;
     private static final int BACK_DAMAGE = 2;
@@ -101,7 +101,7 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
     @AutoAdd.Ignore
     private class UpThrow extends AbstractModdedCard {
         public UpThrow(String name, String desc) {
-            super(UpThrow.class.getSimpleName(), name, IMG, -2, desc, CardType.SKILL, COLOR, RARITY, OPTION_TARGET);
+            super(UpThrow.class.getSimpleName(), name, IMG, -2, desc, CardType.ATTACK, COLOR, RARITY, OPTION_TARGET);
             damage = baseDamage = UP_DAMAGE;
             magicNumber = baseMagicNumber = VULN;
         }
@@ -128,7 +128,7 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
     @AutoAdd.Ignore
     private class DownThrow extends AbstractModdedCard {
         public DownThrow(String name, String desc) {
-            super(DownThrow.class.getSimpleName(), name, IMG, -2, desc, CardType.SKILL, COLOR, RARITY, OPTION_TARGET);
+            super(DownThrow.class.getSimpleName(), name, IMG, -2, desc, CardType.ATTACK, COLOR, RARITY, OPTION_TARGET);
             damage = baseDamage = DOWN_DAMAGE;
             magicNumber = baseMagicNumber = SOFT;
         }
@@ -155,7 +155,7 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
     @AutoAdd.Ignore
     private class BackThrow extends AbstractModdedCard {
         public BackThrow(String name, String desc) {
-            super(BackThrow.class.getSimpleName(), name, IMG, -2, desc, CardType.SKILL, COLOR, RARITY, OPTION_TARGET);
+            super(BackThrow.class.getSimpleName(), name, IMG, -2, desc, CardType.ATTACK, COLOR, RARITY, OPTION_TARGET);
             damage = baseDamage = BACK_DAMAGE;
             magicNumber = baseMagicNumber = WEAK;
         }
@@ -182,7 +182,7 @@ public class Throw extends AbstractDynamicCard implements TempCard, ModalChoice.
     @AutoAdd.Ignore
     private class ForwardThrow extends AbstractModdedCard {
         public ForwardThrow(String name, String desc) {
-            super(ForwardThrow.class.getSimpleName(), name, IMG, -2, desc, CardType.SKILL, COLOR, RARITY, OPTION_TARGET);
+            super(ForwardThrow.class.getSimpleName(), name, IMG, -2, desc, CardType.ATTACK, COLOR, RARITY, OPTION_TARGET);
             damage = baseDamage = FORWARD_DAMAGE;
         }
 

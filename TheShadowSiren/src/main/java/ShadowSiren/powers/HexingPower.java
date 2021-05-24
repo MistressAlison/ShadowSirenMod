@@ -79,6 +79,10 @@ public class HexingPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        triggerEffect();
+    }
+
+    public void triggerEffect() {
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             this.flashWithoutSound();
             this.addToTop(new DamageAction(owner, new DamageInfo(source, amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.NONE));

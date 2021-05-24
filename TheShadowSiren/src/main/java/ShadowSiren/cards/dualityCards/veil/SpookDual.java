@@ -33,7 +33,7 @@ public class SpookDual extends AbstractShadowCard implements UniqueCard {
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 5;
+    private static final int BLOCK = 6;
     private static final int UPGRADE_PLUS_BLOCK = 2;
     private static final int VULN = 1;
     private static final int UPGRADE_PLUS_VURN = 1;

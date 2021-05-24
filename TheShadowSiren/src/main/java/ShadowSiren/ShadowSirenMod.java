@@ -119,9 +119,9 @@ public class ShadowSirenMod implements
 
 
     //This is for the in-game mod settings panel.
-    private static final String MODNAME = "The Star Breaker";
+    private static final String MODNAME = "The Shadow Siren";
     private static final String AUTHOR = "Mistress Alison";
-    private static final String DESCRIPTION = "Adds Star Breaker (and cards) from 100% Orange Juice! NL See the Mod Options if you would like to change any configurations!";
+    private static final String DESCRIPTION = "Adds Vivian from Paper Mario - TTYD! NL See the Mod Options if you would like to change any configurations!";
     
     // =============== INPUT TEXTURE LOCATION =================
     

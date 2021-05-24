@@ -50,7 +50,7 @@
       "Confused",
       "confused"
     ],
-    "DESCRIPTION": "Confused creatures have a #b50% change to attack either themselves or an ally."
+    "DESCRIPTION": "Confused creatures have a #b50% change to target either themselves or an ally."
   },
   {
     "NAMES": [
@@ -64,7 +64,7 @@
       "Dizzy",
       "dizzy"
     ],
-    "DESCRIPTION": "Dizzy creatures have a #b50% chance to miss their #yAttacks."
+    "DESCRIPTION": "When targeting another creature, #yDizzy creatures have a #b50% chance to fail their #yActions."
   },
   {
     "NAMES": [
@@ -200,6 +200,14 @@
       "ichor"
     ],
     "DESCRIPTION": "UNUSED! Target takes double damage from #yBurn."
+  },
+  {
+    "PROPER_NAME": "Multi-Cost",
+    "NAMES": [
+      "Multi-Cost",
+      "multi-cost"
+    ],
+    "DESCRIPTION": "This card can right clicked in-hand to cycle its cost and effect."
   },
   {
     "NAMES": [

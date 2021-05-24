@@ -46,7 +46,7 @@ public class BideModifier extends AbstractCardModifier {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return ShadowSirenMod.getModID().toLowerCase()+":"+ BaseMod.getKeywordTitle("shadowsiren:bide") + " " + maxChargeLevel + " NL " + rawDescription;
+        return ShadowSirenMod.getModID().toLowerCase()+":"+ BaseMod.getKeywordTitle("shadowsiren:multi-cost") + " " + maxChargeLevel + " NL " + rawDescription;
     }
 
     @Override

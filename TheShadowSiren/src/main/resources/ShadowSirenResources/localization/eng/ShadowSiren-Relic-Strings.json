@@ -3,7 +3,7 @@
     "NAME": "Black Key",
     "FLAVOR": "\"Be CURSED!\" - Black Chest Demon",
     "DESCRIPTIONS": [
-      "Chests you open contain an additional Relic. (Excludes boss chests). Whenever you open a non-boss chest, obtain a #rCurse.",
+      "Non-Boss chests you open contain an additional Relic. Whenever you open a non-Boss chest, obtain a #rCurse.",
       "Curses/Relics obtained: "
     ]
   },

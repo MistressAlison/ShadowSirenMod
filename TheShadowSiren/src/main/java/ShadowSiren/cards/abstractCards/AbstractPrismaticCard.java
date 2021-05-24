@@ -51,8 +51,28 @@ public abstract class AbstractPrismaticCard extends AbstractDynamicCard implemen
     @Override
     public List<String> getCardDescriptors() {
         List<String> tags = new ArrayList<>();
-        if (this.veilCard != null || this instanceof UniqueCard) {
-            tags.add(BaseMod.getKeywordTitle("shadowsiren:prismatic"));
+        if (this instanceof AbstractPrismaticBaseCard) {
+            tags.add(BaseMod.getKeywordTitle("shadowsiren:prismatic_base"));
+            tags.addAll(super.getCardDescriptors());
+        }
+        if (this instanceof AbstractPrismaticVeilCard) {
+            tags.add(BaseMod.getKeywordTitle("shadowsiren:prismatic_veil"));
+            tags.addAll(super.getCardDescriptors());
+        }
+        if (this instanceof AbstractPrismaticAbyssCard) {
+            tags.add(BaseMod.getKeywordTitle("shadowsiren:prismatic_abyss"));
+            tags.addAll(super.getCardDescriptors());
+        }
+        if (this instanceof AbstractPrismaticSmokeCard) {
+            tags.add(BaseMod.getKeywordTitle("shadowsiren:prismatic_smoke"));
+            tags.addAll(super.getCardDescriptors());
+        }
+        if (this instanceof AbstractPrismaticHugeCard) {
+            tags.add(BaseMod.getKeywordTitle("shadowsiren:prismatic_huge"));
+            tags.addAll(super.getCardDescriptors());
+        }
+        if (this instanceof AbstractPrismaticHyperCard) {
+            tags.add(BaseMod.getKeywordTitle("shadowsiren:prismatic_hyper"));
             tags.addAll(super.getCardDescriptors());
         }
         return tags;

@@ -9,15 +9,16 @@
         },
         "ShadowSiren:BurnPower": {
                 "NAME": "Burn",
-                "DESCRIPTIONS": ["At the end of the round, this creature loses health equal to the number of debuffs it has. (Loses #b"," HP)"]
+                "DESCRIPTIONS": ["After this target attacks, it takes #b"," damage. At the end of it's turn, Burn is reduced by a third."]
         },
         "ShadowSiren:ChargePower": {
                 "NAME": "Charged",
-                "DESCRIPTIONS": ["Your next Attack and/or Block is #b","% more effective."]
+                "DESCRIPTIONS": ["The damage and/or Block of your next card is #b","% stronger.",
+                                "The damage and/or Block of your next #b"," cards are #b"]
         },
         "ShadowSiren:ChillPower": {
                 "NAME": "Chill",
-                "DESCRIPTIONS": ["Once #b10 #yChill is acquired, it is consumed to apply #b1 #yFreeze."]
+                "DESCRIPTIONS": ["This creatures deals #b","% less damage. At the end of it's turn, Chill is reduced by a third."]
         },
         "ShadowSiren:ConfusedPower": {
                 "NAME": "Confused",
@@ -75,7 +76,7 @@
         },
         "ShadowSiren:HexingPower": {
                 "NAME": "Hex",
-                "DESCRIPTIONS": ["After this target attacks, it takes #b"," damage. Hex is halved each time this target does not attack."]
+                "DESCRIPTIONS": ["At the end of the round, loses #b"," HP for each debuff it has, then reduce #yHex by #b",". Effect and reduction increased every #b"," stacks of #yHex NL (Loses #b"," HP)"]
         },
         "ShadowSiren:ManaBody": {
                 "NAME": "Mana Body",
@@ -126,8 +127,8 @@
                 "DESCRIPTIONS": ["The next card you play this turn is returned to your hand.","The next #b"," cards you play this turn are returned to your hand."]
         },
         "ShadowSiren:ShadowPower": {
-                "NAME": "Shadow",
-                "DESCRIPTIONS": ["Unused."]
+                "NAME": "Shadow Split",
+                "DESCRIPTIONS": ["Receive #b"," more damage from #yAttacks. NL When Shadow Split exceeds this creatures HP, it can be hurt by #yShadow #yDamage."]
         },
         "ShadowSiren:SinisterReflectionPower": {
                 "NAME": "Sinister Reflections",
@@ -135,11 +136,15 @@
         },
         "ShadowSiren:SoftPower": {
                 "NAME": "Soft",
-                "DESCRIPTIONS": ["Takes #b"," more damage from Attacks this turn."," more damage from Attacks for #b"," turns."]
+                "DESCRIPTIONS": ["This turn, ","For #b"," turns, "," takes #b"," more damage from Attacks and loses #b"," #yBlock whenever they are attacked."]
         },
         "ShadowSiren:SquallPower": {
                 "NAME": "Squall",
-                "DESCRIPTIONS": ["Excess cards discarded by #ySmoke deal #b"," damage to the attacker."]
+                "DESCRIPTIONS": ["Whenever you discard a card during your turn or through the effect of #ySmoke, apply #b"," #yBurn to a random enemy for each card discarded."]
+        },
+        "ShadowSiren:StatusStasisPower": {
+                "NAME": "Status Stasis",
+                "DESCRIPTIONS": ["This creature is unable to heal, unaffected by #yStrength and #yDexterity, and other turn-based debuffs will not decay."]
         },
         "ShadowSiren:TrippingCounterPower": {
                 "NAME": "Tripping Counter",

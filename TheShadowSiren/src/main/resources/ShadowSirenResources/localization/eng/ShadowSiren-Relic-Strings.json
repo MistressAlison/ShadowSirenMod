@@ -122,6 +122,16 @@
       "Health removed: "," NL Per combat: "," NL Activations: "
     ]
   },
+  "ShadowSiren:Mystery": {
+    "NAME": "Mystery Box",
+    "FLAVOR": "I wonder what's inside?",
+    "DESCRIPTIONS": [
+      "Upon pickup, obtain a random card of any rarity, and a random non-starter relic.",
+      "Enjoy!",
+      "Skip Rewards",
+      "Close"
+    ]
+  },
   "ShadowSiren:PointSwap": {
     "NAME": "Point Swap",
     "FLAVOR": "What's yours is mine.",

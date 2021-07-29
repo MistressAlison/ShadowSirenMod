@@ -1,0 +1,36 @@
+{
+  "ShadowSiren:BluntDamage": {
+    "NAME": "Blunt",
+    "DESCRIPTION": "Blunt Damage [ImpactIcon]",
+    "EXTENDED_DESCRIPTION": ["Deals #b50% more damage to targets with #yBlock."]
+  },
+  "ShadowSiren:ElectricDamage": {
+    "NAME": "Electric",
+    "DESCRIPTION": "Electric [ElectricIcon]",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs to a random enemy on hit, dealing #b50% less damage each arc."]
+  },
+  "ShadowSiren:FireDamage": {
+    "NAME": "Fire",
+    "DESCRIPTION": "Fire [FireIcon]",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets will full HP."]
+  },
+  "ShadowSiren:IceDamage": {
+    "NAME": "Ice",
+    "DESCRIPTION": "Ice [IceIcon]",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Applies #yChill equal to damage dealt. Targets deal #b1% less damage per #yChill stack they have. NL #yBlock: When you are attacked, applies #yChill equal to damage taken."]
+  },
+  "ShadowSiren:LightDamage": {
+    "NAME": "Light",
+    "DESCRIPTION": "Light [LightIcon]",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "ShadowSiren:ShadowDamage": {
+    "NAME": "Shadow",
+    "DESCRIPTION": "Shadow [DarkIcon]",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. Targets take up to double damage when #yShadow #ySplit exceeds their current HP."]
+  },
+  "ShadowSiren:IceBlock": {
+    "NAME": "Ice Shield [IceIcon]",
+    "DESCRIPTION": "When you are attacked, applies #yChill equal to damage taken."
+  }
+}

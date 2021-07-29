@@ -1,9 +1,16 @@
 package ShadowSiren.cards.abstractCards;
+import IconsAddon.damageModifiers.AbstractDamageModifier;
+import IconsAddon.util.DamageModifierManager;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import basemod.abstracts.CustomCard;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.CommonKeywordIconsField;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
+
+import java.util.HashSet;
 
 public abstract class AbstractModdedCard extends CustomCard {
 
@@ -30,10 +37,18 @@ public abstract class AbstractModdedCard extends CustomCard {
     public boolean upgradedInvertedNumber;
     public boolean isInvertedNumberModified;
 
+    public int usesCount;
+    public int baseUsesCount;
+    public boolean upgradedUsesCount;
+    public boolean isUsesCountModified;
+
     public CardStrings cardStrings;
     public String DESCRIPTION; //The main description of the card
     public String UPGRADE_DESCRIPTION; //The upgrade description of the card, if applicable
     public String[] EXTENDED_DESCRIPTION; //The Norma Effects of the card
+    public String NAME; //The base name of the card
+
+    public HashSet<String> masterKeywordSet;
 
     public AbstractModdedCard(final String id,
                               final String name,
@@ -56,6 +71,7 @@ public abstract class AbstractModdedCard extends CustomCard {
         isSecondMagicNumberModified = false;
         isThirdMagicNumberModified = false;
         isInvertedNumberModified = false;
+        isUsesCountModified = false;
 
         CommonKeywordIconsField.useIcons.set(this, true);
 
@@ -63,6 +79,7 @@ public abstract class AbstractModdedCard extends CustomCard {
         DESCRIPTION = cardStrings.DESCRIPTION;
         UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
         EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+        NAME = cardStrings.NAME;
 
         initializeDescription();
     }
@@ -80,6 +97,10 @@ public abstract class AbstractModdedCard extends CustomCard {
         if (upgradedInvertedNumber) { // If we set upgradedDefaultSecondMagicNumber = true in our card.
             invertedNumber = baseInvertedNumber; // Show how the number changes, as out of combat, the base number of a card is shown.
             isInvertedNumberModified = true; // Modified = true, color it green to highlight that the number is being changed.
+        }
+        if (upgradedUsesCount) { // If we set upgradedDefaultSecondMagicNumber = true in our card.
+            usesCount = baseUsesCount; // Show how the number changes, as out of combat, the base number of a card is shown.
+            isUsesCountModified = true; // Modified = true, color it green to highlight that the number is being changed.
         }
     }
 
@@ -101,6 +122,12 @@ public abstract class AbstractModdedCard extends CustomCard {
         upgradedInvertedNumber = true; // Upgraded = true - which does what the above method does.
     }
 
+    public void upgradeUsesCount(int amount) { // If we're upgrading (read: changing) the number. Note "upgrade" and NOT "upgraded" - 2 different things. One is a boolean, and then this one is what you will usually use - change the integer by how much you want to upgrade.
+        baseUsesCount += amount; // Upgrade the number by the amount you provide in your card.
+        usesCount += amount; // Set the number to be equal to the base value.
+        upgradedUsesCount = true; // Upgraded = true - which does what the above method does.
+    }
+
     @Override
     public void resetAttributes() {
         this.secondMagicNumber = this.baseSecondMagicNumber;
@@ -109,7 +136,55 @@ public abstract class AbstractModdedCard extends CustomCard {
         this.isThirdMagicNumberModified = false;
         this.invertedNumber = this.baseInvertedNumber;
         this.isInvertedNumberModified = false;
+        //Don't reset uses
         super.resetAttributes();
+    }
+
+    @Override
+    public void initializeDescription() {
+        super.initializeDescription();
+        if(masterKeywordSet != null) {
+            for (String s : masterKeywordSet) {
+                if (!this.keywords.contains(s)) {
+                    this.keywords.add(s);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void renderCardTip(SpriteBatch sb) {
+        //ArrayList<String> backup = new ArrayList<>(keywords);
+        if(masterKeywordSet != null) {
+            for (String s : masterKeywordSet) {
+                if (!this.keywords.contains(s)) {
+                    this.keywords.add(s);
+                }
+            }
+        }
+        super.renderCardTip(sb);
+        //keywords = backup;
+    }
+
+    protected void grabPreviewKeywords() {
+        if (cardsToPreview != null) {
+            masterKeywordSet = new HashSet<>();
+            for (AbstractDamageModifier mod : DamageModifierManager.modifiers(cardsToPreview)) {
+                if (mod instanceof AbstractVivianDamageModifier) {
+                    masterKeywordSet.add(((AbstractVivianDamageModifier) mod).getKeyword().toLowerCase());
+                }
+            }
+            masterKeywordSet.addAll(cardsToPreview.keywords);
+        }
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractModdedCard copy = (AbstractModdedCard) super.makeStatEquivalentCopy();
+        if (masterKeywordSet != null) {
+            copy.masterKeywordSet.addAll(this.keywords);
+        }
+        return copy;
     }
 
     public void setDisplayBannerRarity(CardRarity rarity) {

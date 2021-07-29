@@ -1,58 +1,50 @@
 package ShadowSiren.cards;
 
+import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import ShadowSiren.cards.abstractCards.AbstractSmokeCard;
-import ShadowSiren.cards.dualityCards.smoke.FieryJinxDual;
-import ShadowSiren.cards.interfaces.VigorMagicBuff;
+import ShadowSiren.cards.abstractCards.AbstractFireCard;
+import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.BurnPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class FieryJinx extends AbstractSmokeCard implements VigorMagicBuff {
+public class FieryJinx extends AbstractFireCard implements MagicAnimation {
 
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(FieryJinx.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("PlaceholderAttack.png");
 
     // /TEXT DECLARATION/
 
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 0;
-
-    private static final int BURN = 3;
-    private static final int UPGRADE_PLUS_BURN = 1;
+    private static final int COST = 1;
+    private static final int DAMAGE = 5;
+    private static final int UPGRADE_PLUS_DAMAGE = 2;
 
     // /STAT DECLARATION/
 
 
     public FieryJinx() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new FieryJinxDual());
-        magicNumber = baseMagicNumber = BURN;
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        baseDamage = damage = DAMAGE;
+        this.isMultiDamage = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if(!aM.isDeadOrEscaped()) {
-                this.addToBot(new ApplyPowerAction(aM, p, new BurnPower(aM, p, magicNumber)));
-            }
-        }
+        this.addToBot(DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this, p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
     }
 
     //Upgraded stats.
@@ -60,9 +52,8 @@ public class FieryJinx extends AbstractSmokeCard implements VigorMagicBuff {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_BURN);
+            upgradeDamage(UPGRADE_PLUS_DAMAGE);
             initializeDescription();
-            super.upgrade();
         }
     }
 }

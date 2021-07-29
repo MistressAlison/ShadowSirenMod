@@ -6,7 +6,7 @@
     <groupId>ShadowSiren</groupId>
     <artifactId>ShadowSiren</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>The Shadow Siren</name>
-    <version>0.3.2</version>
+    <version>0.4.0</version>
     <description>Adds a new playable character, Vivian.</description>
 
     <properties>
@@ -58,6 +58,14 @@
             <version>1.1.2</version>
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/2368513093/WidePotions.jar</systemPath>
+            <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
+        </dependency>
+        <dependency>
+            <groupId>iconaddons</groupId>
+            <artifactId>IconAddons</artifactId>
+            <version>0.0.3</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/common/SlayTheSpire/mods/IconsAddon.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
         </dependency>
     </dependencies>

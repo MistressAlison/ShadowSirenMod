@@ -1,9 +1,10 @@
 package ShadowSiren;
 
+import IconsAddon.util.CustomIconHelper;
+import ShadowSiren.icons.HatIcon;
 import ShadowSiren.potions.*;
 import ShadowSiren.relics.*;
-import ShadowSiren.variables.DefaultInvertedNumber;
-import ShadowSiren.variables.ThirdMagicNumber;
+import ShadowSiren.variables.*;
 import basemod.*;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -12,7 +13,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.mod.widepotions.WidePotionsMod;
-import com.evacipated.cardcrawl.mod.widepotions.patches.WideRelicCompendium;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -28,8 +28,6 @@ import org.apache.logging.log4j.Logger;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.util.IDCheckDontTouchPls;
 import ShadowSiren.util.TextureLoader;
-import ShadowSiren.variables.DefaultCustomVariable;
-import ShadowSiren.variables.SecondMagicNumber;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -506,8 +504,6 @@ public class ShadowSirenMod implements
 
             WidePotionsMod.whitelistSimplePotion(BurnPotion.POTION_ID);
             WidePotionsMod.whitelistSimplePotion(ChargePotion.POTION_ID);
-            //WidePotionsMod.whitelistSimplePotion(ChillPotion.POTION_ID);
-            //WidePotionsMod.whitelistSimplePotion(CleansingPotion.POTION_ID);
             WidePotionsMod.whitelistSimplePotion(ElectricPotion.POTION_ID);
             WidePotionsMod.whitelistSimplePotion(FreezePotion.POTION_ID);
             WidePotionsMod.whitelistSimplePotion(SoftPotion.POTION_ID);
@@ -516,6 +512,9 @@ public class ShadowSirenMod implements
             //Complex Potions
 
             //WidePotionsMod.whitelistComplexPotion(MyOtherPotion.POTION_ID, new WideMyOtherPotion());
+        }
+        if (Loader.isModLoaded("IconsAddon")) {
+            CustomIconHelper.addCustomIcon(HatIcon.get());
         }
 
         logger.info("Loading badge image and mod options");
@@ -794,6 +793,7 @@ public class ShadowSirenMod implements
         BaseMod.addRelicToCustomPool(new IceStorm(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new IciclePop(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new LetterP(), Vivian.Enums.VOODOO_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new Mystery(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new PointSwap(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new POWBlock(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new PowerPunch(), Vivian.Enums.VOODOO_CARD_COLOR);
@@ -825,6 +825,7 @@ public class ShadowSirenMod implements
         UnlockTracker.markRelicAsSeen(IceStorm.ID);
         UnlockTracker.markRelicAsSeen(IciclePop.ID);
         UnlockTracker.markRelicAsSeen(LetterP.ID);
+        UnlockTracker.markRelicAsSeen(Mystery.ID);
         UnlockTracker.markRelicAsSeen(PointSwap.ID);
         UnlockTracker.markRelicAsSeen(POWBlock.ID);
         UnlockTracker.markRelicAsSeen(PowerPunch.ID);
@@ -856,6 +857,7 @@ public class ShadowSirenMod implements
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new SecondMagicNumber());
         BaseMod.addDynamicVariable(new ThirdMagicNumber());
+        BaseMod.addDynamicVariable(new UsesVariable());
         BaseMod.addDynamicVariable(new DefaultInvertedNumber());
         
         logger.info("Adding cards");
@@ -908,6 +910,14 @@ public class ShadowSirenMod implements
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
                 getModID() + "Resources/localization/"+loadLocalizationIfAvailable("ShadowSiren-Card-Strings.json"));
+
+        // ChatterStrings
+        BaseMod.loadCustomStringsFile(CardStrings.class,
+                getModID() + "Resources/localization/"+loadLocalizationIfAvailable("ShadowSiren-Chatter-Strings.json"));
+
+        // DamageModStrings
+        BaseMod.loadCustomStringsFile(CardStrings.class,
+                getModID() + "Resources/localization/"+loadLocalizationIfAvailable("ShadowSiren-DamageModifier-Strings.json"));
         
         // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class,

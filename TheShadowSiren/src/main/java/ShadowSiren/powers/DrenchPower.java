@@ -43,14 +43,7 @@ public class DrenchPower extends AbstractPower implements CloneablePowerInterfac
     }
 
     @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        this.addToTop(new SFXAction("BLOOD_SWISH", 0.1F));
-    }
-
-    @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
+    public void playApplyPowerSfx() {
         this.addToTop(new SFXAction("BLOOD_SWISH", 0.1F));
     }
 

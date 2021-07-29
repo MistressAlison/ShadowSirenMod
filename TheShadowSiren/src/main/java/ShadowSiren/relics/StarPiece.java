@@ -1,26 +1,22 @@
 package ShadowSiren.relics;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.MarkingFist;
-import ShadowSiren.cards.tempCards.Anchor;
+import ShadowSiren.oldStuff.cards.MarkingFist;
+import ShadowSiren.oldStuff.cards.tempCards.Anchor;
 import ShadowSiren.util.TextureLoader;
 //import ShadowSiren.util.starStore.StarPieceShopScreen;
 import basemod.abstracts.CustomRelic;
-import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.shop.ShopScreen;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 

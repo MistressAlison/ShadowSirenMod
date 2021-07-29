@@ -352,43 +352,50 @@ public class MonsterActionRedirectionPatches {
             } else {
                 //If the power is a buff and we have Point Swap and if the source and target are not the player
                 if (source[0] != AbstractDungeon.player && target[0] != AbstractDungeon.player && AbstractDungeon.player.hasRelic(PointSwap.ID) && ((PointSwap) AbstractDungeon.player.getRelic(PointSwap.ID)).relicIsActive()) {
-                    //If the power isn't problematic
-                    if (!(powerToApply[0] instanceof TheBombPower) &&
+                    //If the power isn't problematic to remove or negate
+                    //TODO negating Regrow does nothing, same dice with Minion, as such we just do nothing with these for now
+                    if (!(powerToApply[0] instanceof RegrowPower) &&
+                            !(powerToApply[0] instanceof MinionPower) &&
+                            !(powerToApply[0] instanceof TheBombPower) &&
                             !(powerToApply[0] instanceof FadingPower) &&
-                            !(powerToApply[0] instanceof BeatOfDeathPower) &&
                             !(powerToApply[0] instanceof SurroundedPower) &&
                             !(powerToApply[0] instanceof BackAttackPower) &&
-                            !(powerToApply[0] instanceof MinionPower) &&
-                            !(powerToApply[0] instanceof ModeShiftPower) &&
-                            !(powerToApply[0] instanceof ReactivePower) &&
-                            !(powerToApply[0] instanceof RegrowPower) &&
                             !(powerToApply[0] instanceof ResurrectPower) &&
-                            !(powerToApply[0] instanceof StasisPower) &&
-                            !(powerToApply[0] instanceof ThieveryPower) &&
-                            !(powerToApply[0] instanceof TimeWarpPower) &&
-                            !(powerToApply[0] instanceof UnawakenedPower)) {
-                        //Set the target and owner to the player. Yoink.
-                        target[0] = AbstractDungeon.player;
-                        powerToApply[0].owner = AbstractDungeon.player;
-                        //If it is ritual set it's flag
-                        if (powerToApply[0] instanceof RitualPower) {
-                            ReflectionHacks.setPrivate(powerToApply[0], RitualPower.class, "onPlayer", true);
+                            !(powerToApply[0] instanceof StasisPower)) {
+                        //If the power is worth stealing over negating
+                        if (!(powerToApply[0] instanceof BeatOfDeathPower) &&
+                                !(powerToApply[0] instanceof ModeShiftPower) &&
+                                !(powerToApply[0] instanceof ReactivePower) &&
+                                !(powerToApply[0] instanceof ThieveryPower) &&
+                                !(powerToApply[0] instanceof TimeWarpPower) &&
+                                !(powerToApply[0] instanceof UnawakenedPower)) {
+                            //Set the target and owner to the player. Yoink.
+                            target[0] = AbstractDungeon.player;
+                            powerToApply[0].owner = AbstractDungeon.player;
+                            //If it is ritual set it's flag
+                            if (powerToApply[0] instanceof RitualPower) {
+                                ReflectionHacks.setPrivate(powerToApply[0], RitualPower.class, "onPlayer", true);
+                            }
+                            //If it is sharp hide, turn it into thorns
+                            if (powerToApply[0] instanceof SharpHidePower) {
+                                powerToApply[0] = new ThornsPower(target[0], powerToApply[0].amount);
+                            }
+                            //If its Intangible, turn it into IntangiblePlayer
+                            if (powerToApply[0] instanceof IntangiblePower) {
+                                powerToApply[0] = new IntangiblePlayerPower(target[0], powerToApply[0].amount);
+                            }
+                            //If it is something else that has a problem, crash time I guess.
+                            //Call the on steal power function to increment relic stats
+                            ((PointSwap) AbstractDungeon.player.getRelic(PointSwap.ID)).onStealPower();
+                        } else {
+                            //We need to negate the power instead
+                            //negate the power by setting the action as done and simply returning before anything happens
+                            ((PointSwap) AbstractDungeon.player.getRelic(PointSwap.ID)).onNegatePower();
+                            __instance.isDone = true;
+                            return SpireReturn.Return(null);
                         }
-                        //If it is sharp hide, turn it into thorns
-                        if (powerToApply[0] instanceof SharpHidePower) {
-                            powerToApply[0] = new ThornsPower(target[0], powerToApply[0].amount);
-                        }
-                        //If it is something else that has a problem, crash time I guess.
-                        //Call the steal power function to increment relic stats
-                        ((PointSwap) AbstractDungeon.player.getRelic(PointSwap.ID)).onStealPower();
-                    } else if (!(powerToApply[0] instanceof RegrowPower) && !(powerToApply[0] instanceof MinionPower)) {
-                        //We need to negate the power instead
-                        //negate the power by setting the action as done and simply returning before anything happens
-                        //TODO negating Regrow does nothing same dice with Minion, as such we just do nothing with these for now
-                        ((PointSwap) AbstractDungeon.player.getRelic(PointSwap.ID)).onNegatePower();
-                        __instance.isDone = true;
-                        return SpireReturn.Return(null);
                     }
+
                 }
             }
             return SpireReturn.Continue();

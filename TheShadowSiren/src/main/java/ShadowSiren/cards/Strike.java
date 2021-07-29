@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
@@ -19,8 +17,6 @@ public class Strike extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Strike.class.getSimpleName());
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-
     public static final String IMG = makeCardPath("PlaceholderAttack.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 

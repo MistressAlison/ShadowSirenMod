@@ -48,7 +48,7 @@ public class MoltenCorePower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
     }
 
     @Override

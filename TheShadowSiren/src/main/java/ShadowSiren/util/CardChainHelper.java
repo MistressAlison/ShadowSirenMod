@@ -1,17 +1,15 @@
 package ShadowSiren.util;
 
-import ShadowSiren.cards.*;
-import ShadowSiren.cards.abstractCards.AbstractPrismaticCard;
 import ShadowSiren.cards.interfaces.MultiCardPreviewHack;
-import ShadowSiren.cards.prismaticCards.*;
-import ShadowSiren.cards.tempCards.Pummel;
-import ShadowSiren.cards.tempCards.Throw;
+import ShadowSiren.oldStuff.cards.prismaticCards.*;
+import ShadowSiren.oldStuff.cards.tempCards.Pummel;
+import ShadowSiren.oldStuff.cards.tempCards.Throw;
+import ShadowSiren.oldStuff.cards.*;
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.ByRef;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.google.gson.internal.$Gson$Preconditions;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 
@@ -30,6 +28,7 @@ public class CardChainHelper {
     private static final HashMap<ArrayList<AbstractCard>, Integer> stateMap = new HashMap<ArrayList<AbstractCard>, Integer>(){{put(PocketChain, 0);put(BarrageChain, 0);put(FermentChain, 0);put(DanceChain, 0);put(GrabChain, 0);}};
     private static final float ROLLOVER = 3.0f;
 
+    //TODO right click to cycle?
     public static AbstractCard findCardInList(AbstractCard oldCard) {
         for (ArrayList<AbstractCard> l : masterList) {
             for (AbstractCard c : l) {
@@ -56,6 +55,7 @@ public class CardChainHelper {
         return oldCard;
     }
 
+    //TODO the Bard way? Might need to dispose the image
     @SpirePatch(clz = SingleCardViewPopup.class, method = "update")
     public static class UpdateListener {
         static boolean reload;

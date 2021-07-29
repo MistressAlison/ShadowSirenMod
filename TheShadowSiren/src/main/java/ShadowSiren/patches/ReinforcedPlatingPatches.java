@@ -11,7 +11,7 @@ public class ReinforcedPlatingPatches {
         @SpirePrefixPatch
         public static void Prefix(AbstractCreature __instance, int amount, boolean noAnimation) {
             //If we have the power that prevents us from losing Block...
-            if (__instance.hasPower(ReinforcedPlatingPower.POWER_ID)) {
+            if (__instance.hasPower(ReinforcedPlatingPower.POWER_ID) && amount > 0) {
                 //Grab the power
                 ReinforcedPlatingPower pow = (ReinforcedPlatingPower) __instance.getPower(ReinforcedPlatingPower.POWER_ID);
                 //If our power actually can be used...

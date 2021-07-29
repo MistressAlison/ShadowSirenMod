@@ -1,8 +1,8 @@
 package ShadowSiren.actions;
 
 import ShadowSiren.cardModifiers.BideModifier;
-import ShadowSiren.cards.abstractCards.AbstractPrismaticCard;
-import ShadowSiren.cards.abstractCards.prismatics.*;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractPrismaticCard;
+import ShadowSiren.oldStuff.cards.abstractCards.prismatics.*;
 import ShadowSiren.patches.relics.BottleFields;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.TransformCardInHandAction;

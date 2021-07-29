@@ -1,22 +1,12 @@
 package ShadowSiren.actions;
 
 import ShadowSiren.cardModifiers.BideModifier;
-import ShadowSiren.cards.abstractCards.AbstractDualityCard;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractDualityCard;
 import ShadowSiren.patches.relics.BottleFields;
-import basemod.BaseMod;
-import basemod.Pair;
-import basemod.abstracts.CustomBottleRelic;
-import com.evacipated.cardcrawl.mod.stslib.StSLib;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.TransformCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.function.Predicate;
 
 public class SwapDualityCardsAction extends AbstractGameAction {
 

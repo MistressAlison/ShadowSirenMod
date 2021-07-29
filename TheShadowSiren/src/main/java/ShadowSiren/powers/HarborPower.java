@@ -1,7 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.tempCards.Anchor;
+import ShadowSiren.oldStuff.cards.tempCards.Anchor;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;

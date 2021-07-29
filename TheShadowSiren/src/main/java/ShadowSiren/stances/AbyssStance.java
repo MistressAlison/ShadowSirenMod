@@ -28,6 +28,7 @@ public class AbyssStance extends AbstractStance {
     private static final HashSet<Integer> usedCosts = new HashSet<>();
     private static final int STACKS = 1;
 
+    //TODO remove block? The rest of the powers effect is strong, and Chill is very strong
     public AbyssStance() {
         this.ID = STANCE_ID;
         this.name = stanceString.NAME;
@@ -68,10 +69,12 @@ public class AbyssStance extends AbstractStance {
 
     @Override
     public void onEndOfTurn() {
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
+        //for (AbstractCard c : AbstractDungeon.player.hand.group) {
             //c.retain = true;
+        //}
+        if (AbstractDungeon.player.hand.size() > 0) {
+            AbstractDungeon.actionManager.addToTop(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, AbstractDungeon.player.hand.size()));
         }
-        AbstractDungeon.actionManager.addToTop(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, AbstractDungeon.player.hand.size()));
     }
 
     @Override
@@ -86,7 +89,7 @@ public class AbyssStance extends AbstractStance {
     public void onPlayCard(AbstractCard card) {
         if (!usedCosts.contains(card.costForTurn)) {
             usedCosts.add(card.costForTurn);
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerToRandomEnemyAction(AbstractDungeon.player, new DrenchPower(null, 1), 1));
+            //AbstractDungeon.actionManager.addToBottom(new ApplyPowerToRandomEnemyAction(AbstractDungeon.player, new DrenchPower(null, 1), 1));
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
         }
     }

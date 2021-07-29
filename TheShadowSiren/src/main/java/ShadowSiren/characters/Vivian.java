@@ -5,13 +5,11 @@ import ShadowSiren.CustomSpriterAnimation;
 import ShadowSiren.RandomChatterHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.Defend;
-import ShadowSiren.cards.MarkingFist;
-import ShadowSiren.cards.ShadowCall;
+import ShadowSiren.cards.FrozenShield;
+import ShadowSiren.cards.ShadeFist;
 import ShadowSiren.cards.Strike;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.relics.BooSheet;
-import ShadowSiren.relics.DataCollector;
-import ShadowSiren.relics.StarPiece;
 import ShadowSiren.stances.HugeStance;
 import ShadowSiren.stances.VeilStance;
 import ShadowSiren.stances.AbyssStance;
@@ -193,12 +191,12 @@ public class Vivian extends CustomPlayer {
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
+        retVal.add(ShadeFist.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
-        retVal.add(MarkingFist.ID);
-        retVal.add(ShadowCall.ID);
+        retVal.add(FrozenShield.ID);
 
         //*/
 

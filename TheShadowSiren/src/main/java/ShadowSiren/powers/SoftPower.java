@@ -1,12 +1,14 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.FastLoseBlockAction;
 import ShadowSiren.relics.DataCollector;
 import ShadowSiren.relics.RuinPowder;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -23,6 +25,7 @@ public class SoftPower extends AbstractPower implements CloneablePowerInterface 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public static final int BONUS_DAMAGE = 3;
+    public static final int BLOCK_LOSS = 3;
 
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
@@ -76,6 +79,8 @@ public class SoftPower extends AbstractPower implements CloneablePowerInterface 
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
+        flash();
+        this.addToTop(new FastLoseBlockAction(owner, info.owner, BLOCK_LOSS));
         if (AbstractDungeon.player.hasRelic(RuinPowder.ID) && !owner.hasPower(IntangiblePlayerPower.POWER_ID) && !owner.hasPower(FreezePower.POWER_ID)) {
             ((RuinPowder)AbstractDungeon.player.getRelic(RuinPowder.ID)).onIncreaseDamage(RuinPowder.RELIC_BONUS_DAMAGE-BONUS_DAMAGE);
         }
@@ -98,9 +103,9 @@ public class SoftPower extends AbstractPower implements CloneablePowerInterface 
     public void updateDescription() {
         int dam = (AbstractDungeon.player.hasRelic(RuinPowder.ID) ? RuinPowder.RELIC_BONUS_DAMAGE : BONUS_DAMAGE);
         if (amount == 1) {
-            description = DESCRIPTIONS[0] + dam + DESCRIPTIONS[1];
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[3] + dam + DESCRIPTIONS[4] + BLOCK_LOSS + DESCRIPTIONS[5];
         } else {
-            description = DESCRIPTIONS[0] + dam + DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
+            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + dam + DESCRIPTIONS[4] + BLOCK_LOSS + DESCRIPTIONS[5];
         }
     }
 

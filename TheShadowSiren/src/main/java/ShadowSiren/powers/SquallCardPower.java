@@ -1,13 +1,16 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.powers.interfaces.onDiscardCardPower;
 import basemod.interfaces.CloneablePowerInterface;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class SquallPower extends AbstractPower implements CloneablePowerInterface {
+public class SquallCardPower extends AbstractPower implements CloneablePowerInterface, onDiscardCardPower {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("SquallPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -19,7 +22,7 @@ public class SquallPower extends AbstractPower implements CloneablePowerInterfac
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public SquallPower(AbstractCreature owner, int amount) {
+    public SquallCardPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -36,8 +39,6 @@ public class SquallPower extends AbstractPower implements CloneablePowerInterfac
         updateDescription();
     }
 
-    //Functionality provided by SmokeStance
-
     @Override
     public void updateDescription() {
         description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
@@ -45,6 +46,15 @@ public class SquallPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public AbstractPower makeCopy() {
-        return new SquallPower(owner, amount);
+        return new SquallCardPower(owner, amount);
+    }
+
+    @Override
+    public void onDiscardCard(boolean isPlayerTurn, boolean isEndTurnDiscard) {
+        //if (!isEndTurnDiscard) {
+            AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
+            flash();
+            this.addToBot(new ApplyPowerAction(target, owner, new BurnPower(target, owner, amount)));
+        //}
     }
 }

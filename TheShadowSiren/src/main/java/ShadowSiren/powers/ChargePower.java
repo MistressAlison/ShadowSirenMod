@@ -6,6 +6,7 @@ import ShadowSiren.cards.interfaces.ChargeMultiEffect;
 import ShadowSiren.patches.ChargeCounterPatches;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -32,6 +33,8 @@ public class ChargePower extends AbstractPower implements CloneablePowerInterfac
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
+    public static final int EFFECT_PERCENT = 50;
+
     public ChargePower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
@@ -54,11 +57,6 @@ public class ChargePower extends AbstractPower implements CloneablePowerInterfac
         if (card instanceof RitualDagger) {
             return super.modifyBlock(blockAmount, card);
         }
-        /*if (card instanceof ChargeMagicBuff) {
-            card.magicNumber = card.baseMagicNumber + amount;
-            card.isMagicNumberModified = card.magicNumber != card.baseMagicNumber;
-            card.initializeDescription();
-        }*/
         return blockAmount * calcMainEffect(card);
     }
 
@@ -71,21 +69,29 @@ public class ChargePower extends AbstractPower implements CloneablePowerInterfac
     }
 
     private float calcMainEffect(AbstractCard card) {
-        return 1 + ((card instanceof ChargeMultiEffect ? ((ChargeMultiEffect) card).getChargeMultiplier() : 1) * 0.5f) * amount;
+        return 1 + ((card instanceof ChargeMultiEffect ? ((ChargeMultiEffect) card).getChargeMultiplier() : 1) * EFFECT_PERCENT/100f);
     }
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.baseBlock > 0 || card.type == AbstractCard.CardType.ATTACK || card instanceof ChargeMagicBuff) {
             this.flash();
-            this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+            if (this.amount == 1) {
+                this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
+            } else {
+                this.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
+            }
         }
+    }
+
+    @Override
+    public void playApplyPowerSfx() {
+        this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
     }
 
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
         if (this.owner instanceof AbstractPlayer) {
             ChargeCounterPatches.incrementChargesThisCombat((AbstractPlayer) this.owner, this.amount);
         }
@@ -94,7 +100,6 @@ public class ChargePower extends AbstractPower implements CloneablePowerInterfac
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
         if (this.owner instanceof AbstractPlayer) {
             ChargeCounterPatches.incrementChargesThisCombat((AbstractPlayer) this.owner, stackAmount);
         }
@@ -102,7 +107,11 @@ public class ChargePower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + (amount*50) + DESCRIPTIONS[1];
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + EFFECT_PERCENT + DESCRIPTIONS[1];
+        } else {
+            description = DESCRIPTIONS[2] + amount + DESCRIPTIONS[3] + EFFECT_PERCENT + DESCRIPTIONS[1];
+        }
     }
 
     @Override

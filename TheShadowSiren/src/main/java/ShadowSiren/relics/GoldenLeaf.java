@@ -34,7 +34,7 @@ public class GoldenLeaf extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("GoldenLeaf.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("GoldenLeaf.png"));
 
-    private static final int BONUS_GOLD = 1;
+    private static final int BONUS_GOLD = 2;
     private static final int DAMAGE_REQUIRED = 5;
 
     HashMap<String, Integer> stats = new HashMap<>();

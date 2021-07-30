@@ -26,13 +26,23 @@ public class FireDamage extends AbstractVivianDamageModifier {
     }
 
     @Override
-    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        super.onDamageModifiedByBlock(info, unblockedAmount, blockedAmount, target);
-        target.maxHealth -= unblockedAmount;
-        if (target.maxHealth <= 0) {
-            target.maxHealth = 1;
-        }
-        AbstractDungeon.effectList.add(new FlashAtkImgEffect(target.hb.cX, target.hb.cY, AbstractGameAction.AttackEffect.FIRE));
+    public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature targetHit) {
+        this.addToTop(new AbstractGameAction() {
+            @Override
+            public void update() {
+                targetHit.maxHealth -= unblockedAmount;
+                if (targetHit.maxHealth <= 0) {
+                    targetHit.maxHealth = 1;
+                }
+                if (targetHit.currentHealth > targetHit.maxHealth) {
+                    targetHit.currentHealth = targetHit.maxHealth;
+                }
+                targetHit.healthBarUpdatedEvent();
+                AbstractDungeon.effectList.add(new FlashAtkImgEffect(targetHit.hb.cX, targetHit.hb.cY, AbstractGameAction.AttackEffect.FIRE));
+                this.isDone = true;
+            }
+        });
+
     }
 
     @Override

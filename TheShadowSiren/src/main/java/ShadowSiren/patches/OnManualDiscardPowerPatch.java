@@ -1,6 +1,6 @@
 package ShadowSiren.patches;
 
-import ShadowSiren.powers.interfaces.onDiscardCardPower;
+import ShadowSiren.powers.interfaces.OnDiscardCardPower;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -13,9 +13,9 @@ public class OnManualDiscardPowerPatch {
         public static void discardListener(boolean endOfTurn) {
             //Loop through our powers to see if any are onDiscardCardPower
             for (AbstractPower pow : AbstractDungeon.player.powers) {
-                if (pow instanceof onDiscardCardPower) {
+                if (pow instanceof OnDiscardCardPower) {
                     //Call onDiscardCard with the important variables: Whether or not the discard took place on the player turn, and if it was due end turn discard
-                    ((onDiscardCardPower) pow).onDiscardCard(!AbstractDungeon.actionManager.turnHasEnded, endOfTurn);
+                    ((OnDiscardCardPower) pow).onDiscardCard(!AbstractDungeon.actionManager.turnHasEnded, endOfTurn);
                 }
             }
         }

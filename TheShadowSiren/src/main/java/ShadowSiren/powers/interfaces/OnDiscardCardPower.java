@@ -1,5 +1,5 @@
 package ShadowSiren.powers.interfaces;
 
-public interface onDiscardCardPower {
+public interface OnDiscardCardPower {
     void onDiscardCard(boolean isPlayerTurn, boolean isEndTurnDiscard);
 }

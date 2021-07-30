@@ -1,6 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.powers.interfaces.OnChangeElementPower;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 
-public class VigorousShiftPower extends AbstractPower implements CloneablePowerInterface {
+public class VigorousShiftPower extends AbstractPower implements CloneablePowerInterface, OnChangeElementPower {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("VigorousShiftPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -39,6 +40,7 @@ public class VigorousShiftPower extends AbstractPower implements CloneablePowerI
         updateDescription();
     }
 
+    /*
     @Override
     public void onChangeStance(AbstractStance oldStance, AbstractStance newStance) {
         super.onChangeStance(oldStance, newStance);
@@ -46,7 +48,7 @@ public class VigorousShiftPower extends AbstractPower implements CloneablePowerI
             flash();
             this.addToTop(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount)));
         }
-    }
+    }*/
 
     @Override
     public void updateDescription() {
@@ -56,5 +58,10 @@ public class VigorousShiftPower extends AbstractPower implements CloneablePowerI
     @Override
     public AbstractPower makeCopy() {
         return new VigorousShiftPower(owner, amount);
+    }
+
+    @Override
+    public void onChangeElement() {
+        this.addToTop(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount)));
     }
 }

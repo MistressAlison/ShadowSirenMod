@@ -61,4 +61,9 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     public String getKeyword() {
         return "shadowsiren:shadow_damage";
     }
+
+    @Override
+    public int priority() {
+        return Integer.MAX_VALUE;
+    }
 }

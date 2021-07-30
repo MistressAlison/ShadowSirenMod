@@ -35,6 +35,14 @@
     "DESCRIPTION": "Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. Targets take up to double damage when #yShadow #ySplit exceeds their current HP."
   },
   {
+    "PROPER_NAME": "Elements",
+    "NAMES": [
+      "elements",
+      "element"
+    ],
+    "DESCRIPTION": "#yFire, #yIce, #yElectric, and #yShadow."
+  },
+  {
     "PROPER_NAME": "Follow-Up",
     "NAMES": [
       "follow-up"
@@ -42,11 +50,12 @@
     "DESCRIPTION": "An effect triggered if you play a card of the required type."
   },
   {
-    "PROPER_NAME": "Item",
+    "PROPER_NAME": "Frozen",
     "NAMES": [
-      "item"
+      "frozen",
+      "freeze"
     ],
-    "DESCRIPTION": "An #yUnplayable and #yRetaining card that has effects while in your hand. Has a limited number of #yUses and automatically #yExhausts when out."
+    "DESCRIPTION": "Frozen creatures are unable to act, but are also invincible."
   },
   {
     "PROPER_NAME": "Intensify",
@@ -54,6 +63,13 @@
       "intensify"
     ],
     "DESCRIPTION": "Increase the effect of ALL copies of this card this combat."
+  },
+  {
+    "PROPER_NAME": "Item",
+    "NAMES": [
+      "item"
+    ],
+    "DESCRIPTION": "An #yUnplayable and #yRetaining card that has effects while in your hand. Has a limited number of #yUses and automatically #yExhausts when out."
   },
   {
     "PROPER_NAME": "Shadow Split",
@@ -64,11 +80,11 @@
     "DESCRIPTION": "Targets take up to double damage when #yShadow #ySplit exceeds their current HP."
   },
   {
-    "PROPER_NAME": "Elements",
+    "PROPER_NAME": "veil",
     "NAMES": [
-      "elements",
-      "element"
+      "veil",
+      "veiled"
     ],
-    "DESCRIPTION": "#yFire, #yIce, #yElectric, and #yShadow."
+    "DESCRIPTION": "Damage taken is halved. Exit this #yStance at the start of your next turn."
   }
 ]

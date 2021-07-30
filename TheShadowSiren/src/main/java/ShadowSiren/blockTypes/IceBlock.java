@@ -10,8 +10,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 
 public class IceBlock extends AbstractCustomBlockType {
+
     public static final String ID = ShadowSirenMod.makeID("IceBlock");
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+
     public IceBlock(AbstractCreature owner, int amount) {
         super(owner, amount);
     }

@@ -63,6 +63,19 @@ public class ADOFAI extends AbstractMultiElementCard implements MagicAnimation {
     }
 
     @Override
+    public void applyPowers() {
+        DamageModifierManager.removeModifier(this, fireDamage);
+        super.applyPowers();
+        this.baseSecondMagicNumber = this.baseDamage;
+        this.secondMagicNumber = this.damage;
+        this.isSecondMagicNumberModified = this.isDamageModified;
+        DamageModifierManager.removeModifier(this, iceDamage);
+        DamageModifierManager.addModifier(this, fireDamage);
+        super.applyPowers();
+        DamageModifierManager.addModifier(this, iceDamage);
+    }
+
+    @Override
     public void calculateCardDamage(AbstractMonster mo) {
         DamageModifierManager.removeModifier(this, fireDamage);
         super.calculateCardDamage(mo);

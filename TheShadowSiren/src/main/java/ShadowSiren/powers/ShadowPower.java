@@ -65,7 +65,7 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
     }
 
     public void delayedCheckIfSurpassedHP() {
-        this.addToTop(new AbstractGameAction() {
+        this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
                 checkIfSurpassedHP();

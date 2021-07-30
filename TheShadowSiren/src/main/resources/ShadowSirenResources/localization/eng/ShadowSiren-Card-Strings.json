@@ -46,6 +46,10 @@
     "NAME": "Flame Shield",
     "DESCRIPTION": "Gain !B! [FireIcon] Block."
   },
+  "ShadowSiren:FlashFreeze": {
+    "NAME": "Flash Freeze",
+    "DESCRIPTION": "Apply !M! shadowsiren:Freeze to ALL enemies."
+  },
   "ShadowSiren:FrozenShield": {
     "NAME": "Frozen Shield",
     "DESCRIPTION": "Gain !B! [IceIcon] Block."
@@ -74,6 +78,10 @@
     "NAME": "Infatuate",
     "DESCRIPTION": "Apply !M! Vulnerable and Weak to ALL enemies."
   },
+  "ShadowSiren:MagicCloak": {
+    "NAME": "Magic Cloak",
+    "DESCRIPTION": "Gain !B! Block. NL Gains !M! times more Block if you have a debuff."
+  },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",
     "DESCRIPTION": "Whenever you change active shadowsiren:Elements, draw !M! card.",
@@ -82,6 +90,15 @@
   "ShadowSiren:Polychrome": {
     "NAME": "Polychrome",
     "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] [ElectricIcon] [DarkIcon] damage. NL Exhaust."
+  },
+  "ShadowSiren:Recuperate": {
+    "NAME": "Recuperate",
+    "DESCRIPTION": "Gain !B! Block. NL Remove !M! debuff if you have any, otherwise draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Remove up to !M! debuffs if you have any, otherwise draw up to !M! cards."
+  },
+  "ShadowSiren:Reversal": {
+    "NAME": "Reversal",
+    "DESCRIPTION": "Deal !D! damage plus half the targets intent. NL (Deals !ShadowSiren:SecondMagic! damage)"
   },
   "ShadowSiren:ShadeFist": {
     "NAME": "Shade Fist",

@@ -32,7 +32,7 @@
     "NAMES": [
       "shadow_damage"
     ],
-    "DESCRIPTION": "Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. Targets take double damage when #yShadow #ySplit exceeds their current HP."
+    "DESCRIPTION": "Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. Targets take up to double damage when #yShadow #ySplit exceeds their current HP."
   },
   {
     "PROPER_NAME": "Follow-Up",
@@ -54,5 +54,21 @@
       "intensify"
     ],
     "DESCRIPTION": "Increase the effect of ALL copies of this card this combat."
+  },
+  {
+    "PROPER_NAME": "Shadow Split",
+    "NAMES": [
+      "Shadow Split",
+      "shadow_split"
+    ],
+    "DESCRIPTION": "Targets take up to double damage when #yShadow #ySplit exceeds their current HP."
+  },
+  {
+    "PROPER_NAME": "Elements",
+    "NAMES": [
+      "elements",
+      "element"
+    ],
+    "DESCRIPTION": "#yFire, #yIce, #yElectric, and #yShadow."
   }
 ]

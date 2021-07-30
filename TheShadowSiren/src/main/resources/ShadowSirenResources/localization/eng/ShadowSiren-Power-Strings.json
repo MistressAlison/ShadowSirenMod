@@ -116,7 +116,7 @@
         },
         "ShadowSiren:PocketDimensionPower": {
                 "NAME": "Pocket Dimension",
-                "DESCRIPTIONS": ["Whenever you change #yStances, draw #b"," card."," cards."]
+                "DESCRIPTIONS": ["Whenever you change active #yElements, draw #b"," card."," cards."]
         },
         "ShadowSiren:ReinforcedPlatingPower": {
                 "NAME": "Reinforced Plating",
@@ -152,10 +152,14 @@
         },
         "ShadowSiren:VigorousShiftPower": {
                 "NAME": "Vigorous Shift",
-                "DESCRIPTIONS": ["Whenever you change #yStances, gain #b"," Vigor."]
+                "DESCRIPTIONS": ["Whenever you change active #yElements, gain #b"," Vigor."]
         },
         "ShadowSiren:FoxFirePower": {
                 "NAME": "Fox-Fire",
                 "DESCRIPTIONS": ["At the beginning of its turn, this creature loses #b"," HP. Each stack of this power increases the effect of #yBurn by #b1."]
+        },
+        "ShadowSiren:ElementalPower": {
+                "NAME": "Elementalist",
+                "DESCRIPTIONS": ["All #yNon-Elemental #yAttack cards gain the #yElements of the last #yElemental card you played."," NL Current #yElements:"]
         }
 }

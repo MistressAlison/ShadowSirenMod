@@ -9,6 +9,18 @@
     "NAME": "ADOFAI",
     "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage."
   },
+  "ShadowSiren:AutoArmor": {
+    "NAME": "Auto-Armor",
+    "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL Whenever you would lose HP, lose !M! less."
+  },
+  "ShadowSiren:BlackMagic": {
+    "NAME": "Black Magic",
+    "DESCRIPTION": "Whenever you apply a debuff, increase its amount by !M!."
+  },
+  "ShadowSiren:BlackRose": {
+    "NAME": "Black Roses",
+    "DESCRIPTION": "Apply !M! *Shadow *Split to ALL enemies. NL Exhaust."
+  },
   "ShadowSiren:ChainShock": {
     "NAME": "Chain Shock",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage to ALL enemies. NL Exhaust."
@@ -17,6 +29,11 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
+  "ShadowSiren:EnergizingFlush": {
+    "NAME": "Energized Flush",
+    "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Lose all active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost."
+  },
   "ShadowSiren:FieryJinx": {
     "NAME": "Fiery Jinx",
     "DESCRIPTION": "Deal !D! [FireIcon] damage to ALL enemies."
@@ -24,6 +41,10 @@
   "ShadowSiren:FireOrb": {
     "NAME": "Fire Orb",
     "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL *Attack shadowsiren:Follow-Up: NL Deal !D! [FireIcon] damage. NL *Skill shadowsiren:Follow-Up: NL Gain !M! Vigor."
+  },
+  "ShadowSiren:FlameShield": {
+    "NAME": "Flame Shield",
+    "DESCRIPTION": "Gain !B! [FireIcon] Block."
   },
   "ShadowSiren:FrozenShield": {
     "NAME": "Frozen Shield",
@@ -49,6 +70,19 @@
     "NAME": "Ice Wall",
     "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Gain !B! Block."
   },
+  "ShadowSiren:Infatuate": {
+    "NAME": "Infatuate",
+    "DESCRIPTION": "Apply !M! Vulnerable and Weak to ALL enemies."
+  },
+  "ShadowSiren:PocketDimension": {
+    "NAME": "Pocket Dimension",
+    "DESCRIPTION": "Whenever you change active shadowsiren:Elements, draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Whenever you change active shadowsiren:Elements, draw !M! cards."
+  },
+  "ShadowSiren:Polychrome": {
+    "NAME": "Polychrome",
+    "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] [ElectricIcon] [DarkIcon] damage. NL Exhaust."
+  },
   "ShadowSiren:ShadeFist": {
     "NAME": "Shade Fist",
     "DESCRIPTION": "Deal !D! [FireIcon] damage."
@@ -61,6 +95,14 @@
     "NAME": "Shadow Sneak",
     "DESCRIPTION": "Autoplay. NL Deal !D! [DarkIcon] damage to a random enemy. NL shadowsiren:Intensify damage by !M!."
   },
+  "ShadowSiren:ShieldConversion": {
+    "NAME": "Shield Conversion",
+    "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain !B! Block for each shadowsiren:Element lost."
+  },
+  "ShadowSiren:SnowBlind": {
+    "NAME": "Snow Blind",
+    "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Apply !M! Weak."
+  },
   "ShadowSiren:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
@@ -68,6 +110,10 @@
   "ShadowSiren:Thunderstruck": {
     "NAME": "Thunderstruck",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL Apply !M! Weak. NL Apply !M! Vulnerable. NL Exhaust."
+  },
+  "ShadowSiren:VigorousShift": {
+    "NAME": "Vigorous Shift",
+    "DESCRIPTION": "Whenever you change active shadowsiren:Elements, gain !M! Vigor."
   },
   "ShadowSiren:WhiteOut": {
     "NAME": "White Out",

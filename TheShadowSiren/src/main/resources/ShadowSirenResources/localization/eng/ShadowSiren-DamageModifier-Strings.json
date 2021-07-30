@@ -12,7 +12,7 @@
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
     "DESCRIPTION": "Fire [FireIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets will full HP."]
+    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets will full HP. NL #yBlock: When you are attacked, deals 3 [FireIcon] damage."]
   },
   "ShadowSiren:IceDamage": {
     "NAME": "Ice",
@@ -32,5 +32,10 @@
   "ShadowSiren:IceBlock": {
     "NAME": "Ice Shield [IceIcon]",
     "DESCRIPTION": "When you are attacked, applies #yChill equal to damage taken."
+  },
+  "ShadowSiren:FireBlock": {
+    "NAME": "Fire Shield [FireIcon]",
+    "DESCRIPTION": "When you are attacked, deals #b3 [FireIcon] damage to the attacker.",
+    "EXTENDED_DESCRIPTION": ["When you are attacked, deals #b"," [FireIcon] damage to the attacker."]
   }
 }

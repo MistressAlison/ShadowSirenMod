@@ -1,15 +1,15 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.powers.interfaces.OnChangeElementPower;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.stances.AbstractStance;
 
-public class PocketDimensionPower extends AbstractPower implements CloneablePowerInterface {
+public class PocketDimensionPower extends AbstractPower implements CloneablePowerInterface, OnChangeElementPower {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("PocketDimensionPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -38,6 +38,7 @@ public class PocketDimensionPower extends AbstractPower implements CloneablePowe
         updateDescription();
     }
 
+    /*
     @Override
     public void onChangeStance(AbstractStance oldStance, AbstractStance newStance) {
         super.onChangeStance(oldStance, newStance);
@@ -45,7 +46,7 @@ public class PocketDimensionPower extends AbstractPower implements CloneablePowe
             flash();
             this.addToTop(new DrawCardAction(amount));
         }
-    }
+    }*/
 
     @Override
     public void updateDescription() {
@@ -59,5 +60,10 @@ public class PocketDimensionPower extends AbstractPower implements CloneablePowe
     @Override
     public AbstractPower makeCopy() {
         return new PocketDimensionPower(owner, amount);
+    }
+
+    @Override
+    public void onChangeElement() {
+        this.addToTop(new DrawCardAction(amount));
     }
 }

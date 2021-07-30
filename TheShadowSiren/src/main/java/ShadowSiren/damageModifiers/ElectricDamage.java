@@ -42,7 +42,7 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
                     public void update() {
                         target = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
                         if (target != null) {
-                            this.addToTop(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(electricContainer, info.owner, (unblockedAmount+blockedAmount)/2, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
+                            this.addToTop(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(DamageModifierManager.getBoundObject(info), info.owner, (unblockedAmount+blockedAmount)/2, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
                             this.addToTop(new VFXAction(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY)));
                             this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.2f));
                         }

@@ -1,7 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.powers.interfaces.onDiscardCardPower;
+import ShadowSiren.powers.interfaces.OnDiscardCardPower;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class SquallCardPower extends AbstractPower implements CloneablePowerInterface, onDiscardCardPower {
+public class SquallCardPower extends AbstractPower implements CloneablePowerInterface, OnDiscardCardPower {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("SquallPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);

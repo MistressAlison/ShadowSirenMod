@@ -9,20 +9,19 @@ import ShadowSiren.cards.FrozenShield;
 import ShadowSiren.cards.ShadeFist;
 import ShadowSiren.cards.Strike;
 import ShadowSiren.cards.interfaces.MagicAnimation;
+import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.relics.BooSheet;
 import ShadowSiren.stances.HugeStance;
-import ShadowSiren.stances.VeilStance;
-import ShadowSiren.stances.AbyssStance;
 import ShadowSiren.vfx.StarBreakerVictoryEffect;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.brashmonkey.spriter.Player;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -474,6 +473,7 @@ public class Vivian extends CustomPlayer {
                 RandomChatterHelper.showChatter(RandomChatterHelper.getBattleStartText(), preTalkProbability, enablePreBattleTalkEffect);
             }
         }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ElementalPower(this)));
     }
 
     //Maybe, currently just moved to Homemark relic
@@ -483,7 +483,7 @@ public class Vivian extends CustomPlayer {
         super.loseGold(goldAmount);
     }*/
 
-
+    /*
     @Override
     public void render(SpriteBatch sb) {
         if (this.stance.ID.equals(VeilStance.STANCE_ID)) {
@@ -492,5 +492,5 @@ public class Vivian extends CustomPlayer {
             //AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.LIGHT_GRAY.cpy(), false));
         }
         super.render(sb);
-    }
+    }*/
 }

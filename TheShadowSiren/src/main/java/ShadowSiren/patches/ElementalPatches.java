@@ -2,27 +2,29 @@ package ShadowSiren.patches;
 
 import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.util.DamageModifierManager;
-import ShadowSiren.cards.abstractCards.AbstractItemCard;
 import ShadowSiren.cards.abstractCards.AbstractModdedCard;
 import ShadowSiren.damageModifiers.*;
-import ShadowSiren.stances.ElementalStance;
+import ShadowSiren.powers.ElementalPower;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.evacipated.cardcrawl.modthespire.lib.*;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
+import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import javassist.CannotCompileException;
 import javassist.CtBehavior;
 
 import java.util.ArrayList;
 
-public class ElementalStancePatches {
+public class ElementalPatches {
     public static boolean isNonElemental(AbstractCard card) {
         return card instanceof AbstractModdedCard && noElementalModifiers(card);
     }
@@ -30,37 +32,30 @@ public class ElementalStancePatches {
         return DamageModifierManager.modifiers(o).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement);
     }
     public static boolean shouldPushElements(AbstractCard card) {
-        return isNonElemental(card) && AbstractDungeon.player.stance.ID.equals(ElementalStance.STANCE_ID) && card.type == AbstractCard.CardType.ATTACK;
+        return isNonElemental(card) && AbstractDungeon.player.hasPower(ElementalPower.POWER_ID) && card.type == AbstractCard.CardType.ATTACK;
     }
     @SpirePatch(clz = DamageInfo.class, method = "<ctor>", paramtypez = {AbstractCreature.class, int.class, DamageInfo.DamageType.class})
     public static class BindObjectToDamageInfoIfNotBoundYet {
         @SpirePostfixPatch()
-        public static void ButOnlyIfYouHaveTheStanceInQuestion(DamageInfo __instance, AbstractCreature damageSource, int base, DamageInfo.DamageType type) {
-            Object obj = DamageModifierManager.getBoundObject(__instance);
-            if (obj == null || noElementalModifiers(obj)) {
-                if (damageSource == AbstractDungeon.player && type == DamageInfo.DamageType.NORMAL && AbstractDungeon.player.stance.ID.equals(ElementalStance.STANCE_ID)) {
-                    Object o = new Object();
-                    DamageModifierManager.addModifiers(o, DamageModifierManager.modifiers(AbstractDungeon.player.stance));
-                    DamageModifierManager.spliceBoundObject(__instance, o);
-                }
+        public static void ButOnlyIfYouHaveThePowerInQuestion(DamageInfo __instance, AbstractCreature damageSource, int base, DamageInfo.DamageType type) {
+            if (damageSource == AbstractDungeon.player && type == DamageInfo.DamageType.NORMAL && AbstractDungeon.player.hasPower(ElementalPower.POWER_ID)) {
+                AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        delayedSpliceCheck(__instance);
+                        this.isDone = true;
+                    }
+                });
             }
         }
     }
 
-    @SpirePatch(clz = AbstractPlayer.class, method = "useCard")
-    public static class RememberCardPreUseCall {
-        @SpireInsertPatch(locator = Locator.class)
-        public static void removePowerListener(AbstractPlayer __instance, AbstractCard c, AbstractMonster monster, int energyOnUse) {
-            if (c instanceof AbstractModdedCard && !(c instanceof AbstractItemCard) && DamageModifierManager.modifiers(c).size() > 0 && !__instance.stance.ID.equals(ElementalStance.STANCE_ID)) {
-                AbstractDungeon.actionManager.addToTop(new ChangeStanceAction(new ElementalStance(c)));
-            }
-        }
-        private static class Locator extends SpireInsertLocator {
-            @Override
-            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-                Matcher finalMatcher = new Matcher.MethodCallMatcher(AbstractCard.class, "use");
-                return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
-            }
+    public static void delayedSpliceCheck(DamageInfo di) {
+        Object obj = DamageModifierManager.getBoundObject(di);
+        if (obj == null || noElementalModifiers(obj)) {
+            Object o = new Object();
+            DamageModifierManager.addModifiers(o, DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
+            DamageModifierManager.spliceBoundObject(di, o);
         }
     }
 
@@ -72,8 +67,8 @@ public class ElementalStancePatches {
         @SpirePrefixPatch()
         public static void addMods(AbstractCard __instance, AbstractMonster mo) {
             if (shouldPushElements(__instance)) {
-                DamageModifierManager.addModifiers(__instance, DamageModifierManager.modifiers(AbstractDungeon.player.stance));
-                pushedMods.addAll(DamageModifierManager.modifiers(AbstractDungeon.player.stance));
+                DamageModifierManager.addModifiers(__instance, DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
+                pushedMods.addAll(DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
             }
         }
 
@@ -108,7 +103,7 @@ public class ElementalStancePatches {
         private static void renderHelper(SpriteBatch sb, float drawX, float drawY, AbstractCard C) {
             sb.setColor(Color.WHITE.cpy());
             ArrayList<AbstractVivianDamageModifier> mods = new ArrayList<>();
-            for (AbstractDamageModifier mod : DamageModifierManager.modifiers(AbstractDungeon.player.stance)) {
+            for (AbstractDamageModifier mod : DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID))) {
                 if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).isAnElement) {
                     mods.add((AbstractVivianDamageModifier) mod);
                 }
@@ -122,6 +117,23 @@ public class ElementalStancePatches {
                         (float) img.packedWidth, (float) img.packedHeight,
                         C.drawScale * Settings.scale, C.drawScale * Settings.scale, C.angle);
                 dx += 32f*Settings.scale;
+            }
+        }
+    }
+
+    @SpirePatch2(clz = AbstractPlayer.class, method = "renderPowerTips")
+    public static class RenderElementalTooltip {
+        @SpireInsertPatch(locator = Locator.class, localvars = {"tips"})
+        public static void patch(AbstractPlayer __instance, ArrayList<PowerTip> tips) {
+            if (__instance.hasPower(ElementalPower.POWER_ID)) {
+                tips.add(new PowerTip(__instance.getPower(ElementalPower.POWER_ID).name, __instance.getPower(ElementalPower.POWER_ID).description));
+            }
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            public int[] Locate(CtBehavior ctMethodToPatch) throws CannotCompileException, PatchingException {
+                Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractPlayer.class, "stance");
+                return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
             }
         }
     }

@@ -20,9 +20,11 @@ public class IceDamage extends AbstractVivianDamageModifier {
 
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
-        this.addToTop(new ApplyPowerAction(target, info.owner, new ChillPower(target, unblockedAmount+blockedAmount)));
-    }
+        if (unblockedAmount+blockedAmount > 0) {
+            this.addToTop(new ApplyPowerAction(target, info.owner, new ChillPower(target, unblockedAmount+blockedAmount)));
+        }
 
+    }
     @Override
     public TooltipInfo getCustomTooltip() {
         if (iceTooltip == null) {

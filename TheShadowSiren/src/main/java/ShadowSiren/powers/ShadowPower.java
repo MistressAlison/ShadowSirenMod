@@ -95,6 +95,12 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
     }
 
     @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        delayedCheckIfSurpassedHP();
+        return super.onAttacked(info, damageAmount);
+    }
+
+    @Override
     public int onHeal(int healAmount) {
         delayedCheckIfSurpassedHP();
         return super.onHeal(healAmount);

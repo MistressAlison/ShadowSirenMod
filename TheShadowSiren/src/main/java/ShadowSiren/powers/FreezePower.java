@@ -244,7 +244,7 @@ public class FreezePower extends AbstractPower implements CloneablePowerInterfac
             }
             float yOff = ((owner.hb_w) * (float) rng.nextGaussian())*0.25f;
             if(MathUtils.randomBoolean()) {
-                yOff = -xOff;
+                yOff = -yOff;
             }
             //AbstractDungeon.effectList.add(new StraightFireParticle(owner.drawX + xOff, owner.drawY + MathUtils.random(owner.hb_h/2f), 75f));
             AbstractDungeon.effectList.add(new UncommonPotionParticleEffect(owner.hb.cX+xOff, owner.hb.cY+yOff));

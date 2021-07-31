@@ -21,7 +21,7 @@ public class IceDamage extends AbstractVivianDamageModifier {
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
         if (unblockedAmount+blockedAmount > 0) {
-            this.addToTop(new ApplyPowerAction(target, info.owner, new ChillPower(target, unblockedAmount+blockedAmount)));
+            this.addToBot(new ApplyPowerAction(target, info.owner, new ChillPower(target, unblockedAmount+blockedAmount)));
         }
 
     }

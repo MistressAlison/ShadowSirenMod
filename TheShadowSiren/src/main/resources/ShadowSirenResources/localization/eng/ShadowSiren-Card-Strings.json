@@ -25,6 +25,11 @@
     "NAME": "Chain Shock",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage to ALL enemies. NL Exhaust."
   },
+  "ShadowSiren:ChargeUp": {
+    "NAME": "Charge Up",
+    "DESCRIPTION": "Gain !M! shadowsiren:Charge.",
+    "UPGRADE_DESCRIPTION": "Gain !M! shadowsiren:Charges."
+  },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
     "DESCRIPTION": "Draw !M! cards."
@@ -131,6 +136,10 @@
   "ShadowSiren:Thunderstruck": {
     "NAME": "Thunderstruck",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL Apply !M! Weak. NL Apply !M! Vulnerable. NL Exhaust."
+  },
+  "ShadowSiren:TriAttack": {
+    "NAME": "Tri Attack",
+    "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] [ElectricIcon] damage. NL Exhaust."
   },
   "ShadowSiren:VigorousShift": {
     "NAME": "Vigorous Shift",

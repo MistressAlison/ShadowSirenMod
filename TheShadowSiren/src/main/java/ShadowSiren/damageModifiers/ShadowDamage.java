@@ -33,8 +33,8 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
         if (pow instanceof ShadowPower && ((ShadowPower) pow).checkIfSurpassedHP()) {
             return damageAmount;
         } else if (damageAmount > 0) {
-            this.addToTop(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount),damageAmount, true));
-            this.addToTop(new VFXAction(new CardPoofEffect(target.hb.cX, target.hb.cY)));
+            this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount),damageAmount, true));
+            this.addToBot(new VFXAction(new CardPoofEffect(target.hb.cX, target.hb.cY)));
         }
         return 0;
     }

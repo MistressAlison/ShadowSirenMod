@@ -25,6 +25,10 @@
     "NAME": "Chain Shock",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage to ALL enemies. NL Exhaust."
   },
+  "ShadowSiren:Daydream": {
+    "NAME": "Daydream",
+    "DESCRIPTION": "Draw !M! cards."
+  },
   "ShadowSiren:Defend": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."

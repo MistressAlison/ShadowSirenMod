@@ -1,17 +1,16 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
-import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -63,6 +62,22 @@ public class Recuperate extends AbstractDynamicCard implements ModularDescriptio
         }
         if (cleansed < magicNumber) {
             this.addToBot(new DrawCardAction(magicNumber-cleansed));
+        }
+    }
+
+    private boolean hasDebuff() {
+        for (AbstractPower pow : AbstractDungeon.player.powers) {
+            if (pow.type == AbstractPower.PowerType.DEBUFF) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        if (hasDebuff()) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         }
     }
 

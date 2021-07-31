@@ -43,6 +43,15 @@
     "DESCRIPTION": "#yFire, #yIce, #yElectric, and #yShadow."
   },
   {
+    "PROPER_NAME": "Charge",
+    "NAMES": [
+      "Charge",
+      "charge",
+      "charges"
+    ],
+    "DESCRIPTION": "Your next card is #b50% more effective."
+  },
+  {
     "PROPER_NAME": "Follow-Up",
     "NAMES": [
       "follow-up"
@@ -80,7 +89,7 @@
     "DESCRIPTION": "Targets take up to double damage when #yShadow #ySplit exceeds their current HP."
   },
   {
-    "PROPER_NAME": "veil",
+    "PROPER_NAME": "Veil",
     "NAMES": [
       "veil",
       "veiled"

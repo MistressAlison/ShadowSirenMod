@@ -60,9 +60,11 @@ public class ChainShock extends AbstractElectricCard implements MagicAnimation {
                     p.onDamageAllEnemies(multiDamage);
                 }
                 for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                    CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.2f);
-                    AbstractDungeon.effectList.add(new LightningOrbActivateEffect(aM.hb.cX, aM.hb.cY));
-                    aM.damage(DamageModifierHelper.makeBoundDamageInfo(this, p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn));
+                    if (!aM.isDeadOrEscaped()) {
+                        CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.2f);
+                        AbstractDungeon.effectList.add(new LightningOrbActivateEffect(aM.hb.cX, aM.hb.cY));
+                        aM.damage(DamageModifierHelper.makeBoundDamageInfo(ChainShock.this, p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn));
+                    }
                 }
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                     AbstractDungeon.actionManager.clearPostCombatActions();

@@ -2,6 +2,7 @@ package ShadowSiren.cards.itemCards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractItemCard;
+import ShadowSiren.cards.interfaces.OnLoseHPLastCard;
 import ShadowSiren.characters.Vivian;
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
@@ -13,7 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class AutoArmor extends AbstractItemCard implements OnPlayerDamagedSubscriber {
+public class AutoArmor extends AbstractItemCard implements OnLoseHPLastCard {
 
 
     // TEXT DECLARATION
@@ -60,26 +61,18 @@ public class AutoArmor extends AbstractItemCard implements OnPlayerDamagedSubscr
     }
 
     @Override
-    public void checkIfActive() {
-        super.checkIfActive();
+    public int onLoseHpLast(DamageInfo info, int damageAmount) {
+        checkIfActive();
         if (isActive) {
-            BaseMod.subscribe(this);
-        } else {
-            BaseMod.unsubscribe(this);
-        }
-    }
-
-    @Override
-    public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
-        int delta = i - AbstractDungeon.player.currentBlock;
-        if (isActive && delta > 0) {
-            i -= magicNumber;
-            if (i < 0) {
-                i = 0;
+            if (damageAmount > 0) {
+                damageAmount -= magicNumber;
+                if (damageAmount < 0) {
+                    damageAmount = 0;
+                }
+                superFlash();
+                applyEffect();
             }
-            this.superFlash();
-            this.applyEffect();
         }
-        return i;
+        return damageAmount;
     }
 }

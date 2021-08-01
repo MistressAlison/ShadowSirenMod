@@ -78,6 +78,8 @@ public class Recuperate extends AbstractDynamicCard implements ModularDescriptio
         super.triggerOnGlowCheck();
         if (hasDebuff()) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        } else {
+            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
         }
     }
 

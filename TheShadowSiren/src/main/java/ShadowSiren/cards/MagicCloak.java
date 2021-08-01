@@ -71,6 +71,8 @@ public class MagicCloak extends AbstractDynamicCard {
         super.triggerOnGlowCheck();
         if (hasDebuff()) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        } else {
+            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
         }
     }
 

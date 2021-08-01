@@ -141,6 +141,12 @@
     "NAME": "Tri Attack",
     "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] [ElectricIcon] damage. NL Exhaust."
   },
+  "ShadowSiren:TurboCharged": {
+    "NAME": "Turbo Charged",
+    "DESCRIPTION": "Gain X shadowsiren:Charges. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge)",
+    "UPGRADE_DESCRIPTION": "Gain X shadowsiren:Charges. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charges)",
+    "EXTENDED_DESCRIPTION": ["Gain X + !M! shadowsiren:Charges. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge)", "Gain X + !M! shadowsiren:Charges. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charges)"]
+  },
   "ShadowSiren:VigorousShift": {
     "NAME": "Vigorous Shift",
     "DESCRIPTION": "Whenever you change active shadowsiren:Elements, gain !M! Vigor."

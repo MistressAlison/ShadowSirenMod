@@ -1,19 +1,19 @@
-package ShadowSiren.oldStuff.cards;
+package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
-import ShadowSiren.oldStuff.cards.dualityCards.hyper.TurboChargedDual;
+import ShadowSiren.cards.abstractCards.AbstractElectricCard;
+import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ChargePower;
+import ShadowSiren.util.XCostGrabber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class TurboCharged extends AbstractHyperCard {
+public class TurboCharged extends AbstractElectricCard implements ModularDescription {
 
     // TEXT DECLARATION
 
@@ -21,7 +21,6 @@ public class TurboCharged extends AbstractHyperCard {
     public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
-
 
     // STAT DECLARATION
 
@@ -36,28 +35,22 @@ public class TurboCharged extends AbstractHyperCard {
 
     // /STAT DECLARATION/
 
-
     public TurboCharged() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new TurboChargedDual());
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = BASE_EFFECT;
+        secondMagicNumber = baseSecondMagicNumber = BASE_EFFECT;
+        initializeDescription();
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = EnergyPanel.totalCount;
+        int effect = XCostGrabber.getXCostAmount(this, false);
 
-        if (this.energyOnUse != -1) {
-            effect = this.energyOnUse;
-        }
+        effect += magicNumber;
 
-        if (p.hasRelic("Chemical X")) {
-            effect += 2;
-            p.getRelic("Chemical X").flash();
-        }
-
-        if (magicNumber+effect > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, magicNumber+effect)));
+        if (effect > 0) {
+            this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, effect)));
         }
 
         if (!this.freeToPlayOnce) {
@@ -67,14 +60,15 @@ public class TurboCharged extends AbstractHyperCard {
 
     @Override
     public void applyPowers() {
-        secondMagicNumber = baseSecondMagicNumber = EnergyPanel.totalCount;
-        if (AbstractDungeon.player.hasRelic("Chemical X")) {
-            secondMagicNumber += 2;
-        }
         super.applyPowers();
+        updateSecondValue();
+        initializeDescription();
+    }
+
+    private void updateSecondValue() {
+        secondMagicNumber = XCostGrabber.getXCostAmount(this, true);
         secondMagicNumber += magicNumber;
         isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
-        initializeDescription();
     }
 
     //Upgraded stats.
@@ -83,9 +77,27 @@ public class TurboCharged extends AbstractHyperCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_BASE_EFFECT);
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeSecondMagicNumber(UPGRADE_BASE_EFFECT);
             initializeDescription();
-            super.upgrade();
+        }
+    }
+
+    @Override
+    public void changeDescription() {
+        if (DESCRIPTION != null) {
+            if (magicNumber > 0) {
+                if (secondMagicNumber != 1) {
+                    rawDescription = EXTENDED_DESCRIPTION[1];
+                } else {
+                    rawDescription = EXTENDED_DESCRIPTION[0];
+                }
+            } else {
+                if (secondMagicNumber != 1) {
+                    rawDescription = UPGRADE_DESCRIPTION;
+                } else {
+                    rawDescription = DESCRIPTION;
+                }
+            }
         }
     }
 }

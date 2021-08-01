@@ -38,6 +38,10 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
+  "ShadowSiren:Discharge": {
+    "NAME": "Discharge",
+    "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL shadowsiren:Charge affects this card !M! times."
+  },
   "ShadowSiren:EnergizingFlush": {
     "NAME": "Energized Flush",
     "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost.",

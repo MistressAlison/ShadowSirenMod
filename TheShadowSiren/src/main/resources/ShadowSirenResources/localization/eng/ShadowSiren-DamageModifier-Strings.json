@@ -17,7 +17,7 @@
   "ShadowSiren:IceDamage": {
     "NAME": "Ice",
     "DESCRIPTION": "Ice [IceIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Applies #yChill equal to damage dealt. Targets deal #b1% less damage per #yChill stack they have. NL #yBlock: When you are attacked, applies #yChill equal to damage taken."]
+    "EXTENDED_DESCRIPTION": ["#yDamage: Applies #yChill equal to damage dealt. Creatures deal #b1% less damage per #yChill stack they have. NL #yBlock: When you are attacked, applies #yChill equal to damage taken."]
   },
   "ShadowSiren:LightDamage": {
     "NAME": "Light",

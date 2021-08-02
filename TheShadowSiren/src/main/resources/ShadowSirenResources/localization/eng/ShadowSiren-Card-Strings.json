@@ -43,6 +43,10 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
   },
+  "ShadowSiren:DiamondDust": {
+    "NAME": "Diamond Dust",
+    "DESCRIPTION": "Whenever you apply *Chill, gain !M! Block."
+  },
   "ShadowSiren:Discharge": {
     "NAME": "Discharge",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL shadowsiren:Charge affects this card !M! times."

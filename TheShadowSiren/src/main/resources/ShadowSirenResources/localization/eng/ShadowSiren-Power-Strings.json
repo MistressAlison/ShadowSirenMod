@@ -165,5 +165,9 @@
         "ShadowSiren:VulcanizePower": {
                 "NAME": "Vulcanize",
                 "DESCRIPTIONS": ["Unblocked #yFire damage causes targets to lose #b","% more Max HP."]
+        },
+        "ShadowSiren:DiamondDustPower": {
+                "NAME": "Diamond Dust",
+                "DESCRIPTIONS": ["Whenever you apply #yChill, gain #b"," #yBlock."]
         }
 }

@@ -25,7 +25,7 @@
     "NAMES": [
       "ice_damage"
     ],
-    "DESCRIPTION": "Applies #yChill equal to damage dealt. Targets deal #b1% less damage per stack #yChill they have."
+    "DESCRIPTION": "Applies #yChill equal to damage dealt. Creatures deal #b1% less damage per #yChill stack they have."
   },
   {
     "PROPER_NAME": "Shadow Damage [DarkIcon]",
@@ -33,6 +33,13 @@
       "shadow_damage"
     ],
     "DESCRIPTION": "Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. Targets take up to double damage when #yShadow #ySplit exceeds their current HP."
+  },
+  {
+    "PROPER_NAME": "Chill",
+    "NAMES": [
+      "chill"
+    ],
+    "DESCRIPTION": "Creatures deal #b1% less damage per stack of Chill they have."
   },
   {
     "PROPER_NAME": "Elements",

@@ -67,6 +67,13 @@
     "DESCRIPTION": "Frozen creatures are unable to act, but are also invincible."
   },
   {
+    "PROPER_NAME": "Inert",
+    "NAMES": [
+      "inert"
+    ],
+    "DESCRIPTION": "Does not deal #yElemental damage."
+  },
+  {
     "PROPER_NAME": "Intensify",
     "NAMES": [
       "intensify"
@@ -87,6 +94,13 @@
       "shadow_split"
     ],
     "DESCRIPTION": "Targets take up to double damage when #yShadow #ySplit exceeds their current HP."
+  },
+  {
+    "PROPER_NAME": "Hyper",
+    "NAMES": [
+      "hyper"
+    ],
+    "DESCRIPTION": "Whenever you would lose HP, lose #b2 less. At the start of your turn, gain #b1 #yCharge if you did not lose HP last turn."
   },
   {
     "PROPER_NAME": "Veil",

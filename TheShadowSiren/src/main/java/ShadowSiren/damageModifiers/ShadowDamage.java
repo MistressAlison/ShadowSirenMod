@@ -34,7 +34,7 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
             return damageAmount;
         } else if (damageAmount > 0) {
             this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount),damageAmount, true));
-            this.addToBot(new VFXAction(new CardPoofEffect(target.hb.cX, target.hb.cY)));
+            AbstractDungeon.effectList.add(new CardPoofEffect(target.hb.cX, target.hb.cY));
         }
         return 0;
     }

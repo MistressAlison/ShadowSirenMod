@@ -3,14 +3,13 @@ package ShadowSiren.patches;
 import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.cards.abstractCards.AbstractModdedCard;
+import ShadowSiren.cards.interfaces.ElementallyInert;
 import ShadowSiren.damageModifiers.*;
 import ShadowSiren.powers.ElementalPower;
-import ShadowSiren.vfx.ElementParticleEffect;
-import com.badlogic.gdx.Gdx;
+import ShadowSiren.util.ParticleOrbitRenderer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -20,14 +19,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class ElementalPatches {
     public static boolean isNonElemental(AbstractCard card) {
@@ -48,7 +45,7 @@ public class ElementalPatches {
                     @Override
                     public void update() {
                         delayedSpliceCheck(__instance);
-                        RenderFloatyElementIcons.angleSpeed += RenderFloatyElementIcons.speedBoost;
+                        ParticleOrbitRenderer.increaseSpeed(ParticleOrbitRenderer.NORMAL_BOOST);
                         this.isDone = true;
                     }
                 });
@@ -58,7 +55,7 @@ public class ElementalPatches {
 
     public static void delayedSpliceCheck(DamageInfo di) {
         Object obj = DamageModifierManager.getBoundObject(di);
-        if (obj == null || noElementalModifiers(obj)) {
+        if (obj == null || (noElementalModifiers(obj) && !(obj instanceof ElementallyInert))) {
             Object o = new Object();
             DamageModifierManager.addModifiers(o, DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
             DamageModifierManager.spliceBoundObject(di, o);
@@ -72,7 +69,7 @@ public class ElementalPatches {
 
         @SpirePrefixPatch()
         public static void addMods(AbstractCard __instance, AbstractMonster mo) {
-            if (shouldPushElements(__instance)) {
+            if (shouldPushElements(__instance) && ! (__instance instanceof ElementallyInert)) {
                 DamageModifierManager.addModifiers(__instance, DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
                 pushedMods.addAll(DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
             }
@@ -143,95 +140,4 @@ public class ElementalPatches {
             }
         }
     }
-
-    @SpirePatch2(clz = AbstractPlayer.class, method = "render")
-    public static class RenderFloatyElementIcons {
-        public static float angleSpeed = 1f;
-        public static final float speedBoost = 1f;
-        private static float angle;
-        private static final float dy = 110;
-        private static final float dx = 0;
-        private static float da, a;
-        private static final float renderScale = 2f;
-        private static float particleTimer;
-        private static final float INTERVAL = 0.1f;
-
-        @SpirePrefixPatch
-        public static void patch(AbstractPlayer __instance, SpriteBatch sb) {
-            particleTimer -= Gdx.graphics.getRawDeltaTime();
-            if (angleSpeed > 1) {
-                angleSpeed -= (Gdx.graphics.getDeltaTime())/2;
-            }
-            angle -= 100*angleSpeed*Gdx.graphics.getDeltaTime();
-            angle %= 360;
-            if (__instance.hasPower(ElementalPower.POWER_ID)) {
-                da = 360f/DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)).stream().filter(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement).count();
-                a = 0;
-                for (AbstractDamageModifier mod : DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID))) {
-                    if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).isAnElement) {
-                        if (particleTimer < 0.0F) {
-                            AbstractDungeon.effectList.add(new ElementParticleEffect((AbstractVivianDamageModifier) mod, __instance.hb.cX + dx, __instance.hb.cY + dy, -dx, -dy, renderScale, angle+a));
-                        }
-                        a += da;
-                    }
-                }
-                if (particleTimer < 0.0F) {
-                    particleTimer = INTERVAL/angleSpeed;
-                }
-            }
-        }
-    }
-
-    /*@SpirePatch2(clz = AbstractPlayer.class, method = "render")
-    public static class RenderFloatyElementIcons {
-        private static final ArrayList<AbstractVivianDamageModifier> mods = new ArrayList<>();
-        private static float angle;
-        private static final float dy = 110;
-        //private static final float da = 20;
-        private static final float amplitude = 0f;
-        public static float angleSpeed = 1f;
-        public static final float speedBoost = 1f;
-        private static final float INTERVAL = 0.1f;
-        private static float particleTimer;
-        private static final float renderScale = 2f;
-        @SpirePrefixPatch
-        public static void patch(AbstractPlayer __instance, SpriteBatch sb) {
-            particleTimer -= Gdx.graphics.getRawDeltaTime();
-            if (angleSpeed > 1) {
-                angleSpeed -= (Gdx.graphics.getDeltaTime());
-            }
-            angle -= 100*angleSpeed*Gdx.graphics.getDeltaTime();
-            angle %= 360;
-            if (__instance.hasPower(ElementalPower.POWER_ID)) {
-                sb.setColor(Color.WHITE.cpy());
-                for (AbstractDamageModifier mod : DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID))) {
-                    if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).isAnElement) {
-                        mods.add((AbstractVivianDamageModifier) mod);
-                    }
-                }
-                float dx = 0;//-(mods.size()-1)*16f*Settings.scale;
-                float da = 360f/mods.size();
-                float a = 0;
-                for (AbstractVivianDamageModifier mod : mods) {
-                    sb.setColor(Color.WHITE.cpy());
-                    AtlasRegion img = mod.getAccompanyingIcon().getAtlasTexture();
-                    if (particleTimer < 0.0F) {
-                        //AbstractDungeon.effectList.add(new ElementParticleEffect(mod, __instance.hb.cX + renderScale*(dx+img.originalWidth/2f), __instance.hb.cY + renderScale*(dy+img.originalHeight/2f), -renderScale*(dx+img.originalWidth/2f), -renderScale*(dy+img.originalHeight/2f), Settings.scale, (angle+a)));
-                        AbstractDungeon.effectList.add(new ElementParticleEffect(mod, __instance.hb.cX + dx + img.offsetX - (float) img.originalWidth / 2.0F, __instance.hb.cY + dy + img.offsetY - (float) img.originalHeight / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX - dx, (float) img.originalHeight / 2.0F - img.offsetY - dy, renderScale, angle+a));
-                        //AbstractDungeon.effectList.add(new ElementParticleEffect(mod, __instance.hb.cX + dx + img.offsetX - (float) img.originalWidth / 2.0F, __instance.hb.cY + dy + img.offsetY - (float) img.originalHeight / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX - dx, (float) img.originalHeight / 2.0F - img.offsetY - dy, Settings.scale, angle+a));
-                    }
-                    sb.draw(img, __instance.hb.cX + dx + img.offsetX - (float) img.originalWidth / 2.0F, __instance.hb.cY + dy + img.offsetY - (float) img.originalHeight / 2.0F,
-                            (float) img.originalWidth / 2.0F - img.offsetX - dx, (float) img.originalHeight / 2.0F - img.offsetY - dy,
-                            (float) img.packedWidth, (float) img.packedHeight,
-                            renderScale * Settings.scale, renderScale * Settings.scale, angle+a);
-                    //dx += 32f*Settings.scale;
-                    a += da;
-                }
-                if (particleTimer < 0.0F) {
-                    particleTimer = INTERVAL;
-                }
-            }
-            mods.clear();
-        }
-    }*/
 }

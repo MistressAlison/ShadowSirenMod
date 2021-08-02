@@ -9,6 +9,11 @@
     "NAME": "ADOFAI",
     "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage."
   },
+  "ShadowSiren:Ambush": {
+    "NAME": "Ambush",
+    "DESCRIPTION": "If the enemy intends to attack, gain [E] and !M! Vigor.",
+    "UPGRADE_DESCRIPTION": "If the enemy intends to attack, gain [E] [E] and !M! Vigor."
+  },
   "ShadowSiren:AutoArmor": {
     "NAME": "Auto-Armor",
     "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL Whenever you would lose HP, lose !M! less."
@@ -128,6 +133,10 @@
   "ShadowSiren:ShieldConversion": {
     "NAME": "Shield Conversion",
     "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain !B! Block for each shadowsiren:Element lost."
+  },
+  "ShadowSiren:Singe": {
+    "NAME": "Singe",
+    "DESCRIPTION": "Enemy loses !M! HP and twice that much Max HP."
   },
   "ShadowSiren:SnowBlind": {
     "NAME": "Snow Blind",

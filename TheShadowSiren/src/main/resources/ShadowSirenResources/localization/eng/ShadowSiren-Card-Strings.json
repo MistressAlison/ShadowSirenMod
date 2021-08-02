@@ -47,6 +47,10 @@
     "NAME": "Discharge",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL shadowsiren:Charge affects this card !M! times."
   },
+  "ShadowSiren:ElementalBurst": {
+    "NAME": "Elemental Burst",
+    "DESCRIPTION": "shadowsiren:Inert. NL Deal !D! damage for each active shadowsiren:Element."
+  },
   "ShadowSiren:EnergizingFlush": {
     "NAME": "Energized Flush",
     "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost.",
@@ -141,6 +145,11 @@
   "ShadowSiren:SnowBlind": {
     "NAME": "Snow Blind",
     "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Apply !M! Weak."
+  },
+  "ShadowSiren:StarFall": {
+    "NAME": "Star Fall",
+    "DESCRIPTION": "shadowsiren:Inert. NL Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! times)",
+    "EXTENDED_DESCRIPTION": ["shadowsiren:Inert. NL Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! time)"]
   },
   "ShadowSiren:Strike": {
     "NAME": "Strike",

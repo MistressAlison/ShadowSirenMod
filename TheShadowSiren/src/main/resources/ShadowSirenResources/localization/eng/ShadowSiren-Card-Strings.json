@@ -113,6 +113,10 @@
     "NAME": "Polychrome",
     "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] [ElectricIcon] [DarkIcon] damage. NL Exhaust."
   },
+  "ShadowSiren:PureStrike": {
+    "NAME": "Pure Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Deals 50% more damage if you have no active shadowsiren:Element."
+  },
   "ShadowSiren:Recuperate": {
     "NAME": "Recuperate",
     "DESCRIPTION": "Gain !B! Block. NL Remove !M! debuff if you have any, otherwise draw !M! card.",
@@ -172,6 +176,10 @@
   "ShadowSiren:VigorousShift": {
     "NAME": "Vigorous Shift",
     "DESCRIPTION": "Whenever you change active shadowsiren:Elements, gain !M! Vigor."
+  },
+  "ShadowSiren:Vulcanize": {
+    "NAME": "Vulcanize",
+    "DESCRIPTION": "Unblocked [FireIcon] damage causes enemies to lose an additional 25% Max HP."
   },
   "ShadowSiren:WhiteOut": {
     "NAME": "White Out",

@@ -161,5 +161,9 @@
         "ShadowSiren:ElementalPower": {
                 "NAME": "Elementalist",
                 "DESCRIPTIONS": ["All #yNon-Elemental #yAttack cards gain the #yElements of the last #yElemental card you played."," NL Current #yElements:"]
+        },
+        "ShadowSiren:VulcanizePower": {
+                "NAME": "Vulcanize",
+                "DESCRIPTIONS": ["Unblocked #yFire damage causes targets to lose #b","% more Max HP."]
         }
 }

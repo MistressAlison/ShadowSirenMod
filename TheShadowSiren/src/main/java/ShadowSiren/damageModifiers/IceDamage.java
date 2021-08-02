@@ -8,6 +8,9 @@ import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.vfx.combat.CardPoofEffect;
+import com.megacrit.cardcrawl.vfx.combat.FrostOrbActivateEffect;
 
 public class IceDamage extends AbstractVivianDamageModifier {
     public static final String ID = ShadowSirenMod.makeID("IceDamage");
@@ -22,9 +25,10 @@ public class IceDamage extends AbstractVivianDamageModifier {
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
         if (unblockedAmount+blockedAmount > 0) {
             this.addToBot(new ApplyPowerAction(target, info.owner, new ChillPower(target, unblockedAmount+blockedAmount)));
+            AbstractDungeon.effectList.add(new FrostOrbActivateEffect(target.hb.cX, target.hb.cY));
         }
-
     }
+
     @Override
     public TooltipInfo getCustomTooltip() {
         if (iceTooltip == null) {

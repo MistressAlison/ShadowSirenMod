@@ -135,4 +135,11 @@ public class ElementalPower extends AbstractPower implements InvisiblePower {
         }
         return i;
     }
+
+    public static ArrayList<AbstractDamageModifier> getActiveElements() {
+        if (hasElementalPower()) {
+            return DamageModifierManager.modifiers(getElementalPower());
+        }
+        return new ArrayList<>();
+    }
 }

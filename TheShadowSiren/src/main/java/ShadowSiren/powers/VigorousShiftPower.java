@@ -62,6 +62,6 @@ public class VigorousShiftPower extends AbstractPower implements CloneablePowerI
 
     @Override
     public void onChangeElement() {
-        this.addToTop(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount)));
+        this.addToBot(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount)));
     }
 }

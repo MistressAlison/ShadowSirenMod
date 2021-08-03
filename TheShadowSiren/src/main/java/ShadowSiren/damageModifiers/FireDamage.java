@@ -29,16 +29,21 @@ public class FireDamage extends AbstractVivianDamageModifier {
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature targetHit) {
         this.addToTop(new AbstractGameAction() {
+            boolean firstPass = true;
             @Override
             public void update() {
-                AbstractDungeon.effectList.add(new FlashAtkImgEffect(targetHit.hb.cX, targetHit.hb.cY, AbstractGameAction.AttackEffect.FIRE));
-                float multiplier = 1;
-                if (info.owner.hasPower(VulcanizePower.POWER_ID)) {
-                    multiplier += (info.owner.getPower(VulcanizePower.POWER_ID).amount*VulcanizePower.INCREASE_PERCENT/100f);
-                    info.owner.getPower(VulcanizePower.POWER_ID).flash();
+                if (firstPass) {
+                    firstPass = false;
+                    this.duration = 0.05f;
+                    AbstractDungeon.effectList.add(new FlashAtkImgEffect(targetHit.hb.cX, targetHit.hb.cY, AbstractGameAction.AttackEffect.FIRE));
+                    float multiplier = 1;
+                    if (info.owner.hasPower(VulcanizePower.POWER_ID)) {
+                        multiplier += (info.owner.getPower(VulcanizePower.POWER_ID).amount*VulcanizePower.INCREASE_PERCENT/100f);
+                        info.owner.getPower(VulcanizePower.POWER_ID).flash();
+                    }
+                    targetHit.decreaseMaxHealth((int)(unblockedAmount*multiplier));
                 }
-                targetHit.decreaseMaxHealth((int)(unblockedAmount*multiplier));
-                this.isDone = true;
+                tickDuration();
             }
         });
     }

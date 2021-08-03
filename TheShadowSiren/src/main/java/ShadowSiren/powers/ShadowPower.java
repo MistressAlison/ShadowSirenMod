@@ -76,7 +76,7 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
 
     public boolean checkIfSurpassedHP() {
         if (amount >= owner.currentHealth) {
-            if (!surpassedHP) {
+            if (!surpassedHP && owner.currentHealth > 0) {
                 playSurpassedVFX();
             }
             surpassedHP = true;

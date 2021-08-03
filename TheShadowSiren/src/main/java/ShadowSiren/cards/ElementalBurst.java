@@ -2,8 +2,7 @@ package ShadowSiren.cards;
 
 import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import ShadowSiren.cards.interfaces.ElementallyInert;
+import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.util.ParticleOrbitRenderer;
@@ -16,7 +15,7 @@ import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class ElementalBurst extends AbstractDynamicCard implements ElementallyInert {
+public class ElementalBurst extends AbstractInertCard {
 
     // TEXT DECLARATION
 
@@ -90,6 +89,13 @@ public class ElementalBurst extends AbstractDynamicCard implements ElementallyIn
                             AbstractDungeon.actionManager.clearPostCombatActions();
                         }
                     }
+                }
+            });
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    ElementalPower.removeAllElements();
+                    this.isDone = true;
                 }
             });
         }

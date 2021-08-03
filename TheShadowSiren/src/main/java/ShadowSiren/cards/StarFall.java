@@ -4,6 +4,7 @@ import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.cards.interfaces.ElementallyInert;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.cards.interfaces.ModularDescription;
@@ -18,7 +19,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -35,7 +35,7 @@ import java.util.ArrayList;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class StarFall extends AbstractDynamicCard implements MagicAnimation, ModularDescription, ElementallyInert {
+public class StarFall extends AbstractInertCard implements MagicAnimation, ModularDescription {
 
     // TEXT DECLARATION
 
@@ -69,7 +69,7 @@ public class StarFall extends AbstractDynamicCard implements MagicAnimation, Mod
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int effect = ElementalPower.numActiveElements();
-        int hitsPerElement = XCostGrabber.getXCostAmount(this, true);
+        int hitsPerElement = XCostGrabber.getXCostAmount(this);
         if (effect > 0) {
             this.addToBot(new AbstractGameAction() {
                 boolean firstPass = true;

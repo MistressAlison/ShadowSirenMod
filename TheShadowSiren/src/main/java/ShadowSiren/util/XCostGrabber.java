@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XCostGrabber {
+
+    public static int getXCostAmount(AbstractCard card) {
+        return getXCostAmount(card, false);
+    }
+
     public static int getXCostAmount(AbstractCard card, boolean nonUseCall) {
         int effect = EnergyPanel.totalCount;
 
@@ -22,7 +27,9 @@ public class XCostGrabber {
         if (AbstractDungeon.player != null) {
             if (AbstractDungeon.player.hasRelic("Chemical X")) {
                 effect += 2;
-                AbstractDungeon.player.getRelic("Chemical X").flash();
+                if (!nonUseCall) {
+                    AbstractDungeon.player.getRelic("Chemical X").flash();
+                }
             }
 
             lists.add(AbstractDungeon.player.hand.group);

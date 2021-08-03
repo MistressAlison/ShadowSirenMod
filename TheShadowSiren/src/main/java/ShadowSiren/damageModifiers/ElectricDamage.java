@@ -7,30 +7,27 @@ import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningOrbActivateEffect;
+
+import java.util.ArrayList;
 
 public class ElectricDamage extends AbstractVivianDamageModifier {
     public static final String ID = ShadowSirenMod.makeID("ElectricDamage");
 
     TooltipInfo electricTooltip = null;
-    static Object electricContainer = null;
 
     public ElectricDamage() {
-        super(ID);
-        if (electricContainer == null) {
-            electricContainer = new Object();
-            DamageModifierManager.addModifier(electricContainer, new ElectricDamage());
-        }
+        this(TipType.DAMAGE);
+    }
+
+    public ElectricDamage(TipType tipType) {
+        super(ID, tipType);
     }
 
     @Override
@@ -40,11 +37,15 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
                 this.addToTop(new AbstractGameAction() {
                     @Override
                     public void update() {
+                        int damage = (unblockedAmount+blockedAmount)/3;
+                        if (damage == 0) {
+                             damage = 1;
+                        }
                         target = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
                         if (target != null) {
                             AbstractDungeon.effectList.add(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY));
                             CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.2f);
-                            this.addToTop(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(DamageModifierManager.getBoundObject(info), info.owner, (unblockedAmount+blockedAmount)/2, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
+                            this.addToTop(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(DamageModifierManager.getBoundObject(info), info.owner, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
                             //this.addToTop(new VFXAction(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY)));
                             //this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.2f));
                         }
@@ -56,11 +57,13 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     }
 
     @Override
-    public TooltipInfo getCustomTooltip() {
+    public ArrayList<TooltipInfo> getCustomTooltips() {
+        ArrayList<TooltipInfo> l = super.getCustomTooltips();
         if (electricTooltip == null) {
             electricTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         }
-        return electricTooltip;
+        l.add(electricTooltip);
+        return l;
     }
 
     @Override

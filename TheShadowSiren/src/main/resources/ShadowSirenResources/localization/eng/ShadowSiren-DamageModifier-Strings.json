@@ -7,17 +7,21 @@
   "ShadowSiren:ElectricDamage": {
     "NAME": "Electric",
     "DESCRIPTION": "Electric [ElectricIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs to a random enemy on hit, dealing #b50% less damage each arc."]
+    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs to a random enemy on hit, dealing one third damage each arc."]
   },
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
     "DESCRIPTION": "Fire [FireIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP. NL #yBlock: When you are attacked, deals 3 [FireIcon] damage."]
+    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP. NL #yBlock: When you are attacked, deals 3 [FireIcon] damage.",
+                            "#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP.",
+                            "#yBlock: When you are attacked, deals 3 [FireIcon] damage."]
   },
   "ShadowSiren:IceDamage": {
     "NAME": "Ice",
     "DESCRIPTION": "Ice [IceIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Applies #yChill equal to damage dealt. Creatures deal #b1% less damage per #yChill stack they have. NL #yBlock: When you are attacked, applies #yChill equal to damage taken."]
+    "EXTENDED_DESCRIPTION": ["#yDamage: Applies #yChill equal to damage dealt. NL #yBlock: When you are attacked, applies #yChill equal to damage taken.",
+                            "#yDamage: Applies #yChill equal to damage dealt.",
+                            "#yBlock: When you are attacked, applies #yChill equal to damage taken."]
   },
   "ShadowSiren:LightDamage": {
     "NAME": "Light",
@@ -28,6 +32,11 @@
     "NAME": "Shadow",
     "DESCRIPTION": "Shadow [DarkIcon]",
     "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. Targets take up to double damage when #yShadow #ySplit exceeds their current HP."]
+  },
+  "ShadowSiren:ElementallyInert": {
+    "NAME": "Inert",
+    "DESCRIPTION": "Inert",
+    "EXTENDED_DESCRIPTION": ["Can not deal #yElemental damage."]
   },
   "ShadowSiren:IceBlock": {
     "NAME": "Ice Shield [IceIcon]",

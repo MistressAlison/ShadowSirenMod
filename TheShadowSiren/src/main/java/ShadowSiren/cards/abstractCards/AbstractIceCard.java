@@ -2,11 +2,16 @@ package ShadowSiren.cards.abstractCards;
 
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.IceDamage;
 
 public abstract class AbstractIceCard extends AbstractElementalCard {
 
     public AbstractIceCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
+        this(id, img, cost, type, color, rarity, target, AbstractVivianDamageModifier.TipType.DAMAGE);
+    }
+
+    public AbstractIceCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target, AbstractVivianDamageModifier.TipType tipType) {
         super(id, img, cost, type, color, rarity, target);
         switch (type) {
             case ATTACK:
@@ -19,6 +24,6 @@ public abstract class AbstractIceCard extends AbstractElementalCard {
                 this.setBackgroundTexture(ShadowSirenMod.SKILL_VOID, ShadowSirenMod.SKILL_VOID_PORTRAIT);
                 break;
         }
-        DamageModifierManager.addModifier(this, new IceDamage());
+        DamageModifierManager.addModifier(this, new IceDamage(tipType));
     }
 }

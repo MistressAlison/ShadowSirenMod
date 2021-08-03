@@ -6,10 +6,19 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 
 public abstract class AbstractVivianDamageModifier extends AbstractDamageModifier {
+    public enum TipType {
+        DAMAGE_AND_BLOCK,
+        DAMAGE,
+        BLOCK,
+        NONE
+    }
+
     public final CardStrings cardStrings;
     public boolean isAnElement = true;
-    public AbstractVivianDamageModifier(String ID) {
+    TipType tipType;
+    public AbstractVivianDamageModifier(String ID, TipType tipType) {
         cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+        this.tipType = tipType;
     }
 
     abstract public AbstractCustomIcon getAccompanyingIcon();

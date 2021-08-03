@@ -12,13 +12,21 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
+import java.util.ArrayList;
+
 public class FireDamage extends AbstractVivianDamageModifier {
     public static final String ID = ShadowSirenMod.makeID("FireDamage");
 
     TooltipInfo fireTooltip = null;
+    TooltipInfo fireDamageTooltip = null;
+    TooltipInfo fireBlockTooltip = null;
 
     public FireDamage() {
-        super(ID);
+        this(TipType.DAMAGE);
+    }
+
+    public FireDamage(TipType tipType) {
+        super(ID, tipType);
     }
 
     @Override
@@ -49,11 +57,29 @@ public class FireDamage extends AbstractVivianDamageModifier {
     }
 
     @Override
-    public TooltipInfo getCustomTooltip() {
+    public ArrayList<TooltipInfo> getCustomTooltips() {
+        ArrayList<TooltipInfo> l = super.getCustomTooltips();
         if (fireTooltip == null) {
             fireTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         }
-        return fireTooltip;
+        if (fireDamageTooltip == null) {
+            fireDamageTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[1]);
+        }
+        if (fireBlockTooltip == null) {
+            fireBlockTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[2]);
+        }
+        switch (tipType) {
+            case DAMAGE_AND_BLOCK:
+                l.add(fireTooltip);
+                break;
+            case DAMAGE:
+                l.add(fireDamageTooltip);
+                break;
+            case BLOCK:
+                l.add(fireBlockTooltip);
+                break;
+        }
+        return l;
     }
 
     @Override

@@ -8,13 +8,15 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 
+import java.util.ArrayList;
+
 public class BluntDamage extends AbstractVivianDamageModifier {
     public static final String ID = ShadowSirenMod.makeID("BluntDamage");
 
     TooltipInfo bluntTooltip = null;
 
     public BluntDamage() {
-        super(ID);
+        super(ID, TipType.NONE);
         isAnElement = false;
     }
 
@@ -27,11 +29,13 @@ public class BluntDamage extends AbstractVivianDamageModifier {
     }
 
     @Override
-    public TooltipInfo getCustomTooltip() {
+    public ArrayList<TooltipInfo> getCustomTooltips() {
+        ArrayList<TooltipInfo> l = super.getCustomTooltips();
         if (bluntTooltip == null) {
             bluntTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         }
-        return bluntTooltip;
+        l.add(bluntTooltip);
+        return l;
     }
 
     @Override

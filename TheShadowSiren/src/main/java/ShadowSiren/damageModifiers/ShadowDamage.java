@@ -4,8 +4,8 @@ import IconsAddon.icons.AbstractCustomIcon;
 import IconsAddon.icons.DarkIcon;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.powers.ShadowPower;
+import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -13,13 +13,21 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.CardPoofEffect;
 
+import javax.tools.Tool;
+import java.util.ArrayList;
+
 public class ShadowDamage extends AbstractVivianDamageModifier {
     public static final String ID = ShadowSirenMod.makeID("ShadowDamage");
 
     TooltipInfo shadowTooltip = null;
+    TooltipInfo shadowSplitTooltip = null;
 
     public ShadowDamage() {
-        super(ID);
+        this(TipType.DAMAGE);
+    }
+
+    public ShadowDamage(TipType tipType) {
+        super(ID, tipType);
     }
 
     @Override
@@ -40,11 +48,17 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     }
 
     @Override
-    public TooltipInfo getCustomTooltip() {
+    public ArrayList<TooltipInfo> getCustomTooltips() {
+        ArrayList<TooltipInfo> l = super.getCustomTooltips();
         if (shadowTooltip == null) {
             shadowTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         }
-        return shadowTooltip;
+        if (shadowSplitTooltip == null) {
+            shadowSplitTooltip = new TooltipInfo(BaseMod.getKeywordTitle("shadowsiren:shadow_split"), BaseMod.getKeywordDescription("shadowsiren:shadow_split"));
+        }
+        l.add(shadowTooltip);
+        l.add(shadowSplitTooltip);
+        return l;
     }
 
     @Override

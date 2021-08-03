@@ -35,6 +35,10 @@
     "DESCRIPTION": "Gain !M! shadowsiren:Charge.",
     "UPGRADE_DESCRIPTION": "Gain !M! shadowsiren:Charges."
   },
+  "ShadowSiren:CreepingShadows": {
+    "NAME": "Creeping Shadow",
+    "DESCRIPTION": "At the beginning of your turn, apply !M! *Shadow *Split to ALL enemies."
+  },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
     "DESCRIPTION": "Draw !M! cards."
@@ -107,6 +111,10 @@
   "ShadowSiren:MagicCloak": {
     "NAME": "Magic Cloak",
     "DESCRIPTION": "Gain !B! Block. NL Gains !M! times more Block if you have a debuff."
+  },
+  "ShadowSiren:PlasmaBeam": {
+    "NAME": "Plasma Beam",
+    "DESCRIPTION": "Deal !D! [FireIcon] [ElectricIcon] damage to ALL enemies. NL Exhaust."
   },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",

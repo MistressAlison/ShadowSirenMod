@@ -2,6 +2,7 @@ package ShadowSiren.patches;
 
 import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.util.DamageModifierManager;
+import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.cards.abstractCards.AbstractModdedCard;
 import ShadowSiren.cards.interfaces.ElementallyInert;
 import ShadowSiren.damageModifiers.*;
@@ -31,10 +32,10 @@ public class ElementalPatches {
         return card instanceof AbstractModdedCard && noElementalModifiers(card);
     }
     public static boolean noElementalModifiers(Object o) {
-        return DamageModifierManager.modifiers(o).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement);
+        return DamageModifierManager.modifiers(o).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement) && !(o instanceof ElementallyInert);
     }
     public static boolean shouldPushElements(AbstractCard card) {
-        return noElementalModifiers(card) && AbstractDungeon.player.hasPower(ElementalPower.POWER_ID) && card.type == AbstractCard.CardType.ATTACK;
+        return noElementalModifiers(card) && AbstractDungeon.player.hasPower(ElementalPower.POWER_ID) && card.type == AbstractCard.CardType.ATTACK && !(card instanceof AbstractInertCard);
     }
     @SpirePatch(clz = DamageInfo.class, method = "<ctor>", paramtypez = {AbstractCreature.class, int.class, DamageInfo.DamageType.class})
     public static class BindObjectToDamageInfoIfNotBoundYet {
@@ -55,7 +56,7 @@ public class ElementalPatches {
 
     public static void delayedSpliceCheck(DamageInfo di) {
         Object obj = DamageModifierManager.getBoundObject(di);
-        if (obj == null || (noElementalModifiers(obj) && !(obj instanceof ElementallyInert))) {
+        if (obj == null || noElementalModifiers(obj)) {
             Object o = new Object();
             DamageModifierManager.addModifiers(o, DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
             DamageModifierManager.spliceBoundObject(di, o);
@@ -69,7 +70,7 @@ public class ElementalPatches {
 
         @SpirePrefixPatch()
         public static void addMods(AbstractCard __instance, AbstractMonster mo) {
-            if (shouldPushElements(__instance) && ! (__instance instanceof ElementallyInert)) {
+            if (shouldPushElements(__instance)) {
                 DamageModifierManager.addModifiers(__instance, DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
                 pushedMods.addAll(DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
             }

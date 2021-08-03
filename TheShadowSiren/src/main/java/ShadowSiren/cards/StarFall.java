@@ -76,13 +76,13 @@ public class StarFall extends AbstractDynamicCard implements MagicAnimation, Mod
                 float waitTimer = 0f;
                 int actionPhase = 0;
                 boolean mouseReturn;
-                AbstractCreature delayedHitCreature;
+                AbstractMonster delayedHitCreature;
                 String delayedHitSFX = "";
                 AbstractGameEffect delayedHitVFX;
                 final ArrayList<AbstractVivianDamageModifier> hitArray = new ArrayList<>();
                 AbstractMonster mo;
-                private void setDelayedHit(AbstractCreature c, String sfx, AbstractGameEffect vfx, float delay) {
-                    delayedHitCreature = c;
+                private void setDelayedHit(AbstractMonster mon, String sfx, AbstractGameEffect vfx, float delay) {
+                    delayedHitCreature = mon;
                     delayedHitSFX = sfx;
                     delayedHitVFX = vfx;
                     waitTimer += delay;
@@ -113,7 +113,7 @@ public class StarFall extends AbstractDynamicCard implements MagicAnimation, Mod
                                 delayedHitVFX = null;
                             }
                             if (delayedHitCreature != null) {
-                                delayedHitCreature.damage(DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn));
+                                delayedHitCreature.damage(DamageModifierHelper.makeBoundDamageInfo(this, p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(delayedHitCreature)], damageTypeForTurn));
                                 delayedHitCreature = null;
                             }
                         }

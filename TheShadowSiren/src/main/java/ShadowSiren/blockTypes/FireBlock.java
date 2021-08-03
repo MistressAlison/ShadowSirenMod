@@ -21,7 +21,7 @@ public class FireBlock extends AbstractCustomBlockType {
     public FireBlock(AbstractCreature owner, int amount) {
         super(owner, amount);
         if (fireContainer == null) {
-           fireContainer = new Object();
+            fireContainer = new Object();
             DamageModifierManager.addModifier(fireContainer, new FireDamage());
         }
     }

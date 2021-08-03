@@ -3,6 +3,7 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.ShadowPower;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -39,7 +40,7 @@ public class BlackRose extends AbstractShadowCard {
     // /STAT DECLARATION/
 
     public BlackRose() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
         magicNumber = baseMagicNumber = SPLIT;
         exhaust = true;
     }

@@ -39,7 +39,7 @@
     "NAMES": [
       "chill"
     ],
-    "DESCRIPTION": "Creatures deal #b1% less damage per stack of Chill they have."
+    "DESCRIPTION": "Creatures deal #b1% less damage per stack of Chill they have. At end of the round, Chill is reduced by a third."
   },
   {
     "PROPER_NAME": "Elements",
@@ -78,14 +78,14 @@
     "NAMES": [
       "inert"
     ],
-    "DESCRIPTION": "Does not deal #yElemental damage."
+    "DESCRIPTION": "Can not deal #yElemental damage."
   },
   {
     "PROPER_NAME": "Intensify",
     "NAMES": [
       "intensify"
     ],
-    "DESCRIPTION": "Increase the effect of ALL copies of this card this combat."
+    "DESCRIPTION": "Increase the effect of ALL instances of this card this combat."
   },
   {
     "PROPER_NAME": "Item",

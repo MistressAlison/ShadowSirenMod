@@ -5,6 +5,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -36,7 +37,7 @@ public class FrozenShield extends AbstractIceCard {
     // /STAT DECLARATION/
 
     public FrozenShield() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
         baseBlock = block = BLOCK;
     }
 

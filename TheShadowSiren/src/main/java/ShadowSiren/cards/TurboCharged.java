@@ -4,6 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.ChargePower;
 import ShadowSiren.util.XCostGrabber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -36,7 +37,7 @@ public class TurboCharged extends AbstractElectricCard implements ModularDescrip
     // /STAT DECLARATION/
 
     public TurboCharged() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
         magicNumber = baseMagicNumber = BASE_EFFECT;
         secondMagicNumber = baseSecondMagicNumber = BASE_EFFECT;
         initializeDescription();
@@ -45,7 +46,7 @@ public class TurboCharged extends AbstractElectricCard implements ModularDescrip
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = XCostGrabber.getXCostAmount(this, false);
+        int effect = XCostGrabber.getXCostAmount(this);
 
         effect += magicNumber;
 

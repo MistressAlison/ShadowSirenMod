@@ -5,6 +5,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.FreezePower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -41,7 +42,7 @@ public class FlashFreeze extends AbstractIceCard {
     // /STAT DECLARATION/
 
     public FlashFreeze() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
         magicNumber = baseMagicNumber = FREEZE;
     }
 

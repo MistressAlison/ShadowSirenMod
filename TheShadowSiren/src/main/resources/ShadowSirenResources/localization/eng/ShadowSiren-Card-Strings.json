@@ -57,7 +57,7 @@
   },
   "ShadowSiren:ElementalBurst": {
     "NAME": "Elemental Burst",
-    "DESCRIPTION": "shadowsiren:Inert. NL Deal !D! damage for each active shadowsiren:Element."
+    "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Deal !D! damage for each shadowsiren:Element lost."
   },
   "ShadowSiren:EnergizingFlush": {
     "NAME": "Energized Flush",
@@ -164,8 +164,8 @@
   },
   "ShadowSiren:StarFall": {
     "NAME": "Star Fall",
-    "DESCRIPTION": "shadowsiren:Inert. NL Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! times)",
-    "EXTENDED_DESCRIPTION": ["shadowsiren:Inert. NL Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! time)"]
+    "DESCRIPTION": "Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! times)",
+    "EXTENDED_DESCRIPTION": ["Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! time)"]
   },
   "ShadowSiren:Strike": {
     "NAME": "Strike",
@@ -196,5 +196,10 @@
   "ShadowSiren:WhiteOut": {
     "NAME": "White Out",
     "DESCRIPTION": "Deal !D! [IceIcon] [DarkIcon] damage to ALL enemies. NL Exhaust."
+  },
+  "ShadowSiren:WildMagic": {
+    "NAME": "Wild Magic",
+    "DESCRIPTION": "Deal !D! damage. NL shadowsiren:Intensify damage by active shadowsiren:Elements.",
+    "EXTENDED_DESCRIPTION":["Lose all active shadowsiren:Elements. NL Deal !D! damage. NL shadowsiren:Intensify damage for each shadowsiren:Elements lost."]
   }
 }

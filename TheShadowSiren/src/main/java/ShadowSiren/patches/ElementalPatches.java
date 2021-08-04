@@ -28,7 +28,7 @@ import javassist.CtBehavior;
 import java.util.ArrayList;
 
 public class ElementalPatches {
-    public static boolean isNonElemental(AbstractCard card) {
+    public static boolean isNonElementalVivianCard(AbstractCard card) { //unused
         return card instanceof AbstractModdedCard && noElementalModifiers(card);
     }
     public static boolean noElementalModifiers(Object o) {

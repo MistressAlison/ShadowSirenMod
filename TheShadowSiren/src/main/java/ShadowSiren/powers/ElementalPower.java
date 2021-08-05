@@ -150,7 +150,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
     @Override
     public void onCreateDamageInfo(DamageInfo damageInfo) {
         Object obj = DamageModifierManager.getBoundObject(damageInfo);
-        if (obj == null || ElementalPatches.noElementalModifiers(damageInfo)) {
+        if (obj == null || ElementalPatches.noElementalModifiers(obj) && obj instanceof AbstractCard) {
             Object o = new Object();
             DamageModifierManager.addModifiers(o, DamageModifierManager.modifiers(this));
             DamageModifierManager.spliceBoundObject(damageInfo, o);

@@ -37,7 +37,8 @@ public class ElementalPatches {
     public static boolean shouldPushElements(AbstractCard card) {
         return noElementalModifiers(card) && AbstractDungeon.player.hasPower(ElementalPower.POWER_ID) && card.type == AbstractCard.CardType.ATTACK && !(card instanceof AbstractInertCard);
     }
-    @SpirePatch(clz = DamageInfo.class, method = "<ctor>", paramtypez = {AbstractCreature.class, int.class, DamageInfo.DamageType.class})
+
+    /*@SpirePatch(clz = DamageInfo.class, method = "<ctor>", paramtypez = {AbstractCreature.class, int.class, DamageInfo.DamageType.class})
     public static class BindObjectToDamageInfoIfNotBoundYet {
         @SpirePostfixPatch()
         public static void ButOnlyIfYouHaveThePowerInQuestion(DamageInfo __instance, AbstractCreature damageSource, int base, DamageInfo.DamageType type) {
@@ -61,7 +62,7 @@ public class ElementalPatches {
             DamageModifierManager.addModifiers(o, DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)));
             DamageModifierManager.spliceBoundObject(di, o);
         }
-    }
+    }*/
 
     @SpirePatch(clz = AbstractCard.class, method = "calculateCardDamage")
     public static class AddTempModifiers {

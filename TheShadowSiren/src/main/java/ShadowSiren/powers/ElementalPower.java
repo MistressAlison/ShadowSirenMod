@@ -1,14 +1,18 @@
 package ShadowSiren.powers;
 
 import IconsAddon.damageModifiers.AbstractDamageModifier;
+import IconsAddon.powers.OnCreateDamageInfoPower;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElementalCard;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
+import ShadowSiren.patches.ElementalPatches;
 import ShadowSiren.powers.interfaces.OnChangeElementPower;
+import ShadowSiren.util.ParticleOrbitRenderer;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -18,7 +22,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
 
-public class ElementalPower extends AbstractPower implements InvisiblePower {
+public class ElementalPower extends AbstractPower implements InvisiblePower, OnCreateDamageInfoPower {
     public static final String POWER_ID = ShadowSirenMod.makeID("ElementalPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -141,5 +145,16 @@ public class ElementalPower extends AbstractPower implements InvisiblePower {
             return DamageModifierManager.modifiers(getElementalPower());
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public void onCreateDamageInfo(DamageInfo damageInfo) {
+        Object obj = DamageModifierManager.getBoundObject(damageInfo);
+        if (obj == null || ElementalPatches.noElementalModifiers(damageInfo)) {
+            Object o = new Object();
+            DamageModifierManager.addModifiers(o, DamageModifierManager.modifiers(this));
+            DamageModifierManager.spliceBoundObject(damageInfo, o);
+        }
+        ParticleOrbitRenderer.increaseSpeed(ParticleOrbitRenderer.NORMAL_BOOST);
     }
 }

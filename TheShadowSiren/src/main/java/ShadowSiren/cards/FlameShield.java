@@ -1,6 +1,7 @@
 package ShadowSiren.cards;
 
 import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.FireBlock;
 import ShadowSiren.blockTypes.IceBlock;
@@ -41,12 +42,13 @@ public class FlameShield extends AbstractFireCard {
     public FlameShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
         baseBlock = block = BLOCK;
+        BlockModifierManager.addModifier(this, new FireBlock());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new GainCustomBlockAction(new FireBlock(p, block)));
+        this.addToBot(new GainCustomBlockAction(this, p, block));
     }
 
     // Upgraded stats.

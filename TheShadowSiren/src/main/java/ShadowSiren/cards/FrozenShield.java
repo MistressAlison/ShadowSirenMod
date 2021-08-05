@@ -1,6 +1,7 @@
 package ShadowSiren.cards;
 
 import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
@@ -39,12 +40,14 @@ public class FrozenShield extends AbstractIceCard {
     public FrozenShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
         baseBlock = block = BLOCK;
+        BlockModifierManager.addModifier(this, new IceBlock());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new GainCustomBlockAction(new IceBlock(p, block)));
+        this.addToBot(new GainCustomBlockAction(this, p, block));
+        //this.addToBot(new GainCustomBlockAction(this, m, block));
     }
 
     // Upgraded stats.

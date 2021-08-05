@@ -84,6 +84,10 @@
     "NAME": "Flash Freeze",
     "DESCRIPTION": "Apply !M! shadowsiren:Freeze to ALL enemies."
   },
+  "ShadowSiren:FrostflameBarrier": {
+    "NAME": "Frostflame Barrier",
+    "DESCRIPTION": "Gain !B! [IceIcon] [FireIcon] Block."
+  },
   "ShadowSiren:FrozenShield": {
     "NAME": "Frozen Shield",
     "DESCRIPTION": "Gain !B! [IceIcon] Block."

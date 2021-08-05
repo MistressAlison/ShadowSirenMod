@@ -170,7 +170,7 @@ public abstract class AbstractModdedCard extends CustomCard {
         if (cardsToPreview != null) {
             masterKeywordSet = new HashSet<>();
             for (AbstractDamageModifier mod : DamageModifierManager.modifiers(cardsToPreview)) {
-                if (mod instanceof AbstractVivianDamageModifier) {
+                if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).getKeyword() != null) {
                     masterKeywordSet.add(((AbstractVivianDamageModifier) mod).getKeyword().toLowerCase());
                 }
             }

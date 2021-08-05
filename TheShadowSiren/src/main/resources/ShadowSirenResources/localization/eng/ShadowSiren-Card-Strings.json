@@ -14,6 +14,10 @@
     "DESCRIPTION": "If the enemy intends to attack, gain [E] and !M! Vigor.",
     "UPGRADE_DESCRIPTION": "If the enemy intends to attack, gain [E] [E] and !M! Vigor."
   },
+  "ShadowSiren:ArtOfWar": {
+    "NAME": "Art Of War",
+    "DESCRIPTION": "Gain !B! Block for each *Attack played this turn. NL (Gain !ShadowSiren:SecondMagic! Block)"
+  },
   "ShadowSiren:AutoArmor": {
     "NAME": "Auto-Armor",
     "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL Whenever you would lose HP, lose !M! less."
@@ -86,7 +90,7 @@
   },
   "ShadowSiren:Hammer": {
     "NAME": "Hammer",
-    "DESCRIPTION": "Deal !D! [ImpactIcon] damage. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL If the target has Block, deal !D! damage again. NL Exhaust."
   },
   "ShadowSiren:HammerBag": {
     "NAME": "Hammer Bag",

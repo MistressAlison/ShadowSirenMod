@@ -30,6 +30,15 @@
     "NAME": "Black Roses",
     "DESCRIPTION": "Apply !M! *Shadow *Split to ALL enemies. NL Exhaust."
   },
+  "ShadowSiren:Blitz": {
+    "NAME": "Blitz",
+    "DESCRIPTION": "Deal !D! damage !M! time. NL Increase this cards cost and hits by 1. NL When discarded, reset this cards cost and hits. NL shadowsiren:Reshuffle.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage !M! times. NL Increase this cards cost and hits by 1. NL When discarded, reset this cards cost and hits. NL shadowsiren:Reshuffle."
+  },
+  "ShadowSiren:BrickBreaker": {
+    "NAME": "Brick Breaker",
+    "DESCRIPTION": "Apply !B! Block. NL Add !M! *Hammer to your hand."
+  },
   "ShadowSiren:ChainShock": {
     "NAME": "Chain Shock",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage to ALL enemies. NL Exhaust."
@@ -157,6 +166,10 @@
   "ShadowSiren:ShadowSneak": {
     "NAME": "Shadow Sneak",
     "DESCRIPTION": "Autoplay. NL Deal !D! [DarkIcon] damage to a random enemy. NL shadowsiren:Intensify damage by !M!."
+  },
+  "ShadowSiren:ShadowTag": {
+    "NAME": "Shadow Tag",
+    "DESCRIPTION": "Put a random *Attack from your draw pile into your hand. NL If it has no shadowsiren:Element, it becomes a *Shadow card and costs 0 this turn."
   },
   "ShadowSiren:ShieldConversion": {
     "NAME": "Shield Conversion",

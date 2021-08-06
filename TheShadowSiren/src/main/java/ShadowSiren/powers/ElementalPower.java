@@ -5,7 +5,9 @@ import IconsAddon.powers.OnCreateDamageInfoPower;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElementalCard;
+import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
+import ShadowSiren.damageModifiers.ElementallyInert;
 import ShadowSiren.patches.ElementalPatches;
 import ShadowSiren.powers.interfaces.OnChangeElementPower;
 import ShadowSiren.util.ParticleOrbitRenderer;
@@ -21,6 +23,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ElementalPower extends AbstractPower implements InvisiblePower, OnCreateDamageInfoPower {
     public static final String POWER_ID = ShadowSirenMod.makeID("ElementalPower");
@@ -140,7 +143,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
         return i;
     }
 
-    public static ArrayList<AbstractDamageModifier> getActiveElements() {
+    public static List<AbstractDamageModifier> getActiveElements() {
         if (hasElementalPower()) {
             return DamageModifierManager.modifiers(getElementalPower());
         }
@@ -148,12 +151,9 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
     }
 
     @Override
-    public void onCreateDamageInfo(DamageInfo damageInfo) {
-        Object obj = DamageModifierManager.getBoundObject(damageInfo);
-        if (obj == null || ElementalPatches.noElementalModifiers(obj) && obj instanceof AbstractCard) {
-            Object o = new Object();
-            DamageModifierManager.addModifiers(o, DamageModifierManager.modifiers(this));
-            DamageModifierManager.spliceBoundObject(damageInfo, o);
+    public void onCreateDamageInfo(DamageInfo damageInfo, AbstractCard card) {
+        if (card != null && !(card instanceof AbstractInertCard) && (DamageModifierManager.modifiers(damageInfo).isEmpty() || DamageModifierManager.modifiers(damageInfo).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement))) {
+            DamageModifierManager.bindDamageModsFromObject(damageInfo, this);
         }
         ParticleOrbitRenderer.increaseSpeed(ParticleOrbitRenderer.NORMAL_BOOST);
     }

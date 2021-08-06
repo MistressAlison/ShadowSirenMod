@@ -129,6 +129,10 @@
     "NAME": "Magic Cloak",
     "DESCRIPTION": "Gain !B! Block. NL Gains !M! times more Block if you have a debuff."
   },
+  "ShadowSiren:MagneticStrike": {
+    "NAME": "Magnetic Strike",
+    "DESCRIPTION": "Deal !D! [IceIcon] [ElectricIcon] damage. NL Deals 50% more damage if the target has Block."
+  },
   "ShadowSiren:PlasmaBeam": {
     "NAME": "Plasma Beam",
     "DESCRIPTION": "Deal !D! [FireIcon] [ElectricIcon] damage to ALL enemies. NL Exhaust."

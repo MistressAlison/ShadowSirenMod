@@ -5,6 +5,10 @@
     "UPGRADE_DESCRIPTION": "Upgrade description",
     "EXTENDED_DESCRIPTION": ["Extra Stuff"]
   },
+  "ShadowSiren:TestCard": {
+    "NAME": "Test Card",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !B! Block. NL This block is only reduced by 1 at the start of turn."
+  },
   "ShadowSiren:ADOFAI": {
     "NAME": "ADOFAI",
     "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage."

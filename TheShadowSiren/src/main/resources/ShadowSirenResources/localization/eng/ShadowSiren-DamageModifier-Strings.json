@@ -42,6 +42,10 @@
     "NAME": "Ice Shield [IceIcon]",
     "DESCRIPTION": "When you are attacked, applies #yChill equal to damage taken."
   },
+  "ShadowSiren:StickyBlock": {
+    "NAME": "Sticky Block",
+    "DESCRIPTION": "Only reduced by #b1 at the start of turn."
+  },
   "ShadowSiren:FireBlock": {
     "NAME": "Fire Shield [FireIcon]",
     "DESCRIPTION": "When you are attacked, deals #b3 [FireIcon] damage to the attacker.",

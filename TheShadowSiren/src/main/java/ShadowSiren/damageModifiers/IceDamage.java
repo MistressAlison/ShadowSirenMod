@@ -36,9 +36,14 @@ public class IceDamage extends AbstractVivianDamageModifier {
     }
 
     public IceDamage(TipType tipType, boolean innate) {
+        this(tipType, innate, true);
+    }
+
+    public IceDamage(TipType tipType, boolean innate, boolean autoAdd) {
         super(ID, tipType);
         this.innate = innate;
         this.priority = Integer.MAX_VALUE;
+        this.automaticBindingForCards = autoAdd;
     }
 
     @Override

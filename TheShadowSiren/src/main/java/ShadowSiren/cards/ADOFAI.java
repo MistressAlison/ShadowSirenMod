@@ -6,6 +6,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.FireDamage;
 import ShadowSiren.damageModifiers.IceDamage;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -41,8 +42,8 @@ public class ADOFAI extends AbstractMultiElementCard implements MagicAnimation {
     private final Object fire = new Object();
     private final Object ice = new Object();
 
-    private final FireDamage fireDamage = new FireDamage();
-    private final IceDamage iceDamage = new IceDamage();
+    private final FireDamage fireDamage = new FireDamage(AbstractVivianDamageModifier.TipType.DAMAGE, true, false);
+    private final IceDamage iceDamage = new IceDamage(AbstractVivianDamageModifier.TipType.DAMAGE, true, false);
 
     // /STAT DECLARATION/
 

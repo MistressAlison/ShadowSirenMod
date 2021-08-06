@@ -35,9 +35,14 @@ public class FireDamage extends AbstractVivianDamageModifier {
     }
 
     public FireDamage(TipType tipType, boolean innate) {
+        this(tipType, innate, true);
+    }
+
+    public FireDamage(TipType tipType, boolean innate, boolean autoAdd) {
         super(ID, tipType);
         this.innate = innate;
         this.priority = Integer.MAX_VALUE;
+        this.automaticBindingForCards = autoAdd;
     }
 
     @Override

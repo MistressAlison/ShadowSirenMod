@@ -4,6 +4,7 @@ import IconsAddon.cardmods.AddIconToDescriptionMod;
 import IconsAddon.icons.DarkIcon;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.AddIconHelper;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.cards.abstractCards.AbstractModdedCard;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
@@ -77,7 +78,7 @@ public class ShadowTag extends AbstractShadowCard {
                 tmp.removeCard(card);
                 if (ElementalPatches.noElementalModifiers(card) && !(card instanceof ElementallyInert) && !(card instanceof AbstractInertCard)) {
                     DamageModifierManager.addModifier(card, new ShadowDamage());
-                    CardModifierManager.addModifier(card, new AddIconToDescriptionMod(AddIconToDescriptionMod.DAMAGE, DarkIcon.get()));
+                    CardModifierManager.addModifier(card, new AddIconHelper.AddShadowIconMod(AddIconToDescriptionMod.DAMAGE));
                     card.setCostForTurn(0);
                     if (card instanceof AbstractModdedCard) {
                         ((AbstractModdedCard)card).setBackgroundTexture(ShadowSirenMod.ATTACK_SHADOW, ShadowSirenMod.ATTACK_SHADOW_PORTRAIT);

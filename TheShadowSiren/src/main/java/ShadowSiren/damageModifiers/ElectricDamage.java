@@ -21,13 +21,24 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     public static final String ID = ShadowSirenMod.makeID("ElectricDamage");
 
     TooltipInfo electricTooltip = null;
+    public boolean innate;
 
     public ElectricDamage() {
-        this(TipType.DAMAGE);
+        this(TipType.DAMAGE, true);
     }
 
     public ElectricDamage(TipType tipType) {
+        this(tipType, true);
+    }
+
+    public ElectricDamage(boolean innate) {
+        this(TipType.DAMAGE, innate);
+    }
+
+    public ElectricDamage(TipType tipType, boolean innate) {
         super(ID, tipType);
+        this.innate = innate;
+        this.priority = Integer.MAX_VALUE;
     }
 
     @Override
@@ -45,7 +56,7 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
                         if (target != null) {
                             AbstractDungeon.effectList.add(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY));
                             CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.2f);
-                            this.addToTop(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(DamageModifierManager.getBoundObject(info), info.owner, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
+                            this.addToTop(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfoFromArray(DamageModifierManager.getDamageMods(info), info.owner, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
                             //this.addToTop(new VFXAction(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY)));
                             //this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.2f));
                         }
@@ -79,5 +90,10 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     @Override
     public String getKeyword() {
         return "shadowsiren:electric_damage";
+    }
+
+    @Override
+    public boolean isInherent() {
+        return innate;
     }
 }

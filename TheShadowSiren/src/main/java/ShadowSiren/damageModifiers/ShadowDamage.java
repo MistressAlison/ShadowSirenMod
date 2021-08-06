@@ -21,13 +21,24 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
 
     TooltipInfo shadowTooltip = null;
     TooltipInfo shadowSplitTooltip = null;
+    public boolean innate;
 
     public ShadowDamage() {
-        this(TipType.DAMAGE);
+        this(TipType.DAMAGE, true);
     }
 
     public ShadowDamage(TipType tipType) {
+        this(tipType, true);
+    }
+
+    public ShadowDamage(boolean innate) {
+        this(TipType.DAMAGE, innate);
+    }
+
+    public ShadowDamage(TipType tipType, boolean innate) {
         super(ID, tipType);
+        this.innate = innate;
+        this.priority = Integer.MAX_VALUE;
     }
 
     @Override
@@ -77,7 +88,7 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     }
 
     @Override
-    public int priority() {
-        return Integer.MAX_VALUE;
+    public boolean isInherent() {
+        return innate;
     }
 }

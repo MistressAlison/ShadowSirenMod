@@ -21,12 +21,24 @@ public class IceDamage extends AbstractVivianDamageModifier {
     TooltipInfo iceDamageTooltip = null;
     TooltipInfo iceBlockTooltip = null;
     TooltipInfo chillTooltip = null;
+    public boolean innate;
 
     public IceDamage() {
-        this(TipType.DAMAGE);
+        this(TipType.DAMAGE, true);
     }
+
     public IceDamage(TipType tipType) {
+        this(tipType, true);
+    }
+
+    public IceDamage(boolean innate) {
+        this(TipType.DAMAGE, innate);
+    }
+
+    public IceDamage(TipType tipType, boolean innate) {
         super(ID, tipType);
+        this.innate = innate;
+        this.priority = Integer.MAX_VALUE;
     }
 
     @Override
@@ -80,5 +92,10 @@ public class IceDamage extends AbstractVivianDamageModifier {
     @Override
     public String getKeyword() {
         return "shadowsiren:ice_damage";
+    }
+
+    @Override
+    public boolean isInherent() {
+        return innate;
     }
 }

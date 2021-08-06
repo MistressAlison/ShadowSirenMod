@@ -20,13 +20,24 @@ public class FireDamage extends AbstractVivianDamageModifier {
     TooltipInfo fireTooltip = null;
     TooltipInfo fireDamageTooltip = null;
     TooltipInfo fireBlockTooltip = null;
+    public boolean innate;
 
     public FireDamage() {
-        this(TipType.DAMAGE);
+        this(TipType.DAMAGE, true);
     }
 
     public FireDamage(TipType tipType) {
+        this(tipType, true);
+    }
+
+    public FireDamage(boolean innate) {
+        this(TipType.DAMAGE, innate);
+    }
+
+    public FireDamage(TipType tipType, boolean innate) {
         super(ID, tipType);
+        this.innate = innate;
+        this.priority = Integer.MAX_VALUE;
     }
 
     @Override
@@ -95,5 +106,10 @@ public class FireDamage extends AbstractVivianDamageModifier {
     @Override
     public String getKeyword() {
         return "shadowsiren:fire_damage";
+    }
+
+    @Override
+    public boolean isInherent() {
+        return innate;
     }
 }

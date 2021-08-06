@@ -95,6 +95,13 @@
     "DESCRIPTION": "An #yUnplayable and #yRetaining card that has effects while in your hand. Has a limited number of #yUses and automatically #yExhausts when out."
   },
   {
+    "PROPER_NAME": "Reshuffle",
+    "NAMES": [
+      "reshuffle"
+    ],
+    "DESCRIPTION": "Shuffle this card into your draw pile when it is played."
+  },
+  {
     "PROPER_NAME": "Shadow Split",
     "NAMES": [
       "Shadow Split",

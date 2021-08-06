@@ -43,9 +43,9 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        if (card instanceof AbstractElementalCard) {
+        //if (card instanceof AbstractElementalCard) {
             grabElementsOffCard(card);
-        }
+        //}
     }
 
     public void grabElementsOffCard(AbstractCard card) {
@@ -152,7 +152,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
 
     @Override
     public void onCreateDamageInfo(DamageInfo damageInfo, AbstractCard card) {
-        if (card != null && !(card instanceof AbstractInertCard) && (DamageModifierManager.modifiers(damageInfo).isEmpty() || DamageModifierManager.modifiers(damageInfo).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement))) {
+        if (card != null && !(card instanceof AbstractInertCard) && (DamageModifierManager.getDamageMods(damageInfo).isEmpty() || DamageModifierManager.getDamageMods(damageInfo).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement))) {
             DamageModifierManager.bindDamageModsFromObject(damageInfo, this);
         }
         ParticleOrbitRenderer.increaseSpeed(ParticleOrbitRenderer.NORMAL_BOOST);

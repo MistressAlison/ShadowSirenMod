@@ -53,24 +53,28 @@ public class PureStrike extends AbstractDynamicCard {
 
     @Override
     public void applyPowers() {
+        int base = baseDamage;
         if (!ElementalPower.hasAnElement()) {
             baseDamage *= DAMAGE_MULTIPLIER;
         }
         super.applyPowers();
         if (!ElementalPower.hasAnElement()) {
-            baseDamage /= DAMAGE_MULTIPLIER;
+            baseDamage = base;
         }
+        isDamageModified = damage != baseDamage;
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        int base = baseDamage;
         if (!ElementalPower.hasAnElement()) {
             baseDamage *= DAMAGE_MULTIPLIER;
         }
         super.calculateCardDamage(mo);
         if (!ElementalPower.hasAnElement()) {
-            baseDamage /= DAMAGE_MULTIPLIER;
+            baseDamage = base;
         }
+        isDamageModified = damage != baseDamage;
     }
 
     public void triggerOnGlowCheck() {

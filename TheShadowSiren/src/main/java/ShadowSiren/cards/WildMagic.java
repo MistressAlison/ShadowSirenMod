@@ -77,21 +77,21 @@ public class WildMagic extends AbstractInertCard {
                     applyPowers();
 
                     for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
-                        if (c instanceof ShadowSneak) {
+                        if (c instanceof WildMagic) {
                             c.baseDamage += effect;
                             c.applyPowers();
                         }
                     }
 
                     for (AbstractCard c: AbstractDungeon.player.drawPile.group) {
-                        if (c instanceof ShadowSneak) {
+                        if (c instanceof WildMagic) {
                             c.baseDamage += effect;
                             c.applyPowers();
                         }
                     }
 
                     for (AbstractCard c: AbstractDungeon.player.hand.group) {
-                        if (c instanceof ShadowSneak) {
+                        if (c instanceof WildMagic) {
                             c.baseDamage += effect;
                             c.applyPowers();
                         }

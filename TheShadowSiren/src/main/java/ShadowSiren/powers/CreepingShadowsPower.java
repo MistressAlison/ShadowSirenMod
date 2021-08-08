@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.*;
 
 public class CreepingShadowsPower extends AbstractPower implements CloneablePowerInterface {
 
@@ -41,12 +41,11 @@ public class CreepingShadowsPower extends AbstractPower implements CloneablePowe
 
     @Override
     public void atStartOfTurn() {
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (!aM.isDeadOrEscaped()) {
-                this.addToBot(new ApplyPowerAction(aM, owner, new ShadowPower(aM, amount), amount, true));
-            }
-        }
         flash();
+        this.addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount), amount));
+        this.addToBot(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, amount), amount));
+        this.addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
+        this.addToBot(new ApplyPowerAction(owner, owner, new LoseDexterityPower(owner, amount), amount));
     }
 
     @Override

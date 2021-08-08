@@ -62,8 +62,8 @@
     "UPGRADE_DESCRIPTION": "Gain !M! shadowsiren:Charges."
   },
   "ShadowSiren:CreepingShadows": {
-    "NAME": "Creeping Shadow",
-    "DESCRIPTION": "At the beginning of your turn, apply !M! *Shadow *Split to ALL enemies."
+    "NAME": "Creeping Shadows",
+    "DESCRIPTION": "At the beginning of your turn, gain !M! temporary Strength and Dexterity."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",

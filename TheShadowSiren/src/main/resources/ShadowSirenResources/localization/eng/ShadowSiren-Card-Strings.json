@@ -26,6 +26,11 @@
     "NAME": "Auto-Armor",
     "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL Whenever you would lose HP, lose !M! less."
   },
+  "ShadowSiren:BlackHole": {
+    "NAME": "Black Hole",
+    "DESCRIPTION": "Remove ALL your debuffs. NL Deal !D! [DarkIcon] damage plus !M! for each removed debuff to ALL enemies.",
+    "EXTENDED_DESCRIPTION": ["Remove ALL your debuffs. NL Deal !D! [DarkIcon] damage plus !M! for each removed debuff to ALL enemies."]
+  },
   "ShadowSiren:BlackMagic": {
     "NAME": "Black Magic",
     "DESCRIPTION": "Whenever you apply a debuff, increase its amount by !M!."
@@ -33,6 +38,10 @@
   "ShadowSiren:BlackRose": {
     "NAME": "Black Roses",
     "DESCRIPTION": "Apply !M! *Shadow *Split to ALL enemies. NL Exhaust."
+  },
+  "ShadowSiren:BlastBurn": {
+    "NAME": "Blast Burn",
+    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Reduce targets Max HP to 1 and convert lost HP to Temporary_HP."
   },
   "ShadowSiren:Blitz": {
     "NAME": "Blitz",
@@ -93,6 +102,10 @@
     "NAME": "Flame Shield",
     "DESCRIPTION": "Gain !B! [FireIcon] Block."
   },
+  "ShadowSiren:FlashFire": {
+    "NAME": "Flash Fire",
+    "DESCRIPTION": "Innate. NL Deal !D! [FireIcon] damage. NL If the target has full HP, deal !D! [FireIcon] damage again."
+  },
   "ShadowSiren:FlashFreeze": {
     "NAME": "Flash Freeze",
     "DESCRIPTION": "Apply !M! shadowsiren:Freeze to ALL enemies."
@@ -125,6 +138,10 @@
     "NAME": "Ice Wall",
     "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Gain !B! Block."
   },
+  "ShadowSiren:Immolate": {
+    "NAME": "Immolate",
+    "DESCRIPTION": "Whenever you attack, the target loses !M! Max HP."
+  },
   "ShadowSiren:Infatuate": {
     "NAME": "Infatuate",
     "DESCRIPTION": "Apply !M! Vulnerable and Weak to ALL enemies."
@@ -136,6 +153,10 @@
   "ShadowSiren:MagneticStrike": {
     "NAME": "Magnetic Strike",
     "DESCRIPTION": "Deal !D! [IceIcon] [ElectricIcon] damage. NL Deals 50% more damage if the target has Block."
+  },
+  "ShadowSiren:Overheat": {
+    "NAME": "Overheat",
+    "DESCRIPTION": "Increase the damage of the next *Attack you play by !M! this combat. NL If it has no shadowsiren:Element, it becomes a *Fire card."
   },
   "ShadowSiren:PlasmaBeam": {
     "NAME": "Plasma Beam",
@@ -156,8 +177,8 @@
   },
   "ShadowSiren:Recuperate": {
     "NAME": "Recuperate",
-    "DESCRIPTION": "Gain !B! Block. NL Remove !M! debuff if you have any, otherwise draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Remove up to !M! debuffs if you have any, otherwise draw up to !M! cards."
+    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL Remove !M! debuff if you have any, otherwise draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! [DarkIcon] Block. NL Remove up to !M! debuffs if you have any, otherwise draw up to !M! cards."
   },
   "ShadowSiren:Reversal": {
     "NAME": "Reversal",
@@ -185,11 +206,19 @@
   },
   "ShadowSiren:Singe": {
     "NAME": "Singe",
-    "DESCRIPTION": "Enemy loses !M! HP and twice that much Max HP."
+    "DESCRIPTION": "Target loses !M! HP and twice that much Max HP."
+  },
+  "ShadowSiren:SinisterReflection": {
+    "NAME": "Sinister Reflection",
+    "DESCRIPTION": "When a debuff is applied to you, it is also applied to ALL enemies."
   },
   "ShadowSiren:SnowBlind": {
     "NAME": "Snow Blind",
     "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Apply !M! Weak."
+  },
+  "ShadowSiren:SpiritDrain": {
+    "NAME": "Spirit Drain",
+    "DESCRIPTION": "ALL enemies lose !M! Strength this turn. NL Gain Strength this turn equal to amount removed."
   },
   "ShadowSiren:StarFall": {
     "NAME": "Star Fall",
@@ -207,6 +236,11 @@
   "ShadowSiren:TriAttack": {
     "NAME": "Tri Attack",
     "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] [ElectricIcon] damage. NL Exhaust."
+  },
+  "ShadowSiren:Trick": {
+    "NAME": "Trick",
+    "DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Remove !M! debuff if you have any, otherwise draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Remove up to !M! debuffs if you have any, otherwise draw up to !M! cards."
   },
   "ShadowSiren:TurboCharged": {
     "NAME": "Turbo Charged",

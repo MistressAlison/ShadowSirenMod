@@ -172,6 +172,14 @@
         },
         "ShadowSiren:CreepingShadowsPower": {
                 "NAME": "Creeping Shadows",
-                "DESCRIPTIONS": ["At the beginning of your turn, apply #b"," #yShadow #ySplit to ALL enemies."]
+                "DESCRIPTIONS": ["At the beginning of your turn, gain #b"," temporary #yStrength and #yDexterity."]
+        },
+        "ShadowSiren:OverheatPower": {
+                "NAME": "Overheat",
+                "DESCRIPTIONS": ["Increase the damage of the next Attack you play by #b",". If it has no #yElement, it also becomes a #yFire card."]
+        },
+        "ShadowSiren:ImmolatePower": {
+                "NAME": "Immolate",
+                "DESCRIPTIONS": ["Whenever you attack an enemy, it loses #b"," Max HP."]
         }
 }

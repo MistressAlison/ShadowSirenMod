@@ -31,7 +31,9 @@
   "ShadowSiren:ShadowDamage": {
     "NAME": "Shadow",
     "DESCRIPTION": "Shadow [DarkIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. Targets take up to double damage when #yShadow #ySplit exceeds their current HP."]
+    "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. NL #yBlock: This Block is not lost at the beginning of turn.",
+                            "#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage.",
+                            "#yBlock: This Block is not lost at the beginning of turn."]
   },
   "ShadowSiren:ElementallyInert": {
     "NAME": "Inert",
@@ -50,5 +52,13 @@
     "NAME": "Fire Shield [FireIcon]",
     "DESCRIPTION": "When you are attacked, deals #b3 [FireIcon] damage to the attacker.",
     "EXTENDED_DESCRIPTION": ["When you are attacked, deals #b"," [FireIcon] damage to the attacker."]
+  },
+  "ShadowSiren:ShadowBlock": {
+    "NAME": "Shadow Shield [DarkIcon]",
+    "DESCRIPTION": "This Block is not lost at the beginning of turn."
+  },
+  "ShadowSiren:ElectricBlock": {
+    "NAME": "Electric Shield [ElectricIcon]",
+    "DESCRIPTION": ""
   }
 }

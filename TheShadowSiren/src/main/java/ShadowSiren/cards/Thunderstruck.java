@@ -1,6 +1,5 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
@@ -10,6 +9,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
@@ -56,7 +56,7 @@ public class Thunderstruck extends AbstractElectricCard implements MagicAnimatio
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
         this.addToBot(new SFXAction("THUNDERCLAP", 0.05F));
-        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
         this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
         this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
     }

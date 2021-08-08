@@ -1,6 +1,5 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
@@ -52,7 +51,7 @@ public class ShadowSneak extends AbstractShadowCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageRandomEnemyAction(DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        this.addToBot(new DamageRandomEnemyAction(new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 
         this.addToBot(new AbstractGameAction() {
             @Override

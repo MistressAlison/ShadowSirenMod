@@ -1,6 +1,5 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
@@ -14,6 +13,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
@@ -68,7 +68,7 @@ public class PlasmaBeam extends AbstractMultiElementCard implements MagicAnimati
                 .emitEvery((x,y) -> new ElementParticleEffect(new ElectricDamage(), x, y, 0, 0, 1.5f, 0), 0.01f)
                 .rotate(-400f)
                 .build(), 0.3f, true));
-        this.addToBot(DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this, p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
+        this.addToBot(new DamageAllEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
     }
 
     // Upgraded stats.

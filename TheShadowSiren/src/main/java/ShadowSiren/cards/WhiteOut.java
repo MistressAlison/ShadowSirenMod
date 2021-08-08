@@ -1,6 +1,5 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
@@ -9,6 +8,7 @@ import ShadowSiren.damageModifiers.IceDamage;
 import ShadowSiren.damageModifiers.ShadowDamage;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -54,7 +54,7 @@ public class WhiteOut extends AbstractMultiElementCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new VFXAction(new BlizzardEffect(damage, AbstractDungeon.getMonsters().shouldFlipVfx()), 0.3F));
-        this.addToBot(DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this, p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        this.addToBot(new DamageAllEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 
     // Upgraded stats.

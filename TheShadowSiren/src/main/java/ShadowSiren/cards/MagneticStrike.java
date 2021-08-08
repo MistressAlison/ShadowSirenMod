@@ -1,21 +1,19 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.ElectricDamage;
 import ShadowSiren.damageModifiers.IceDamage;
-import ShadowSiren.damageModifiers.ShadowDamage;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
 import com.megacrit.cardcrawl.vfx.combat.EmptyStanceEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
@@ -61,7 +59,7 @@ public class MagneticStrike extends AbstractMultiElementCard {
         if (hasBlock) {
             this.addToBot(new VFXAction(new EmptyStanceEffect(m.hb.cX, m.hb.cY)));
         }
-        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn), hasBlock?AbstractGameAction.AttackEffect.BLUNT_HEAVY:AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), hasBlock?AbstractGameAction.AttackEffect.BLUNT_HEAVY:AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 
     @Override

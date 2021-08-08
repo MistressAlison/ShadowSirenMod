@@ -1,17 +1,16 @@
 package ShadowSiren.cards;
 
-import IconsAddon.actions.GainCustomBlockAction;
 import IconsAddon.util.BlockModifierManager;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.FireBlock;
 import ShadowSiren.blockTypes.IceBlock;
-import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.FireDamage;
 import ShadowSiren.damageModifiers.IceDamage;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -54,7 +53,7 @@ public class FrostflameBarrier extends AbstractMultiElementCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new GainCustomBlockAction(this, p, block));
+        this.addToBot(new GainBlockAction(p, block));
     }
 
     // Upgraded stats.

@@ -1,10 +1,8 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.ChargeMultiEffect;
-import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ChargePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -12,6 +10,7 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -59,7 +58,7 @@ public class Discharge extends AbstractElectricCard implements ChargeMultiEffect
             this.addToBot(new SFXAction("THUNDERCLAP", 0.05F));
             this.addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
         }
-        this.addToBot(new DamageAction(m,  DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        this.addToBot(new DamageAction(m,  new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 
     private boolean hasCharge() {

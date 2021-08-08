@@ -1,11 +1,11 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractFireCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -44,7 +44,8 @@ public class FieryJinx extends AbstractFireCard implements MagicAnimation {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this, p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+        //this.addToBot(DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this, p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+        this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
     }
 
     //Upgraded stats.

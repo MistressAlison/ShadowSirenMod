@@ -3,9 +3,7 @@ package ShadowSiren.cards;
 import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
-import ShadowSiren.cards.interfaces.ElementallyInert;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
@@ -62,6 +60,7 @@ public class StarFall extends AbstractInertCard implements MagicAnimation, Modul
     public StarFall() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
+        secondMagicNumber = baseSecondMagicNumber = 0;
         //this.exhaust = true;
     }
 

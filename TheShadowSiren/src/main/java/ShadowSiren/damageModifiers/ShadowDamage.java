@@ -20,6 +20,8 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     public static final String ID = ShadowSirenMod.makeID("ShadowDamage");
 
     TooltipInfo shadowTooltip = null;
+    TooltipInfo shadowDamageTooltip = null;
+    TooltipInfo shadowBlockTooltip = null;
     TooltipInfo shadowSplitTooltip = null;
     public boolean innate;
 
@@ -64,10 +66,26 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
         if (shadowTooltip == null) {
             shadowTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         }
+        if (shadowDamageTooltip == null) {
+            shadowDamageTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[1]);
+        }
+        if (shadowBlockTooltip == null) {
+            shadowBlockTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[2]);
+        }
         if (shadowSplitTooltip == null) {
             shadowSplitTooltip = new TooltipInfo(BaseMod.getKeywordTitle("shadowsiren:shadow_split"), BaseMod.getKeywordDescription("shadowsiren:shadow_split"));
         }
-        l.add(shadowTooltip);
+        switch (tipType) {
+            case DAMAGE_AND_BLOCK:
+                l.add(shadowTooltip);
+                break;
+            case DAMAGE:
+                l.add(shadowDamageTooltip);
+                break;
+            case BLOCK:
+                l.add(shadowBlockTooltip);
+                break;
+        }
         l.add(shadowSplitTooltip);
         return l;
     }

@@ -19,7 +19,7 @@ public class IceBlock extends AbstractBlockModifier {
 
     @Override
     public void onAttacked(DamageInfo info, int damageAmount) {
-        if (info.owner != null && info.owner != owner) {
+        if (info.owner != null && info.owner != owner && damageAmount > 0) {
             this.addToBot(new ApplyPowerAction(info.owner, owner, new ChillPower(info.owner, damageAmount)));
         }
     }
@@ -47,5 +47,10 @@ public class IceBlock extends AbstractBlockModifier {
     @Override
     public String getDescription() {
         return cardStrings.DESCRIPTION;
+    }
+
+    @Override
+    public boolean isInherent() {
+        return true;
     }
 }

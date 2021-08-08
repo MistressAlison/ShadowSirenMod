@@ -57,4 +57,9 @@ public class FireBlock extends AbstractBlockModifier {
     public String getDescription() {
         return cardStrings.EXTENDED_DESCRIPTION[0] + DAMAGE + cardStrings.EXTENDED_DESCRIPTION[1];
     }
+
+    @Override
+    public boolean isInherent() {
+        return true;
+    }
 }

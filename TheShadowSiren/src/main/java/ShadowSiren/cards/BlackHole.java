@@ -5,7 +5,6 @@ import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.util.XCostGrabber;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;

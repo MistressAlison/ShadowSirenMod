@@ -1,9 +1,12 @@
 package ShadowSiren.cards;
 
+import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.blockTypes.ShadowBlock;
+import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -16,7 +19,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Recuperate extends AbstractDynamicCard implements ModularDescription {
+public class Recuperate extends AbstractShadowCard implements ModularDescription {
 
     // TEXT DECLARATION
 
@@ -27,7 +30,7 @@ public class Recuperate extends AbstractDynamicCard implements ModularDescriptio
 
     // STAT DECLARATION
 
-    private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
+    private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
     private static final AbstractCard.CardType TYPE = CardType.SKILL;
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
@@ -41,9 +44,10 @@ public class Recuperate extends AbstractDynamicCard implements ModularDescriptio
 
 
     public Recuperate() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = CARDS;
+        BlockModifierManager.addModifier(this, new ShadowBlock());
     }
 
     // Actions the card should do.

@@ -41,4 +41,9 @@ public class ElementallyInert extends AbstractVivianDamageModifier {
     public String getKeyword() {
         return "shadowsiren:inert";
     }
+
+    @Override
+    public boolean isInherent() {
+        return true;
+    }
 }

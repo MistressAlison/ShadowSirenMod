@@ -31,7 +31,7 @@ public class Trick extends AbstractShadowCard implements ModularDescription {
 
     private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
-    private static final AbstractCard.CardType TYPE = CardType.SKILL;
+    private static final AbstractCard.CardType TYPE = CardType.ATTACK;
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;

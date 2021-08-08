@@ -1,7 +1,8 @@
-package ShadowSiren.oldStuff.cards;
+package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.SinisterReflectionPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class SinisterReflection extends AbstractDynamicCard {
+public class SinisterReflection extends AbstractShadowCard {
 
     // TEXT DECLARATION
 

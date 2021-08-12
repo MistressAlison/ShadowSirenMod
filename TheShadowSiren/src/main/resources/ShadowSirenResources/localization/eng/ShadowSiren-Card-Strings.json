@@ -110,6 +110,10 @@
     "NAME": "Flash Freeze",
     "DESCRIPTION": "Apply !M! shadowsiren:Freeze to ALL enemies."
   },
+  "ShadowSiren:Frostbite": {
+    "NAME": "Frostbite",
+    "DESCRIPTION": "Deal !D! [IceIcon] damage to ALL enemies. NL Deal !D! [IceIcon] damage to ALL enemies that have Weak."
+  },
   "ShadowSiren:FrostflameBarrier": {
     "NAME": "Frostflame Barrier",
     "DESCRIPTION": "Gain !B! [IceIcon] [FireIcon] Block."
@@ -198,7 +202,7 @@
   },
   "ShadowSiren:ShadowTag": {
     "NAME": "Shadow Tag",
-    "DESCRIPTION": "Put a random *Attack from your draw pile into your hand. NL If it has no shadowsiren:Element, it becomes a *Shadow card and costs 0 this turn."
+    "DESCRIPTION": "Put a random *Attack from your draw pile into your hand. NL If it has no shadowsiren:Element, it becomes a *Shadow card. NL If it is a *Shadow card, it costs 0 this turn."
   },
   "ShadowSiren:ShieldConversion": {
     "NAME": "Shield Conversion",
@@ -213,7 +217,7 @@
     "DESCRIPTION": "When a debuff is applied to you, it is also applied to ALL enemies."
   },
   "ShadowSiren:SnowBlind": {
-    "NAME": "Snow Blind",
+    "NAME": "Snowblind",
     "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Apply !M! Weak."
   },
   "ShadowSiren:SpiritDrain": {

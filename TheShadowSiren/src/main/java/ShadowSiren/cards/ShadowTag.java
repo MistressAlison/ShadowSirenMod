@@ -76,6 +76,9 @@ public class ShadowTag extends AbstractShadowCard {
 
                 AbstractCard card = tmp.getBottomCard();
                 tmp.removeCard(card);
+                if (card instanceof AbstractShadowCard || DamageModifierManager.modifiers(card).stream().anyMatch(m -> m instanceof ShadowDamage)) {
+                    card.setCostForTurn(0);
+                }
                 if (ElementalPatches.noElementalModifiers(card) && !(card instanceof ElementallyInert) && !(card instanceof AbstractInertCard)) {
                     DamageModifierManager.addModifier(card, new ShadowDamage(false));
                     CardModifierManager.addModifier(card, new AddIconHelper.AddShadowIconMod(AddIconToDescriptionMod.DAMAGE));

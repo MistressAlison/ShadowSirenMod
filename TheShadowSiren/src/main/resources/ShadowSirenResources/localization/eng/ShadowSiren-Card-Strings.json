@@ -162,6 +162,10 @@
     "NAME": "Overheat",
     "DESCRIPTION": "Increase the damage of the next *Attack you play by !M! this combat. NL If it has no shadowsiren:Element, it becomes a *Fire card."
   },
+  "ShadowSiren:Permafrost": {
+    "NAME": "Permafrost",
+    "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL Gain [IceIcon] Block equal to Weak applied."
+  },
   "ShadowSiren:PlasmaBeam": {
     "NAME": "Plasma Beam",
     "DESCRIPTION": "Deal !D! [FireIcon] [ElectricIcon] damage to ALL enemies. NL Exhaust."

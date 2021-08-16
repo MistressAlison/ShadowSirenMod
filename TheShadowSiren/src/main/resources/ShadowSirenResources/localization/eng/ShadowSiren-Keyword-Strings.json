@@ -39,7 +39,7 @@
     "NAMES": [
       "chill"
     ],
-    "DESCRIPTION": "Creatures deal #b1% less damage per stack of Chill they have. At end of the round, Chill is reduced by a third."
+    "DESCRIPTION": "Creatures deal #b5% less damage per stack of Chill they have, to a maximum of #b50% less damage. At end of the round, Chill is halved."
   },
   {
     "PROPER_NAME": "Elements",

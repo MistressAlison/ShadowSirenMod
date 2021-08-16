@@ -37,7 +37,8 @@
   },
   "ShadowSiren:BlackRose": {
     "NAME": "Black Roses",
-    "DESCRIPTION": "Apply !M! *Shadow *Split to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "ALL enemies lose HP equal to their *Shadow *Split. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "ALL enemies lose HP equal to their *Shadow *Split."
   },
   "ShadowSiren:BlastBurn": {
     "NAME": "Blast Burn",
@@ -52,6 +53,10 @@
     "NAME": "Brick Breaker",
     "DESCRIPTION": "Apply !B! Block. NL Add !M! *Hammer to your hand."
   },
+  "ShadowSiren:Cataclysm": {
+    "NAME": "Cataclysm",
+    "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL Gain [E] for each enemy this kills."
+  },
   "ShadowSiren:ChainShock": {
     "NAME": "Chain Shock",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage to ALL enemies. NL Exhaust."
@@ -64,6 +69,11 @@
   "ShadowSiren:CreepingShadows": {
     "NAME": "Creeping Shadows",
     "DESCRIPTION": "At the beginning of your turn, gain !M! temporary Strength and Dexterity."
+  },
+  "ShadowSiren:Cryogenesis": {
+    "NAME": "Cryogenesis",
+    "DESCRIPTION": "Whenever you gain Block from cards, gain !M! more. NL Block you gain also becomes [IceIcon] Block.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you gain Block from cards, gain !M! more. NL Block you gain also becomes [IceIcon] Block."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
@@ -81,6 +91,11 @@
     "NAME": "Discharge",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL shadowsiren:Charge affects this card !M! times."
   },
+  "ShadowSiren:ElectricOrb": {
+    "NAME": "Electric Orb",
+    "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL When Retained, gain !M! shadowsiren:Charge.",
+    "UPGRADE_DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL When Retained, gain !M! shadowsiren:Charges."
+  },
   "ShadowSiren:ElementalBurst": {
     "NAME": "Elemental Burst",
     "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Deal !D! damage for each shadowsiren:Element lost."
@@ -89,6 +104,10 @@
     "NAME": "Energized Flush",
     "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost.",
     "UPGRADE_DESCRIPTION": "Retain. NL Lose all active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost."
+  },
+  "ShadowSiren:EnergyConversion": {
+    "NAME": "Energy Conversion",
+    "DESCRIPTION": "Whenever you gain shadowsiren:Charge, also gain !M! Vigor."
   },
   "ShadowSiren:FieryJinx": {
     "NAME": "Fiery Jinx",
@@ -166,6 +185,11 @@
     "NAME": "Permafrost",
     "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL Gain [IceIcon] Block equal to Weak applied."
   },
+  "ShadowSiren:PiezoCapacitor": {
+    "NAME": "Piezo Capacitor",
+    "DESCRIPTION": "Whenever you are attacked, gain a shadowsiren:Charge.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you are attacked, gain a shadowsiren:Charge."
+  },
   "ShadowSiren:PlasmaBeam": {
     "NAME": "Plasma Beam",
     "DESCRIPTION": "Deal !D! [FireIcon] [ElectricIcon] damage to ALL enemies. NL Exhaust."
@@ -198,7 +222,8 @@
   },
   "ShadowSiren:ShadowOrb": {
     "NAME": "Shadow Orb",
-    "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL *Card shadowsiren:Follow-Up: NL Deal !D! [DarkIcon] damage to ALL enemies."
+    "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL When Retained, remove !M! debuff if you have any.",
+    "UPGRADE_DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL When Retained, remove up to !M! debuffs if you have any."
   },
   "ShadowSiren:ShadowSneak": {
     "NAME": "Shadow Sneak",
@@ -206,7 +231,8 @@
   },
   "ShadowSiren:ShadowTag": {
     "NAME": "Shadow Tag",
-    "DESCRIPTION": "Put a random *Attack from your draw pile into your hand. NL If it has no shadowsiren:Element, it becomes a *Shadow card. NL If it is a *Shadow card, it costs 0 this turn."
+    "DESCRIPTION": "Put a random *Attack from your draw pile into your hand. NL It costs 0 this turn.",
+    "EXTENDED_DESCRIPTION": ["NL If it has no shadowsiren:Element, it becomes a *Shadow card."]
   },
   "ShadowSiren:ShieldConversion": {
     "NAME": "Shield Conversion",
@@ -232,6 +258,10 @@
     "NAME": "Star Fall",
     "DESCRIPTION": "Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! times)",
     "EXTENDED_DESCRIPTION": ["Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! time)"]
+  },
+  "ShadowSiren:StaticBarrier": {
+    "NAME": "Static Barrier",
+    "DESCRIPTION": "Gain !B! [ElectricIcon] Block."
   },
   "ShadowSiren:Strike": {
     "NAME": "Strike",

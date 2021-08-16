@@ -7,7 +7,9 @@
   "ShadowSiren:ElectricDamage": {
     "NAME": "Electric",
     "DESCRIPTION": "Electric [ElectricIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs to a random enemy on hit, dealing one third damage each arc."]
+    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs to a random enemy on hit, dealing one third damage each arc. NL #yBlock: At the beginning of turn, gain #yVigor equal to this leftover Block.",
+                            "#yDamage: Arcs to a random enemy on hit, dealing one third damage each arc.",
+                            "#yBlock: At the beginning of turn, gain #yVigor equal to this leftover Block."]
   },
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
@@ -19,9 +21,9 @@
   "ShadowSiren:IceDamage": {
     "NAME": "Ice",
     "DESCRIPTION": "Ice [IceIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Applies #yChill equal to damage dealt. NL #yBlock: When you are attacked, applies #yChill equal to damage taken.",
-                            "#yDamage: Applies #yChill equal to damage dealt.",
-                            "#yBlock: When you are attacked, applies #yChill equal to damage taken."]
+    "EXTENDED_DESCRIPTION": ["#yDamage: Applies #yChill on hit. NL #yBlock: When you are attacked, applies #yChill to the attacker.",
+                            "#yDamage: Applies #yChill on hit.",
+                            "#yBlock: When you are attacked, applies #yChill to the attacker"]
   },
   "ShadowSiren:LightDamage": {
     "NAME": "Light",
@@ -59,6 +61,6 @@
   },
   "ShadowSiren:ElectricBlock": {
     "NAME": "Electric Shield [ElectricIcon]",
-    "DESCRIPTION": ""
+    "DESCRIPTION": "At the beginning of turn, gain #yVigor equal to this leftover Block."
   }
 }

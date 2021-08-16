@@ -18,7 +18,7 @@
         },
         "ShadowSiren:ChillPower": {
                 "NAME": "Chill",
-                "DESCRIPTIONS": ["This creatures deals #b","% less damage. At the end of it's turn, Chill is reduced by a third."]
+                "DESCRIPTIONS": ["This creatures deals #b","% less damage. At the end of it's turn, Chill is halved. Max reduction: #b","%."]
         },
         "ShadowSiren:ConfusedPower": {
                 "NAME": "Confused",
@@ -181,5 +181,9 @@
         "ShadowSiren:ImmolatePower": {
                 "NAME": "Immolate",
                 "DESCRIPTIONS": ["Whenever you attack an enemy, it loses #b"," Max HP."]
+        },
+        "ShadowSiren:CryogenesisPower": {
+                "NAME": "Cryogenesis",
+                "DESCRIPTIONS": ["Increases #yBlock gained from cards by #b",". Whenever you gain #yBlock, it also becomes [IceIcon] Block."]
         }
 }

@@ -38,7 +38,6 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     public ElectricDamage(TipType tipType, boolean innate) {
         super(ID, tipType);
         this.innate = innate;
-        this.priority = Integer.MAX_VALUE;
     }
 
     @Override

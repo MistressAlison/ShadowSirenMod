@@ -46,12 +46,17 @@ public class IceDamage extends AbstractVivianDamageModifier {
     }
 
     @Override
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        this.addToBot(new ApplyPowerAction(target, info.owner, new ChillPower(target, 1)));
+    }
+
+    /*@Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
         if (unblockedAmount+blockedAmount > 0) {
             this.addToBot(new ApplyPowerAction(target, info.owner, new ChillPower(target, unblockedAmount+blockedAmount)));
             AbstractDungeon.effectList.add(new FrostOrbActivateEffect(target.hb.cX, target.hb.cY));
         }
-    }
+    }*/
 
     @Override
     public ArrayList<TooltipInfo> getCustomTooltips() {

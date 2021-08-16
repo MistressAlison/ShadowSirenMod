@@ -19,8 +19,8 @@ public class IceBlock extends AbstractBlockModifier {
 
     @Override
     public void onAttacked(DamageInfo info, int damageAmount) {
-        if (info.owner != null && info.owner != owner && damageAmount > 0) {
-            this.addToBot(new ApplyPowerAction(info.owner, owner, new ChillPower(info.owner, damageAmount)));
+        if (info.owner != null && info.owner != owner) {
+            this.addToBot(new ApplyPowerAction(info.owner, owner, new ChillPower(info.owner, 1)));
         }
     }
 

@@ -2,6 +2,7 @@ package ShadowSiren.damageModifiers;
 
 import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.icons.AbstractCustomIcon;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 
@@ -19,6 +20,11 @@ public abstract class AbstractVivianDamageModifier extends AbstractDamageModifie
     public AbstractVivianDamageModifier(String ID, TipType tipType) {
         cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         this.tipType = tipType;
+    }
+
+    @Override
+    public boolean affectsDamageType(DamageInfo.DamageType type) {
+        return type != DamageInfo.DamageType.HP_LOSS;
     }
 
     abstract public AbstractCustomIcon getAccompanyingIcon();

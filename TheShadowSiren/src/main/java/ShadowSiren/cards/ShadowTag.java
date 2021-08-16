@@ -44,7 +44,7 @@ public class ShadowTag extends AbstractShadowCard {
 
     // /STAT DECLARATION/
 
-
+    //TODO rework
     public ShadowTag() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
     }
@@ -76,17 +76,18 @@ public class ShadowTag extends AbstractShadowCard {
 
                 AbstractCard card = tmp.getBottomCard();
                 tmp.removeCard(card);
-                if (card instanceof AbstractShadowCard || DamageModifierManager.modifiers(card).stream().anyMatch(m -> m instanceof ShadowDamage)) {
+                card.setCostForTurn(0);
+                /*if (card instanceof AbstractShadowCard || DamageModifierManager.modifiers(card).stream().anyMatch(m -> m instanceof ShadowDamage)) {
                     card.setCostForTurn(0);
-                }
-                if (ElementalPatches.noElementalModifiers(card) && !(card instanceof ElementallyInert) && !(card instanceof AbstractInertCard)) {
+                }*/
+                /*if (ElementalPatches.noElementalModifiers(card) && !(card instanceof ElementallyInert) && !(card instanceof AbstractInertCard)) {
                     DamageModifierManager.addModifier(card, new ShadowDamage(false));
                     CardModifierManager.addModifier(card, new AddIconHelper.AddShadowIconMod(AddIconToDescriptionMod.DAMAGE));
-                    card.setCostForTurn(0);
+                    //card.setCostForTurn(0);
                     if (card instanceof AbstractModdedCard) {
                         ((AbstractModdedCard)card).setBackgroundTexture(ShadowSirenMod.ATTACK_SHADOW, ShadowSirenMod.ATTACK_SHADOW_PORTRAIT);
                     }
-                }
+                }*/
                 if (p.hand.size() == 10) {
                     p.drawPile.moveToDiscardPile(card);
                     p.createHandIsFullDialog();

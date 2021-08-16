@@ -1,6 +1,7 @@
-package ShadowSiren.oldStuff.cards;
+package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.oldStuff.cards.dualityCards.hyper.EnergyConversionDual;
 import ShadowSiren.characters.Vivian;
@@ -11,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class EnergyConversion extends AbstractHyperCard {
+public class EnergyConversion extends AbstractElectricCard {
 
     // TEXT DECLARATION
 
@@ -36,7 +37,7 @@ public class EnergyConversion extends AbstractHyperCard {
 
 
     public EnergyConversion() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new EnergyConversionDual());
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = VIGOR;
     }
 
@@ -53,7 +54,6 @@ public class EnergyConversion extends AbstractHyperCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_VIGOR);
             initializeDescription();
-            super.upgrade();
         }
     }
 }

@@ -42,7 +42,7 @@
   },
   "ShadowSiren:BlastBurn": {
     "NAME": "Blast Burn",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Reduce targets Max HP to 1 and convert lost HP to Temporary_HP."
+    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Halve the targets Max HP and convert any HP lost this way to Temporary_HP."
   },
   "ShadowSiren:Blitz": {
     "NAME": "Blitz",

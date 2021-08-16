@@ -52,8 +52,9 @@ public class BlastBurn extends AbstractFireCard {
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                int loss = m.currentHealth-1;
-                m.decreaseMaxHealth(m.maxHealth);
+                int dec = m.maxHealth/2;
+                int loss = m.currentHealth-(m.maxHealth-dec);
+                m.decreaseMaxHealth(dec);
                 this.addToTop(new AddTemporaryHPAction(m, p, loss));
                 this.isDone = true;
             }

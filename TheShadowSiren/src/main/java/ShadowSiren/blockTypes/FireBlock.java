@@ -6,31 +6,24 @@ import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.damageModifiers.FireDamage;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 public class FireBlock extends AbstractBlockModifier {
 
     public static final String ID = ShadowSirenMod.makeID("FireBlock");
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static Object fireContainer;
-    private static final int DAMAGE = 3;
     private static final Color c = Color.RED.cpy();
 
-    public FireBlock() {
-        if (fireContainer == null) {
-            fireContainer = new Object();
-            DamageModifierManager.addModifier(fireContainer, new FireDamage());
-        }
-    }
+    public FireBlock() {}
 
     @Override
-    public void onAttacked(DamageInfo info, int damageAmount) {
-        if (info.owner != null && info.owner != owner) {
-            this.addToBot(new DamageAction(info.owner, DamageModifierHelper.makeBoundDamageInfo(fireContainer, owner, DAMAGE, DamageInfo.DamageType.THORNS)));
-        }
+    public void atEndOfRound() {
+        this.addToBot(new ApplyPowerAction(owner, owner, new VigorPower(owner, getCurrentAmount())));
     }
 
     @Override
@@ -55,7 +48,7 @@ public class FireBlock extends AbstractBlockModifier {
 
     @Override
     public String getDescription() {
-        return cardStrings.EXTENDED_DESCRIPTION[0] + DAMAGE + cardStrings.EXTENDED_DESCRIPTION[1];
+        return cardStrings.DESCRIPTION;
     }
 
     @Override

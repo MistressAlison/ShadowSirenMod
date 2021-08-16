@@ -87,6 +87,10 @@
     "NAME": "Diamond Dust",
     "DESCRIPTION": "Whenever you apply *Chill, gain !M! Block."
   },
+  "ShadowSiren:DireStrike": {
+    "NAME": "Dire Strike",
+    "DESCRIPTION": "Deal !D! damage. NL If you have a debuff, deal !D! damage. NL If you are under half HP, deal !D! damage."
+  },
   "ShadowSiren:Discharge": {
     "NAME": "Discharge",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL shadowsiren:Charge affects this card !M! times."

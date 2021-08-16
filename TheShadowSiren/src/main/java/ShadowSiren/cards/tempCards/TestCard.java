@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class TestCard extends AbstractDynamicCard {
+public class TestCard extends AbstractDynamicCard implements TempCard {
 
 
     // TEXT DECLARATION

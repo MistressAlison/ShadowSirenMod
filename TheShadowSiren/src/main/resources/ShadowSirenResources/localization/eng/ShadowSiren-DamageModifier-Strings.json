@@ -7,16 +7,16 @@
   "ShadowSiren:ElectricDamage": {
     "NAME": "Electric",
     "DESCRIPTION": "Electric [ElectricIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs to a random enemy on hit, dealing one third damage each arc. NL #yBlock: At the beginning of turn, gain #yVigor equal to this leftover Block.",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs to a random enemy on hit, dealing one third damage each arc. NL #yBlock: When attacking, deal a secondary 3 [ElectricIcon] damage. When attacked, deals 3 [ElectricIcon] damage back.",
                             "#yDamage: Arcs to a random enemy on hit, dealing one third damage each arc.",
-                            "#yBlock: At the beginning of turn, gain #yVigor equal to this leftover Block."]
+                            "#yBlock: When attacking, deal a secondary 3 [ElectricIcon] damage. When attacked, deals 3 [ElectricIcon] damage back."]
   },
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
     "DESCRIPTION": "Fire [FireIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP. NL #yBlock: When you are attacked, deals 3 [FireIcon] damage.",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP. NL #yBlock: At the beginning of turn, gain #yVigor equal to this leftover Block.",
                             "#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP.",
-                            "#yBlock: When you are attacked, deals 3 [FireIcon] damage."]
+                            "#yBlock: At the beginning of turn, gain #yVigor equal to this leftover Block."]
   },
   "ShadowSiren:IceDamage": {
     "NAME": "Ice",
@@ -44,7 +44,7 @@
   },
   "ShadowSiren:IceBlock": {
     "NAME": "Ice Shield [IceIcon]",
-    "DESCRIPTION": "When you are attacked, applies #yChill equal to damage taken."
+    "DESCRIPTION": "When you are attacked, applies #yChill to the attacker."
   },
   "ShadowSiren:StickyBlock": {
     "NAME": "Sticky Block",
@@ -52,7 +52,7 @@
   },
   "ShadowSiren:FireBlock": {
     "NAME": "Fire Shield [FireIcon]",
-    "DESCRIPTION": "When you are attacked, deals #b3 [FireIcon] damage to the attacker.",
+    "DESCRIPTION": "At the beginning of turn, gain #yVigor equal to this leftover Block.",
     "EXTENDED_DESCRIPTION": ["When you are attacked, deals #b"," [FireIcon] damage to the attacker."]
   },
   "ShadowSiren:ShadowBlock": {
@@ -61,6 +61,7 @@
   },
   "ShadowSiren:ElectricBlock": {
     "NAME": "Electric Shield [ElectricIcon]",
-    "DESCRIPTION": "At the beginning of turn, gain #yVigor equal to this leftover Block."
+    "DESCRIPTION": "When attacking, deal a secondary 3 [ElectricIcon] damage. When attacked, deals 3 [ElectricIcon] damage back.",
+    "EXTENDED_DESCRIPTION": ["When attacking, deal a secondary #b"," [ElectricIcon] damage. When attacked, deals #b"," [ElectricIcon] damage back."]
   }
 }

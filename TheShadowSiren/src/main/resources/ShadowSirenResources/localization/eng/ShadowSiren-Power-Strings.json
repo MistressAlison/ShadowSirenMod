@@ -18,7 +18,7 @@
         },
         "ShadowSiren:ChillPower": {
                 "NAME": "Chill",
-                "DESCRIPTIONS": ["This creatures deals #b","% less damage. At the end of it's turn, Chill is halved. Max reduction: #b","%."]
+                "DESCRIPTIONS": ["This creatures deals #b","% less damage. At the end of it's turn, Chill is halved. NL Max reduction: #b","%."]
         },
         "ShadowSiren:ConfusedPower": {
                 "NAME": "Confused",

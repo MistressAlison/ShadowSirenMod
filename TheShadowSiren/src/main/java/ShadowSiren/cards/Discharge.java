@@ -36,7 +36,7 @@ public class Discharge extends AbstractElectricCard implements ChargeMultiEffect
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final int DAMAGE = 5;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int CHARGE_MULTI = 2;

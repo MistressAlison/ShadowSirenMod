@@ -68,7 +68,7 @@ public class PlasmaBeam extends AbstractMultiElementCard implements MagicAnimati
                 .emitEvery((x,y) -> new ElementParticleEffect(new ElectricDamage(), x, y, 0, 0, 1.5f, 0), 0.01f)
                 .rotate(-400f)
                 .build(), 0.3f, true));
-        this.addToBot(new DamageAllEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
+        this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
     }
 
     // Upgraded stats.

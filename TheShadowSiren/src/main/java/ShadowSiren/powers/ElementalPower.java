@@ -137,7 +137,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
 
     @Override
     public void onCreateDamageInfo(DamageInfo damageInfo, AbstractCard card) {
-        if (hasAnElement() && card != null && !(card instanceof AbstractInertCard) && (DamageModifierManager.getDamageMods(damageInfo).isEmpty() || DamageModifierManager.getDamageMods(damageInfo).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement))) {
+        if (hasAnElement() && card != null && !(card instanceof AbstractInertCard) && card.type == AbstractCard.CardType.ATTACK && (DamageModifierManager.getDamageMods(damageInfo).isEmpty() || DamageModifierManager.getDamageMods(damageInfo).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement))) {
             DamageModifierManager.bindDamageModsFromObject(damageInfo, this);
         }
         ParticleOrbitRenderer.increaseSpeed(ParticleOrbitRenderer.NORMAL_BOOST);

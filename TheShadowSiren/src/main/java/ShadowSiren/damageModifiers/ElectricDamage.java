@@ -21,6 +21,8 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     public static final String ID = ShadowSirenMod.makeID("ElectricDamage");
 
     TooltipInfo electricTooltip = null;
+    TooltipInfo electricDamageTooltip = null;
+    TooltipInfo electricBlockTooltip = null;
     public boolean innate;
 
     public ElectricDamage() {
@@ -72,7 +74,23 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
         if (electricTooltip == null) {
             electricTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
         }
-        l.add(electricTooltip);
+        if (electricDamageTooltip == null) {
+            electricDamageTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[1]);
+        }
+        if (electricBlockTooltip == null) {
+            electricBlockTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[2]);
+        }
+        switch (tipType) {
+            case DAMAGE_AND_BLOCK:
+                l.add(electricTooltip);
+                break;
+            case DAMAGE:
+                l.add(electricDamageTooltip);
+                break;
+            case BLOCK:
+                l.add(electricBlockTooltip);
+                break;
+        }
         return l;
     }
 

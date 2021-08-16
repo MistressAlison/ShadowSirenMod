@@ -51,7 +51,7 @@ public class Ambush extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!m.isDeadOrEscaped() && (m.getIntentBaseDmg() > 0 || m.hasPower(StunMonsterPower.POWER_ID) || m.hasPower(FreezePower.POWER_ID))) {
             this.addToBot(new GainEnergyAction(secondMagicNumber));
-            this.addToBot(new ApplyPowerAction(p, p, new VigorPower(m, magicNumber)));
+            this.addToBot(new ApplyPowerAction(p, p, new VigorPower(p, magicNumber)));
         }
     }
 

@@ -28,7 +28,7 @@ public class Singe extends AbstractFireCard {
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final int HP = 5;
     private static final int UPGRADE_PLUS_HP = 2;
 
@@ -36,7 +36,7 @@ public class Singe extends AbstractFireCard {
 
 
     public Singe() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = HP;
     }
 

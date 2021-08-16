@@ -1,7 +1,8 @@
-package ShadowSiren.oldStuff.cards;
+package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.PiezoCapacitorPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class PiezoCapacitor extends AbstractDynamicCard {
+public class PiezoCapacitor extends AbstractElectricCard {
 
     // TEXT DECLARATION
 
@@ -22,12 +23,12 @@ public class PiezoCapacitor extends AbstractDynamicCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     // /STAT DECLARATION/
 

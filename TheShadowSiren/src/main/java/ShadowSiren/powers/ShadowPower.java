@@ -88,6 +88,12 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
     }
 
     @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        checkIfSurpassedHP();
+    }
+
+    @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
         checkIfSurpassedHP();

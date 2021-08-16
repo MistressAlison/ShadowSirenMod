@@ -44,8 +44,18 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     }
 
     @Override
-    public boolean ignoresBlock() {
+    public boolean ignoresBlock(AbstractCreature target) {
         return true;
+    }
+
+    @Override
+    public boolean ignoresTempHP(AbstractCreature target) {
+        AbstractPower pow = target.getPower(ShadowPower.POWER_ID);
+        if (pow instanceof ShadowPower) {
+            return !((ShadowPower) pow).checkIfSurpassedHP();
+        } else {
+            return true;
+        }
     }
 
     @Override

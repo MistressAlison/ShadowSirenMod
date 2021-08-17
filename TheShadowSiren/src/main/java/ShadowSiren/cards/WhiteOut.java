@@ -8,10 +8,12 @@ import ShadowSiren.damageModifiers.IceDamage;
 import ShadowSiren.damageModifiers.ShadowDamage;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
@@ -38,12 +40,15 @@ public class WhiteOut extends AbstractMultiElementCard {
     private static final int COST = 1;
     private static final int DAMAGE = 15;
     private static final int UPGRADE_PLUS_DMG = 5;
+    private static final int WEAK = 2;
+    private static final int UPGRADE_PLUS_WEAK = 1;
 
     // /STAT DECLARATION/
 
     public WhiteOut() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        magicNumber = baseMagicNumber = WEAK;
         isMultiDamage = true;
         exhaust = true;
         DamageModifierManager.addModifier(this, new IceDamage());
@@ -54,7 +59,12 @@ public class WhiteOut extends AbstractMultiElementCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new VFXAction(new BlizzardEffect(damage, AbstractDungeon.getMonsters().shouldFlipVfx()), 0.3F));
-        this.addToBot(new DamageAllEnemiesAction(p, damage, damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+            if (!aM.isDeadOrEscaped()) {
+                this.addToBot(new ApplyPowerAction(aM, p, new WeakPower(aM, magicNumber, false), magicNumber, true));
+            }
+        }
     }
 
     // Upgraded stats.
@@ -63,6 +73,7 @@ public class WhiteOut extends AbstractMultiElementCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_PLUS_WEAK);
             initializeDescription();
         }
     }

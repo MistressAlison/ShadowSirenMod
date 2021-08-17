@@ -47,8 +47,8 @@ public class FrostflameBarrier extends AbstractMultiElementCard {
     public FrostflameBarrier() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = block = BLOCK;
-        DamageModifierManager.addModifier(this, new IceDamage(AbstractVivianDamageModifier.TipType.BLOCK));
         DamageModifierManager.addModifier(this, new FireDamage(AbstractVivianDamageModifier.TipType.BLOCK));
+        DamageModifierManager.addModifier(this, new IceDamage(AbstractVivianDamageModifier.TipType.BLOCK));
         BlockModifierManager.addModifier(ice, new IceBlock());
         BlockModifierManager.addModifier(fire, new FireBlock());
     }

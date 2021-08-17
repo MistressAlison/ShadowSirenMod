@@ -112,7 +112,7 @@
         },
         "ShadowSiren:PiezoCapacitorPower": {
                 "NAME": "Piezo Capacitor",
-                "DESCRIPTIONS": ["When receiving unblocked attack damage, gains #b"," #yCharge."]
+                "DESCRIPTIONS": ["At the beginning of your turn, gain #b"," #yCharges if you were attacked last turn."]
         },
         "ShadowSiren:PocketDimensionPower": {
                 "NAME": "Pocket Dimension",

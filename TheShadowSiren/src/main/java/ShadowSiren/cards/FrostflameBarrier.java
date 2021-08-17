@@ -1,5 +1,6 @@
 package ShadowSiren.cards;
 
+import IconsAddon.actions.GainCustomBlockAction;
 import IconsAddon.util.BlockModifierManager;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
@@ -10,7 +11,6 @@ import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.FireDamage;
 import ShadowSiren.damageModifiers.IceDamage;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -36,8 +36,11 @@ public class FrostflameBarrier extends AbstractMultiElementCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 6;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int BLOCK = 4;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
+
+    private Object fire = new Object();
+    private Object ice = new Object();
 
     // /STAT DECLARATION/
 
@@ -46,14 +49,15 @@ public class FrostflameBarrier extends AbstractMultiElementCard {
         baseBlock = block = BLOCK;
         DamageModifierManager.addModifier(this, new IceDamage(AbstractVivianDamageModifier.TipType.BLOCK));
         DamageModifierManager.addModifier(this, new FireDamage(AbstractVivianDamageModifier.TipType.BLOCK));
-        BlockModifierManager.addModifier(this, new IceBlock());
-        BlockModifierManager.addModifier(this, new FireBlock());
+        BlockModifierManager.addModifier(ice, new IceBlock());
+        BlockModifierManager.addModifier(fire, new FireBlock());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new GainBlockAction(p, block));
+        this.addToBot(new GainCustomBlockAction(fire, p, block));
+        this.addToBot(new GainCustomBlockAction(ice, p, block));
     }
 
     // Upgraded stats.

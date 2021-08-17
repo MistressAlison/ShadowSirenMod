@@ -1,17 +1,17 @@
 package ShadowSiren.cards;
 
+import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.util.BlockModifierManager;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.blockTypes.ElectricBlock;
+import ShadowSiren.blockTypes.FireBlock;
+import ShadowSiren.blockTypes.IceBlock;
+import ShadowSiren.blockTypes.ShadowBlock;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.ElectricDamage;
-import ShadowSiren.damageModifiers.FireDamage;
-import ShadowSiren.damageModifiers.IceDamage;
-import ShadowSiren.damageModifiers.ShadowDamage;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import ShadowSiren.damageModifiers.*;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -23,7 +23,7 @@ public class Polychrome extends AbstractMultiElementCard implements MagicAnimati
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Polychrome.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("PlaceholderSkill.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/
@@ -32,30 +32,43 @@ public class Polychrome extends AbstractMultiElementCard implements MagicAnimati
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 0;
-    private static final int DAMAGE = 4;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int COST = 1;
+    private static final int BLOCK = 4;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
+
+    private Object fire = new Object();
+    private Object ice = new Object();
+    private Object elec = new Object();
+    private Object shadow = new Object();
 
     // /STAT DECLARATION/
 
     public Polychrome() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseDamage = damage = secondMagicNumber = baseSecondMagicNumber = DAMAGE;
-        DamageModifierManager.addModifier(this, new FireDamage());
-        DamageModifierManager.addModifier(this, new IceDamage());
-        DamageModifierManager.addModifier(this, new ElectricDamage());
-        DamageModifierManager.addModifier(this, new ShadowDamage());
+        block = baseBlock = BLOCK;
+        DamageModifierManager.addModifier(this, new FireDamage(AbstractVivianDamageModifier.TipType.BLOCK));
+        DamageModifierManager.addModifier(this, new IceDamage(AbstractVivianDamageModifier.TipType.BLOCK));
+        DamageModifierManager.addModifier(this, new ElectricDamage(AbstractVivianDamageModifier.TipType.BLOCK));
+        DamageModifierManager.addModifier(this, new ShadowDamage(AbstractVivianDamageModifier.TipType.BLOCK));
+        BlockModifierManager.addModifier(ice, new IceBlock());
+        BlockModifierManager.addModifier(fire, new FireBlock());
+        BlockModifierManager.addModifier(elec, new ElectricBlock());
+        BlockModifierManager.addModifier(shadow, new ShadowBlock());
         this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+        //this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+        this.addToBot(new GainCustomBlockAction(fire, p, block));
+        this.addToBot(new GainCustomBlockAction(ice, p, block));
+        this.addToBot(new GainCustomBlockAction(elec, p, block));
+        this.addToBot(new GainCustomBlockAction(shadow, p, block));
     }
 
 
@@ -64,7 +77,7 @@ public class Polychrome extends AbstractMultiElementCard implements MagicAnimati
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
         }
     }

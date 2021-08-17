@@ -17,6 +17,8 @@ public class PiezoCapacitorPower extends AbstractPower implements CloneablePower
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
+    private boolean wasAttacked = false;
+
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
@@ -40,11 +42,20 @@ public class PiezoCapacitorPower extends AbstractPower implements CloneablePower
     }
 
     @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (damageAmount > 0 && info.type == DamageInfo.DamageType.NORMAL) {
-            this.flash();
+    public void onEnergyRecharge() {
+        if (wasAttacked) {
+            flash();
+            wasAttacked = false;
             this.addToTop(new ApplyPowerAction(this.owner, this.owner, new ChargePower(this.owner, this.amount), this.amount, true));
             this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
+        }
+    }
+
+    @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (info.type == DamageInfo.DamageType.NORMAL && !wasAttacked) {
+            this.flash();
+            wasAttacked = true;
         }
         return super.onAttacked(info, damageAmount);
     }

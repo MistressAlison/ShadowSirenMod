@@ -29,18 +29,20 @@ public class PiezoCapacitor extends AbstractElectricCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
+    private static final int STACKS = 2;
 
     // /STAT DECLARATION/
 
 
     public PiezoCapacitor() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        magicNumber = baseMagicNumber = STACKS;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new PiezoCapacitorPower(p, 1)));
+        this.addToBot(new ApplyPowerAction(p, p, new PiezoCapacitorPower(p, magicNumber)));
     }
 
     //Upgraded stats.

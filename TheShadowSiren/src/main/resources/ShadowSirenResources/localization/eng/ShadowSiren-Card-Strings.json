@@ -106,7 +106,7 @@
   },
   "ShadowSiren:ElementalBurst": {
     "NAME": "Elemental Burst",
-    "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Deal !D! damage for each shadowsiren:Element lost."
+    "DESCRIPTION": "Deal !D! damage for each active shadowsiren:Element."
   },
   "ShadowSiren:EnergizingFlush": {
     "NAME": "Energized Flush",
@@ -218,7 +218,7 @@
   },
   "ShadowSiren:Polychrome": {
     "NAME": "Polychrome",
-    "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] [ElectricIcon] [DarkIcon] damage. NL Exhaust."
+    "DESCRIPTION": "Gain !B! [FireIcon] Block. NL Gain !B! [IceIcon] Block. NL Gain !B! [ElectricIcon] Block. NL Gain !B! [DarkIcon] Block. NL Exhaust."
   },
   "ShadowSiren:PureStrike": {
     "NAME": "Pure Strike",
@@ -299,7 +299,7 @@
   },
   "ShadowSiren:TriAttack": {
     "NAME": "Tri Attack",
-    "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] [ElectricIcon] damage. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage. NL Deal !ShadowSiren:ThirdMagic! [ElectricIcon] damage."
   },
   "ShadowSiren:Trick": {
     "NAME": "Trick",
@@ -322,11 +322,11 @@
   },
   "ShadowSiren:WhiteOut": {
     "NAME": "White Out",
-    "DESCRIPTION": "Deal !D! [IceIcon] [DarkIcon] damage to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [IceIcon] [DarkIcon] damage and apply !M! Weak to ALL enemies. NL Exhaust."
   },
   "ShadowSiren:WildMagic": {
     "NAME": "Wild Magic",
-    "DESCRIPTION": "Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each active shadowsiren:Elements.",
-    "EXTENDED_DESCRIPTION":["Lose all active shadowsiren:Elements. NL Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each shadowsiren:Elements lost."]
+    "DESCRIPTION": "Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each active shadowsiren:Element.",
+    "EXTENDED_DESCRIPTION":["Lose all active shadowsiren:Elements. NL Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each shadowsiren:Element lost."]
   }
 }

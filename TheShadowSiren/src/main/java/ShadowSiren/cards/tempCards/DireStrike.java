@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class DireStrike extends AbstractDynamicCard implements TempCard{
+public class DireStrike extends AbstractDynamicCard implements TempCard {
 
 
     // TEXT DECLARATION
@@ -49,11 +49,8 @@ public class DireStrike extends AbstractDynamicCard implements TempCard{
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        if (hasDebuff()) {
+        if(hasDebuff() || p.isBloodied) {
             this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        }
-        if(p.isBloodied) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }
     }
 

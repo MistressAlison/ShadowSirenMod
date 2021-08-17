@@ -46,6 +46,7 @@ public class Glaciate extends AbstractIceCard implements ModularDescription {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
+        secondMagicNumber = baseSecondMagicNumber = INCREASE;
         isMultiDamage = true;
     }
 
@@ -59,7 +60,7 @@ public class Glaciate extends AbstractIceCard implements ModularDescription {
             this.addToBot(new AbstractGameAction() {
                 @Override
                 public void update() {
-                    upgradeMagicNumber(1);
+                    upgradeMagicNumber(secondMagicNumber);
                     this.isDone = true;
                 }
             });

@@ -48,11 +48,6 @@ public class ElectricBlock extends AbstractBlockModifier {
     }
 
     @Override
-    public void atEndOfRound() {
-        this.addToBot(new ApplyPowerAction(owner, owner, new VigorPower(owner, getCurrentAmount())));
-    }
-
-    @Override
     public Color blockImageColor() {
         return c;
     }

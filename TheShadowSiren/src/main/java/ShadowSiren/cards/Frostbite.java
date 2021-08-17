@@ -3,6 +3,7 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.powers.ChillPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -60,9 +61,9 @@ public class Frostbite extends AbstractIceCard {
         }
     }
 
-    private boolean enemyHasWeak() {
+    private boolean enemyHasWeakOrChill() {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (!aM.isDeadOrEscaped() && aM.hasPower(WeakPower.POWER_ID)){
+            if (!aM.isDeadOrEscaped() && (aM.hasPower(WeakPower.POWER_ID) || aM.hasPower(ChillPower.POWER_ID))){
                 return true;
             }
         }
@@ -71,7 +72,7 @@ public class Frostbite extends AbstractIceCard {
 
     public void triggerOnGlowCheck() {
         super.triggerOnGlowCheck();
-        if (enemyHasWeak()) {
+        if (enemyHasWeakOrChill()) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         } else {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();

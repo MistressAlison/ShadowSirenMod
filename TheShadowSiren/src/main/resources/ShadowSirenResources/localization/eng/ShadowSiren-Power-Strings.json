@@ -44,7 +44,7 @@
         },
         "ShadowSiren:BlackMagicPower": {
                 "NAME": "Black Magic",
-                "DESCRIPTIONS": ["When applying a debuff, apply an additional"," stack."," #b"," stacks."]
+                "DESCRIPTIONS": ["When applying a debuff to an enemy, apply an additional"," stack."," #b"," stacks."]
         },
         "ShadowSiren:EnergyConversionPower": {
                 "NAME": "Energy Conversion",

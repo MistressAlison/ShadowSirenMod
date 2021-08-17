@@ -37,7 +37,7 @@
   },
   "ShadowSiren:BlackMagic": {
     "NAME": "Black Magic",
-    "DESCRIPTION": "Whenever you apply a debuff, increase its amount by !M!."
+    "DESCRIPTION": "Whenever you apply a debuff to an enemy, increase its amount by !M!."
   },
   "ShadowSiren:BlackRose": {
     "NAME": "Black Roses",

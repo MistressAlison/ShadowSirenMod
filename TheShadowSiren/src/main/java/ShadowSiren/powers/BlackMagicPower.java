@@ -40,7 +40,7 @@ public class BlackMagicPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (source == owner && power.type == PowerType.DEBUFF) {
+        if (source == owner && target != owner && power.type == PowerType.DEBUFF) {
             int sign = power.amount >= 0 ? 1 : -1;
             if (target.hasPower(power.ID)) {
                 target.getPower(power.ID).stackPower(this.amount*sign);

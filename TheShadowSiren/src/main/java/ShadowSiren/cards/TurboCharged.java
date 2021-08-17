@@ -37,7 +37,7 @@ public class TurboCharged extends AbstractElectricCard implements ModularDescrip
     // /STAT DECLARATION/
 
     public TurboCharged() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = BASE_EFFECT;
         secondMagicNumber = baseSecondMagicNumber = BASE_EFFECT;
         initializeDescription();

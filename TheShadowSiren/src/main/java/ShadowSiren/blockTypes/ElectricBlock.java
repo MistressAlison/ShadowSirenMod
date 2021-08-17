@@ -31,16 +31,20 @@ public class ElectricBlock extends AbstractBlockModifier {
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (info.owner != null && info.owner != owner) {
-            this.addToBot(new DamageAction(info.owner, DamageModifierHelper.makeBoundDamageInfo(electricContainer, owner, DAMAGE, DamageInfo.DamageType.THORNS)));
+        if (info.type == DamageInfo.DamageType.NORMAL && target != owner) {
+            triggerEffect(target);
         }
     }
 
     @Override
     public void onAttacked(DamageInfo info, int damageAmount) {
-        if (info.owner != null && info.owner != owner) {
-            this.addToBot(new DamageAction(info.owner, DamageModifierHelper.makeBoundDamageInfo(electricContainer, owner, DAMAGE, DamageInfo.DamageType.THORNS)));
+        if (info.type == DamageInfo.DamageType.NORMAL && info.owner != null && info.owner != this.owner) {
+            triggerEffect(info.owner);
         }
+    }
+
+    private void triggerEffect(AbstractCreature target) {
+        this.addToBot(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(electricContainer, owner, DAMAGE, DamageInfo.DamageType.THORNS)));
     }
 
     @Override

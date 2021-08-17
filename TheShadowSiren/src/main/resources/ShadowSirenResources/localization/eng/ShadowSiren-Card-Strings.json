@@ -270,7 +270,7 @@
   },
   "ShadowSiren:SinisterReflection": {
     "NAME": "Sinister Reflection",
-    "DESCRIPTION": "When a debuff is applied to you, it is also applied to ALL enemies."
+    "DESCRIPTION": "When an enemy applies a debuff to you, it is also applied to ALL enemies."
   },
   "ShadowSiren:SnowBlind": {
     "NAME": "Snowblind",

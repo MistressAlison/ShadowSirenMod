@@ -132,7 +132,7 @@
         },
         "ShadowSiren:SinisterReflectionPower": {
                 "NAME": "Sinister Reflections",
-                "DESCRIPTIONS": ["Debuffs applied to you are also applied to ALL enemies.","Debuffs applied to you are also applied to ALL enemies #b"," times."]
+                "DESCRIPTIONS": ["Debuffs that enemies apply to you are also applied to ALL enemies","."," #b"," times."]
         },
         "ShadowSiren:SoftPower": {
                 "NAME": "Soft",

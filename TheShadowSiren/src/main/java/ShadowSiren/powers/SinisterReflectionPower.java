@@ -45,9 +45,9 @@ public class SinisterReflectionPower extends AbstractPower implements CloneableP
     @Override
     public void updateDescription() {
         if (amount == 1) {
-            description = DESCRIPTIONS[0];
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[1];
         } else {
-            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
         }
     }
 

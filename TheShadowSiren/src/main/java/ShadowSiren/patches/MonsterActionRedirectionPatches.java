@@ -324,7 +324,7 @@ public class MonsterActionRedirectionPatches {
                 //Grab the player for reference
                 AbstractPlayer p = AbstractDungeon.player;
                 //Sinister Reflection Logic works if a the target of a debuff is the player
-                if (target[0] == p && p.hasPower(SinisterReflectionPower.POWER_ID)) {
+                if (target[0] == p && source[0] != p && p.hasPower(SinisterReflectionPower.POWER_ID)) {
                     //Grab the Sinister Reflection power for reference
                     AbstractPower pow = p.getPower(SinisterReflectionPower.POWER_ID);
                     //Check if the debuff is Cloneable. All basegame powers should be thanks to basemod. Modded powers are supposed to implement this as well.

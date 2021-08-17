@@ -88,15 +88,16 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
         switch (tipType) {
             case DAMAGE_AND_BLOCK:
                 l.add(shadowTooltip);
+                l.add(shadowSplitTooltip);
                 break;
             case DAMAGE:
                 l.add(shadowDamageTooltip);
+                l.add(shadowSplitTooltip);
                 break;
             case BLOCK:
                 l.add(shadowBlockTooltip);
                 break;
         }
-        l.add(shadowSplitTooltip);
         return l;
     }
 

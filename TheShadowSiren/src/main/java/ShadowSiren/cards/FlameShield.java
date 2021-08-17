@@ -38,7 +38,7 @@ public class FlameShield extends AbstractFireCard {
     // /STAT DECLARATION/
 
     public FlameShield() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
         baseBlock = block = BLOCK;
         BlockModifierManager.addModifier(this, new FireBlock());
     }

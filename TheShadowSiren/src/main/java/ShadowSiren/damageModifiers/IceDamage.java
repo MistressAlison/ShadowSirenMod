@@ -43,6 +43,7 @@ public class IceDamage extends AbstractVivianDamageModifier {
         super(ID, tipType);
         this.innate = innate;
         this.automaticBindingForCards = autoAdd;
+        this.priority = -2;
     }
 
     @Override
@@ -76,15 +77,17 @@ public class IceDamage extends AbstractVivianDamageModifier {
         switch (tipType) {
             case DAMAGE_AND_BLOCK:
                 l.add(iceTooltip);
+                l.add(chillTooltip);
                 break;
             case DAMAGE:
                 l.add(iceDamageTooltip);
+                l.add(chillTooltip);
                 break;
             case BLOCK:
                 l.add(iceBlockTooltip);
+                l.add(chillTooltip);
                 break;
         }
-        l.add(chillTooltip);
         return l;
     }
 

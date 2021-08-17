@@ -39,8 +39,14 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     }
 
     public ElectricDamage(TipType tipType, boolean innate) {
+        this(tipType, innate, true);
+    }
+
+    public ElectricDamage(TipType tipType, boolean innate, boolean autoAdd) {
         super(ID, tipType);
         this.innate = innate;
+        this.automaticBindingForCards = autoAdd;
+        this.priority = -1;
     }
 
     @Override

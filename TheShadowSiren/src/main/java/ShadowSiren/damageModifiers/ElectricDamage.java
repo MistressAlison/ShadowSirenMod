@@ -6,6 +6,7 @@ import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import basemod.helpers.TooltipInfo;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -49,6 +50,8 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
                 this.addToTop(new AbstractGameAction() {
                     @Override
                     public void update() {
+                        targetHit.tint.color = Color.YELLOW.cpy();
+                        targetHit.tint.changeColor(Color.WHITE.cpy());
                         int damage = (unblockedAmount+blockedAmount)/3;
                         if (damage == 0) {
                              damage = 1;

@@ -50,6 +50,11 @@ public class IceBlock extends AbstractBlockModifier {
     }
 
     @Override
+    public int subPriority() {
+        return -1;
+    }
+
+    @Override
     public boolean isInherent() {
         return true;
     }

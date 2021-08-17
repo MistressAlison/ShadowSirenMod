@@ -1,16 +1,17 @@
 package ShadowSiren.cards;
 
+import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.ElectricDamage;
 import ShadowSiren.damageModifiers.FireDamage;
 import ShadowSiren.damageModifiers.IceDamage;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -35,25 +36,80 @@ public class TriAttack extends AbstractMultiElementCard implements MagicAnimatio
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int COST = 3;
+    private static final int DAMAGE = 9;
+    private static final int UPGRADE_PLUS_DMG = 3;
+
+    private final Object fire = new Object();
+    private final Object ice = new Object();
+    private final Object electric = new Object();
+
+    private final FireDamage fireDamage = new FireDamage(AbstractVivianDamageModifier.TipType.DAMAGE, true, false);
+    private final IceDamage iceDamage = new IceDamage(AbstractVivianDamageModifier.TipType.DAMAGE, true, false);
+    private final ElectricDamage electricDamage = new ElectricDamage(AbstractVivianDamageModifier.TipType.DAMAGE, true, false);
 
     // /STAT DECLARATION/
 
     public TriAttack() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        baseDamage = damage = secondMagicNumber = baseSecondMagicNumber = DAMAGE;
-        DamageModifierManager.addModifier(this, new FireDamage());
-        DamageModifierManager.addModifier(this, new IceDamage());
-        DamageModifierManager.addModifier(this, new ElectricDamage());
-        this.exhaust = true;
+        baseDamage = damage = secondMagicNumber = baseSecondMagicNumber = thirdMagicNumber = baseThirdMagicNumber = DAMAGE;
+        DamageModifierManager.addModifier(this, fireDamage);
+        DamageModifierManager.addModifier(this, iceDamage);
+        DamageModifierManager.addModifier(this, electricDamage);
+        DamageModifierManager.addModifier(fire, new FireDamage());
+        DamageModifierManager.addModifier(ice, new IceDamage());
+        DamageModifierManager.addModifier(electric, new ElectricDamage());
+        //this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(fire, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(ice, p, secondMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(electric, p, thirdMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+    }
+
+    @Override
+    public void applyPowers() {
+        DamageModifierManager.removeModifier(this, fireDamage);
+        DamageModifierManager.removeModifier(this, iceDamage);
+        super.applyPowers();
+        this.baseThirdMagicNumber = this.baseDamage;
+        this.thirdMagicNumber = this.damage;
+        this.isThirdMagicNumberModified = this.thirdMagicNumber != this.baseThirdMagicNumber;
+        DamageModifierManager.removeModifier(this, electricDamage);
+        DamageModifierManager.addModifier(this, iceDamage);
+        super.applyPowers();
+        this.baseSecondMagicNumber = this.baseDamage;
+        this.secondMagicNumber = this.damage;
+        this.isSecondMagicNumberModified = this.isDamageModified;
+        DamageModifierManager.removeModifier(this, iceDamage);
+        DamageModifierManager.addModifier(this, fireDamage);
+        super.applyPowers();
+        DamageModifierManager.addModifier(this, iceDamage);
+        DamageModifierManager.addModifier(this, electricDamage);
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        DamageModifierManager.removeModifier(this, fireDamage);
+        DamageModifierManager.removeModifier(this, iceDamage);
+        super.calculateCardDamage(mo);
+        this.baseThirdMagicNumber = this.baseDamage;
+        this.thirdMagicNumber = this.damage;
+        this.isThirdMagicNumberModified = this.thirdMagicNumber != this.baseThirdMagicNumber;
+        DamageModifierManager.removeModifier(this, electricDamage);
+        DamageModifierManager.addModifier(this, iceDamage);
+        super.calculateCardDamage(mo);
+        this.baseSecondMagicNumber = this.baseDamage;
+        this.secondMagicNumber = this.damage;
+        this.isSecondMagicNumberModified = this.isDamageModified;
+        DamageModifierManager.removeModifier(this, iceDamage);
+        DamageModifierManager.addModifier(this, fireDamage);
+        super.calculateCardDamage(mo);
+        DamageModifierManager.addModifier(this, iceDamage);
+        DamageModifierManager.addModifier(this, electricDamage);
     }
 
 
@@ -63,6 +119,8 @@ public class TriAttack extends AbstractMultiElementCard implements MagicAnimatio
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeSecondMagicNumber(UPGRADE_PLUS_DMG);
+            upgradeThirdMagicNumber(UPGRADE_PLUS_DMG);
             initializeDescription();
         }
     }

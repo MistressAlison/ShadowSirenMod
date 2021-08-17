@@ -2,12 +2,14 @@ package ShadowSiren.cards;
 
 import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.util.ParticleOrbitRenderer;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -15,7 +17,7 @@ import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class ElementalBurst extends AbstractInertCard {
+public class ElementalBurst extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
@@ -72,7 +74,7 @@ public class ElementalBurst extends AbstractInertCard {
                     } else if (actionPhase == 1) {
                         if (hits > 0) {
                             AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(m.hb.cX, m.hb.cY));
-                            m.damage(DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn));
+                            m.damage(new DamageInfo(p, damage, damageTypeForTurn));
                             hits--;
                             waitTimer += 0.15f;
                         } else {
@@ -89,13 +91,6 @@ public class ElementalBurst extends AbstractInertCard {
                             AbstractDungeon.actionManager.clearPostCombatActions();
                         }
                     }
-                }
-            });
-            this.addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    ElementalPower.removeAllElements();
-                    this.isDone = true;
                 }
             });
         }

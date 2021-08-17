@@ -4,7 +4,6 @@ import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.powers.OnCreateDamageInfoPower;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractElementalCard;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.ElementallyInert;
@@ -13,6 +12,7 @@ import ShadowSiren.powers.interfaces.OnChangeElementPower;
 import ShadowSiren.util.ParticleOrbitRenderer;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -23,6 +23,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ElementalPower extends AbstractPower implements InvisiblePower, OnCreateDamageInfoPower {
@@ -49,6 +50,30 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
     }
 
     public void grabElementsOffCard(AbstractCard card) {
+        HashMap<Class<?>, AbstractVivianDamageModifier> newMods = new HashMap<>();
+        for (AbstractDamageModifier mod : DamageModifierManager.modifiers(card)) {
+            if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).isAnElement) {
+                newMods.put(mod.getClass(), (AbstractVivianDamageModifier) mod);
+            }
+        }
+        for (AbstractDamageModifier mod : mods) {
+            newMods.remove(mod.getClass());
+        }
+        if (newMods.size() > 0) {
+            for (Class<?> modClass : newMods.keySet()) {
+                mods.add(newMods.get(modClass));
+                DamageModifierManager.addModifier(this, newMods.get(modClass));
+            }
+            updateDescription();
+            for (AbstractPower pow : owner.powers) {
+                if (pow instanceof OnChangeElementPower) {
+                    ((OnChangeElementPower) pow).onChangeElement();
+                }
+            }
+        }
+    }
+
+    /*public void grabElementsOffCard(AbstractCard card) {
         if (elementsAreDifferent(card)) {
             mods.clear();
             for (AbstractDamageModifier mod : DamageModifierManager.modifiers(card)) {
@@ -71,9 +96,9 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
                 }
             }
         }
-    }
+    }*/
 
-    private boolean elementsAreDifferent(AbstractCard c) {
+    /*private boolean elementsAreDifferent(AbstractCard c) {
         ArrayList<Class<?>> uniqueClasses = new ArrayList<>();
         for (AbstractDamageModifier mod : mods) {
             uniqueClasses.add(mod.getClass());
@@ -86,7 +111,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
             }
         }
         return uniqueClasses.size() != 0;
-    }
+    }*/
 
     @Override
     public void updateDescription() {
@@ -139,6 +164,13 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
     public void onCreateDamageInfo(DamageInfo damageInfo, AbstractCard card) {
         if (hasAnElement() && card != null && !(card instanceof AbstractInertCard) && card.type == AbstractCard.CardType.ATTACK && (DamageModifierManager.getDamageMods(damageInfo).isEmpty() || DamageModifierManager.getDamageMods(damageInfo).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement))) {
             DamageModifierManager.bindDamageModsFromObject(damageInfo, this);
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    removeAllElements();
+                    this.isDone = true;
+                }
+            });
         }
         ParticleOrbitRenderer.increaseSpeed(ParticleOrbitRenderer.NORMAL_BOOST);
     }

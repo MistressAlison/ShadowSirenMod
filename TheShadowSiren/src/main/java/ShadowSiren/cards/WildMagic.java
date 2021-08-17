@@ -5,6 +5,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ElementalPower;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -60,6 +61,14 @@ public class WildMagic extends AbstractInertCard {
                 this.addToBot(new VFXAction(new FlashAtkImgEffect(m.hb.cX, m.hb.cY, AbstractGameAction.AttackEffect.FIRE)));
                 break;
             case 1:
+                this.addToBot(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        m.tint.color = Color.CYAN.cpy();
+                        m.tint.changeColor(Color.WHITE.cpy());
+                        this.isDone = true;
+                    }
+                });
                 this.addToBot(new VFXAction(new FrostOrbActivateEffect(m.hb_x, m.hb_y)));
                 this.addToBot(new SFXAction("ORB_FROST_EVOKE", 0.2f));
                 break;

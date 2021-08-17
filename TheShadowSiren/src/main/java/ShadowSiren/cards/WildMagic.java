@@ -32,21 +32,23 @@ public class WildMagic extends AbstractInertCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 4;
-    private static final int UPGRADE_PLUS_DAMAGE = 2;
+    private static final int DAMAGE = 6;
+    private static final int UPGRADE_PLUS_DAMAGE = 3;
+    private static final int INCREASE = 2;
+    private static final int UPGRADE_PLUS_INCREASE = 1;
 
     // /STAT DECLARATION/
-
 
     public WildMagic() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
+        magicNumber = baseMagicNumber = INCREASE;
     }
 
     // Actions the card should do.
@@ -68,7 +70,7 @@ public class WildMagic extends AbstractInertCard {
 
         }
         this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
-        int effect = ElementalPower.numActiveElements();
+        int effect = ElementalPower.numActiveElements() * magicNumber;
         if (effect > 0) {
             this.addToBot(new AbstractGameAction() {
                 @Override
@@ -107,7 +109,7 @@ public class WildMagic extends AbstractInertCard {
                     ElementalPower.removeAllElements();
                     this.isDone = true;
                 }
-            })*/;
+            });*/
         }
     }
 

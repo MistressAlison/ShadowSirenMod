@@ -1,14 +1,9 @@
 package ShadowSiren.blockTypes;
 
 import IconsAddon.blockModifiers.AbstractBlockModifier;
-import IconsAddon.util.DamageModifierHelper;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.damageModifiers.FireDamage;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
@@ -22,7 +17,7 @@ public class FireBlock extends AbstractBlockModifier {
     public FireBlock() {}
 
     @Override
-    public void atEndOfRound() {
+    public void atStartOfTurnPreBlockLoss() {
         this.addToBot(new ApplyPowerAction(owner, owner, new VigorPower(owner, getCurrentAmount())));
     }
 

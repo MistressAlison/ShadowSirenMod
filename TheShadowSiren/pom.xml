@@ -68,6 +68,14 @@
             <systemPath>${Steam.path}/common/SlayTheSpire/mods/IconsAddon.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
         </dependency>
+        <dependency>
+            <groupId>actioncommands</groupId>
+            <artifactId>ActionCommands</artifactId>
+            <version>0.0.1</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/common/SlayTheSpire/mods/ActionCommands.jar</systemPath>
+            <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
+        </dependency>
     </dependencies>
 
 

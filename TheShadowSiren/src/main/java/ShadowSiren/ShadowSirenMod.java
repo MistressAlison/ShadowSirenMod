@@ -4,8 +4,10 @@ import IconsAddon.util.CustomIconHelper;
 import ShadowSiren.icons.HatIcon;
 import ShadowSiren.potions.*;
 import ShadowSiren.relics.*;
+import ShadowSiren.util.StarBarManager;
 import ShadowSiren.variables.*;
 import basemod.*;
+import basemod.abstracts.CustomSavable;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -17,6 +19,7 @@ import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -31,6 +34,7 @@ import ShadowSiren.util.TextureLoader;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -178,6 +182,7 @@ public class ShadowSirenMod implements
     public static final String ATTACK_HUGE = "ShadowSirenResources/images/512/bg_attack_huge.png"; //
     public static final String ATTACK_HYPER = "ShadowSirenResources/images/512/bg_attack_hyper.png"; //
     public static final String ATTACK_PRISMATIC = "ShadowSirenResources/images/512/bg_attack_prismatic.png"; //
+    public static final String ATTACK_STAR = "ShadowSirenResources/images/512/bg_attack_space4.png"; //
     public static final String SKILL_VOODOO = "ShadowSirenResources/images/512/bg_skill_shadow2.png"; //
     public static final String SKILL_SHADOW = "ShadowSirenResources/images/512/bg_skill_shadow3.png"; //
     public static final String SKILL_VOID = "ShadowSirenResources/images/512/bg_skill_abyss.png"; //
@@ -185,6 +190,7 @@ public class ShadowSirenMod implements
     public static final String SKILL_HUGE = "ShadowSirenResources/images/512/bg_skill_huge.png"; //
     public static final String SKILL_HYPER = "ShadowSirenResources/images/512/bg_skill_hyper.png"; //
     public static final String SKILL_PRISMATIC = "ShadowSirenResources/images/512/bg_skill_prismatic.png"; //
+    public static final String SKILL_STAR = "ShadowSirenResources/images/512/bg_skill_space4.png"; //
     public static final String POWER_VOODOO = "ShadowSirenResources/images/512/bg_power_shadow2.png"; //
     public static final String POWER_SHADOW = "ShadowSirenResources/images/512/bg_power_shadow3.png"; //
     public static final String POWER_VOID = "ShadowSirenResources/images/512/bg_power_abyss.png"; //
@@ -192,6 +198,7 @@ public class ShadowSirenMod implements
     public static final String POWER_HUGE = "ShadowSirenResources/images/512/bg_power_huge.png"; //
     public static final String POWER_HYPER = "ShadowSirenResources/images/512/bg_power_hyper.png"; //
     public static final String POWER_PRISMATIC = "ShadowSirenResources/images/512/bg_power_prismatic.png"; //
+    public static final String POWER_STAR = "ShadowSirenResources/images/512/bg_power_space4.png"; //
 
     //private static final String ENERGY_ORB_WHITE_ICE = "ShadowSirenResources/images/512/card_orb.png"; //
     //private static final String CARD_ENERGY_ORB = "ShadowSirenResources/images/512/card_small_orb2.png"; //
@@ -212,6 +219,7 @@ public class ShadowSirenMod implements
     public static final String ATTACK_HUGE_PORTRAIT = "ShadowSirenResources/images/1024/bg_attack_huge.png"; //
     public static final String ATTACK_HYPER_PORTRAIT = "ShadowSirenResources/images/1024/bg_attack_hyper.png"; //
     public static final String ATTACK_PRISMATIC_PORTRAIT = "ShadowSirenResources/images/1024/bg_attack_prismatic.png"; //
+    public static final String ATTACK_STAR_PORTRAIT = "ShadowSirenResources/images/1024/bg_attack_space4.png"; //
     public static final String SKILL_VOODOO_PORTRAIT = "ShadowSirenResources/images/1024/bg_skill_shadow2.png"; //
     public static final String SKILL_SHADOW_PORTRAIT = "ShadowSirenResources/images/1024/bg_skill_shadow3.png"; //
     public static final String SKILL_VOID_PORTRAIT = "ShadowSirenResources/images/1024/bg_skill_abyss.png"; //
@@ -219,6 +227,7 @@ public class ShadowSirenMod implements
     public static final String SKILL_HUGE_PORTRAIT = "ShadowSirenResources/images/1024/bg_skill_huge.png"; //
     public static final String SKILL_HYPER_PORTRAIT = "ShadowSirenResources/images/1024/bg_skill_hyper.png"; //
     public static final String SKILL_PRISMATIC_PORTRAIT = "ShadowSirenResources/images/1024/bg_skill_prismatic.png"; //
+    public static final String SKILL_STAR_PORTRAIT = "ShadowSirenResources/images/1024/bg_skill_space4.png"; //
     public static final String POWER_VOODOO_PORTRAIT = "ShadowSirenResources/images/1024/bg_power_shadow2.png"; //
     public static final String POWER_SHADOW_PORTRAIT = "ShadowSirenResources/images/1024/bg_power_shadow3.png"; //
     public static final String POWER_VOID_PORTRAIT = "ShadowSirenResources/images/1024/bg_power_abyss.png"; //
@@ -226,6 +235,7 @@ public class ShadowSirenMod implements
     public static final String POWER_HUGE_PORTRAIT = "ShadowSirenResources/images/1024/bg_power_huge.png"; //
     public static final String POWER_HYPER_PORTRAIT = "ShadowSirenResources/images/1024/bg_power_hyper.png"; //
     public static final String POWER_PRISMATIC_PORTRAIT = "ShadowSirenResources/images/1024/bg_power_prismatic.png"; //
+    public static final String POWER_STAR_PORTRAIT = "ShadowSirenResources/images/1024/bg_power_space4.png"; //
 
     //public static final String ENERGY_ORB_VOODOO_PORTRAIT = "ShadowSirenResources/images/1024/card_orb_voodoo.png"; //
     //public static final String ENERGY_ORB_SHADOW_PORTRAIT = "ShadowSirenResources/images/1024/card_orb_shadow.png"; //
@@ -502,11 +512,11 @@ public class ShadowSirenMod implements
 
             //Simple Potions
 
-            WidePotionsMod.whitelistSimplePotion(BurnPotion.POTION_ID);
+            //WidePotionsMod.whitelistSimplePotion(BurnPotion.POTION_ID);
             WidePotionsMod.whitelistSimplePotion(ChargePotion.POTION_ID);
-            WidePotionsMod.whitelistSimplePotion(ElectricPotion.POTION_ID);
+            //WidePotionsMod.whitelistSimplePotion(ElectricPotion.POTION_ID);
             WidePotionsMod.whitelistSimplePotion(FreezePotion.POTION_ID);
-            WidePotionsMod.whitelistSimplePotion(SoftPotion.POTION_ID);
+            //WidePotionsMod.whitelistSimplePotion(SoftPotion.POTION_ID);
             WidePotionsMod.whitelistSimplePotion(VigorPotion.POTION_ID);
 
             //Complex Potions
@@ -710,7 +720,28 @@ public class ShadowSirenMod implements
 
         // =============== SAVABLES =================
         logger.info("Preparing CustomSavables");
+        BaseMod.addSaveField(StarBarManager.saveString, new CustomSavable<StarBarManager.Container>() {
+            @Override
+            public StarBarManager.Container onSave() {
+                StarBarManager.Container c = new StarBarManager.Container();
+                c.pro = StarBarManager.progress;
+                c.pow = StarBarManager.starPower;
+                c.mPow = StarBarManager.maxStarPower;
+                return c;
+            }
 
+            @Override
+            public void onLoad(StarBarManager.Container c) {
+                StarBarManager.progress = c.pro;
+                StarBarManager.starPower = c.pow;
+                StarBarManager.maxStarPower = c.mPow;
+            }
+
+            @Override
+            public Type savedType() {
+                return new TypeToken<StarBarManager.Container>(){}.getType();
+            }
+        });
 
 
         // =============== /SAVABLES/ =================
@@ -750,13 +781,13 @@ public class ShadowSirenMod implements
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
 
-        BaseMod.addPotion(BurnPotion.class, BURN_POTION_LIQUID, BURN_POTION_HYBRID, BURN_POTION_SPOTS, BurnPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        //BaseMod.addPotion(BurnPotion.class, BURN_POTION_LIQUID, BURN_POTION_HYBRID, BURN_POTION_SPOTS, BurnPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
         BaseMod.addPotion(ChargePotion.class, CHARGE_POTION_LIQUID, CHARGE_POTION_HYBRID, CHARGE_POTION_SPOTS, ChargePotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
         //BaseMod.addPotion(ChillPotion.class, CHILL_POTION_LIQUID, CHILL_POTION_HYBRID, CHILL_POTION_SPOTS, ChillPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
         BaseMod.addPotion(CleansingPotion.class, CLEANSING_POTION_LIQUID, CLEANSING_POTION_HYBRID, CLEANSING_POTION_SPOTS, CleansingPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
-        BaseMod.addPotion(ElectricPotion.class, ELECTRIC_POTION_LIQUID, ELECTRIC_POTION_HYBRID, ELECTRIC_POTION_SPOTS, ElectricPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        //BaseMod.addPotion(ElectricPotion.class, ELECTRIC_POTION_LIQUID, ELECTRIC_POTION_HYBRID, ELECTRIC_POTION_SPOTS, ElectricPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
         BaseMod.addPotion(FreezePotion.class, FREEZE_POTION_LIQUID, FREEZE_POTION_HYBRID, FREEZE_POTION_SPOTS, FreezePotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
-        BaseMod.addPotion(SoftPotion.class, SOFT_POTION_LIQUID, SOFT_POTION_HYBRID, SOFT_POTION_SPOTS, SoftPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
+        //BaseMod.addPotion(SoftPotion.class, SOFT_POTION_LIQUID, SOFT_POTION_HYBRID, SOFT_POTION_SPOTS, SoftPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
         BaseMod.addPotion(VigorPotion.class, VIGOR_POTION_LIQUID, VIGOR_POTION_HYBRID, VIGOR_POTION_SPOTS, VigorPotion.POTION_ID, Vivian.Enums.THE_SHADOW_SIREN);
 
         logger.info("Done editing potions");
@@ -785,27 +816,27 @@ public class ShadowSirenMod implements
         BaseMod.addRelicToCustomPool(new CourageShell(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new DataCollector(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new EarthQuake(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new ElectroPop(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new FireFlower(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new FirePop(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new ElectroPop(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new FireFlower(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new FirePop(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new GoldenLeaf(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new HotSauce(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new HotSauce(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new IceStorm(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new IciclePop(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new IciclePop(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new LetterP(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new Mystery(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new PointSwap(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new POWBlock(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new PowerPunch(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new RepelCape(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new RuinPowder(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new PowerPunch(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new RepelCape(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new RuinPowder(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new SpitePowder(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new StarPiece(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new StopWatch(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new SuperSheet(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new TastyTonic(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new UpArrow(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new VoltShroom(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new VoltShroom(), Vivian.Enums.VOODOO_CARD_COLOR);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -817,27 +848,27 @@ public class ShadowSirenMod implements
         UnlockTracker.markRelicAsSeen(CourageShell.ID);
         UnlockTracker.markRelicAsSeen(DataCollector.ID);
         UnlockTracker.markRelicAsSeen(EarthQuake.ID);
-        UnlockTracker.markRelicAsSeen(ElectroPop.ID);
-        UnlockTracker.markRelicAsSeen(FireFlower.ID);
-        UnlockTracker.markRelicAsSeen(FirePop.ID);
+        //UnlockTracker.markRelicAsSeen(ElectroPop.ID);
+        //UnlockTracker.markRelicAsSeen(FireFlower.ID);
+        //UnlockTracker.markRelicAsSeen(FirePop.ID);
         UnlockTracker.markRelicAsSeen(GoldenLeaf.ID);
-        UnlockTracker.markRelicAsSeen(HotSauce.ID);
+        //UnlockTracker.markRelicAsSeen(HotSauce.ID);
         UnlockTracker.markRelicAsSeen(IceStorm.ID);
-        UnlockTracker.markRelicAsSeen(IciclePop.ID);
+        //UnlockTracker.markRelicAsSeen(IciclePop.ID);
         UnlockTracker.markRelicAsSeen(LetterP.ID);
         UnlockTracker.markRelicAsSeen(Mystery.ID);
         UnlockTracker.markRelicAsSeen(PointSwap.ID);
         UnlockTracker.markRelicAsSeen(POWBlock.ID);
-        UnlockTracker.markRelicAsSeen(PowerPunch.ID);
-        UnlockTracker.markRelicAsSeen(RepelCape.ID);
-        UnlockTracker.markRelicAsSeen(RuinPowder.ID);
+        //UnlockTracker.markRelicAsSeen(PowerPunch.ID);
+        //UnlockTracker.markRelicAsSeen(RepelCape.ID);
+        //UnlockTracker.markRelicAsSeen(RuinPowder.ID);
         UnlockTracker.markRelicAsSeen(SpitePowder.ID);
         //UnlockTracker.markRelicAsSeen(StarPiece.ID);
         UnlockTracker.markRelicAsSeen(StopWatch.ID);
         UnlockTracker.markRelicAsSeen(SuperSheet.ID);
         UnlockTracker.markRelicAsSeen(TastyTonic.ID);
         UnlockTracker.markRelicAsSeen(UpArrow.ID);
-        UnlockTracker.markRelicAsSeen(VoltShroom.ID);
+        //UnlockTracker.markRelicAsSeen(VoltShroom.ID);
         logger.info("Done adding relics!");
     }
     

@@ -328,5 +328,14 @@
     "NAME": "Wild Magic",
     "DESCRIPTION": "Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each active shadowsiren:Element.",
     "EXTENDED_DESCRIPTION":["Lose all active shadowsiren:Elements. NL Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each shadowsiren:Element lost."]
+  },
+  "ShadowSiren:EarthTremor": {
+    "NAME": "Earth Tremor",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies."
+  },
+  "ShadowSiren:SweetTreat": {
+    "NAME": "Sweet Treat",
+    "DESCRIPTION": "Heal !M! HP. NL Gain [E] .",
+    "EXTENDED_DESCRIPTION":["Heal !M! HP. NL Gain [E] [E] ."]
   }
 }

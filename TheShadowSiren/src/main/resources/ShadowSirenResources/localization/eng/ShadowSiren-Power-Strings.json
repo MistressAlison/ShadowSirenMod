@@ -160,7 +160,7 @@
         },
         "ShadowSiren:ElementalPower": {
                 "NAME": "Elementalist",
-                "DESCRIPTIONS": ["Stores #yElements when you play an #yElemental card. Playing a #yNon-Elemental #yAttack removes ALL stored elements and adds them to the attack"," NL Current #yElements:"]
+                "DESCRIPTIONS": ["Stores #yElements when you play an #yElemental card. NL Consumes #yElements when you play a #yNon-Elemental #yAttack, adding them to it."," NL Current #yElements:"]
         },
         "ShadowSiren:VulcanizePower": {
                 "NAME": "Vulcanize",

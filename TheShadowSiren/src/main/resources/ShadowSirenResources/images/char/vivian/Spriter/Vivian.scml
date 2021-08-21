@@ -185,5 +185,23 @@
                 </key>
             </timeline>
         </animation>
+        <animation id="9" name="guard" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="250">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianHide">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="-0.8" scale_y="0.8"/>
+                </key>
+                <key id="1" time="250" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="-0.78" scale_y="0.82"/>
+                </key>
+            </timeline>
+         </animation>
     </entity>
 </spriter_data>

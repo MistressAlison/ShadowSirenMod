@@ -1,5 +1,6 @@
 package ShadowSiren.characters;
 
+import ActionCommands.interfaces.PlayerWithActionCommands;
 import ShadowSiren.CustomAnimationListener;
 import ShadowSiren.CustomSpriterAnimation;
 import ShadowSiren.RandomChatterHelper;
@@ -12,6 +13,8 @@ import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.relics.BooSheet;
 import ShadowSiren.stances.HugeStance;
+import ShadowSiren.stances.VeilStance;
+import ShadowSiren.util.StarBarManager;
 import ShadowSiren.vfx.StarBreakerVictoryEffect;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
@@ -50,7 +53,7 @@ import static ShadowSiren.characters.Vivian.Enums.VOODOO_CARD_COLOR;
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
 
-public class Vivian extends CustomPlayer {
+public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
     public static final Logger logger = LogManager.getLogger(ShadowSirenMod.class.getName());
 
     // =============== CHARACTER ENUMERATORS =================
@@ -123,6 +126,12 @@ public class Vivian extends CustomPlayer {
     //public static final float[] layerSpeeds = {-20.0F, 20.0F, -40.0F, 40.0F, 0.0F};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
+
+    // =============== EXTRA VARS ===============
+
+    public boolean guardAnimation;
+
+    // =============== /EXTRA VARS/ ===============
 
     // =============== CHARACTER CLASS START =================
 
@@ -392,8 +401,9 @@ public class Vivian extends CustomPlayer {
         boolean tookNoDamage = this.lastDamageTaken == 0;
         if (hadBlockBeforeSuper && (hasBlockAfterSuper || tookNoDamage)) {
             RandomChatterHelper.showChatter(RandomChatterHelper.getBlockedDamageText(), damagedTalkProbability, enableDamagedBattleTalkEffect);
-            playAnimation("gesture");
-            //playAnimation("happy");
+            if (!guardAnimation) {
+                playAnimation("gesture");
+            }
         } else {
             if (info.owner != null && info.type != DamageInfo.DamageType.THORNS && info.output > 0) {
                 if (info.output >= 15) {
@@ -404,8 +414,11 @@ public class Vivian extends CustomPlayer {
             } else if (info.type == DamageInfo.DamageType.THORNS && info.output > 0) {
                 RandomChatterHelper.showChatter(RandomChatterHelper.getFieldDamageText(), damagedTalkProbability, enableDamagedBattleTalkEffect);
             }
-            playAnimation("hurt");
+            if (!guardAnimation) {
+                playAnimation("hurt");
+            }
         }
+        guardAnimation = false;
     }
 
     public CustomSpriterAnimation getAnimation() {
@@ -427,10 +440,6 @@ public class Vivian extends CustomPlayer {
         switch (AbstractDungeon.player.stance.ID) {
             case "ShadowSiren:VeilStance":
                 playAnimation("hide");
-                break;
-            case "ShadowSiren:AbyssStance":
-            case "ShadowSiren:SmokeStance":
-                playAnimation("void");
                 break;
             default:
                 playAnimation("idle");
@@ -474,6 +483,26 @@ public class Vivian extends CustomPlayer {
             }
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ElementalPower(this)));
+    }
+
+    @Override
+    public void onSuccessfulBlockCommand() {
+        if (!AbstractDungeon.player.stance.ID.equals(VeilStance.STANCE_ID)) {
+            playAnimation("guard");
+            guardAnimation = true;
+        }
+        StarBarManager.addProgress(1);
+    }
+
+    @Override
+    public void applyStartOfTurnPowers() {
+        super.applyStartOfTurnPowers();
+        StarBarManager.addProgress(1);
+    }
+
+    @Override
+    public void onSuccessfulAttackCommand(AbstractCard card) {
+        StarBarManager.addProgress(1);
     }
 
     //Maybe, currently just moved to Homemark relic

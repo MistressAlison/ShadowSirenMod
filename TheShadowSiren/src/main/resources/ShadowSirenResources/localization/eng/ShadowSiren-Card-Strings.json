@@ -151,8 +151,8 @@
   },
   "ShadowSiren:Glaciate": {
     "NAME": "Glaciate",
-    "DESCRIPTION": "Deal !D! damage !M! time. NL If the target has Weak, increase this cards hits by !ShadowSiren:SecondMagic! this combat.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage !M! times. NL If the target has Weak, increase this cards hits by !ShadowSiren:SecondMagic! this combat."
+    "DESCRIPTION": "Deal !D! [IceIcon] damage !M! time. NL If the target has Weak, increase this cards hits by !ShadowSiren:SecondMagic! this combat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! [IceIcon] damage !M! times. NL If the target has Weak, increase this cards hits by !ShadowSiren:SecondMagic! this combat."
   },
   "ShadowSiren:Hammer": {
     "NAME": "Hammer",

@@ -14,8 +14,8 @@
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
     "DESCRIPTION": "Fire [FireIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP. NL #yBlock: At the beginning of turn, gain #yVigor equal to this leftover Block.",
-                            "#yDamage: Target loses HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP.",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses Max HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP. NL #yBlock: At the beginning of turn, gain #yVigor equal to this leftover Block.",
+                            "#yDamage: Target loses Max HP equal to unblocked damage dealt. Deals up to #b25% more attack damage to targets with full HP.",
                             "#yBlock: At the beginning of turn, gain #yVigor equal to this leftover Block."]
   },
   "ShadowSiren:IceDamage": {

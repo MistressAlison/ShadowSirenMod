@@ -11,14 +11,14 @@
     "NAMES": [
       "electric_damage"
     ],
-    "DESCRIPTION": "Ignores #yBlock but deals #b20% less damage while doing so."
+    "DESCRIPTION": "Arcs to a random enemy on hit, dealing #bone #bthird damage per bounce."
   },
   {
     "PROPER_NAME": "Fire Damage [FireIcon]",
     "NAMES": [
       "fire_damage"
     ],
-    "DESCRIPTION": "Target loses HP equal to unblocked damage dealt."
+    "DESCRIPTION": "Target loses Max HP equal to unblocked damage dealt."
   },
   {
     "PROPER_NAME": "Ice Damage [IceIcon]",

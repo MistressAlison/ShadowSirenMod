@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -58,8 +60,8 @@ public class ArcaneShelter extends AbstractShadowCard {
             for (int i = 0 ; i < effect ; i++) {
                 this.addToBot(new GainBlockAction(p, block));
             }
-            this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, effect), effect));
-            this.addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, effect), effect));
+            this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, effect), effect));
+            this.addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, effect), effect));
         }
 
         if (!this.freeToPlayOnce) {

@@ -215,8 +215,8 @@
     "NAME": "Up Arrow",
     "FLAVOR": "Things are looking up in life.",
     "DESCRIPTIONS": [
-      "When removing a card from your deck, gain #b"," Max HP.",
-      "HP added: "
+      "Upon spending #yGold, gain #b"," Max HP.",
+      "Max HP gained: "
     ]
   },
   "ShadowSiren:VoltShroom": {

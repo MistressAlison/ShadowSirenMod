@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import static ShadowSiren.ShadowSirenMod.makeRelicOutlinePath;
 import static ShadowSiren.ShadowSirenMod.makeRelicPath;
 
-public class UpArrow extends CustomRelic implements OnRemoveCardFromMasterDeckRelic {
+public class UpArrow extends CustomRelic {
 
     // ID, images, text.
     public static final String ID = ShadowSirenMod.makeID("UpArrow");
@@ -26,7 +27,7 @@ public class UpArrow extends CustomRelic implements OnRemoveCardFromMasterDeckRe
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("UpArrow.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("UpArrow.png"));
 
-    private static final int BONUS_HP = 3;
+    private static final int BONUS_HP = 2;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String HP_STAT = DESCRIPTIONS[2];
@@ -81,10 +82,24 @@ public class UpArrow extends CustomRelic implements OnRemoveCardFromMasterDeckRe
         return newRelic;
     }
 
-    @Override
-    public void onRemoveCardFromMasterDeck(AbstractCard abstractCard) {
+    private void triggerEffect() {
         AbstractDungeon.player.increaseMaxHp(BONUS_HP, true);
         stats.put(HP_STAT, stats.get(HP_STAT) + BONUS_HP);
         flash();
+    }
+
+    /*@Override
+    public void onRemoveCardFromMasterDeck(AbstractCard abstractCard) {
+        triggerEffect();
+    }*/
+
+    @Override
+    public void onSpendGold() {
+        triggerEffect();
+    }
+
+    @Override
+    public boolean canSpawn() {
+        return Settings.isEndless || AbstractDungeon.actNum <= 2;
     }
 }

@@ -1,9 +1,7 @@
 package ShadowSiren.cards.tempCards;
 
 import IconsAddon.actions.GainCustomBlockAction;
-import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.blockTypes.StickyBlock;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -39,7 +37,6 @@ public class TestCard extends AbstractDynamicCard implements TempCard {
     public TestCard() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = block = BLOCK;
-        BlockModifierManager.addModifier(this, new StickyBlock());
     }
 
     // Actions the card should do.

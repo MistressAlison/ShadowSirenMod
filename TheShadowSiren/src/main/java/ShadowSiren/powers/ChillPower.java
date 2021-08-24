@@ -122,7 +122,7 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + (REDUCTION_PERCENT*amount) + DESCRIPTIONS[1] + MAX_REDUCTION + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + Math.min(MAX_REDUCTION, (REDUCTION_PERCENT*amount)) + DESCRIPTIONS[1] + MAX_REDUCTION + DESCRIPTIONS[2];
     }
 
     @Override

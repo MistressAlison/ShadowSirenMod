@@ -44,7 +44,7 @@ public class ElectricBlock extends AbstractBlockModifier {
     }
 
     private void triggerEffect(AbstractCreature target) {
-        this.addToBot(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(electricContainer, owner, DAMAGE, DamageInfo.DamageType.THORNS)));
+        this.addToBot(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(electricContainer, owner, DAMAGE, DamageInfo.DamageType.THORNS), true));
     }
 
     @Override

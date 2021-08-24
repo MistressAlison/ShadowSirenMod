@@ -2,6 +2,7 @@ package ShadowSiren.cards;
 
 import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.ElementalBurstAction;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.characters.Vivian;
@@ -51,48 +52,7 @@ public class ElementalBurst extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         int effect = ElementalPower.numActiveElements();
         if (effect > 0) {
-            this.addToBot(new AbstractGameAction() {
-                boolean firstPass = true;
-                float waitTimer = 0f;
-                int actionPhase = 0;
-                int hits = effect;
-                boolean mouseReturn;
-                @Override
-                public void update() {
-                    if (firstPass) {
-                        firstPass = false;
-                        mouseReturn = ParticleOrbitRenderer.getCurrentTarget() == ParticleOrbitRenderer.TargetLocation.MOUSE;
-                        ParticleOrbitRenderer.moveOrbit(m.hb);
-                    }
-                    if (waitTimer > 0) {
-                        waitTimer -= Gdx.graphics.getDeltaTime();
-                    } else if (actionPhase == 0) {
-                        if (ParticleOrbitRenderer.reachedDestination()) {
-                            actionPhase++;
-                            waitTimer += 0.15f;
-                        }
-                    } else if (actionPhase == 1) {
-                        if (hits > 0) {
-                            AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(m.hb.cX, m.hb.cY));
-                            m.damage(new DamageInfo(p, damage, damageTypeForTurn));
-                            hits--;
-                            waitTimer += 0.15f;
-                        } else {
-                            this.isDone = true;
-                            if (mouseReturn) {
-                                ParticleOrbitRenderer.returnOrbitToMouse();
-                            } else {
-                                ParticleOrbitRenderer.returnOrbitToPlayer();
-                            }
-                        }
-                    }
-                    if (this.isDone) {
-                        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                            AbstractDungeon.actionManager.clearPostCombatActions();
-                        }
-                    }
-                }
-            });
+            this.addToBot(new ElementalBurstAction(m, new DamageInfo(p, damage, damageTypeForTurn), effect));
         }
     }
 

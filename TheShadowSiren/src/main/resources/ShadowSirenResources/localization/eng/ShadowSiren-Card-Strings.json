@@ -329,9 +329,33 @@
     "DESCRIPTION": "Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each active shadowsiren:Element.",
     "EXTENDED_DESCRIPTION":["Lose all active shadowsiren:Elements. NL Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each shadowsiren:Element lost."]
   },
+  "ShadowSiren:ArtAttack": {
+    "NAME": "Art Attack",
+    "DESCRIPTION": "?"
+  },
+  "ShadowSiren:ClockOut": {
+    "NAME": "Clock Out",
+    "DESCRIPTION": "?"
+  },
   "ShadowSiren:EarthTremor": {
     "NAME": "Earth Tremor",
     "DESCRIPTION": "Deal !D! damage to ALL enemies."
+  },
+  "ShadowSiren:PowerLift": {
+    "NAME": "Power Lift",
+    "DESCRIPTION": "?"
+  },
+  "ShadowSiren:ShowStopper": {
+    "NAME": "Show Stopper",
+    "DESCRIPTION": "?"
+  },
+  "ShadowSiren:SuperNova": {
+    "NAME": "Super Nova",
+    "DESCRIPTION": "Deal !M! to !ShadowSiren:SecondMagic! damage to ALL enemies"
+  },
+  "ShadowSiren:SweetFeast": {
+    "NAME": "Sweet Feast",
+    "DESCRIPTION": "?"
   },
   "ShadowSiren:SweetTreat": {
     "NAME": "Sweet Treat",

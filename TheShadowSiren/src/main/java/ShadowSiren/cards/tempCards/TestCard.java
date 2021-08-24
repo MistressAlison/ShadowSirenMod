@@ -4,6 +4,8 @@ import IconsAddon.actions.GainCustomBlockAction;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.powers.ElectricPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -42,8 +44,7 @@ public class TestCard extends AbstractDynamicCard implements TempCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new GainCustomBlockAction(this, p, block));
-        this.addToBot(new GainCustomBlockAction(this, m, block));
+        this.addToBot(new ApplyPowerAction(p, p, new ElectricPower(p, 1)));
     }
 
     // Upgraded stats.

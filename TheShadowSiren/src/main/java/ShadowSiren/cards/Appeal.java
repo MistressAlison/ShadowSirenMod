@@ -23,7 +23,7 @@ public class Appeal extends AbstractDynamicCard {
     // STAT DECLARATION
 
     private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
+    private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
     private static final AbstractCard.CardType TYPE = CardType.SKILL;
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 

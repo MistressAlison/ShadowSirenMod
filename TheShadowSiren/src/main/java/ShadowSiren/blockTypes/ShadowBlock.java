@@ -2,9 +2,12 @@ package ShadowSiren.blockTypes;
 
 import IconsAddon.blockModifiers.AbstractBlockModifier;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.powers.ShadowPower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class ShadowBlock extends AbstractBlockModifier {
 
@@ -16,7 +19,7 @@ public class ShadowBlock extends AbstractBlockModifier {
 
     @Override
     public int amountLostAtStartOfTurn() {
-        return 0;
+        return Math.max(0, getCurrentAmount() - countShadowSplit());
     }
 
     @Override
@@ -47,5 +50,17 @@ public class ShadowBlock extends AbstractBlockModifier {
     @Override
     public boolean isInherent() {
         return true;
+    }
+
+    private int countShadowSplit() {
+        int ret = 0;
+        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+            if (!aM.isDeadOrEscaped()) {
+                if (aM.hasPower(ShadowPower.POWER_ID)) {
+                    ret += aM.getPower(ShadowPower.POWER_ID).amount;
+                }
+            }
+        }
+        return Math.max(0, ret);
     }
 }

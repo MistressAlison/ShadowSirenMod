@@ -50,7 +50,7 @@ public class IceBlock extends AbstractBlockModifier {
     }
 
     @Override
-    public int subPriority() {
+    public short subPriority() {
         return -1;
     }
 

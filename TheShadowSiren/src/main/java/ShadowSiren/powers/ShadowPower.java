@@ -64,10 +64,15 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
 
     public void delayedCheckIfSurpassedHP() {
         this.addToTop(new AbstractGameAction() {
+            boolean firstPass = true;
             @Override
             public void update() {
-                checkIfSurpassedHP();
-                this.isDone = true;
+                if (firstPass) {
+                    firstPass = false;
+                    checkIfSurpassedHP();
+                    duration = 0.15f;
+                }
+                tickDuration();
             }
         });
     }
@@ -80,8 +85,12 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
             surpassedHP = true;
             int delta = amount - owner.currentHealth;
             if (delta > 0) {
-                this.addToTop(new LoseHPAction(owner, owner, delta));
-                this.amount = owner.currentHealth - delta;
+                flash();
+                owner.damage(new DamageInfo(owner, delta, DamageInfo.DamageType.HP_LOSS));
+                this.amount = owner.currentHealth;
+                if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                    AbstractDungeon.actionManager.clearPostCombatActions();
+                }
             }
         } else {
             surpassedHP = false;
@@ -93,13 +102,13 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
     @Override
     public void onInitialApplication() {
         super.onInitialApplication();
-        checkIfSurpassedHP();
+        delayedCheckIfSurpassedHP();
     }
 
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        checkIfSurpassedHP();
+        delayedCheckIfSurpassedHP();
 
     }
 
@@ -131,7 +140,7 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public int getHealthBarAmount() {
-        return surpassedHP ? owner.currentHealth : amount;
+        return amount;
     }
 
     @Override

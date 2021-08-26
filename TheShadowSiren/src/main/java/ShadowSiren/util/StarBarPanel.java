@@ -343,11 +343,11 @@ public class StarBarPanel {
                     if (!AbstractDungeon.isScreenUp) {
                         for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
                             c.stopGlowing();
-                            starCards.removeCard(c);
-                            AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c.makeStatEquivalentCopy(), (float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
                             if (c instanceof AbstractStarCard) {
                                 if (AbstractDungeon.player.hand.size() < 10 && StarBarManager.starPower >= ((AbstractStarCard) c).getSpawnCost()) {
                                     StarBarManager.consumeStarPower(((AbstractStarCard) c).getSpawnCost());
+                                    starCards.removeCard(c);
+                                    AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c.makeStatEquivalentCopy(), (float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
                                 }
                             }
                         }

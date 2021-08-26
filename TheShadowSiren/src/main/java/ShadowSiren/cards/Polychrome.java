@@ -54,8 +54,8 @@ public class Polychrome extends AbstractMultiElementCard implements MagicAnimati
         DamageModifierManager.addModifier(this, new IceDamage(AbstractVivianDamageModifier.TipType.BLOCK));
         DamageModifierManager.addModifier(this, new ElectricDamage(AbstractVivianDamageModifier.TipType.BLOCK));
         DamageModifierManager.addModifier(this, new ShadowDamage(AbstractVivianDamageModifier.TipType.BLOCK));
-        BlockModifierManager.addModifier(ice, new IceBlock());
         BlockModifierManager.addModifier(fire, new FireBlock());
+        BlockModifierManager.addModifier(ice, new IceBlock());
         BlockModifierManager.addModifier(elec, new ElectricBlock());
         BlockModifierManager.addModifier(shadow, new ShadowBlock());
         this.exhaust = true;

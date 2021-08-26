@@ -16,7 +16,7 @@ public class FieryJinx extends AbstractFireCard implements MagicAnimation {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(FieryJinx.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("FlameSnap.png");
 
     // /TEXT DECLARATION/
 

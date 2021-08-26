@@ -18,6 +18,10 @@
     "DESCRIPTION": "If the enemy intends to attack, gain [E] and !M! Vigor.",
     "UPGRADE_DESCRIPTION": "If the enemy intends to attack, gain [E] [E] and !M! Vigor."
   },
+  "ShadowSiren:Appeal": {
+    "NAME": "Appeal",
+    "DESCRIPTION": "Gain !ShadowSiren:SecondMagic! % progress to your next shadowsiren:Star_Power. NL Exhaust."
+  },
   "ShadowSiren:ArcaneShelter": {
     "NAME": "Arcane Shelter",
     "DESCRIPTION": "Gain !B! [DarkIcon] Block X times. NL Gain X Dexterity this turn. NL (Gain !ShadowSiren:SecondMagic! Block and !ShadowSiren:ThirdMagic! Dexterity this turn)"
@@ -72,7 +76,7 @@
   },
   "ShadowSiren:CreepingShadows": {
     "NAME": "Creeping Shadows",
-    "DESCRIPTION": "At the start of your turn, gain !M! Strength and Dexterity. NL At the end of your turn, lose !M! Strength and Dexterity."
+    "DESCRIPTION": "At the start of your turn, gain !M! temporary Strength and Dexterity."
   },
   "ShadowSiren:Cryogenesis": {
     "NAME": "Cryogenesis",
@@ -318,7 +322,7 @@
   },
   "ShadowSiren:Vulcanize": {
     "NAME": "Vulcanize",
-    "DESCRIPTION": "Unblocked [FireIcon] damage causes enemies to lose an additional 25% Max HP."
+    "DESCRIPTION": "Unblocked [FireIcon] damage causes enemies to lose 25% more Max HP."
   },
   "ShadowSiren:WhiteOut": {
     "NAME": "White Out",
@@ -331,35 +335,42 @@
   },
   "ShadowSiren:ArtAttack": {
     "NAME": "Art Attack",
-    "DESCRIPTION": "?"
+    "DESCRIPTION": "?",
+    "EXTENDED_DESCRIPTION":["?"]
   },
   "ShadowSiren:ClockOut": {
     "NAME": "Clock Out",
-    "DESCRIPTION": "?"
+    "DESCRIPTION": "ALL enemies lose !M! Strength.",
+    "EXTENDED_DESCRIPTION":["*Star *Power: 2 NL ALL enemies lose !M! Strength."]
   },
   "ShadowSiren:EarthTremor": {
     "NAME": "Earth Tremor",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies.",
+    "EXTENDED_DESCRIPTION":["*Star *Power: 1 NL Deal !D! damage to ALL enemies."]
   },
   "ShadowSiren:PowerLift": {
     "NAME": "Power Lift",
-    "DESCRIPTION": "?"
+    "DESCRIPTION": "Gain !M! Strength and Dexterity.",
+    "EXTENDED_DESCRIPTION":["*Star *Power: 3 NL Gain !M! Strength and Dexterity."]
   },
   "ShadowSiren:ShowStopper": {
     "NAME": "Show Stopper",
-    "DESCRIPTION": "?"
+    "DESCRIPTION": "Kill ALL enemies under !M! HP.",
+    "EXTENDED_DESCRIPTION":["*Star *Power: 3 NL Kill ALL enemies under !M! HP."]
   },
   "ShadowSiren:SuperNova": {
     "NAME": "Super Nova",
-    "DESCRIPTION": "Deal !M! to !ShadowSiren:SecondMagic! damage to ALL enemies"
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times.",
+    "EXTENDED_DESCRIPTION":["*Star *Power: 5 NL Deal !M! damage to ALL enemies !M! times."]
   },
   "ShadowSiren:SweetFeast": {
     "NAME": "Sweet Feast",
-    "DESCRIPTION": "?"
+    "DESCRIPTION": "Heal !M! HP. NL Gain [E] [E] . NL Gain !ShadowSiren:SecondMagic! Regen",
+    "EXTENDED_DESCRIPTION":["*Star *Power: 4 NL Heal !M! HP. NL Gain [E] [E] . NL Gain !ShadowSiren:SecondMagic! Regen"]
   },
   "ShadowSiren:SweetTreat": {
     "NAME": "Sweet Treat",
     "DESCRIPTION": "Heal !M! HP. NL Gain [E] .",
-    "EXTENDED_DESCRIPTION":["Heal !M! HP. NL Gain [E] [E] ."]
+    "EXTENDED_DESCRIPTION":["*Star *Power: 1 NL Heal !M! HP. NL Gain [E] ."]
   }
 }

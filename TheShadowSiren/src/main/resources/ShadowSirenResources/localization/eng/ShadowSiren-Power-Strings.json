@@ -128,7 +128,7 @@
         },
         "ShadowSiren:ShadowPower": {
                 "NAME": "Shadow Split",
-                "DESCRIPTIONS": ["Receive #b"," more damage from #yAttacks. NL When Shadow Split exceeds this creatures HP, it can be hurt by #yShadow #yDamage."]
+                "DESCRIPTIONS": ["Receive #b"," more damage from #yAttacks. NL When Shadow Split exceeds this creatures HP, it loses HP and Shadow Split accordingly."]
         },
         "ShadowSiren:SinisterReflectionPower": {
                 "NAME": "Sinister Reflections",

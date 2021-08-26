@@ -34,5 +34,10 @@
   },
   "ShadowSiren:ModConfigGullVFXButton": {
     "TEXT": ["Well the phrases do if you turn them on. Default: false."]
+  },
+  "ShadowSiren:StarBar": {
+    "TEXT": ["Star Bar"],
+    "EXTRA_TEXT": ["Star Power: #b","/",". NL Click to spend Star Power to add #yStar #yCards to your hand. NL You gain #b10% Star Power each turn.",
+                  "Choose a Star Card to add to your hand."]
   }
 }

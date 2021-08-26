@@ -32,14 +32,14 @@
     "NAMES": [
       "shadow_damage"
     ],
-    "DESCRIPTION": "Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. Targets take up to double damage when #yShadow #ySplit exceeds their current HP."
+    "DESCRIPTION": "Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage."
   },
   {
     "PROPER_NAME": "Chill",
     "NAMES": [
       "chill"
     ],
-    "DESCRIPTION": "Creatures deal #b5% less damage per stack of Chill they have, to a maximum of #b50% less damage. At end of the round, Chill is halved."
+    "DESCRIPTION": "Creatures deal #b5% less damage per stack of Chill they have, to a maximum of #b50%. At end of the round, Chill is halved."
   },
   {
     "PROPER_NAME": "Elements",
@@ -92,7 +92,7 @@
     "NAMES": [
       "item"
     ],
-    "DESCRIPTION": "An #yUnplayable and #yRetaining card that has effects while in your hand. Has a limited number of #yUses and automatically #yExhausts when out."
+    "DESCRIPTION": "A #yRetaining card that has no effect when played, but has effects while in your hand. Has a limited number of #yUses and automatically #yExhausts when out."
   },
   {
     "PROPER_NAME": "Reshuffle",
@@ -107,7 +107,7 @@
       "Shadow Split",
       "shadow_split"
     ],
-    "DESCRIPTION": "Targets take up to double damage when #yShadow #ySplit exceeds their current HP."
+    "DESCRIPTION": "Targets take up to double damage based on the ratio between Shadow Split and their current HP. Excess Shadow Split causes the target to lose HP."
   },
   {
     "PROPER_NAME": "Hyper",
@@ -123,5 +123,20 @@
       "veiled"
     ],
     "DESCRIPTION": "Damage taken is halved. Exit this #yStance at the start of your next turn."
+  },
+  {
+    "PROPER_NAME": "Star Card",
+    "NAMES": [
+      "star"
+    ],
+    "DESCRIPTION": "Star Cards are cost #b0 cards which #yPurge when played. Adding them to your hand consumes #yStar #yPower."
+  },
+  {
+    "PROPER_NAME": "Star Power",
+    "NAMES": [
+      "Star Power",
+      "star_power"
+    ],
+    "DESCRIPTION": "Star Power carries over between combats and is used to add #yStar #yCards to your hand. At the start of each turn, #b10% progress to your next Star Power is gained."
   }
 ]

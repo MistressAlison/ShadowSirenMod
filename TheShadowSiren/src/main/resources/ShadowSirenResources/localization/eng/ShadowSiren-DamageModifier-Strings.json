@@ -33,9 +33,9 @@
   "ShadowSiren:ShadowDamage": {
     "NAME": "Shadow",
     "DESCRIPTION": "Shadow [DarkIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. NL #yBlock: This Block is not lost at the beginning of turn.",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. NL #yBlock: At the beginning of turn, retain as much of this Block as enemies have #yShadow #ySplit.",
                             "#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage.",
-                            "#yBlock: This Block is not lost at the beginning of turn."]
+                            "#yBlock: At the beginning of turn, retain as much of this Block as enemies have #yShadow #ySplit."]
   },
   "ShadowSiren:ElementallyInert": {
     "NAME": "Inert",

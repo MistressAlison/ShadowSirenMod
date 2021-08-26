@@ -38,7 +38,11 @@ public class EarthTremor extends AbstractStarCard {
 
 
     public EarthTremor() {
-        super(ID, IMG, TYPE, COLOR, TARGET);
+        this(false);
+    }
+
+    public EarthTremor(boolean showStarCost) {
+        super(ID, IMG, TYPE, COLOR, TARGET, showStarCost);
         damage = baseDamage = DAMAGE;
         isMultiDamage = true;
         purgeOnUse = true;
@@ -63,6 +67,6 @@ public class EarthTremor extends AbstractStarCard {
 
     @Override
     public int getSpawnCost() {
-        return 1;
+        return COST;
     }
 }

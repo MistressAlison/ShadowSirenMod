@@ -36,7 +36,11 @@ public class SweetTreat extends AbstractStarCard {
 
 
     public SweetTreat() {
-        super(ID, IMG, TYPE, COLOR, TARGET);
+        this(false);
+    }
+
+    public SweetTreat(boolean showStarCost) {
+        super(ID, IMG, TYPE, COLOR, TARGET, showStarCost);
         baseMagicNumber = magicNumber = HEAL;
         baseSecondMagicNumber = secondMagicNumber = ENERGY;
         purgeOnUse = true;
@@ -61,6 +65,6 @@ public class SweetTreat extends AbstractStarCard {
 
     @Override
     public int getSpawnCost() {
-        return 1;
+        return COST;
     }
 }

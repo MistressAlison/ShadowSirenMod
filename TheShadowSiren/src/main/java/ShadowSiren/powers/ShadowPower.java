@@ -1,12 +1,15 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.powers.interfaces.OnModifyMaxHPPower;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -18,7 +21,7 @@ import com.megacrit.cardcrawl.vfx.combat.HeartBuffEffect;
 
 import java.text.DecimalFormat;
 
-public class ShadowPower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower {
+public class ShadowPower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower, OnModifyMaxHPPower {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("ShadowPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -55,17 +58,12 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type, AbstractCard card) {
-        //Do a safety check here in case something else modified the HP that wasn't caught
-        /*checkIfSurpassedHP();
-        if (surpassedHP) {
-            damage *= 2;
-        }*/
         damage *= (1 + Math.min(1,(float)amount/Math.max(owner.currentHealth, 1)));
         return damage;
     }
 
     public void delayedCheckIfSurpassedHP() {
-        this.addToBot(new AbstractGameAction() {
+        this.addToTop(new AbstractGameAction() {
             @Override
             public void update() {
                 checkIfSurpassedHP();
@@ -80,6 +78,11 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
                 playSurpassedVFX();
             }
             surpassedHP = true;
+            int delta = amount - owner.currentHealth;
+            if (delta > 0) {
+                this.addToTop(new LoseHPAction(owner, owner, delta));
+                this.amount = owner.currentHealth - delta;
+            }
         } else {
             surpassedHP = false;
         }
@@ -128,11 +131,17 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public int getHealthBarAmount() {
-        return amount;
+        return surpassedHP ? owner.currentHealth : amount;
     }
 
     @Override
     public Color getColor() {
         return hpBarColor;
+    }
+
+    @Override
+    public int onModifyMaxHP(AbstractCreature target, int amount) {
+        delayedCheckIfSurpassedHP();
+        return amount;
     }
 }

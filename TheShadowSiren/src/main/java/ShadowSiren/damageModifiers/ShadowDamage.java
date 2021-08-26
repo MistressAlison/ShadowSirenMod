@@ -40,7 +40,7 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     public ShadowDamage(TipType tipType, boolean innate) {
         super(ID, tipType);
         this.innate = innate;
-        this.priority = Integer.MAX_VALUE;
+        this.priority = Short.MAX_VALUE;
     }
 
     @Override
@@ -60,13 +60,15 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
 
     @Override
     public int onAttackToChangeDamage(DamageInfo info, int damageAmount, AbstractCreature target) {
-        AbstractPower pow = target.getPower(ShadowPower.POWER_ID);
+        /*AbstractPower pow = target.getPower(ShadowPower.POWER_ID);
         if (pow instanceof ShadowPower && ((ShadowPower) pow).checkIfSurpassedHP()) {
             return damageAmount;
         } else if (damageAmount > 0) {
             this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount),damageAmount, true));
             AbstractDungeon.effectList.add(new CardPoofEffect(target.hb.cX, target.hb.cY));
-        }
+        }*/
+        this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount),damageAmount, true));
+        AbstractDungeon.effectList.add(new CardPoofEffect(target.hb.cX, target.hb.cY));
         return 0;
     }
 

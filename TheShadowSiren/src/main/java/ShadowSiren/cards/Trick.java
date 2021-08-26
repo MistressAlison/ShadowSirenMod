@@ -23,7 +23,7 @@ public class Trick extends AbstractShadowCard implements ModularDescription {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Trick.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("Hexagone.png");
 
     // /TEXT DECLARATION/
 

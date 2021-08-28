@@ -3,16 +3,13 @@ package ShadowSiren.cards.starCards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractStarCard;
 import ShadowSiren.characters.Vivian;
-import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import ShadowSiren.util.GameSpeedController;
+import ShadowSiren.vfx.InversionSlowMotionEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
-import com.megacrit.cardcrawl.vfx.combat.TimeWarpTurnEndEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -52,15 +49,7 @@ public class ClockOut extends AbstractStarCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                CardCrawlGame.sound.play("POWER_TIME_WARP", 0.05F);
-                AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.GOLD, true));
-                AbstractDungeon.topLevelEffectsQueue.add(new TimeWarpTurnEndEffect());
-                this.isDone = true;
-            }
-        });
+        this.addToBot(new GameSpeedController.SlowMotionAction(new InversionSlowMotionEffect(10F, 4F)));
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
                 this.addToBot(new ApplyPowerAction(aM, p, new StrengthPower(aM, -magicNumber), -magicNumber, true));

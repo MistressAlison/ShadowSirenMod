@@ -282,7 +282,7 @@ public class StarBarPanel {
             else if (i < StarBarManager.starPower) {
                 return String.valueOf(i+1);
             }
-            return (StarBarManager.progress*StarBarManager.AMOUNT_PER_POWER)+"%";
+            return (StarBarManager.progress)+"%";
         }
     }
 

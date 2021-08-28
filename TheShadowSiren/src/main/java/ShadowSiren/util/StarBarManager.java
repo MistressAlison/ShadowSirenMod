@@ -6,7 +6,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class StarBarManager {
-    public static final int AMOUNT_PER_POWER = 10;
+    public static final int AMOUNT_PER_POWER = 100;
     public static int progress = 0;
     public static int starPower = 0;
     public static int maxStarPower = 2;
@@ -53,7 +53,7 @@ public class StarBarManager {
     }
 
     public static float makeCurrentAmount() {
-        return starPower + progress/10f;
+        return starPower + (float)progress/AMOUNT_PER_POWER;
     }
 
     /*@SpirePatch(clz = AbstractDungeon.class, method = "dungeonTransitionSetup")

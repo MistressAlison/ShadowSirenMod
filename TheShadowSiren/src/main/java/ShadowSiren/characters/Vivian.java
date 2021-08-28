@@ -5,10 +5,7 @@ import ShadowSiren.CustomAnimationListener;
 import ShadowSiren.CustomSpriterAnimation;
 import ShadowSiren.RandomChatterHelper;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.Defend;
-import ShadowSiren.cards.FrozenShield;
-import ShadowSiren.cards.ShadeFist;
-import ShadowSiren.cards.Strike;
+import ShadowSiren.cards.*;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.relics.BooSheet;
@@ -205,6 +202,7 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(FrozenShield.ID);
+        retVal.add(Appeal.ID);
 
         //*/
 

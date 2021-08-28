@@ -37,8 +37,9 @@ public class TriAttack extends AbstractMultiElementCard implements MagicAnimatio
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 3;
-    private static final int DAMAGE = 9;
+    private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int HITS = 3;
 
     private final Object fire = new Object();
     private final Object ice = new Object();
@@ -53,21 +54,28 @@ public class TriAttack extends AbstractMultiElementCard implements MagicAnimatio
     public TriAttack() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = secondMagicNumber = baseSecondMagicNumber = thirdMagicNumber = baseThirdMagicNumber = DAMAGE;
+        magicNumber = baseMagicNumber = HITS;
         DamageModifierManager.addModifier(this, fireDamage);
         DamageModifierManager.addModifier(this, iceDamage);
         DamageModifierManager.addModifier(this, electricDamage);
         DamageModifierManager.addModifier(fire, new FireDamage());
         DamageModifierManager.addModifier(ice, new IceDamage());
         DamageModifierManager.addModifier(electric, new ElectricDamage());
-        //this.exhaust = true;
+        this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(fire, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(ice, p, secondMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(electric, p, thirdMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        for (int i = 0 ; i < magicNumber ; i++) {
+            this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(fire, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+        }
+        for (int i = 0 ; i < magicNumber ; i++) {
+            this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(ice, p, secondMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+        }
+        for (int i = 0 ; i < magicNumber ; i++) {
+            this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(electric, p, thirdMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+        }
     }
 
     @Override
@@ -118,9 +126,11 @@ public class TriAttack extends AbstractMultiElementCard implements MagicAnimatio
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeSecondMagicNumber(UPGRADE_PLUS_DMG);
-            upgradeThirdMagicNumber(UPGRADE_PLUS_DMG);
+            this.exhaust = false;
+            rawDescription = UPGRADE_DESCRIPTION;
+            //upgradeDamage(UPGRADE_PLUS_DMG);
+            //upgradeSecondMagicNumber(UPGRADE_PLUS_DMG);
+            //upgradeThirdMagicNumber(UPGRADE_PLUS_DMG);
             initializeDescription();
         }
     }

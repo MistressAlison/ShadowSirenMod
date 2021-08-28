@@ -20,7 +20,7 @@
   },
   "ShadowSiren:Appeal": {
     "NAME": "Appeal",
-    "DESCRIPTION": "Gain !ShadowSiren:SecondMagic! % progress to your next shadowsiren:Star_Power. NL Exhaust."
+    "DESCRIPTION": "Gain !M! shadowsiren:Star_Power. NL Exhaust."
   },
   "ShadowSiren:ArcaneShelter": {
     "NAME": "Arcane Shelter",
@@ -303,7 +303,8 @@
   },
   "ShadowSiren:TriAttack": {
     "NAME": "Tri Attack",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage. NL Deal !ShadowSiren:ThirdMagic! [ElectricIcon] damage."
+    "DESCRIPTION": "Deal !D! [FireIcon] damage !M! times. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage !M! times. NL Deal !ShadowSiren:ThirdMagic! [ElectricIcon] damage !M! times. NL Exhaust",
+    "UPGRADE_DESCRIPTION": "Deal !D! [FireIcon] damage !M! times. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage !M! times. NL Deal !ShadowSiren:ThirdMagic! [ElectricIcon] damage !M! times."
   },
   "ShadowSiren:Trick": {
     "NAME": "Trick",

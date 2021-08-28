@@ -226,5 +226,12 @@
       "At the beginning of combat, gain #b"," #yshadowsiren:Electric.",
       "Damage dealt: "," NL Per combat: "," NL Per turn: "
     ]
+  },
+  "ShadowSiren:Chronometer": {
+    "NAME": "Chronometer",
+    "FLAVOR": "Who would want this?",
+    "DESCRIPTIONS": [
+      "The game is currently running at #b","x speed. Right Click to change."
+    ]
   }
 }

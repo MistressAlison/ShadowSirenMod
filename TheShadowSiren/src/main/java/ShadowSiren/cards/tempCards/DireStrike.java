@@ -49,7 +49,7 @@ public class DireStrike extends AbstractDynamicCard implements TempCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        if(hasDebuff() || p.isBloodied) {
+        if(hasDebuff()) {
             this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         }
     }
@@ -65,7 +65,7 @@ public class DireStrike extends AbstractDynamicCard implements TempCard {
 
     public void triggerOnGlowCheck() {
         super.triggerOnGlowCheck();
-        if (hasDebuff() || AbstractDungeon.player.isBloodied) {
+        if (hasDebuff()) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         } else {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();

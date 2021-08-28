@@ -380,6 +380,7 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
                 } else {
                     playAnimation("punch");
                 }
+                StarBarManager.addProgress(5);
                 break;
             case POWER:
                 RandomChatterHelper.showChatter(RandomChatterHelper.getPowerText(), cardTalkProbability, enableCardBattleTalkEffect);
@@ -489,18 +490,18 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
             playAnimation("guard");
             guardAnimation = true;
         }
-        StarBarManager.addProgress(1);
+        StarBarManager.addProgress(5);
     }
 
     @Override
     public void applyStartOfTurnPowers() {
         super.applyStartOfTurnPowers();
-        StarBarManager.addProgress(1);
+        //StarBarManager.addProgress(1);
     }
 
     @Override
     public void onSuccessfulAttackCommand(AbstractCard card) {
-        StarBarManager.addProgress(1);
+        StarBarManager.addProgress(10);
     }
 
     //Maybe, currently just moved to Homemark relic

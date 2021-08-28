@@ -222,7 +222,7 @@ public class StarFall extends AbstractInertCard implements MagicAnimation, Modul
             if (secondMagicNumber != 1) {
                 rawDescription = DESCRIPTION;
             } else {
-                rawDescription = EXTENDED_DESCRIPTION[1];
+                rawDescription = EXTENDED_DESCRIPTION[0];
             }
         }
     }

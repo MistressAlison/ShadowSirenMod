@@ -10,12 +10,14 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.actions.common.SuicideAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.HeartBuffEffect;
 
@@ -29,7 +31,7 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     private final Color hpBarColor = Color.DARK_GRAY.cpy();
-    DecimalFormat df = new DecimalFormat("#.##");
+    //DecimalFormat df = new DecimalFormat("#.##");
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
@@ -56,11 +58,11 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
         updateDescription();
     }
 
-    @Override
+    /*@Override
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type, AbstractCard card) {
         damage *= (1 + Math.min(1,(float)amount/Math.max(owner.currentHealth, 1)));
         return damage;
-    }
+    }*/
 
     public void delayedCheckIfSurpassedHP() {
         this.addToTop(new AbstractGameAction() {
@@ -77,7 +79,9 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
             if (!surpassedHP && owner.currentHealth > 0) {
                 playSurpassedVFX();
             }
-            surpassedHP = true;
+            ///this.addToBot(new SuicideAction((AbstractMonster)this.owner));
+            this.addToTop(new LoseHPAction(this.owner, this.owner, 99999));
+            /*surpassedHP = true;
             int delta = amount - owner.currentHealth;
             if (delta > 0) {
                 flash();
@@ -86,7 +90,7 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                     AbstractDungeon.actionManager.clearPostCombatActions();
                 }
-            }
+            }*/
         } else {
             surpassedHP = false;
         }
@@ -113,11 +117,11 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
         return super.onAttacked(info, damageAmount);
     }
 
-    @Override
+    /*@Override
     public int onHeal(int healAmount) {
         delayedCheckIfSurpassedHP();
         return super.onHeal(healAmount);
-    }
+    }*/
 
     public void playSurpassedVFX() {
         AbstractDungeon.actionManager.addToTop(new VFXAction(new HeartBuffEffect(owner.hb.cX, owner.hb.cY)));
@@ -125,7 +129,8 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + df.format(Math.min(100, amount * 100 / Math.max(owner.currentHealth, 1))) + "%" + DESCRIPTIONS[1];
+        //description = DESCRIPTIONS[0] + df.format(Math.min(100, amount * 100 / Math.max(owner.currentHealth, 1))) + "%" + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0];
     }
 
     @Override

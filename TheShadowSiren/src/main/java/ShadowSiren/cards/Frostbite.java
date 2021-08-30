@@ -63,7 +63,7 @@ public class Frostbite extends AbstractIceCard {
 
     private boolean enemyHasWeakOrChill() {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (!aM.isDeadOrEscaped() && (aM.hasPower(WeakPower.POWER_ID) || aM.hasPower(ChillPower.POWER_ID))){
+            if (!aM.isDeadOrEscaped() && (aM.hasPower(WeakPower.POWER_ID) /*|| aM.hasPower(ChillPower.POWER_ID)*/)) {
                 return true;
             }
         }

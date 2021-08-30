@@ -48,8 +48,10 @@ public class PiezoCapacitorPower extends AbstractPower implements CloneablePower
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL && info.owner != owner) {
             ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group.stream().filter(c -> c.baseDamage >= 0 || c.baseBlock >= 0).collect(Collectors.toCollection(ArrayList::new));
-            AbstractCard c = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()-1));
-            CardModifierManager.addModifier(c, new ChargeModifier(amount));
+            if (!cards.isEmpty()) {
+                AbstractCard c = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()-1));
+                CardModifierManager.addModifier(c, new ChargeModifier(amount));
+            }
         }
         return super.onAttacked(info, damageAmount);
     }

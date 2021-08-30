@@ -30,6 +30,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StarBarPanel {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ShadowSirenMod.makeID("StarBar"));
@@ -48,6 +49,11 @@ public class StarBarPanel {
     private static final Color ENERGY_TEXT_COLOR = new Color(0.86F, 1.0F, 1.0F, 1.0F);
     private static final float BAR_ANIM_TIME = 0.5f;
     private static final boolean FORCE_COMPLETE_ANIMATION = false;
+    private static final float TIP_OFFSET_X = 0.0F * Settings.scale;
+    private static final float TIP_OFFSET_Y = -50.0F * Settings.scale;
+    private static final float CARD_OFFSET_X = 0f * Settings.scale;
+    private static final float CARD_OFFSET_Y = 120f * Settings.scale;
+    private static final float CARD_SCALE = 0.35f;
     private static Texture orbVfx;
     private static float hueSlider;
     private static float vfxScale;
@@ -61,6 +67,9 @@ public class StarBarPanel {
     public static final Clickable clickable = new Clickable();
     private static final ArrayList<StarOrb> orbs = new ArrayList<>();
     private static final CardGroup starCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+    private static final HashMap<AbstractCard, AbstractCard> previewMap = new HashMap<>();
+    private static final ArrayList<AbstractCard> previews = new ArrayList<>();
+
 
     
     static {
@@ -149,8 +158,16 @@ public class StarBarPanel {
     }
     public static void renderOrbs(SpriteBatch sb, float x, float y) {
         if (open || barAnimationTimer != 0) {
-            for (int i = 0 ; i < orbs.size() ; i++) {
-                orbs.get(orbs.size()-1-i).render(sb, x+(orbs.size()-1-i)*X_OFFSET_PER_ORB*offsetMulti, y+(orbs.size()-1-i)*Y_OFFSET_PER_ORB*offsetMulti);
+            for (int i = orbs.size()-1 ; i >= 0 ; i--) {
+                orbs.get(i).render(sb, x+i*X_OFFSET_PER_ORB*offsetMulti, y+i*Y_OFFSET_PER_ORB*offsetMulti);
+            }
+            if (open) {
+                for (int i = previews.size()-1 ; i >= 0 ; i--) {
+                    previews.get(i).current_x = x + CARD_OFFSET_X + i*X_OFFSET_PER_ORB*offsetMulti;
+                    previews.get(i).current_y = y + CARD_OFFSET_Y + i*Y_OFFSET_PER_ORB*offsetMulti;
+                    previews.get(i).drawScale = CARD_SCALE;
+                    previews.get(i).render(sb);
+                }
             }
         } else if (!orbs.isEmpty()) {
             orbs.get(0).render(sb, x, y);
@@ -305,7 +322,8 @@ public class StarBarPanel {
         @Override
         protected void onHover() {
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.isScreenUp) {
-                TipHelper.renderGenericTip(50.0F * Settings.scale + X_OFFSET, 380.0F * Settings.scale + Y_OFFSET, TITLE, TEXT[0]+StarBarManager.starPower+TEXT[1]+StarBarManager.maxStarPower+TEXT[2]);
+                TipHelper.renderGenericTip(x + TIP_OFFSET_X, y + TIP_OFFSET_Y, TITLE, TEXT[0]+StarBarManager.starPower+TEXT[1]+StarBarManager.maxStarPower+TEXT[2]+TEXT[3]);
+                //TipHelper.renderGenericTip(x + TIP_OFFSET_X, y + TIP_OFFSET_Y, TITLE, TEXT[3]);
                 if (!open && (!FORCE_COMPLETE_ANIMATION || barAnimationTimer == 0)) {
                     barAnimationTimer = BAR_ANIM_TIME - barAnimationTimer;
                     open = true;
@@ -315,7 +333,7 @@ public class StarBarPanel {
 
         @Override
         protected void onUnhover() {
-            if (open && (!FORCE_COMPLETE_ANIMATION || barAnimationTimer == 0)) {
+            if (!AbstractDungeon.isScreenUp && open && (!FORCE_COMPLETE_ANIMATION || barAnimationTimer == 0)) {
                 barAnimationTimer = BAR_ANIM_TIME - barAnimationTimer;
                 open = false;
             }
@@ -323,7 +341,7 @@ public class StarBarPanel {
 
         @Override
         protected void onClick() {
-            if (!AbstractDungeon.actionManager.turnHasEnded) {
+            if (!AbstractDungeon.actionManager.turnHasEnded && !AbstractDungeon.isScreenUp && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
                 wasClicked = true;
             }
         }
@@ -338,7 +356,7 @@ public class StarBarPanel {
                         c.initializeDescription();
                     }
                     needsToOpen = false;
-                    AbstractDungeon.gridSelectScreen.open(starCards, 1, TEXT[3], false, false, true, true);
+                    AbstractDungeon.gridSelectScreen.open(starCards, 1, TEXT[4], false, false, true, true);
                 } else {
                     if (!AbstractDungeon.isScreenUp) {
                         for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
@@ -347,6 +365,7 @@ public class StarBarPanel {
                                 if (AbstractDungeon.player.hand.size() < 10 && StarBarManager.starPower >= ((AbstractStarCard) c).getSpawnCost()) {
                                     StarBarManager.consumeStarPower(((AbstractStarCard) c).getSpawnCost());
                                     starCards.removeCard(c);
+                                    previews.remove(previewMap.get(c));
                                     AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c.makeStatEquivalentCopy(), (float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
                                 }
                             }
@@ -362,6 +381,8 @@ public class StarBarPanel {
 
     public static void populateStarCards() {
         starCards.clear();
+        previews.clear();
+        previewMap.clear();
         starCards.addToTop(new SweetTreat(true));
         starCards.addToTop(new EarthTremor(true));
         if (AbstractDungeon.actNum > 1) {
@@ -374,7 +395,11 @@ public class StarBarPanel {
             starCards.addToTop(new ShowStopper(true));
             starCards.addToTop(new SuperNova(true));
         }
-
+        for (AbstractCard c : starCards.group) {
+            AbstractCard copy = c.makeStatEquivalentCopy();
+            previewMap.put(c, copy);
+            previews.add(copy);
+        }
     }
 
     @SpirePatch(clz = CustomEnergyOrb.class, method = "renderOrb")

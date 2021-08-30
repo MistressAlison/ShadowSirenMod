@@ -1,13 +1,12 @@
 package ShadowSiren.cards;
 
 import IconsAddon.util.DamageModifierHelper;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.ElectricDamage;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -48,6 +47,7 @@ public class ChainShock extends AbstractElectricCard implements MagicAnimation {
         baseDamage = damage = DAMAGE;
         isMultiDamage = true;
         this.exhaust = true;
+        CardModifierManager.addModifier(this, new ChargeModifier(1, true));
     }
 
     // Actions the card should do.

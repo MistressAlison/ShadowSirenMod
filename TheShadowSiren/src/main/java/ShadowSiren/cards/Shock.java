@@ -4,11 +4,13 @@ import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.ElectricBlock;
 import ShadowSiren.blockTypes.IceBlock;
+import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -47,6 +49,7 @@ public class Shock extends AbstractElectricCard implements ModularDescription {
         baseBlock = block = BLOCK;
         magicNumber = baseMagicNumber = DRAW;
         BlockModifierManager.addModifier(this, new ElectricBlock());
+        CardModifierManager.addModifier(this, new ChargeModifier(1, true));
     }
 
     // Actions the card should do.

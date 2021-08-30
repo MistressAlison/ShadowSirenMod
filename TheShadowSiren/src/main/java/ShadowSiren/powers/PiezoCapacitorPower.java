@@ -1,14 +1,19 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.ChargeModifier;
+import basemod.helpers.CardModifierManager;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class PiezoCapacitorPower extends AbstractPower implements CloneablePowerInterface {
 
@@ -16,8 +21,6 @@ public class PiezoCapacitorPower extends AbstractPower implements CloneablePower
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
-    private boolean wasAttacked = false;
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
@@ -42,20 +45,11 @@ public class PiezoCapacitorPower extends AbstractPower implements CloneablePower
     }
 
     @Override
-    public void onEnergyRecharge() {
-        if (wasAttacked) {
-            flash();
-            wasAttacked = false;
-            this.addToTop(new ApplyPowerAction(this.owner, this.owner, new ChargePower(this.owner, this.amount), this.amount, true));
-            this.addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.1F));
-        }
-    }
-
-    @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.NORMAL && !wasAttacked) {
-            this.flash();
-            wasAttacked = true;
+        if (info.type == DamageInfo.DamageType.NORMAL && info.owner != owner) {
+            ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group.stream().filter(c -> c.baseDamage >= 0 || c.baseBlock >= 0).collect(Collectors.toCollection(ArrayList::new));
+            AbstractCard c = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()-1));
+            CardModifierManager.addModifier(c, new ChargeModifier(amount));
         }
         return super.onAttacked(info, damageAmount);
     }

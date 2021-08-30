@@ -1,7 +1,6 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.PiezoCapacitorPower;
@@ -29,7 +28,8 @@ public class PiezoCapacitor extends AbstractElectricCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int STACKS = 2;
+    private static final int STACKS = 1;
+    private static final int UPGRADE_PLUS_STACKS = 1;
 
     // /STAT DECLARATION/
 
@@ -50,8 +50,7 @@ public class PiezoCapacitor extends AbstractElectricCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.isInnate = true;
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_PLUS_STACKS);
             initializeDescription();
         }
     }

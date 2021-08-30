@@ -2,6 +2,7 @@ package ShadowSiren.cards;
 
 import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.IntensifyAction;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ElementalPower;
@@ -11,9 +12,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import com.megacrit.cardcrawl.vfx.combat.FrostOrbActivateEffect;
@@ -81,44 +80,7 @@ public class WildMagic extends AbstractInertCard {
         this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
         int effect = ElementalPower.numActiveElements() * magicNumber;
         if (effect > 0) {
-            this.addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    baseDamage += effect;
-                    applyPowers();
-
-                    for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
-                        if (c instanceof WildMagic) {
-                            c.baseDamage += effect;
-                            c.applyPowers();
-                        }
-                    }
-
-                    for (AbstractCard c: AbstractDungeon.player.drawPile.group) {
-                        if (c instanceof WildMagic) {
-                            c.baseDamage += effect;
-                            c.applyPowers();
-                        }
-                    }
-
-                    for (AbstractCard c: AbstractDungeon.player.hand.group) {
-                        if (c instanceof WildMagic) {
-                            c.baseDamage += effect;
-                            c.applyPowers();
-                        }
-                    }
-
-                    this.isDone = true;
-                }
-            });
-
-            /*this.addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    ElementalPower.removeAllElements();
-                    this.isDone = true;
-                }
-            });*/
+            this.addToBot(new IntensifyAction(this, effect, IntensifyAction.EffectType.DAMAGE));
         }
     }
 

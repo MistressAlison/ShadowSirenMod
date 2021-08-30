@@ -8,10 +8,12 @@ import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.cards.tempCards.Hammer;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -52,7 +54,7 @@ public class BrickBreaker extends AbstractIceCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new GainBlockAction(m, p, block));
+        this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
         this.addToBot(new MakeTempCardInHandAction(cardsToPreview.makeStatEquivalentCopy(), magicNumber));
     }
 

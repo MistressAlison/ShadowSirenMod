@@ -3,6 +3,7 @@ package ShadowSiren.cards;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.IntensifyAction;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
@@ -36,10 +37,12 @@ public class TriAttack extends AbstractMultiElementCard implements MagicAnimatio
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 3;
-    private static final int DAMAGE = 3;
-    private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int HITS = 3;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
+    private static final int DAMAGE = 3; //x3
+    private static final int UPGRADE_PLUS_DAMAGE = 2; //x3
+    private static final int SCALE = 2; //x3
+    private static final int UPGRADE_PLUS_SCALE = 1; //x3
 
     private final Object fire = new Object();
     private final Object ice = new Object();
@@ -54,28 +57,22 @@ public class TriAttack extends AbstractMultiElementCard implements MagicAnimatio
     public TriAttack() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = secondMagicNumber = baseSecondMagicNumber = thirdMagicNumber = baseThirdMagicNumber = DAMAGE;
-        magicNumber = baseMagicNumber = HITS;
+        magicNumber = baseMagicNumber = SCALE;
         DamageModifierManager.addModifier(this, fireDamage);
         DamageModifierManager.addModifier(this, iceDamage);
         DamageModifierManager.addModifier(this, electricDamage);
         DamageModifierManager.addModifier(fire, new FireDamage());
         DamageModifierManager.addModifier(ice, new IceDamage());
         DamageModifierManager.addModifier(electric, new ElectricDamage());
-        this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0 ; i < magicNumber ; i++) {
-            this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(fire, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
-        }
-        for (int i = 0 ; i < magicNumber ; i++) {
-            this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(ice, p, secondMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
-        }
-        for (int i = 0 ; i < magicNumber ; i++) {
-            this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(electric, p, thirdMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
-        }
+        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(fire, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(ice, p, secondMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(electric, p, thirdMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+        this.addToBot(new IntensifyAction(this, magicNumber, IntensifyAction.EffectType.DAMAGE));
     }
 
     @Override
@@ -126,11 +123,9 @@ public class TriAttack extends AbstractMultiElementCard implements MagicAnimatio
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.exhaust = false;
-            rawDescription = UPGRADE_DESCRIPTION;
-            //upgradeDamage(UPGRADE_PLUS_DMG);
-            //upgradeSecondMagicNumber(UPGRADE_PLUS_DMG);
-            //upgradeThirdMagicNumber(UPGRADE_PLUS_DMG);
+            upgradeDamage(UPGRADE_PLUS_DAMAGE);
+            upgradeSecondMagicNumber(UPGRADE_PLUS_DAMAGE);
+            upgradeThirdMagicNumber(UPGRADE_PLUS_DAMAGE);
             initializeDescription();
         }
     }

@@ -34,7 +34,7 @@ public class Blitz extends AbstractDynamicCard implements ModularDescription {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 0;
-    private static final int DAMAGE = 4;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int HITS = 1;
 
@@ -45,6 +45,7 @@ public class Blitz extends AbstractDynamicCard implements ModularDescription {
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
         shuffleBackIntoDrawPile = true;
+        isEthereal = true;
     }
 
     // Actions the card should do.
@@ -64,13 +65,13 @@ public class Blitz extends AbstractDynamicCard implements ModularDescription {
         });
     }
 
-    @Override
+    /*@Override
     public void onMoveToDiscard() {
         this.modifyCostForCombat(1-magicNumber);
         this.isCostModified = cost != COST;
         this.isCostModifiedForTurn = costForTurn != COST;
         this.magicNumber = this.baseMagicNumber = HITS;
-    }
+    }*/
 
     // Upgraded stats.
     @Override

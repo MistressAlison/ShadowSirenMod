@@ -1,18 +1,9 @@
 package ShadowSiren.cards;
 
-import IconsAddon.cardmods.AddIconToDescriptionMod;
-import IconsAddon.icons.DarkIcon;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cardModifiers.AddIconHelper;
-import ShadowSiren.cards.abstractCards.AbstractInertCard;
-import ShadowSiren.cards.abstractCards.AbstractModdedCard;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
-import ShadowSiren.cards.interfaces.ElementallyInert;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.ShadowDamage;
-import ShadowSiren.patches.ElementalPatches;
-import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -108,6 +99,19 @@ public class ShadowTag extends AbstractShadowCard {
                 this.isDone = true;
             }
         });
+    }
+
+    private boolean noAttacks() {
+        return AbstractDungeon.player.drawPile.group.stream().noneMatch(c -> c.type == CardType.ATTACK);
+    }
+
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        if (noAttacks()) {
+            this.glowColor = Color.RED.cpy();
+        } else {
+            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        }
     }
 
     //Upgraded stats.

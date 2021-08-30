@@ -811,15 +811,15 @@ public class ShadowSirenMod implements
         // Of note is that the bard mod uses it's own custom relic class (not dissimilar to our AbstractDefaultCard class for cards) that adds the 'color' field,
         // in order to automatically differentiate which pool to add the relic too.
 
-        BaseMod.addRelicToCustomPool(new Chronometer(), Vivian.Enums.VOODOO_CARD_COLOR);
-        UnlockTracker.markRelicAsSeen(Chronometer.ID);
+        //BaseMod.addRelicToCustomPool(new Chronometer(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //UnlockTracker.markRelicAsSeen(Chronometer.ID);
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new BlackKey(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new BooSheet(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new BottledStar(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new CourageShell(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new DataCollector(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new DataCollector(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new EarthQuake(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new ElectroPop(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new FireFlower(), Vivian.Enums.VOODOO_CARD_COLOR);
@@ -851,7 +851,7 @@ public class ShadowSirenMod implements
         UnlockTracker.markRelicAsSeen(BooSheet.ID);
         UnlockTracker.markRelicAsSeen(BottledStar.ID);
         UnlockTracker.markRelicAsSeen(CourageShell.ID);
-        UnlockTracker.markRelicAsSeen(DataCollector.ID);
+        //UnlockTracker.markRelicAsSeen(DataCollector.ID);
         UnlockTracker.markRelicAsSeen(EarthQuake.ID);
         //UnlockTracker.markRelicAsSeen(ElectroPop.ID);
         //UnlockTracker.markRelicAsSeen(FireFlower.ID);

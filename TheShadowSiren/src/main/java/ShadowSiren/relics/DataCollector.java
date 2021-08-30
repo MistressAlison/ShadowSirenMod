@@ -104,7 +104,7 @@ public class DataCollector extends CustomRelic implements CustomSavable<Integer>
     }
 
     public DataCollector() {
-        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.HEAVY);
+        super(ID, IMG, OUTLINE, RelicTier.SPECIAL, LandingSound.HEAVY);
         resetStats();
     }
 

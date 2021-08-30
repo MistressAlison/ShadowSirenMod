@@ -1,9 +1,11 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -40,7 +42,7 @@ public class Thunderstruck extends AbstractElectricCard implements MagicAnimatio
     private static final int COST = 2;
     private static final int DAMAGE = 12;
     private static final int UPGRADE_PLUS_DMG = 4;
-    private static final int DEBUFF = 1;
+    private static final int DEBUFF = 2;
 
     // /STAT DECLARATION/
 
@@ -48,7 +50,8 @@ public class Thunderstruck extends AbstractElectricCard implements MagicAnimatio
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = DEBUFF;
-        this.exhaust = true;
+        shuffleBackIntoDrawPile = true;
+        CardModifierManager.addModifier(this, new ChargeModifier(1, true));
     }
 
     // Actions the card should do.
@@ -57,7 +60,7 @@ public class Thunderstruck extends AbstractElectricCard implements MagicAnimatio
         this.addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
         this.addToBot(new SFXAction("THUNDERCLAP", 0.05F));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
-        this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
+        //this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
         this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
     }
 

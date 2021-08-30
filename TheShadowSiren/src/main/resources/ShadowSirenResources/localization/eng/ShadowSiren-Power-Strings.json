@@ -48,7 +48,7 @@
         },
         "ShadowSiren:EnergyConversionPower": {
                 "NAME": "Energy Conversion",
-                "DESCRIPTIONS": ["When gaining #yCharge, also gains #b"," #yVigor."]
+                "DESCRIPTIONS": ["At the beginning of your turn, trigger the #yCharge of all cards in play #b"," time."," times."]
         },
         "ShadowSiren:EnergyReversionPower": {
                 "NAME": "Energy Reversion",
@@ -112,7 +112,7 @@
         },
         "ShadowSiren:PiezoCapacitorPower": {
                 "NAME": "Piezo Capacitor",
-                "DESCRIPTIONS": ["At the beginning of your turn, gain #b"," #yCharges if you were attacked last turn."]
+                "DESCRIPTIONS": ["Whenever you are attacked, apply #b"," #yCharge to a random card in your draw pile."]
         },
         "ShadowSiren:PocketDimensionPower": {
                 "NAME": "Pocket Dimension",

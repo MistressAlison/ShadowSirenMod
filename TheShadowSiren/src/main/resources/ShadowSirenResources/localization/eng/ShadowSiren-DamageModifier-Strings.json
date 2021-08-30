@@ -63,5 +63,10 @@
     "NAME": "Electric Shield [ElectricIcon]",
     "DESCRIPTION": "When attacking, deal a secondary 3 [ElectricIcon] damage. When attacked, deals 3 [ElectricIcon] damage back.",
     "EXTENDED_DESCRIPTION": ["When attacking, deal a secondary #b"," [ElectricIcon] damage. When attacked, deals #b"," [ElectricIcon] damage back."]
+  },
+  "ShadowSiren:ChargeModifier": {
+    "NAME": "Charge",
+    "DESCRIPTION": "Charge",
+    "EXTENDED_DESCRIPTION": ["shadowsiren:Charge ",". NL "]
   }
 }

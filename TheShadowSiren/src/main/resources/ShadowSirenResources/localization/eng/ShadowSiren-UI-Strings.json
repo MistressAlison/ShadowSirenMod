@@ -37,7 +37,7 @@
   },
   "ShadowSiren:StarBar": {
     "TEXT": ["Star Bar"],
-    "EXTRA_TEXT": ["Star Power: #b","/",". NL Click to spend Star Power to add #yStar #yCards to your hand. NL You gain #b5% Star Power for each #yAttack you play.",
+    "EXTRA_TEXT": ["Star Power: #b","/",". NL ","#yClick to spend Star Power to add #yStar #yCards to your hand. NL You gain #b5% Star Power for each #yAttack you play.",
                   "Choose a Star Card to add to your hand."]
   }
 }

@@ -54,8 +54,8 @@
   },
   "ShadowSiren:Blitz": {
     "NAME": "Blitz",
-    "DESCRIPTION": "Deal !D! damage !M! time. NL Increase this cards cost and hits by 1. NL When discarded, reset this cards cost and hits. NL shadowsiren:Reshuffle.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage !M! times. NL Increase this cards cost and hits by 1. NL When discarded, reset this cards cost and hits. NL shadowsiren:Reshuffle."
+    "DESCRIPTION": "Ethereal. NL Deal !D! damage !M! time. NL Increase this cards cost and hits by 1 this combat. NL shadowsiren:Reshuffle.",
+    "UPGRADE_DESCRIPTION": "Ethereal. NL Deal !D! damage !M! times. NL Increase this cards cost and hits by 1 this combat. NL shadowsiren:Reshuffle."
   },
   "ShadowSiren:BrickBreaker": {
     "NAME": "Brick Breaker",
@@ -63,7 +63,7 @@
   },
   "ShadowSiren:Cataclysm": {
     "NAME": "Cataclysm",
-    "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL Gain [E] for each enemy this kills."
+    "DESCRIPTION": "Deal !D! [ElectricIcon] damage to ALL enemies. NL Gain [E] for each enemy this kills."
   },
   "ShadowSiren:ChainShock": {
     "NAME": "Chain Shock",
@@ -71,8 +71,7 @@
   },
   "ShadowSiren:ChargeUp": {
     "NAME": "Charge Up",
-    "DESCRIPTION": "Gain !M! shadowsiren:Charge.",
-    "UPGRADE_DESCRIPTION": "Gain !M! shadowsiren:Charges."
+    "DESCRIPTION": "Apply !M! shadowsiren:Charge to a card in your hand."
   },
   "ShadowSiren:CreepingShadows": {
     "NAME": "Creeping Shadows",
@@ -119,7 +118,8 @@
   },
   "ShadowSiren:EnergyConversion": {
     "NAME": "Energy Conversion",
-    "DESCRIPTION": "Whenever you gain shadowsiren:Charge, also gain !M! Vigor."
+    "DESCRIPTION": "At the beginning of your turn, activate the shadowsiren:Charge of all cards in play.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the beginning of your turn, activate the shadowsiren:Charge of all cards in play."
   },
   "ShadowSiren:FieryJinx": {
     "NAME": "Fiery Jinx",
@@ -176,7 +176,7 @@
   },
   "ShadowSiren:IceWall": {
     "NAME": "Ice Wall",
-    "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! [IceIcon] damage."
   },
   "ShadowSiren:Immolate": {
     "NAME": "Immolate",
@@ -208,8 +208,7 @@
   },
   "ShadowSiren:PiezoCapacitor": {
     "NAME": "Piezo Capacitor",
-    "DESCRIPTION": "At the beginning of your turn, gain !M! shadowsiren:Charges if you were attacked last turn.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the beginning of your turn, gain !M! shadowsiren:Charges if you were attacked last turn."
+    "DESCRIPTION": "Whenever you are attacked, apply !M! shadowsiren:Charge to a random card in your draw pile."
   },
   "ShadowSiren:PlasmaBeam": {
     "NAME": "Plasma Beam",
@@ -291,7 +290,7 @@
   },
   "ShadowSiren:StaticBarrier": {
     "NAME": "Static Barrier",
-    "DESCRIPTION": "Gain !B! [ElectricIcon] Block."
+    "DESCRIPTION": "Retain. NL Gain !B! [ElectricIcon] Block !M! times."
   },
   "ShadowSiren:Strike": {
     "NAME": "Strike",
@@ -299,12 +298,11 @@
   },
   "ShadowSiren:Thunderstruck": {
     "NAME": "Thunderstruck",
-    "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL Apply !M! Weak. NL Apply !M! Vulnerable. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL Apply !M! Vulnerable. NL shadowsiren:Reshuffle."
   },
   "ShadowSiren:TriAttack": {
     "NAME": "Tri Attack",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage !M! times. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage !M! times. NL Deal !ShadowSiren:ThirdMagic! [ElectricIcon] damage !M! times. NL Exhaust",
-    "UPGRADE_DESCRIPTION": "Deal !D! [FireIcon] damage !M! times. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage !M! times. NL Deal !ShadowSiren:ThirdMagic! [ElectricIcon] damage !M! times."
+    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage. NL Deal !ShadowSiren:ThirdMagic! [ElectricIcon] damage. NL shadowsiren:Intensify damage by !M!."
   },
   "ShadowSiren:Trick": {
     "NAME": "Trick",
@@ -313,9 +311,8 @@
   },
   "ShadowSiren:TurboCharged": {
     "NAME": "Turbo Charged",
-    "DESCRIPTION": "Gain X shadowsiren:Charges. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge)",
-    "UPGRADE_DESCRIPTION": "Gain X shadowsiren:Charges. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charges)",
-    "EXTENDED_DESCRIPTION": ["Gain X + !M! shadowsiren:Charges. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge)", "Gain X + !M! shadowsiren:Charges. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charges)"]
+    "DESCRIPTION": "Apply X shadowsiren:Charge to all cards in your hand. NL (Applies !ShadowSiren:SecondMagic! shadowsiren:Charge) NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply X shadowsiren:Charge to all cards in your hand. NL (Applies !ShadowSiren:SecondMagic! shadowsiren:Charge)"
   },
   "ShadowSiren:VigorousShift": {
     "NAME": "Vigorous Shift",

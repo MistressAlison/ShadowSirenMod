@@ -52,11 +52,9 @@
   {
     "PROPER_NAME": "Charge",
     "NAMES": [
-      "Charge",
-      "charge",
-      "charges"
+      "charge"
     ],
-    "DESCRIPTION": "Your next card is #b50% more effective."
+    "DESCRIPTION": "When you deal #yElectric damage, increase this cards damage and Block this combat."
   },
   {
     "PROPER_NAME": "Follow-Up",

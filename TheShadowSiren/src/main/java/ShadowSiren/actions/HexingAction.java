@@ -1,6 +1,6 @@
 package ShadowSiren.actions;
 
-import ShadowSiren.powers.HexingPower;
+import ShadowSiren.oldStuff.powers.HexingPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

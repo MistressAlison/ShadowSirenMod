@@ -5,7 +5,7 @@ import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.ChargeMultiEffect;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ChargePower;
+import ShadowSiren.oldStuff.powers.ChargePower;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;

@@ -1,9 +1,9 @@
 package ShadowSiren.patches;
 
 import ShadowSiren.actions.MakeTempCardInExhaustAction;
-import ShadowSiren.powers.ConfusedPower;
-import ShadowSiren.powers.DizzyPower;
-import ShadowSiren.powers.HexingPower;
+import ShadowSiren.oldStuff.powers.ConfusedPower;
+import ShadowSiren.oldStuff.powers.DizzyPower;
+import ShadowSiren.oldStuff.powers.HexingPower;
 import ShadowSiren.powers.SinisterReflectionPower;
 import ShadowSiren.relics.DataCollector;
 import ShadowSiren.relics.PointSwap;

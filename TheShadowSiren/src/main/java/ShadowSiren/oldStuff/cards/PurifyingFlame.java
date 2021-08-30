@@ -5,7 +5,7 @@ import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
 import ShadowSiren.oldStuff.cards.dualityCards.smoke.PurifyingFlameDual;
 import ShadowSiren.cards.interfaces.VigorMagicBuff;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.BurnPower;
+import ShadowSiren.oldStuff.powers.BurnPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

@@ -4,7 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractHugeCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ChargePower;
+import ShadowSiren.oldStuff.powers.ChargePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

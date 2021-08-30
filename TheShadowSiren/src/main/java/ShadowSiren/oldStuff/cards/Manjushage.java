@@ -3,7 +3,7 @@ package ShadowSiren.oldStuff.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.FadingPlayerPower;
+import ShadowSiren.oldStuff.powers.FadingPlayerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

@@ -2,9 +2,8 @@ package ShadowSiren.patches;
 
 import ShadowSiren.cards.interfaces.ChargeMagicBuff;
 import ShadowSiren.cards.interfaces.VigorMagicBuff;
-import ShadowSiren.powers.ChargePower;
+import ShadowSiren.oldStuff.powers.ChargePower;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

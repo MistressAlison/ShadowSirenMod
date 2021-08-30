@@ -1,7 +1,7 @@
 package ShadowSiren.relics;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.powers.BurnPower;
+import ShadowSiren.oldStuff.powers.BurnPower;
 import ShadowSiren.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 

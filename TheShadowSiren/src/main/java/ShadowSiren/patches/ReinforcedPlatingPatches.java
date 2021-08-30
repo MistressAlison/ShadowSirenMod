@@ -1,6 +1,6 @@
 package ShadowSiren.patches;
 
-import ShadowSiren.powers.ReinforcedPlatingPower;
+import ShadowSiren.oldStuff.powers.ReinforcedPlatingPower;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 

@@ -1,11 +1,8 @@
 package ShadowSiren.patches;
 
-import ShadowSiren.powers.BurnPower;
 import ShadowSiren.stances.OnLoseHPStance;
-import ShadowSiren.stances.SmokeStance;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import javassist.CtBehavior;

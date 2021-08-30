@@ -5,7 +5,7 @@ import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.oldStuff.cards.dualityCards.hyper.PowerBoostDual;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ChargePower;
+import ShadowSiren.oldStuff.powers.ChargePower;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

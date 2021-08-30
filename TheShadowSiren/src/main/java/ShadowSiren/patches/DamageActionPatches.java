@@ -1,7 +1,7 @@
 package ShadowSiren.patches;
 /*
-import ShadowSiren.powers.ConfusedPower;
-import ShadowSiren.powers.DizzyPower;
+import ShadowSiren.oldStuff.powers.ConfusedPower;
+import ShadowSiren.oldStuff.powers.DizzyPower;
 import ShadowSiren.relics.DataCollector;
 import ShadowSiren.relics.RepelCape;
 import basemod.ReflectionHacks;

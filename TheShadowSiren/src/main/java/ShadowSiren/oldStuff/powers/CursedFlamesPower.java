@@ -1,18 +1,18 @@
-package ShadowSiren.powers;
+package ShadowSiren.oldStuff.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.powers.interfaces.OnUseEnergyPower;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-public class GiantsHeart extends AbstractPower implements CloneablePowerInterface, OnUseEnergyPower {
+public class CursedFlamesPower extends AbstractPower implements CloneablePowerInterface {
 
-    public static final String POWER_ID = ShadowSirenMod.makeID("GiantsHeart");
+    public static final String POWER_ID = ShadowSirenMod.makeID("CursedFlamesPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -22,7 +22,7 @@ public class GiantsHeart extends AbstractPower implements CloneablePowerInterfac
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public GiantsHeart(AbstractCreature owner, int amount) {
+    public CursedFlamesPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -33,12 +33,25 @@ public class GiantsHeart extends AbstractPower implements CloneablePowerInterfac
 
         // We load those txtures here.
         //this.loadRegion("cExplosion");
-        this.loadRegion("beat");
+        this.loadRegion("phantasmal");
         //logger.info("Blasting Fuse?");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
+    }
+
+    public void atStartOfTurn() {
+        if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            this.flash();
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (!m.isDeadOrEscaped() && m.hasPower(BurnPower.POWER_ID)) {
+                    m.getPower(BurnPower.POWER_ID).amount += this.amount;
+                    m.getPower(BurnPower.POWER_ID).updateDescription();
+                    //this.addToTop(new ApplyPowerAction(m, owner, new BurnPower(m, owner, amount)));
+                }
+            }
+        }
     }
 
     @Override
@@ -48,16 +61,7 @@ public class GiantsHeart extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public AbstractPower makeCopy() {
-        return new GiantsHeart(owner, amount);
+        return new CursedFlamesPower(owner, amount);
     }
 
-    @Override
-    public boolean onUseEnergy(int energyUsed) {
-        int effect = Math.min(EnergyPanel.getCurrentEnergy(), energyUsed);
-        if (effect > 0) {
-            this.addToBot(new GainBlockAction(owner, effect*amount));
-            flash();
-        }
-        return true;
-    }
 }

@@ -4,7 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.oldStuff.cards.dualityCards.abyss.SwerveDual;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.DizzyPower;
+import ShadowSiren.oldStuff.powers.DizzyPower;
 import ShadowSiren.stances.AbyssStance;
 import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

@@ -1,7 +1,7 @@
 package ShadowSiren.relics;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.powers.ChargePower;
+import ShadowSiren.oldStuff.powers.ChargePower;
 import ShadowSiren.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;

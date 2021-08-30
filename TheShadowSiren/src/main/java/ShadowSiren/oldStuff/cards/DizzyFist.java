@@ -4,7 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.interfaces.FistAttack;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.DizzyPower;
+import ShadowSiren.oldStuff.powers.DizzyPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;

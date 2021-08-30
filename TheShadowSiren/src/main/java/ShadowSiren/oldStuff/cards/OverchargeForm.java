@@ -3,7 +3,7 @@ package ShadowSiren.oldStuff.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.OverchargeFormPower;
+import ShadowSiren.oldStuff.powers.OverchargeFormPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

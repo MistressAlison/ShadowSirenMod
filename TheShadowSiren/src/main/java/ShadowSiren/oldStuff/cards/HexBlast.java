@@ -3,7 +3,7 @@ package ShadowSiren.oldStuff.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.HexingPower;
+import ShadowSiren.oldStuff.powers.HexingPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;

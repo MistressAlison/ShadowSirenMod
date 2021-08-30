@@ -4,7 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractHugeCard;
 import ShadowSiren.oldStuff.cards.dualityCards.huge.InfatuateDual;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ConfusedPower;
+import ShadowSiren.oldStuff.powers.ConfusedPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

@@ -1,14 +1,14 @@
-package ShadowSiren.powers;
+package ShadowSiren.oldStuff.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.FastLoseBlockAction;
+import ShadowSiren.powers.FreezePower;
 import ShadowSiren.relics.DataCollector;
 import ShadowSiren.relics.RuinPowder;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

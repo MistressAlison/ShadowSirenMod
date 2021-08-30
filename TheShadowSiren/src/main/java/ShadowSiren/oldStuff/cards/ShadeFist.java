@@ -6,7 +6,7 @@ import ShadowSiren.oldStuff.cards.dualityCards.huge.ShadeFistDual;
 import ShadowSiren.cards.interfaces.FistAttack;
 import ShadowSiren.cards.interfaces.VigorMagicBuff;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.BurnPower;
+import ShadowSiren.oldStuff.powers.BurnPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;

@@ -1,4 +1,4 @@
-package ShadowSiren.powers;
+package ShadowSiren.oldStuff.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;

@@ -1,8 +1,7 @@
 package ShadowSiren.potions;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.powers.ChargePower;
-import ShadowSiren.powers.ElectricPower;
+import ShadowSiren.oldStuff.powers.ElectricPower;
 import basemod.BaseMod;
 import basemod.abstracts.CustomPotion;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

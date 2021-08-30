@@ -1,11 +1,10 @@
-package ShadowSiren.powers;
+package ShadowSiren.oldStuff.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.interfaces.ChargeMagicBuff;
 import ShadowSiren.cards.interfaces.ChargeMultiEffect;
 import ShadowSiren.patches.ChargeCounterPatches;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -16,10 +15,8 @@ import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.RitualPower;
 
 public class ChargePower extends AbstractPower implements CloneablePowerInterface {
 

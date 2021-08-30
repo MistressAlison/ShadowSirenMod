@@ -5,7 +5,7 @@ import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.oldStuff.cards.dualityCards.abyss.HexArmorDual;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.HexingPower;
+import ShadowSiren.oldStuff.powers.HexingPower;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;

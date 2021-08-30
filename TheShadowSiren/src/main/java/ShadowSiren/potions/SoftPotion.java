@@ -1,8 +1,7 @@
 package ShadowSiren.potions;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.powers.BurnPower;
-import ShadowSiren.powers.SoftPower;
+import ShadowSiren.oldStuff.powers.SoftPower;
 import basemod.BaseMod;
 import basemod.abstracts.CustomPotion;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -12,9 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 public class SoftPotion extends CustomPotion {
 

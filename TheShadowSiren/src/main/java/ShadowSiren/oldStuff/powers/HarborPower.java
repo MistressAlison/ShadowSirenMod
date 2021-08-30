@@ -1,17 +1,19 @@
-package ShadowSiren.powers;
+package ShadowSiren.oldStuff.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.oldStuff.cards.tempCards.Anchor;
 import basemod.interfaces.CloneablePowerInterface;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnMyBlockBrokenPower;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-public class ManaBody extends AbstractPower implements CloneablePowerInterface, OnMyBlockBrokenPower {
+public class HarborPower extends AbstractPower implements CloneablePowerInterface {
 
-    public static final String POWER_ID = ShadowSirenMod.makeID("ManaBody");
+    public static final String POWER_ID = ShadowSirenMod.makeID("HarborPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -21,7 +23,7 @@ public class ManaBody extends AbstractPower implements CloneablePowerInterface, 
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public ManaBody(AbstractCreature owner, int amount) {
+    public HarborPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -32,12 +34,19 @@ public class ManaBody extends AbstractPower implements CloneablePowerInterface, 
 
         // We load those txtures here.
         //this.loadRegion("cExplosion");
-        this.loadRegion("channel");
+        this.loadRegion("shackle");
         //logger.info("Blasting Fuse?");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
+    }
+
+    public void atStartOfTurn() {
+        if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            this.flash();
+            this.addToTop(new MakeTempCardInHandAction(new Anchor(), amount));
+        }
     }
 
     @Override
@@ -47,11 +56,7 @@ public class ManaBody extends AbstractPower implements CloneablePowerInterface, 
 
     @Override
     public AbstractPower makeCopy() {
-        return new GiantsHeart(owner, amount);
+        return new HarborPower(owner, amount);
     }
 
-    @Override
-    public void onMyBlockBroken() {
-        this.addToTop(new GainBlockAction(owner, amount));
-    }
 }

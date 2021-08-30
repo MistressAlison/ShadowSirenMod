@@ -1,29 +1,28 @@
-package ShadowSiren.powers;
+package ShadowSiren.oldStuff.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.stances.VeilStance;
+import ShadowSiren.powers.interfaces.OnUseEnergyPower;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
-public class NightTerrorPower extends AbstractPower implements CloneablePowerInterface {
+public class GiantsHeart extends AbstractPower implements CloneablePowerInterface, OnUseEnergyPower {
 
-    public static final String POWER_ID = ShadowSirenMod.makeID("NightTerrorPower");
+    public static final String POWER_ID = ShadowSirenMod.makeID("GiantsHeart");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public NightTerrorPower(AbstractCreature owner, int amount) {
+    public GiantsHeart(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -33,7 +32,9 @@ public class NightTerrorPower extends AbstractPower implements CloneablePowerInt
         this.isTurnBased = false;
 
         // We load those txtures here.
-        this.loadRegion("nightmare");
+        //this.loadRegion("cExplosion");
+        this.loadRegion("beat");
+        //logger.info("Blasting Fuse?");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
@@ -41,21 +42,22 @@ public class NightTerrorPower extends AbstractPower implements CloneablePowerInt
     }
 
     @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        if (AbstractDungeon.player.stance.ID.equals(VeilStance.STANCE_ID)) {
-            damage *= (1 + amount*0.25f);
-        }
-        return damage;
-    }
-
-    @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + (amount*25) + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new NightTerrorPower(owner, amount);
+        return new GiantsHeart(owner, amount);
     }
 
+    @Override
+    public boolean onUseEnergy(int energyUsed) {
+        int effect = Math.min(EnergyPanel.getCurrentEnergy(), energyUsed);
+        if (effect > 0) {
+            this.addToBot(new GainBlockAction(owner, effect*amount));
+            flash();
+        }
+        return true;
+    }
 }

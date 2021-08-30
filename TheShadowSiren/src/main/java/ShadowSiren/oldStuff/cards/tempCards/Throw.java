@@ -6,7 +6,7 @@ import ShadowSiren.cards.abstractCards.AbstractModdedCard;
 import ShadowSiren.cards.interfaces.MultiCardPreviewHack;
 import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.SoftPower;
+import ShadowSiren.oldStuff.powers.SoftPower;
 import basemod.AutoAdd;
 import basemod.helpers.ModalChoice;
 import basemod.helpers.ModalChoiceBuilder;

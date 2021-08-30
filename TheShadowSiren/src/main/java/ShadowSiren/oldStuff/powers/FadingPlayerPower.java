@@ -1,19 +1,21 @@
-package ShadowSiren.powers;
+package ShadowSiren.oldStuff.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.relics.DataCollector;
 import basemod.interfaces.CloneablePowerInterface;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.SuicideAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 
-public class ConfusedPower extends AbstractPower implements CloneablePowerInterface {
+public class FadingPlayerPower extends AbstractPower implements CloneablePowerInterface {
 
-    public static final String POWER_ID = ShadowSirenMod.makeID("ConfusedPower");
+    public static final String POWER_ID = ShadowSirenMod.makeID("FadingPlayerPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -23,17 +25,19 @@ public class ConfusedPower extends AbstractPower implements CloneablePowerInterf
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public ConfusedPower(AbstractCreature owner, int amount) {
+    public FadingPlayerPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
 
-        this.type = PowerType.DEBUFF;
+        this.type = PowerType.BUFF;
         this.isTurnBased = true;
 
         // We load those txtures here.
-        this.loadRegion("confusion");
+        //this.loadRegion("cExplosion");
+        this.loadRegion("fading");
+        //logger.info("Blasting Fuse?");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
@@ -41,44 +45,33 @@ public class ConfusedPower extends AbstractPower implements CloneablePowerInterf
     }
 
     @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
-            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
-            dataCollector.onApplyConfused(amount);
-        }
-    }
-
-    @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
-            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
-            dataCollector.onApplyConfused(stackAmount);
-        }
-    }
-
-    //Main functionality provided in DamageActionPatches
-
-    public void atEndOfRound() {
-        if (this.amount == 0) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+    public void atStartOfTurn() { //duringTurn
+        if (this.amount == 1 && !this.owner.isDying) {
+            this.addToBot(new VFXAction(new ExplosionSmallEffect(this.owner.hb.cX, this.owner.hb.cY), 0.1F));
+            if (owner instanceof  AbstractMonster) {
+                this.addToBot(new SuicideAction((AbstractMonster)this.owner));
+            } else {
+                this.addToBot(new LoseHPAction(this.owner, this.owner, 99999));
+            }
         } else {
             this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
+            this.updateDescription();
         }
+
     }
 
     @Override
     public void updateDescription() {
         if (amount == 1) {
-            description = DESCRIPTIONS[0];
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
         } else {
-            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
         }
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new ConfusedPower(owner, amount);
+        return new FadingPlayerPower(owner, amount);
     }
+
 }

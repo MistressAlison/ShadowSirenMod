@@ -4,7 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractHugeCard;
 import ShadowSiren.oldStuff.cards.dualityCards.huge.SpiteDual;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.HexingPower;
+import ShadowSiren.oldStuff.powers.HexingPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

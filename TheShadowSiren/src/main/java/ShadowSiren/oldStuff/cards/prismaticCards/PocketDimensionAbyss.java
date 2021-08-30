@@ -5,7 +5,7 @@ import ShadowSiren.cardModifiers.BideModifier;
 import ShadowSiren.oldStuff.cards.abstractCards.prismatics.AbstractPrismaticAbyssCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.HarborPower;
+import ShadowSiren.oldStuff.powers.HarborPower;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

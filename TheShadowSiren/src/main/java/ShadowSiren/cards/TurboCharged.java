@@ -1,20 +1,19 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
-import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
-import ShadowSiren.powers.ChargePower;
 import ShadowSiren.util.XCostGrabber;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class TurboCharged extends AbstractElectricCard implements ModularDescription {
+public class TurboCharged extends AbstractElectricCard {
 
     // TEXT DECLARATION
 
@@ -32,15 +31,13 @@ public class TurboCharged extends AbstractElectricCard implements ModularDescrip
 
     private static final int COST = -1;
     private static final int BASE_EFFECT = 0;
-    private static final int UPGRADE_BASE_EFFECT = 1;
 
     // /STAT DECLARATION/
 
     public TurboCharged() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = BASE_EFFECT;
         secondMagicNumber = baseSecondMagicNumber = BASE_EFFECT;
-        initializeDescription();
+        exhaust = true;
     }
 
     // Actions the card should do.
@@ -48,10 +45,10 @@ public class TurboCharged extends AbstractElectricCard implements ModularDescrip
     public void use(AbstractPlayer p, AbstractMonster m) {
         int effect = XCostGrabber.getXCostAmount(this);
 
-        effect += magicNumber;
-
-        if (effect > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, effect)));
+        for (AbstractCard c : p.hand.group) {
+            if (c.baseBlock >= 0 || c.baseDamage >= 0) {
+                CardModifierManager.addModifier(c, new ChargeModifier(effect));
+            }
         }
 
         if (!this.freeToPlayOnce) {
@@ -68,7 +65,6 @@ public class TurboCharged extends AbstractElectricCard implements ModularDescrip
 
     private void updateSecondValue() {
         secondMagicNumber = XCostGrabber.getXCostAmount(this, true);
-        secondMagicNumber += magicNumber;
         isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
     }
 
@@ -77,28 +73,9 @@ public class TurboCharged extends AbstractElectricCard implements ModularDescrip
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_BASE_EFFECT);
-            upgradeSecondMagicNumber(UPGRADE_BASE_EFFECT);
+            exhaust = false;
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 0) {
-                if (secondMagicNumber != 1) {
-                    rawDescription = EXTENDED_DESCRIPTION[1];
-                } else {
-                    rawDescription = EXTENDED_DESCRIPTION[0];
-                }
-            } else {
-                if (secondMagicNumber != 1) {
-                    rawDescription = UPGRADE_DESCRIPTION;
-                } else {
-                    rawDescription = DESCRIPTION;
-                }
-            }
         }
     }
 }

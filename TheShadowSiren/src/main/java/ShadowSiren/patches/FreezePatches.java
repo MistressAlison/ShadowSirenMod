@@ -103,7 +103,7 @@ public class FreezePatches {
     public static class DoNotChangeAnimationPls {
         public static SpireReturn<?> Prefix(AnimationState __instance, int trackIndex, Animation animation, boolean loop) {
             if (FreezeFlag.isFrozen.get(__instance)) {
-                return SpireReturn.Return(null);
+                return SpireReturn.Return(__instance.getCurrent(0));
             }
             return SpireReturn.Continue();
         }
@@ -113,7 +113,7 @@ public class FreezePatches {
     public static class DoNotAddAnimationsEither {
         public static SpireReturn<?> Prefix(AnimationState __instance, int trackIndex, Animation animation, boolean loop, float delay) {
             if (FreezeFlag.isFrozen.get(__instance)) {
-                return SpireReturn.Return(null);
+                return SpireReturn.Return(__instance.getCurrent(0));
             }
             return SpireReturn.Continue();
         }

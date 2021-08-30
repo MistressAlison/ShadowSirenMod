@@ -2,8 +2,6 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
-import ShadowSiren.oldStuff.cards.dualityCards.hyper.EnergyConversionDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.EnergyConversionPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -29,16 +27,16 @@ public class EnergyConversion extends AbstractElectricCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 2;
-    private static final int VIGOR = 3;
-    private static final int UPGRADE_VIGOR = 2;
+    private static final int COST = 1;
+    private static final int EFFECT = 1;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
 
     public EnergyConversion() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = VIGOR;
+        magicNumber = baseMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
@@ -52,7 +50,9 @@ public class EnergyConversion extends AbstractElectricCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_VIGOR);
+            isInnate = true;
+            rawDescription = UPGRADE_DESCRIPTION;
+            //upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }

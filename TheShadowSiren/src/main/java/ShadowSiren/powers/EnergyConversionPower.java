@@ -1,13 +1,12 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.ChargeModifier;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 public class EnergyConversionPower extends AbstractPower implements CloneablePowerInterface {
 
@@ -31,7 +30,7 @@ public class EnergyConversionPower extends AbstractPower implements CloneablePow
         this.isTurnBased = false;
 
         // We load those txtures here.
-        this.loadRegion("modeShift");
+        this.loadRegion("mastery");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
@@ -39,17 +38,18 @@ public class EnergyConversionPower extends AbstractPower implements CloneablePow
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        super.onApplyPower(power, target, source);
-        if (power instanceof ChargePower && target == owner) {
-            flash();
-            this.addToTop(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount)));
-        }
+    public void atStartOfTurnPostDraw() {
+        flash();
+        ChargeModifier.triggerCharge();
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        } else {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
+        }
     }
 
     @Override

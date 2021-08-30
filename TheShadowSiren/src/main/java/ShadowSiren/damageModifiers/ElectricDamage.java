@@ -5,10 +5,13 @@ import IconsAddon.icons.ElectricIcon;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.ChargeModifier;
+import basemod.helpers.CardModifierManager;
 import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -52,7 +55,7 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature targetHit) {
         if (targetHit instanceof AbstractMonster) {
-            if (unblockedAmount+blockedAmount > 1) {
+            /*if (unblockedAmount+blockedAmount > 1) {
                 this.addToTop(new AbstractGameAction() {
                     @Override
                     public void update() {
@@ -73,7 +76,17 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
                         this.isDone = true;
                     }
                 });
-            }
+            }*/
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
+                    targetHit.tint.color = Color.YELLOW.cpy();
+                    targetHit.tint.changeColor(Color.WHITE.cpy());
+                    ChargeModifier.triggerCharge();
+                    this.isDone = true;
+                }
+            });
         }
     }
 

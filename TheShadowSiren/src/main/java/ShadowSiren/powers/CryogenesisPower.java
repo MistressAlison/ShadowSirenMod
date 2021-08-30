@@ -57,7 +57,7 @@ public class CryogenesisPower extends AbstractPower implements CloneablePowerInt
 
     @Override
     public void onCreateBlockContainer(HashSet<AbstractBlockModifier> hashSet, AbstractCard abstractCard) {
-        if (hashSet.stream().noneMatch(m -> m instanceof IceBlock)) {
+        if (hashSet.isEmpty()) {
             hashSet.add(new IceBlock());
         }
     }

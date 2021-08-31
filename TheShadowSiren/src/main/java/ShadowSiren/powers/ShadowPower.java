@@ -77,10 +77,10 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
     public boolean checkIfSurpassedHP() {
         if (amount >= owner.currentHealth) {
             if (!surpassedHP && owner.currentHealth > 0) {
+                this.addToTop(new LoseHPAction(this.owner, this.owner, 99999));
                 playSurpassedVFX();
             }
             ///this.addToBot(new SuicideAction((AbstractMonster)this.owner));
-            this.addToTop(new LoseHPAction(this.owner, this.owner, 99999));
             /*surpassedHP = true;
             int delta = amount - owner.currentHealth;
             if (delta > 0) {
@@ -113,7 +113,9 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        delayedCheckIfSurpassedHP();
+        if (damageAmount > 0) {
+            delayedCheckIfSurpassedHP();
+        }
         return super.onAttacked(info, damageAmount);
     }
 
@@ -124,7 +126,7 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
     }*/
 
     public void playSurpassedVFX() {
-        AbstractDungeon.actionManager.addToTop(new VFXAction(new HeartBuffEffect(owner.hb.cX, owner.hb.cY)));
+        AbstractDungeon.actionManager.addToTop(new VFXAction(new HeartBuffEffect(owner.hb.cX, owner.hb.cY), 0.2f));
     }
 
     @Override

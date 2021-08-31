@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.SuicideAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -61,8 +62,9 @@ public class ShowStopper extends AbstractStarCard {
             if (!aM.isDeadOrEscaped() && aM.currentHealth <= magicNumber) {
                 this.addToBot(new SFXAction("MONSTER_COLLECTOR_DEBUFF"));
                 this.addToBot(new VFXAction(new CollectorCurseEffect(aM.hb.cX, aM.hb.cY), 1.0F));
+                this.addToBot(new InstantKillAction(aM));
                 //this.addToBot(new SuicideAction(aM));
-                this.addToBot(new LoseHPAction(aM, aM, 99999));
+                //this.addToBot(new LoseHPAction(aM, aM, 99999));
             }
         }
     }

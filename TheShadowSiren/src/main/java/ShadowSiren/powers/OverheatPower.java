@@ -1,18 +1,9 @@
 package ShadowSiren.powers;
 
-import IconsAddon.cardmods.AddIconToDescriptionMod;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cardModifiers.AddIconHelper;
-import ShadowSiren.cards.abstractCards.AbstractInertCard;
-import ShadowSiren.cards.abstractCards.AbstractModdedCard;
-import ShadowSiren.cards.interfaces.ElementallyInert;
-import ShadowSiren.damageModifiers.FireDamage;
-import ShadowSiren.patches.ElementalPatches;
-import basemod.helpers.CardModifierManager;
+import ShadowSiren.actions.ImmediateExhaustCardAction;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -25,6 +16,8 @@ public class OverheatPower extends AbstractPower implements CloneablePowerInterf
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+
+    public static final int VIGOR = 5;
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
@@ -49,25 +42,23 @@ public class OverheatPower extends AbstractPower implements CloneablePowerInterf
     }
 
     @Override
-    public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.type == AbstractCard.CardType.ATTACK){
-            if (ElementalPatches.noElementalModifiers(card) && !(card instanceof ElementallyInert) && !(card instanceof AbstractInertCard)) {
-                DamageModifierManager.addModifier(card, new FireDamage(false));
-                CardModifierManager.addModifier(card, new AddIconHelper.AddFireIconMod(AddIconToDescriptionMod.DAMAGE));
-                if (card instanceof AbstractModdedCard) {
-                    ((AbstractModdedCard)card).setBackgroundTexture(ShadowSirenMod.ATTACK_HUGE, ShadowSirenMod.ATTACK_HUGE_PORTRAIT);
-                }
-            }
-            card.baseDamage += amount;
-            card.applyPowers();
+    public void onCardDraw(AbstractCard card) {
+        if (card.type == AbstractCard.CardType.STATUS || card.type == AbstractCard.CardType.CURSE) {
+            this.addToBot(new ImmediateExhaustCardAction(card));
+            //this.addToBot(new ApplyPowerAction(owner, owner, new VigorPower(owner, VIGOR)));
+            this.addToBot(new ReducePowerAction(owner, owner, this, 1));
             flash();
-            this.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         }
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + DESCRIPTIONS[3];// + VIGOR + DESCRIPTIONS[4];
+        } else {
+            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2] + DESCRIPTIONS[3];// + VIGOR + DESCRIPTIONS[4];
+        }
+
     }
 
     @Override

@@ -43,7 +43,6 @@ public class FreezePower extends AbstractPower implements CloneablePowerInterfac
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    //private int hitsToBreak = 3;
     private byte moveByte;
     private AbstractMonster.Intent moveIntent;
     private EnemyMoveInfo move;
@@ -60,7 +59,7 @@ public class FreezePower extends AbstractPower implements CloneablePowerInterfac
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public FreezePower(AbstractMonster owner, int amount) {
+    public FreezePower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -82,107 +81,60 @@ public class FreezePower extends AbstractPower implements CloneablePowerInterfac
     //Reworked from StunMonsterPower
     @Override
     public void onInitialApplication() {
-        //Oh boy, time for a bunch of exceptions
-        if (owner instanceof Hexaghost) {
-            HexaghostBody body = ReflectionHacks.getPrivate(owner, Hexaghost.class, "body");
-            FreezePatches.setHexaghostBodyFreezeFlag(body, true);
-            ArrayList<HexaghostOrb> orbs = ReflectionHacks.getPrivate(owner, Hexaghost.class, "orbs");
-            for (HexaghostOrb o : orbs) {
-                FreezePatches.setHexaghostOrbFreezeFlag(o, true);
-            }
-        }
-        if (owner.state != null) {
-            FreezePatches.setFreezeFlag(owner.state, true);
-        }
-        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-            public void update() {
-                if (FreezePower.this.owner instanceof AbstractMonster) {
-                    FreezePower.this.moveByte = ((AbstractMonster)FreezePower.this.owner).nextMove;
-                    FreezePower.this.moveIntent = ((AbstractMonster)FreezePower.this.owner).intent;
-
-                    try {
-                        Field f = AbstractMonster.class.getDeclaredField("move");
-                        f.setAccessible(true);
-                        FreezePower.this.move = (EnemyMoveInfo)f.get(FreezePower.this.owner);
-                        FreezePower.this.move.intent = AbstractMonster.Intent.STUN;
-                        ((AbstractMonster)FreezePower.this.owner).createIntent();
-                    } catch (NoSuchFieldException | IllegalAccessException var2) {
-                        var2.printStackTrace();
-                    }
+        if (this.owner instanceof AbstractMonster) {
+            //Oh boy, time for a bunch of exceptions
+            if (owner instanceof Hexaghost) {
+                HexaghostBody body = ReflectionHacks.getPrivate(owner, Hexaghost.class, "body");
+                FreezePatches.setHexaghostBodyFreezeFlag(body, true);
+                ArrayList<HexaghostOrb> orbs = ReflectionHacks.getPrivate(owner, Hexaghost.class, "orbs");
+                for (HexaghostOrb o : orbs) {
+                    FreezePatches.setHexaghostOrbFreezeFlag(o, true);
                 }
-
-                this.isDone = true;
             }
-        });
+            if (owner.state != null) {
+                FreezePatches.setFreezeFlag(owner.state, true);
+            }
+            AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+                public void update() {
+                    if (FreezePower.this.owner instanceof AbstractMonster) {
+                        FreezePower.this.moveByte = ((AbstractMonster)FreezePower.this.owner).nextMove;
+                        FreezePower.this.moveIntent = ((AbstractMonster)FreezePower.this.owner).intent;
+
+                        try {
+                            Field f = AbstractMonster.class.getDeclaredField("move");
+                            f.setAccessible(true);
+                            FreezePower.this.move = (EnemyMoveInfo)f.get(FreezePower.this.owner);
+                            FreezePower.this.move.intent = AbstractMonster.Intent.STUN;
+                            ((AbstractMonster)FreezePower.this.owner).createIntent();
+                        } catch (NoSuchFieldException | IllegalAccessException var2) {
+                            var2.printStackTrace();
+                        }
+                    }
+
+                    this.isDone = true;
+                }
+            });
+        }
+    }
+
+    @Override
+    public void playApplyPowerSfx() {
         CardCrawlGame.sound.play("ORB_FROST_EVOKE", 0.1F);
         AbstractDungeon.effectsQueue.add(new FrostOrbActivateEffect(owner.hb_x, owner.hb_y));
-        //owner.tint.color = Color.BLUE.cpy();
-        //owner.tint.changeColor(Color.WHITE.cpy());
-        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
-            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
-            dataCollector.onApplyFreeze(amount);
-        }
-    }
-
-    @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        CardCrawlGame.sound.play("ORB_FROST_EVOKE", 0.1F);
-        AbstractDungeon.effectsQueue.add(new FrostOrbActivateEffect(owner.hb_x, owner.hb_y));
-        //owner.tint.color = Color.BLUE.cpy();
-        //owner.tint.changeColor(Color.WHITE.cpy());
-        if (AbstractDungeon.player.hasRelic(DataCollector.ID)) {
-            DataCollector dataCollector = (DataCollector) AbstractDungeon.player.getRelic(DataCollector.ID);
-            dataCollector.onApplyFreeze(stackAmount);
-        }
-    }
-
-    @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
-        //return damageType == DamageInfo.DamageType.NORMAL && hitsToBreak == 1 ? damage * 3 : 0;
-        return 0;
-    }
-
-    /*public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
-        c = new Color(0.0F, 1.0F, 0.0F, 1.0F);
-        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount), x, y, this.fontScale, c);
-        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(hitsToBreak), x, y + 15.0F * Settings.scale, this.fontScale, c);
-    }*/
-
-    @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        /*if (info.type == DamageInfo.DamageType.NORMAL) {
-            hitsToBreak--;
-            if (hitsToBreak == 0) {
-                this.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
-            }
-        }
-        updateDescription();
-        return hitsToBreak == 0 ? damageAmount : 0;*/
-        return 0;
     }
 
     @Override
     public void updateDescription() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(DESCRIPTIONS[0]).append(amount);
-        if(amount == 1) {
-            sb.append(DESCRIPTIONS[1]);
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
         } else {
-            sb.append(DESCRIPTIONS[2]);
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
         }
-        /*sb.append(DESCRIPTIONS[3]).append(hitsToBreak);
-        if (hitsToBreak == 1) {
-            sb.append(DESCRIPTIONS[4]);
-        } else {
-            sb.append(DESCRIPTIONS[5]);
-        }*/
-        description = sb.toString();
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new FreezePower((AbstractMonster) owner, amount);
+        return new FreezePower(owner, amount);
     }
 
 

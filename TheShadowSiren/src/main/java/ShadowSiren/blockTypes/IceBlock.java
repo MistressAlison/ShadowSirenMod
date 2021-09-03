@@ -4,7 +4,9 @@ import IconsAddon.blockModifiers.AbstractBlockModifier;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.powers.ChillPower;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -19,8 +21,15 @@ public class IceBlock extends AbstractBlockModifier {
 
     @Override
     public void onAttacked(DamageInfo info, int damageAmount) {
+//        if (info.owner != null && info.owner != owner) {
+//            this.addToBot(new ApplyPowerAction(info.owner, owner, new ChillPower(info.owner, 1), 1, true));
+//        }
         if (info.owner != null && info.owner != owner) {
-            this.addToBot(new ApplyPowerAction(info.owner, owner, new ChillPower(info.owner, 1), 1, true));
+            ChillPower p = (ChillPower) info.owner.getPower(ChillPower.POWER_ID);
+            if (p != null) {
+                p.onIceBlockTrigger(owner);
+                //this.addToTop(new DamageAction(info.owner, new DamageInfo(owner, p.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
+            }
         }
     }
 

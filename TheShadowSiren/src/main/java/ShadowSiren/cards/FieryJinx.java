@@ -3,9 +3,11 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractFireCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
+import ShadowSiren.cards.tempCards.Ashes;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -29,8 +31,8 @@ public class FieryJinx extends AbstractFireCard implements MagicAnimation {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 5;
-    private static final int UPGRADE_PLUS_DAMAGE = 2;
+    private static final int DAMAGE = 8;
+    private static final int UPGRADE_PLUS_DAMAGE = 3;
 
     // /STAT DECLARATION/
 
@@ -39,6 +41,7 @@ public class FieryJinx extends AbstractFireCard implements MagicAnimation {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         this.isMultiDamage = true;
+        this.cardsToPreview = new Ashes();
     }
 
     // Actions the card should do.
@@ -46,6 +49,7 @@ public class FieryJinx extends AbstractFireCard implements MagicAnimation {
     public void use(AbstractPlayer p, AbstractMonster m) {
         //this.addToBot(DamageModifierHelper.makeModifiedDamageAllEnemiesAction(this, p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
         this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+        this.addToBot(new MakeTempCardInDrawPileAction(cardsToPreview, 1, true, true));
     }
 
     //Upgraded stats.

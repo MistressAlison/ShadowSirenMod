@@ -1,10 +1,16 @@
 package ShadowSiren;
 
 import IconsAddon.util.CustomIconHelper;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.icons.HatIcon;
-import ShadowSiren.potions.*;
+import ShadowSiren.potions.ChargePotion;
+import ShadowSiren.potions.CleansingPotion;
+import ShadowSiren.potions.FreezePotion;
+import ShadowSiren.potions.VigorPotion;
 import ShadowSiren.relics.*;
+import ShadowSiren.util.IDCheckDontTouchPls;
 import ShadowSiren.util.StarBarManager;
+import ShadowSiren.util.TextureLoader;
 import ShadowSiren.variables.*;
 import basemod.*;
 import basemod.abstracts.CustomSavable;
@@ -29,9 +35,6 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ShadowSiren.characters.Vivian;
-import ShadowSiren.util.IDCheckDontTouchPls;
-import ShadowSiren.util.TextureLoader;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -835,7 +838,7 @@ public class ShadowSirenMod implements
         BaseMod.addRelicToCustomPool(new IceStorm(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new IciclePop(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new LetterP(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new Mystery(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new Mystery(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new PointSwap(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new POWBlock(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new PowerPunch(), Vivian.Enums.VOODOO_CARD_COLOR);
@@ -844,8 +847,8 @@ public class ShadowSirenMod implements
         BaseMod.addRelicToCustomPool(new SpitePowder(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new StarPiece(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new StopWatch(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new SuperSheet(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new TastyTonic(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new SuperSheet(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new TastyTonic(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new UpArrow(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new VoltShroom(), Vivian.Enums.VOODOO_CARD_COLOR);
 
@@ -867,7 +870,7 @@ public class ShadowSirenMod implements
         UnlockTracker.markRelicAsSeen(IceStorm.ID);
         //UnlockTracker.markRelicAsSeen(IciclePop.ID);
         UnlockTracker.markRelicAsSeen(LetterP.ID);
-        UnlockTracker.markRelicAsSeen(Mystery.ID);
+        //UnlockTracker.markRelicAsSeen(Mystery.ID);
         UnlockTracker.markRelicAsSeen(PointSwap.ID);
         UnlockTracker.markRelicAsSeen(POWBlock.ID);
         //UnlockTracker.markRelicAsSeen(PowerPunch.ID);
@@ -876,8 +879,8 @@ public class ShadowSirenMod implements
         UnlockTracker.markRelicAsSeen(SpitePowder.ID);
         //UnlockTracker.markRelicAsSeen(StarPiece.ID);
         UnlockTracker.markRelicAsSeen(StopWatch.ID);
-        UnlockTracker.markRelicAsSeen(SuperSheet.ID);
-        UnlockTracker.markRelicAsSeen(TastyTonic.ID);
+        //UnlockTracker.markRelicAsSeen(SuperSheet.ID);
+        //UnlockTracker.markRelicAsSeen(TastyTonic.ID);
         UnlockTracker.markRelicAsSeen(UpArrow.ID);
         //UnlockTracker.markRelicAsSeen(VoltShroom.ID);
         logger.info("Done adding relics!");

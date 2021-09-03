@@ -10,6 +10,7 @@ public class StarBarManager {
     public static int progress = 0;
     public static int starPower = 0;
     public static int maxStarPower = 2;
+    public static int tempMaxStarPower = 0;
     public static final String saveString = ShadowSirenMod.makeID("StarBarManager");
 
     public static class Container {
@@ -56,14 +57,9 @@ public class StarBarManager {
         return starPower + (float)progress/AMOUNT_PER_POWER;
     }
 
-    /*@SpirePatch(clz = AbstractDungeon.class, method = "dungeonTransitionSetup")
-    public static class IncreaseMaxAmountOnNewAct {
-        @SpirePrefixPatch
-        public static void bigAmountTime() {
-            if (AbstractDungeon.actNum <= 4) {
-                modifyMaxAmount(2);
-            }
-        }
-    }*/
+    public static void applyTemporaryStarPower(int amount) {
+        maxStarPower += amount;
+        tempMaxStarPower += amount;
+    }
 
 }

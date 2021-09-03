@@ -726,6 +726,12 @@ public class ShadowSirenMod implements
             @Override
             public StarBarManager.Container onSave() {
                 StarBarManager.Container c = new StarBarManager.Container();
+                StarBarManager.maxStarPower -= StarBarManager.tempMaxStarPower;
+                StarBarManager.tempMaxStarPower = 0;
+                if (StarBarManager.starPower >= StarBarManager.maxStarPower) {
+                    StarBarManager.starPower = StarBarManager.maxStarPower;
+                    StarBarManager.progress = 0;
+                }
                 c.pro = StarBarManager.progress;
                 c.pow = StarBarManager.starPower;
                 c.mPow = StarBarManager.maxStarPower;

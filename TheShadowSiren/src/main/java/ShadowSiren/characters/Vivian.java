@@ -382,7 +382,9 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
                     playAnimation("punch");
                 }
                 int sp = 5;
-                sp *= c.magicNumber;
+                if (c instanceof StylishStrike) {
+                    sp *= c.magicNumber;
+                }
                 StarBarManager.addProgress(sp);
                 break;
             case POWER:

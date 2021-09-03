@@ -4,17 +4,20 @@ import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.FireBlock;
 import ShadowSiren.cards.abstractCards.AbstractFireCard;
+import ShadowSiren.cards.interfaces.VigorBlockBuff;
+import ShadowSiren.cards.tempCards.Ashes;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Pyre extends AbstractFireCard {
+public class Pyre extends AbstractFireCard implements VigorBlockBuff {
 
 
     // TEXT DECLARATION
@@ -45,14 +48,20 @@ public class Pyre extends AbstractFireCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
         baseBlock = block = BLOCK;
         magicNumber = baseMagicNumber = VIGOR;
+        this.cardsToPreview = new Ashes();
         BlockModifierManager.addModifier(this, new FireBlock());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new GainBlockAction(p, block));
+        int bonus = 0;
+        if (p.hasPower(VigorPower.POWER_ID)) {
+            bonus += p.getPower(VigorPower.POWER_ID).amount;
+        }
+        this.addToBot(new GainBlockAction(p, block + bonus));
         this.addToBot(new ApplyPowerAction(p, p, new VigorPower(p, magicNumber)));
+        this.addToBot(new MakeTempCardInDrawPileAction(cardsToPreview, 1, true, true));
     }
 
     // Upgraded stats.

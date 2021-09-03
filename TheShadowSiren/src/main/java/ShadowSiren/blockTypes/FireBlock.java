@@ -3,10 +3,8 @@ package ShadowSiren.blockTypes;
 import IconsAddon.blockModifiers.AbstractBlockModifier;
 import ShadowSiren.ShadowSirenMod;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 public class FireBlock extends AbstractBlockModifier {
 
@@ -15,11 +13,6 @@ public class FireBlock extends AbstractBlockModifier {
     private static final Color c = Color.RED.cpy();
 
     public FireBlock() {}
-
-    @Override
-    public void atStartOfTurnPreBlockLoss() {
-        this.addToBot(new ApplyPowerAction(owner, owner, new VigorPower(owner, getCurrentAmount())));
-    }
 
     @Override
     public Color blockImageColor() {

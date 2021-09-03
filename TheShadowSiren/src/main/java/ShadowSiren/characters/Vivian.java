@@ -7,6 +7,7 @@ import ShadowSiren.RandomChatterHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.*;
 import ShadowSiren.cards.interfaces.MagicAnimation;
+import ShadowSiren.cards.tempCards.DireStrike;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.relics.BooSheet;
 import ShadowSiren.stances.HugeStance;
@@ -273,7 +274,7 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Strike();
+        return new DireStrike();
     }
 
     // The class name as it appears next to your player name in-game

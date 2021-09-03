@@ -34,8 +34,8 @@ public class DireStrike extends AbstractDynamicCard implements TempCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 9;
+    private static final int UPGRADE_PLUS_DMG = 4;
 
     // /STAT DECLARATION/
 

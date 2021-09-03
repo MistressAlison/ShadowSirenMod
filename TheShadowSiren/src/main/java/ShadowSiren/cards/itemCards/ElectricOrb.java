@@ -4,6 +4,7 @@ import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractItemCard;
 import ShadowSiren.cards.interfaces.ModularDescription;
+import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.ElectricDamage;
 import ShadowSiren.oldStuff.powers.ChargePower;
@@ -15,7 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class ElectricOrb extends AbstractItemCard implements ModularDescription {
+public class ElectricOrb extends AbstractItemCard implements ModularDescription, TempCard {
 
 
     // TEXT DECLARATION

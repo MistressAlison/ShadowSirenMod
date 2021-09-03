@@ -4,6 +4,7 @@ import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractItemCard;
+import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.IceDamage;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -17,7 +18,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class IceOrb extends AbstractItemCard {
+public class IceOrb extends AbstractItemCard implements TempCard {
 
 
     // TEXT DECLARATION

@@ -4,6 +4,7 @@ import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractItemCard;
+import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.FireDamage;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -18,7 +19,7 @@ import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class FireOrb extends AbstractItemCard {
+public class FireOrb extends AbstractItemCard implements TempCard {
 
 
     // TEXT DECLARATION

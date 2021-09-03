@@ -50,12 +50,7 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
 
     @Override
     public boolean ignoresTempHP(AbstractCreature target) {
-        AbstractPower pow = target.getPower(ShadowPower.POWER_ID);
-        if (pow instanceof ShadowPower) {
-            return !((ShadowPower) pow).checkIfSurpassedHP();
-        } else {
-            return true;
-        }
+        return true;
     }
 
     @Override
@@ -67,7 +62,9 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
             this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount),damageAmount, true));
             AbstractDungeon.effectList.add(new CardPoofEffect(target.hb.cX, target.hb.cY));
         }*/
-        this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount),damageAmount, true));
+        if (damageAmount != 0) {
+            this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount), damageAmount, true));
+        }
         AbstractDungeon.effectList.add(new CardPoofEffect(target.hb.cX, target.hb.cY));
         return 0;
     }

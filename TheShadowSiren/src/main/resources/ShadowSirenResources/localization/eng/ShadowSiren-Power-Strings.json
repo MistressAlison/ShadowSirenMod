@@ -18,7 +18,7 @@
         },
         "ShadowSiren:ChillPower": {
                 "NAME": "Chill",
-                "DESCRIPTIONS": ["This creatures deals #b","% less damage. At the end of it's turn, Chill is halved. NL Max reduction: #b","%."]
+                "DESCRIPTIONS": ["#yAttacks deals #b","% less damage. NL At the end of it's turn, Chill is reduced by #b1. NL At #b"," stacks, Chill is removed, and this creatures is #yFrozen and #yFrostbitten."]
         },
         "ShadowSiren:ConfusedPower": {
                 "NAME": "Confused",
@@ -64,7 +64,7 @@
         },
         "ShadowSiren:FreezePower": {
                 "NAME": "Freeze",
-                "DESCRIPTIONS": ["May not be damaged, but also does nothing for #b"," turn."," turns."]
+                "DESCRIPTIONS": ["#yStunned for #b"," turn."," turns."]
         },
         "ShadowSiren:GiantsHeart": {
                 "NAME": "Giant's Heart",
@@ -128,7 +128,7 @@
         },
         "ShadowSiren:ShadowPower": {
                 "NAME": "Shadow Split",
-                "DESCRIPTIONS": ["Receive #b"," more damage from #yAttacks. NL When Shadow Split exceeds this creatures HP, it loses HP and Shadow Split accordingly."]
+                "DESCRIPTIONS": ["Dies when Shadow Split equals or exceeds current HP."]
         },
         "ShadowSiren:SinisterReflectionPower": {
                 "NAME": "Sinister Reflections",
@@ -176,7 +176,7 @@
         },
         "ShadowSiren:OverheatPower": {
                 "NAME": "Overheat",
-                "DESCRIPTIONS": ["Increase the damage of the next Attack you play by #b",". If it has no #yElement, it also becomes a #yFire card."]
+                "DESCRIPTIONS": ["The next time ","The next #b"," times ","you draw a #yStatus or #yCurse card, #yExhaust it."," #yVigor."]
         },
         "ShadowSiren:ImmolatePower": {
                 "NAME": "Immolate",
@@ -185,5 +185,13 @@
         "ShadowSiren:CryogenesisPower": {
                 "NAME": "Cryogenesis",
                 "DESCRIPTIONS": ["Increases #yBlock gained from cards by #b",". Whenever you gain #yBlock, it also becomes [IceIcon] Block."]
+        },
+        "ShadowSiren:StarFormPower": {
+                "NAME": "Star Form",
+                "DESCRIPTIONS": ["Gain #b"," times more #yStar #yPower. #yStar #yCards are no longer limited this combat."]
+        },
+        "ShadowSiren:FrostyPower": {
+                "NAME": "Frostbite",
+                "DESCRIPTIONS": ["Receive #b","% more damage from #yAttacks."]
         }
 }

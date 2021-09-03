@@ -39,7 +39,7 @@
     "NAMES": [
       "chill"
     ],
-    "DESCRIPTION": "Creatures deal #b5% less damage per stack of Chill they have, to a maximum of #b50%. At end of the round, Chill is halved."
+    "DESCRIPTION": "Creatures deal #b5% less damage per stack of Chill. NL Each turn, Chill is reduced by #b1. NL At #b10 stacks, Chill is removed and this creature is #yStunned and takes #b10% more damage this combat."
   },
   {
     "PROPER_NAME": "Elements",
@@ -69,7 +69,7 @@
       "frozen",
       "freeze"
     ],
-    "DESCRIPTION": "Frozen creatures are unable to act, but are also invincible."
+    "DESCRIPTION": "Frozen creatures are unable to act."
   },
   {
     "PROPER_NAME": "Inert",
@@ -105,7 +105,7 @@
       "Shadow Split",
       "shadow_split"
     ],
-    "DESCRIPTION": "Targets take up to double damage based on the ratio between Shadow Split and their current HP. Excess Shadow Split causes the target to lose HP."
+    "DESCRIPTION": "Targets dies when Shadow Split equals their current HP."
   },
   {
     "PROPER_NAME": "Hyper",
@@ -135,6 +135,6 @@
       "Star Power",
       "star_power"
     ],
-    "DESCRIPTION": "Star Power carries over between combats and is used to add #yStar #yCards to your hand. At the start of each turn, #b10% progress to your next Star Power is gained."
+    "DESCRIPTION": "Star Power carries over between combats and is used to add #yStar #yCards to your hand. Playing an attack generates #b5% progress to your next Star Power."
   }
 ]

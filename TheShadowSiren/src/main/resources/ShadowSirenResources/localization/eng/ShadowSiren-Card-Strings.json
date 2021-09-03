@@ -7,7 +7,11 @@
   },
   "ShadowSiren:TestCard": {
     "NAME": "Test Card",
-    "DESCRIPTION": "=]"
+    "DESCRIPTION": "Remove Weak, Frail, and Vulnerable. NL If negative, remove Strength, Dexterity, and Focus. NL Gain 1 Artifact. NL At the start of your turn, gain [E] ."
+  },
+  "ShadowSiren:Ashes": {
+    "NAME": "Ashes",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When Exhausted, gain !M! Vigor and draw 1 card."
   },
   "ShadowSiren:ADOFAI": {
     "NAME": "ADOFAI",
@@ -50,7 +54,7 @@
   },
   "ShadowSiren:BlastBurn": {
     "NAME": "Blast Burn",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Halve the targets Max HP and convert any HP lost this way to Temporary_HP."
+    "DESCRIPTION": "Deal !D! [FireIcon] damage to ALL enemies. NL Add !M! *Ashes to your hand. NL Exhaust."
   },
   "ShadowSiren:Blitz": {
     "NAME": "Blitz",
@@ -59,7 +63,7 @@
   },
   "ShadowSiren:BrickBreaker": {
     "NAME": "Brick Breaker",
-    "DESCRIPTION": "Apply !B! Block. NL Add !M! *Hammer to your hand."
+    "DESCRIPTION": "Apply !M! Weak. NL Add !M! *Hammer to your hand."
   },
   "ShadowSiren:Cataclysm": {
     "NAME": "Cataclysm",
@@ -79,8 +83,8 @@
   },
   "ShadowSiren:Cryogenesis": {
     "NAME": "Cryogenesis",
-    "DESCRIPTION": "Whenever you gain Block from cards, gain !M! more. NL Block you gain also becomes [IceIcon] Block.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you gain Block from cards, gain !M! more. NL Block you gain also becomes [IceIcon] Block."
+    "DESCRIPTION": "Whenever you gain Block from cards, gain !M! more. NL Block you gain becomes [IceIcon] Block.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you gain Block from cards, gain !M! more. NL Block you gain becomes [IceIcon] Block."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
@@ -123,7 +127,7 @@
   },
   "ShadowSiren:FieryJinx": {
     "NAME": "Fiery Jinx",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! [FireIcon] damage to ALL enemies. NL Shuffle an *Ashes into your draw pile."
   },
   "ShadowSiren:FireOrb": {
     "NAME": "Fire Orb",
@@ -131,7 +135,8 @@
   },
   "ShadowSiren:FlameShield": {
     "NAME": "Flame Shield",
-    "DESCRIPTION": "Gain !B! [FireIcon] Block."
+    "DESCRIPTION": "Gain !B! [FireIcon] Block. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! [FireIcon] Block. NL Draw !M! cards."
   },
   "ShadowSiren:FlashFire": {
     "NAME": "Flash Fire",
@@ -143,7 +148,7 @@
   },
   "ShadowSiren:Frostbite": {
     "NAME": "Frostbite",
-    "DESCRIPTION": "Deal !D! [IceIcon] damage to ALL enemies. NL Deal !D! [IceIcon] damage again to ALL enemies that have Weak or *Chill."
+    "DESCRIPTION": "Deal !D! [IceIcon] damage to ALL enemies. NL Deal !D! [IceIcon] damage again to ALL enemies that have Weak."
   },
   "ShadowSiren:FrostflameBarrier": {
     "NAME": "Frostflame Barrier",
@@ -186,6 +191,10 @@
     "NAME": "Infatuate",
     "DESCRIPTION": "Apply !M! Vulnerable and Weak to ALL enemies."
   },
+  "ShadowSiren:LightTheWay": {
+    "NAME": "Light the Way",
+    "DESCRIPTION": "Draw !M! cards. NL Shuffle an *Ashes into your draw pile."
+  },
   "ShadowSiren:MagicCloak": {
     "NAME": "Magic Cloak",
     "DESCRIPTION": "Gain !B! Block. NL Gains !M! times more Block if you have a debuff."
@@ -196,7 +205,7 @@
   },
   "ShadowSiren:Overheat": {
     "NAME": "Overheat",
-    "DESCRIPTION": "Increase the damage of the next *Attack you play by !M! this combat. NL If it has no shadowsiren:Element, it becomes a *Fire card."
+    "DESCRIPTION": "Exhaust the next !M! Status or Curse cards you draw. NL Draw !ShadowSiren:SecondMagic! cards."
   },
   "ShadowSiren:PatchUp": {
     "NAME": "Patch Up",
@@ -229,7 +238,7 @@
   },
   "ShadowSiren:Pyre": {
     "NAME": "Pyre",
-    "DESCRIPTION": "Gain !B! [FireIcon] Block. NL Gain !M! Vigor."
+    "DESCRIPTION": "Gain !B! [FireIcon] Block. NL Gain !M! Vigor. NL Shuffle an *Ashes into your draw pile."
   },
   "ShadowSiren:Recuperate": {
     "NAME": "Recuperate",
@@ -269,7 +278,7 @@
   },
   "ShadowSiren:Singe": {
     "NAME": "Singe",
-    "DESCRIPTION": "Target loses !M! HP and twice that much Max HP. NL Effect scales with Vigor."
+    "DESCRIPTION": "Target loses !D! HP and !M! times that much Max HP. NL Scales as damage."
   },
   "ShadowSiren:SinisterReflection": {
     "NAME": "Sinister Reflection",
@@ -288,6 +297,10 @@
     "DESCRIPTION": "Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! times)",
     "EXTENDED_DESCRIPTION": ["Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! time)"]
   },
+  "ShadowSiren:StarForm": {
+    "NAME": "Star Form",
+    "DESCRIPTION": "Gain !M! times more shadowsiren:Star_Power. NL shadowsiren:Star *Cards and shadowsiren:Star_Power are unlimited."
+  },
   "ShadowSiren:StaticBarrier": {
     "NAME": "Static Barrier",
     "DESCRIPTION": "Retain. NL Gain !B! [ElectricIcon] Block !M! times."
@@ -295,6 +308,10 @@
   "ShadowSiren:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
+  },
+  "ShadowSiren:StylishStrike": {
+    "NAME": "Stylish Strike",
+    "DESCRIPTION": "Deal !D! damage. Generates !M! times more shadowsiren:Star_Power."
   },
   "ShadowSiren:Thunderstruck": {
     "NAME": "Thunderstruck",

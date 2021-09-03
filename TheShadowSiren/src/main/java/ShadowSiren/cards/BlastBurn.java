@@ -1,14 +1,11 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.actions.BurnToAshEffect;
+import ShadowSiren.actions.BlastBurnAction;
 import ShadowSiren.cards.abstractCards.AbstractFireCard;
+import ShadowSiren.cards.tempCards.Ashes;
 import ShadowSiren.characters.Vivian;
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -29,36 +26,32 @@ public class BlastBurn extends AbstractFireCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 2;
     private static final int DAMAGE = 15;
     private static final int UPGRADE_PLUS_DMG = 5;
+    private static final int ASHES = 2;
+    private static final int UPGRADE_PLUS_ASHES = 1;
 
     // /STAT DECLARATION/
 
     public BlastBurn() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        magicNumber = baseMagicNumber = ASHES;
+        cardsToPreview = new Ashes();
+        isMultiDamage = true;
+        exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-        this.addToBot(new VFXAction(new BurnToAshEffect(m.hb.cX, m.hb.cY)));
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                int dec = m.maxHealth/2;
-                int loss = m.currentHealth-(m.maxHealth-dec);
-                m.decreaseMaxHealth(dec);
-                this.addToTop(new AddTemporaryHPAction(m, p, loss));
-                this.isDone = true;
-            }
-        });
+        this.addToBot(new BlastBurnAction(p, multiDamage, damageTypeForTurn));
+        this.addToBot(new MakeTempCardInHandAction(cardsToPreview, magicNumber));
     }
 
     // Upgraded stats.
@@ -67,6 +60,7 @@ public class BlastBurn extends AbstractFireCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            //upgradeMagicNumber(UPGRADE_PLUS_ASHES);
             initializeDescription();
         }
     }

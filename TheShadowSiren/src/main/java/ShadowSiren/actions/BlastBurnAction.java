@@ -1,9 +1,11 @@
 package ShadowSiren.actions;
 
+import ShadowSiren.cards.tempCards.Ashes;
 import ShadowSiren.oldStuff.powers.BurnPower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -41,7 +43,7 @@ public class BlastBurnAction extends AbstractGameAction {
 
                 CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.HIGH, ScreenShake.ShakeDur.SHORT, false);
 
-                int i = 0, sum = 0;
+                int i = 0;
                 for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
                     if (!aM.isDeadOrEscaped()) {
                         AbstractDungeon.effectList.add(new FlashAtkImgEffect(aM.hb.cX, aM.hb.cY, AttackEffect.FIRE));
@@ -49,15 +51,8 @@ public class BlastBurnAction extends AbstractGameAction {
                         aM.tint.color.set(Color.RED.cpy());
                         aM.tint.changeColor(Color.WHITE.cpy());
                         aM.damage(new DamageInfo(source, damages[i], damageType));
-                        sum += aM.lastDamageTaken;
                     }
                     i++;
-                }
-
-                for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                    if (!aM.isDeadOrEscaped()) {
-                        this.addToTop(new ApplyPowerAction(aM, source, new BurnPower(aM, source, sum), sum, true));
-                    }
                 }
 
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {

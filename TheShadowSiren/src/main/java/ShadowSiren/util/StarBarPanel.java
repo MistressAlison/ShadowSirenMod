@@ -4,6 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractStarCard;
 import ShadowSiren.cards.starCards.*;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.powers.StarFormPower;
 import basemod.ClickableUIElement;
 import basemod.abstracts.CustomEnergyOrb;
 import com.badlogic.gdx.Gdx;
@@ -364,8 +365,10 @@ public class StarBarPanel {
                             if (c instanceof AbstractStarCard) {
                                 if (AbstractDungeon.player.hand.size() < 10 && StarBarManager.starPower >= ((AbstractStarCard) c).getSpawnCost()) {
                                     StarBarManager.consumeStarPower(((AbstractStarCard) c).getSpawnCost());
-                                    starCards.removeCard(c);
-                                    previews.remove(previewMap.get(c));
+                                    if (!AbstractDungeon.player.hasPower(StarFormPower.POWER_ID)) {
+                                        starCards.removeCard(c);
+                                        previews.remove(previewMap.get(c));
+                                    }
                                     AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(c.makeStatEquivalentCopy(), (float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
                                 }
                             }
@@ -379,17 +382,17 @@ public class StarBarPanel {
         }
     }
 
-    public static void populateStarCards() {
+    public static void populateStarCards(boolean giveAllCards) {
         starCards.clear();
         previews.clear();
         previewMap.clear();
         starCards.addToTop(new SweetTreat(true));
         starCards.addToTop(new EarthTremor(true));
-        if (AbstractDungeon.actNum > 1) {
+        if (AbstractDungeon.actNum > 1 || giveAllCards) {
             starCards.addToTop(new ClockOut(true));
             starCards.addToTop(new PowerLift(true));
         }
-        if (AbstractDungeon.actNum > 2) {
+        if (AbstractDungeon.actNum > 2 || giveAllCards) {
             //Art Attack
             //Sweet Feast
             starCards.addToTop(new ShowStopper(true));
@@ -426,7 +429,7 @@ public class StarBarPanel {
     public static class PopulateStarCards {
         @SpirePostfixPatch
         public static void gimmeCards(AbstractPlayer __instance) {
-            populateStarCards();
+            populateStarCards(false);
         }
     }
 }

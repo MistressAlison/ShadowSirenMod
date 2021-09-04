@@ -1,8 +1,8 @@
 package ShadowSiren.util;
 
 import ShadowSiren.ShadowSirenMod;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
+import ShadowSiren.powers.StarFormPower;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class StarBarManager {
@@ -20,7 +20,10 @@ public class StarBarManager {
     }
 
     public static void addProgress(int amount) {
-        if (starPower < maxStarPower){
+        if (starPower < maxStarPower) {
+            if (CardCrawlGame.dungeon != null && AbstractDungeon.player != null && AbstractDungeon.player.hasPower(StarFormPower.POWER_ID)) {
+                amount *= AbstractDungeon.player.getPower(StarFormPower.POWER_ID).amount;
+            }
             progress += amount;
             while (progress >= AMOUNT_PER_POWER) {
                 starPower++;

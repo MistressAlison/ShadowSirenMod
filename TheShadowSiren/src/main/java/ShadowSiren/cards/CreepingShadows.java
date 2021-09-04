@@ -27,9 +27,10 @@ public class CreepingShadows extends AbstractShadowCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
-    private static final int EFFECT = 3;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = COST - 1;
+    private static final int EFFECT = 1;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
@@ -50,7 +51,8 @@ public class CreepingShadows extends AbstractShadowCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            //upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }

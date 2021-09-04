@@ -1,6 +1,8 @@
 package ShadowSiren.cards;
 
+import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -43,6 +45,7 @@ public class IceWall extends AbstractIceCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         baseBlock = block = BLOCK;
+        BlockModifierManager.addModifier(this, new IceBlock());
     }
 
     // Actions the card should do.

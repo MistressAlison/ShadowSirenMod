@@ -193,5 +193,9 @@
         "ShadowSiren:FrostyPower": {
                 "NAME": "Frostbite",
                 "DESCRIPTIONS": ["Receive #b","% more damage from #yAttacks."]
+        },
+        "ShadowSiren:ElementalistFormPower": {
+                "NAME": "Elemental Mastery",
+                "DESCRIPTIONS": ["At the end of your turn, gain #b"," Strength an Dexterity for each active #yElement."]
         }
 }

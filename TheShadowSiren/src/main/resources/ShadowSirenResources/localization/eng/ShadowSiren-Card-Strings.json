@@ -115,6 +115,11 @@
     "NAME": "Elemental Burst",
     "DESCRIPTION": "Deal !D! damage for each active shadowsiren:Element."
   },
+  "ShadowSiren:Elementalist": {
+    "NAME": "Elemental Mastery",
+    "DESCRIPTION": "Ethereal. NL At the end of your turn, gain !M! Strength and Dexterity for each active shadowsiren:Element.",
+    "UPGRADE_DESCRIPTION": "At the end of your turn, gain !M! Strength and Dexterity for each active shadowsiren:Element."
+  },
   "ShadowSiren:EnergizingFlush": {
     "NAME": "Energized Flush",
     "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost.",
@@ -181,7 +186,7 @@
   },
   "ShadowSiren:IceWall": {
     "NAME": "Ice Wall",
-    "DESCRIPTION": "Gain !B! Block. NL Deal !D! [IceIcon] damage."
+    "DESCRIPTION": "Gain !B! [IceIcon] Block. NL Deal !D! [IceIcon] damage."
   },
   "ShadowSiren:Immolate": {
     "NAME": "Immolate",

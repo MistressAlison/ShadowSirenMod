@@ -2,6 +2,7 @@ package ShadowSiren.cards.starCards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractStarCard;
+import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.util.GameSpeedController;
 import ShadowSiren.vfx.InversionSlowMotionEffect;
@@ -13,7 +14,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class ClockOut extends AbstractStarCard {
+public class ClockOut extends AbstractStarCard implements TempCard {
 
     // TEXT DECLARATION
 

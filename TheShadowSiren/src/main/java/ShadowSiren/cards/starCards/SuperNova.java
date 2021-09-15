@@ -2,6 +2,7 @@ package ShadowSiren.cards.starCards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractStarCard;
+import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -15,7 +16,7 @@ import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class SuperNova extends AbstractStarCard {
+public class SuperNova extends AbstractStarCard implements TempCard {
 
     // TEXT DECLARATION
 

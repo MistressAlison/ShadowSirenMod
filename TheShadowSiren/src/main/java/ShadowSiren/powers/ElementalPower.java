@@ -53,7 +53,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
         HashMap<Class<?>, AbstractVivianDamageModifier> newMods = new HashMap<>();
         for (AbstractDamageModifier mod : DamageModifierManager.modifiers(card)) {
             if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).isAnElement) {
-                newMods.put(mod.getClass(), (AbstractVivianDamageModifier) mod);
+                newMods.put(mod.getClass(), (AbstractVivianDamageModifier) mod.makeCopy());
             }
         }
         for (AbstractDamageModifier mod : mods) {
@@ -61,8 +61,10 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
         }
         if (newMods.size() > 0) {
             for (Class<?> modClass : newMods.keySet()) {
-                mods.add(newMods.get(modClass));
-                DamageModifierManager.addModifier(this, newMods.get(modClass));
+                AbstractVivianDamageModifier copy = (AbstractVivianDamageModifier) newMods.get(modClass).makeCopy();
+                copy.tipType = AbstractVivianDamageModifier.TipType.DAMAGE;
+                mods.add(copy);
+                DamageModifierManager.addModifier(this, copy);
             }
             updateDescription();
             for (AbstractPower pow : owner.powers) {

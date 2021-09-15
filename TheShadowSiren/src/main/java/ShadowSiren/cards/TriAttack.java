@@ -123,9 +123,10 @@ public class TriAttack extends AbstractMultiElementCard implements MagicAnimatio
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DAMAGE);
-            upgradeSecondMagicNumber(UPGRADE_PLUS_DAMAGE);
-            upgradeThirdMagicNumber(UPGRADE_PLUS_DAMAGE);
+            //upgradeDamage(UPGRADE_PLUS_DAMAGE);
+            //upgradeSecondMagicNumber(UPGRADE_PLUS_DAMAGE);
+            //upgradeThirdMagicNumber(UPGRADE_PLUS_DAMAGE);
+            upgradeMagicNumber(UPGRADE_PLUS_SCALE);
             initializeDescription();
         }
     }

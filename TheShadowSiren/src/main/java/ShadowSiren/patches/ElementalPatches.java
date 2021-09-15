@@ -1,6 +1,8 @@
 package ShadowSiren.patches;
 
 import IconsAddon.damageModifiers.AbstractDamageModifier;
+import IconsAddon.patches.DescriptorAndTooltipPatches;
+import IconsAddon.util.BlockModifierManager;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.cards.abstractCards.AbstractModdedCard;
@@ -8,6 +10,7 @@ import ShadowSiren.cards.interfaces.ElementallyInert;
 import ShadowSiren.damageModifiers.*;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.util.ParticleOrbitRenderer;
+import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
@@ -26,6 +29,7 @@ import javassist.CannotCompileException;
 import javassist.CtBehavior;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ElementalPatches {
     public static boolean isNonElementalVivianCard(AbstractCard card) { //unused
@@ -84,6 +88,14 @@ public class ElementalPatches {
         }
     }
 
+    //Don't bother rendering if it isn't in one of 4 immediately viewable locations. We also don't want to render in master deck
+    private static boolean validLocation(AbstractCard c) {
+        return AbstractDungeon.player.hand.contains(c) ||
+                AbstractDungeon.player.drawPile.contains(c) ||
+                AbstractDungeon.player.discardPile.contains(c) ||
+                AbstractDungeon.player.exhaustPile.contains(c);
+    }
+
     @SpirePatch(clz = AbstractCard.class, method = "renderEnergy")
     public static class RenderOnCardPatch
     {
@@ -95,15 +107,6 @@ public class ElementalPatches {
                 }
             }
         }
-
-        //Don't bother rendering if it isn't in one of 4 immediately viewable locations. We also don't want to render in master deck
-        private static boolean validLocation(AbstractCard c) {
-            return AbstractDungeon.player.hand.contains(c) ||
-                    AbstractDungeon.player.drawPile.contains(c) ||
-                    AbstractDungeon.player.discardPile.contains(c) ||
-                    AbstractDungeon.player.exhaustPile.contains(c);
-        }
-
 
         private static void renderHelper(SpriteBatch sb, float drawX, float drawY, AbstractCard C) {
             sb.setColor(Color.WHITE.cpy());
@@ -139,6 +142,42 @@ public class ElementalPatches {
             public int[] Locate(CtBehavior ctMethodToPatch) throws CannotCompileException, PatchingException {
                 Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractPlayer.class, "stance");
                 return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
+            }
+        }
+    }
+
+    @SpirePatch(clz = DescriptorAndTooltipPatches.AddTooltipTop.class, method = "part1")
+    @SpirePatch(clz = DescriptorAndTooltipPatches.AddTooltipTop.class, method = "part2")
+    public static class AddFakeTooltips {
+        @SpirePostfixPatch
+        public static void addFakeTooltips(AbstractCard ___card, List<TooltipInfo>[] tooltips) {
+            if (AbstractDungeon.player != null && validLocation(___card)) {
+                if (shouldPushElements(___card)) {
+                    if (tooltips[0] == null && DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)).size() > 0) {
+                        tooltips[0] = new ArrayList<>();
+                    }
+                    for (AbstractDamageModifier m : DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID))) {
+                        tooltips[0].addAll(m.getCustomTooltips());
+                    }
+                }
+            }
+        }
+    }
+
+    @SpirePatch(clz = DescriptorAndTooltipPatches.AddTooltipTopSCV.class, method = "pls")
+    public static class AddFakeTooltipsSCV {
+        @SpirePostfixPatch
+        public static void addFakeTooltips(AbstractCard ___card, ArrayList<PowerTip>[] t) {
+            if (AbstractDungeon.player != null && validLocation(___card)) {
+                if (shouldPushElements(___card)) {
+                    for (AbstractDamageModifier m : DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID))) {
+                        if (m.getCustomTooltips() != null) {
+                            for (TooltipInfo tip : m.getCustomTooltips()) {
+                                t[0].add(tip.toPowerTip());
+                            }
+                        }
+                    }
+                }
             }
         }
     }

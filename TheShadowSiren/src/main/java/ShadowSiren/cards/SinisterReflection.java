@@ -1,7 +1,6 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.SinisterReflectionPower;
@@ -31,7 +30,7 @@ public class SinisterReflection extends AbstractShadowCard {
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
 
-    private static final int EFFECT = 1;
+    private static final int EFFECT = 5;
 
     // /STAT DECLARATION/
 

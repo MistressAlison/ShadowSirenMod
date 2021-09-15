@@ -32,6 +32,7 @@ public class FrozenShield extends AbstractIceCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
     private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
@@ -46,9 +47,7 @@ public class FrozenShield extends AbstractIceCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        //this.addToBot(new GainCustomBlockAction(this, p, block));
         this.addToBot(new GainBlockAction(p, block));
-        //this.addToBot(new GainCustomBlockAction(this, m, block));
     }
 
     // Upgraded stats.
@@ -56,7 +55,8 @@ public class FrozenShield extends AbstractIceCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            upgradeBaseCost(UPGRADE_COST);
+            //upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
         }
     }

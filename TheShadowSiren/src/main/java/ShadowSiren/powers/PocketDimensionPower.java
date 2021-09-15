@@ -64,6 +64,7 @@ public class PocketDimensionPower extends AbstractPower implements CloneablePowe
 
     @Override
     public void onChangeElement() {
+        flash();
         this.addToTop(new DrawCardAction(amount));
     }
 }

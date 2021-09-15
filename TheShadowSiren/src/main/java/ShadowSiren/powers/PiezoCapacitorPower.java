@@ -4,6 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cardModifiers.ChargeModifier;
 import basemod.helpers.CardModifierManager;
 import basemod.interfaces.CloneablePowerInterface;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -47,11 +48,12 @@ public class PiezoCapacitorPower extends AbstractPower implements CloneablePower
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL && info.owner != owner) {
-            ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group.stream().filter(c -> c.baseDamage >= 0 || c.baseBlock >= 0).collect(Collectors.toCollection(ArrayList::new));
-            if (!cards.isEmpty()) {
-                AbstractCard c = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()-1));
-                CardModifierManager.addModifier(c, new ChargeModifier(amount));
-            }
+//            ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group.stream().filter(c -> c.baseDamage >= 0 || c.baseBlock >= 0).collect(Collectors.toCollection(ArrayList::new));
+//            if (!cards.isEmpty()) {
+//                AbstractCard c = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()-1));
+//                CardModifierManager.addModifier(c, new ChargeModifier(amount));
+//            }
+            this.addToBot(new ApplyPowerAction(owner, owner, new ChargePower(owner, amount)));
         }
         return super.onAttacked(info, damageAmount);
     }

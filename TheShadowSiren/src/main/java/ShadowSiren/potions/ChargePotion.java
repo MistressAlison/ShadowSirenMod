@@ -1,7 +1,7 @@
 package ShadowSiren.potions;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.powers.ChargePower;
+import ShadowSiren.powers.ChargePower;
 import basemod.BaseMod;
 import basemod.abstracts.CustomPotion;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -41,7 +41,7 @@ public class ChargePotion extends CustomPotion {
     // This is your potency.
     @Override
     public int getPotency(final int ascensionLevel) {
-        return 2;
+        return 6;
     }
 
     @Override

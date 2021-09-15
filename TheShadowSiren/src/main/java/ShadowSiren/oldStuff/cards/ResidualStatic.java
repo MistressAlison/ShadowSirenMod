@@ -5,7 +5,7 @@ import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.oldStuff.cards.dualityCards.hyper.ResidualStaticDual;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.patches.ChargeCounterPatches;
-import ShadowSiren.oldStuff.powers.ChargePower;
+import ShadowSiren.powers.ChargePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;

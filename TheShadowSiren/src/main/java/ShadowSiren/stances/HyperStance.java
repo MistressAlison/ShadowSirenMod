@@ -2,7 +2,7 @@ package ShadowSiren.stances;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.oldStuff.powers.ChargePower;
+import ShadowSiren.powers.ChargePower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;

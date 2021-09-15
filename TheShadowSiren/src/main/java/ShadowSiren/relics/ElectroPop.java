@@ -1,7 +1,7 @@
 package ShadowSiren.relics;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.powers.ChargePower;
+import ShadowSiren.powers.ChargePower;
 import ShadowSiren.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
@@ -30,7 +30,7 @@ public class ElectroPop extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("ElectroPop.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("ElectroPop.png"));
 
-    private static final int CHARGE_GAINED = 1;
+    private static final int CHARGE_GAINED = 3;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String CHARGE_STAT = DESCRIPTIONS[2];

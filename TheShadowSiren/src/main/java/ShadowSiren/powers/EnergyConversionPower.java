@@ -1,8 +1,8 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cardModifiers.ChargeModifier;
 import basemod.interfaces.CloneablePowerInterface;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -38,18 +38,25 @@ public class EnergyConversionPower extends AbstractPower implements CloneablePow
     }
 
     @Override
-    public void atStartOfTurnPostDraw() {
+    public void onSpecificTrigger() {
         flash();
-        ChargeModifier.triggerCharge();
+        this.addToBot(new ApplyPowerAction(owner, owner, new ChargePower(owner, amount)));
     }
+
+//    @Override
+//    public void atStartOfTurnPostDraw() {
+//        flash();
+//        ChargeModifier.triggerCharge();
+//    }
 
     @Override
     public void updateDescription() {
-        if (amount == 1) {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
-        } else {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
-        }
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+//        if (amount == 1) {
+//            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+//        } else {
+//            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
+//        }
     }
 
     @Override

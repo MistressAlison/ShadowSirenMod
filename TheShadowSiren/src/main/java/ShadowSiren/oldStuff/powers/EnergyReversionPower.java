@@ -1,6 +1,7 @@
 package ShadowSiren.oldStuff.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.powers.ChargePower;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;

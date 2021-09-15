@@ -1,12 +1,11 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.powers.ChargePower;
 import ShadowSiren.util.XCostGrabber;
-import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -31,6 +30,7 @@ public class TurboCharged extends AbstractElectricCard {
 
     private static final int COST = -1;
     private static final int BASE_EFFECT = 0;
+    private static final int MULTI = 4;
 
     // /STAT DECLARATION/
 
@@ -43,12 +43,10 @@ public class TurboCharged extends AbstractElectricCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = XCostGrabber.getXCostAmount(this);
+        int effect = XCostGrabber.getXCostAmount(this)*MULTI;
 
-        for (AbstractCard c : p.hand.group) {
-            if (c.baseBlock >= 0 || c.baseDamage >= 0) {
-                CardModifierManager.addModifier(c, new ChargeModifier(effect));
-            }
+        if (effect > 0) {
+            this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, effect)));
         }
 
         if (!this.freeToPlayOnce) {
@@ -64,7 +62,7 @@ public class TurboCharged extends AbstractElectricCard {
     }
 
     private void updateSecondValue() {
-        secondMagicNumber = XCostGrabber.getXCostAmount(this, true);
+        secondMagicNumber = XCostGrabber.getXCostAmount(this, true)*MULTI;
         isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
     }
 

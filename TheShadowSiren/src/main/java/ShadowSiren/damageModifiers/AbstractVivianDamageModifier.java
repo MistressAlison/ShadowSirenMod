@@ -16,7 +16,7 @@ public abstract class AbstractVivianDamageModifier extends AbstractDamageModifie
 
     public final CardStrings cardStrings;
     public boolean isAnElement = true;
-    TipType tipType;
+    public TipType tipType;
     public AbstractVivianDamageModifier(String ID, TipType tipType) {
         cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         this.tipType = tipType;

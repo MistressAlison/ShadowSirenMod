@@ -5,6 +5,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -42,7 +43,7 @@ public class IceWall extends AbstractIceCard {
     // /STAT DECLARATION/
 
     public IceWall() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
         baseDamage = damage = DAMAGE;
         baseBlock = block = BLOCK;
         BlockModifierManager.addModifier(this, new IceBlock());

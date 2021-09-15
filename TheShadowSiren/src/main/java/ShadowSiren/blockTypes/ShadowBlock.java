@@ -4,6 +4,8 @@ import IconsAddon.blockModifiers.AbstractBlockModifier;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.powers.ShadowPower;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -15,11 +17,15 @@ public class ShadowBlock extends AbstractBlockModifier {
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final Color c = Color.DARK_GRAY.cpy();
 
+    private static final int AMOUNT = 3;
+
     public ShadowBlock() {}
 
     @Override
-    public int amountLostAtStartOfTurn() {
-        return Math.max(0, getCurrentAmount() - countShadowSplit());
+    public void onAttacked(DamageInfo info, int damageAmount) {
+        if (info.type == DamageInfo.DamageType.NORMAL && info.owner != null && info.owner != this.owner) {
+            this.addToBot(new ApplyPowerAction(info.owner, owner, new ShadowPower(info.owner, AMOUNT)));
+        }
     }
 
     @Override
@@ -52,15 +58,15 @@ public class ShadowBlock extends AbstractBlockModifier {
         return true;
     }
 
-    private int countShadowSplit() {
-        int ret = 0;
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (!aM.isDeadOrEscaped()) {
-                if (aM.hasPower(ShadowPower.POWER_ID)) {
-                    ret += aM.getPower(ShadowPower.POWER_ID).amount;
-                }
-            }
-        }
-        return Math.max(0, ret);
-    }
+//    private int countShadowSplit() {
+//        int ret = 0;
+//        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+//            if (!aM.isDeadOrEscaped()) {
+//                if (aM.hasPower(ShadowPower.POWER_ID)) {
+//                    ret += aM.getPower(ShadowPower.POWER_ID).amount;
+//                }
+//            }
+//        }
+//        return Math.max(0, ret);
+//    }
 }

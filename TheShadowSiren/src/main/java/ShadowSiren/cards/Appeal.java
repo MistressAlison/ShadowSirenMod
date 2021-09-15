@@ -2,10 +2,12 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.util.StarBarManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -13,7 +15,7 @@ import com.megacrit.cardcrawl.vfx.combat.SanctityEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Appeal extends AbstractDynamicCard {
+public class Appeal extends AbstractDynamicCard implements ModularDescription {
 
     // TEXT DECLARATION
 
@@ -53,6 +55,7 @@ public class Appeal extends AbstractDynamicCard {
                 this.isDone = true;
             }
         });
+        this.addToBot(new DrawCardAction(magicNumber));
     }
 
     //Upgraded stats.
@@ -62,6 +65,17 @@ public class Appeal extends AbstractDynamicCard {
             upgradeName();
             upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void changeDescription() {
+        if (DESCRIPTION != null) {
+            if (magicNumber > 1) {
+                rawDescription = UPGRADE_DESCRIPTION;
+            } else {
+                rawDescription = DESCRIPTION;
+            }
         }
     }
 }

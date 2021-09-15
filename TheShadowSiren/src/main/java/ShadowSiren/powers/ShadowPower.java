@@ -76,7 +76,7 @@ public class ShadowPower extends AbstractPower implements CloneablePowerInterfac
         if (amount >= owner.currentHealth) {
             if (!surpassedHP && owner.currentHealth > 0) {
                 if (loopCasts > 0 && !sad) {
-                    this.addToTop(new VFXAction(new SpeechBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 1.0f, ":(", true)));
+                    //this.addToTop(new VFXAction(new SpeechBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 1.0f, ":(", true)));
                     sad = true;
                 }
                 loopCasts++;

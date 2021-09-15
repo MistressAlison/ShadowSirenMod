@@ -49,7 +49,7 @@ public class SpitePowder extends CustomRelic {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (damageAmount > 0 && info.owner != null && info.owner != AbstractDungeon.player) {
+        if (damageAmount > 0 && info.owner != null && info.owner != AbstractDungeon.player && info.type == DamageInfo.DamageType.NORMAL) {
             flash();
             this.addToBot(new RelicAboveCreatureAction(info.owner, this));
             this.addToBot(new DamageAction(info.owner, new DamageInfo(AbstractDungeon.player, damageAmount*DAMAGE_PERCENT/100, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));

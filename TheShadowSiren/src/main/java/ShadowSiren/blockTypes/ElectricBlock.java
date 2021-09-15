@@ -1,18 +1,15 @@
 package ShadowSiren.blockTypes;
 
 import IconsAddon.blockModifiers.AbstractBlockModifier;
-import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.damageModifiers.ElectricDamage;
+import ShadowSiren.powers.ShockPower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 public class ElectricBlock extends AbstractBlockModifier {
 
@@ -30,21 +27,39 @@ public class ElectricBlock extends AbstractBlockModifier {
     }
 
     @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (info.type == DamageInfo.DamageType.NORMAL && target != owner) {
-            triggerEffect(target);
+    public void onThisBlockDamaged(DamageInfo info, int lostAmount) {
+        if (info.owner != null && info.owner != owner && lostAmount > 0) {
+            this.addToBot(new ApplyPowerAction(info.owner, owner, new ShockPower(info.owner, lostAmount)));
         }
     }
+
+    //    @Override
+//    public void atStartOfTurnPreBlockLoss() {
+//        ChargeModifier.triggerCharge();
+//    }
+//
+//    @Override
+//    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+//        if (info.type == DamageInfo.DamageType.NORMAL && target != owner) {
+//            triggerEffect(target);
+//        }
+//    }
+//
+//    @Override
+//    public void onAttacked(DamageInfo info, int damageAmount) {
+//        if (info.type == DamageInfo.DamageType.NORMAL && info.owner != null && info.owner != this.owner) {
+//            triggerEffect(info.owner);
+//        }
+//    }
+//
+//    private void triggerEffect(AbstractCreature target) {
+//        this.addToBot(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(electricContainer, owner, DAMAGE, DamageInfo.DamageType.THORNS), true));
+//    }
+
 
     @Override
-    public void onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.NORMAL && info.owner != null && info.owner != this.owner) {
-            triggerEffect(info.owner);
-        }
-    }
-
-    private void triggerEffect(AbstractCreature target) {
-        this.addToBot(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(electricContainer, owner, DAMAGE, DamageInfo.DamageType.THORNS), true));
+    public Priority priority() {
+        return Priority.TOP;
     }
 
     @Override
@@ -69,7 +84,8 @@ public class ElectricBlock extends AbstractBlockModifier {
 
     @Override
     public String getDescription() {
-        return cardStrings.EXTENDED_DESCRIPTION[0]+DAMAGE+cardStrings.EXTENDED_DESCRIPTION[1]+DAMAGE+cardStrings.EXTENDED_DESCRIPTION[2];
+        //return cardStrings.EXTENDED_DESCRIPTION[0]+DAMAGE+cardStrings.EXTENDED_DESCRIPTION[1]+DAMAGE+cardStrings.EXTENDED_DESCRIPTION[2];
+        return cardStrings.DESCRIPTION;
     }
 
     @Override

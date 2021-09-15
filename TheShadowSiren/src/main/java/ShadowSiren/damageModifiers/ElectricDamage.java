@@ -135,4 +135,9 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     public boolean isInherent() {
         return innate;
     }
+
+    @Override
+    public AbstractDamageModifier makeCopy() {
+        return new ElectricDamage(tipType, innate, automaticBindingForCards);
+    }
 }

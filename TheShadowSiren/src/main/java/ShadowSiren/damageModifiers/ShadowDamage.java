@@ -1,5 +1,6 @@
 package ShadowSiren.damageModifiers;
 
+import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.icons.AbstractCustomIcon;
 import IconsAddon.icons.DarkIcon;
 import ShadowSiren.ShadowSirenMod;
@@ -10,10 +11,8 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.CardPoofEffect;
 
-import javax.tools.Tool;
 import java.util.ArrayList;
 
 public class ShadowDamage extends AbstractVivianDamageModifier {
@@ -38,9 +37,14 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     }
 
     public ShadowDamage(TipType tipType, boolean innate) {
+        this(tipType, innate, true);
+    }
+
+    public ShadowDamage(TipType tipType, boolean innate, boolean autoAdd) {
         super(ID, tipType);
         this.innate = innate;
-        this.priority = Short.MAX_VALUE;
+        this.automaticBindingForCards = autoAdd;
+        this.priority = -2;
     }
 
     @Override
@@ -118,5 +122,10 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     @Override
     public boolean isInherent() {
         return innate;
+    }
+
+    @Override
+    public AbstractDamageModifier makeCopy() {
+        return new ShadowDamage(tipType, innate, automaticBindingForCards);
     }
 }

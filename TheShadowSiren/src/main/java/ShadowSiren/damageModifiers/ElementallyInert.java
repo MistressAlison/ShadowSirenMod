@@ -1,5 +1,6 @@
 package ShadowSiren.damageModifiers;
 
+import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.icons.AbstractCustomIcon;
 import IconsAddon.icons.GearIcon;
 import ShadowSiren.ShadowSirenMod;
@@ -45,5 +46,10 @@ public class ElementallyInert extends AbstractVivianDamageModifier {
     @Override
     public boolean isInherent() {
         return true;
+    }
+
+    @Override
+    public AbstractDamageModifier makeCopy() {
+        return new ElementallyInert();
     }
 }

@@ -1,5 +1,6 @@
 package ShadowSiren.damageModifiers;
 
+import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.icons.AbstractCustomIcon;
 import IconsAddon.icons.IceIcon;
 import ShadowSiren.ShadowSirenMod;
@@ -9,8 +10,6 @@ import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.combat.FrostOrbActivateEffect;
 
 import java.util.ArrayList;
 
@@ -109,5 +108,10 @@ public class IceDamage extends AbstractVivianDamageModifier {
     @Override
     public boolean isInherent() {
         return innate;
+    }
+
+    @Override
+    public AbstractDamageModifier makeCopy() {
+        return new IceDamage(tipType, innate, automaticBindingForCards);
     }
 }

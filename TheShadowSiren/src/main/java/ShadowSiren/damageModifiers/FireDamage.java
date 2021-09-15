@@ -1,5 +1,6 @@
 package ShadowSiren.damageModifiers;
 
+import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.icons.AbstractCustomIcon;
 import IconsAddon.icons.FireIcon;
 import ShadowSiren.ShadowSirenMod;
@@ -116,5 +117,10 @@ public class FireDamage extends AbstractVivianDamageModifier {
     @Override
     public boolean isInherent() {
         return innate;
+    }
+
+    @Override
+    public AbstractDamageModifier makeCopy() {
+        return new FireDamage(tipType, innate, automaticBindingForCards);
     }
 }

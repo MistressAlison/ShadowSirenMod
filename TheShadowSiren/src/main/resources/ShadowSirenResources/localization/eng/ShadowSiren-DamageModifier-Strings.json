@@ -7,9 +7,9 @@
   "ShadowSiren:ElectricDamage": {
     "NAME": "Electric",
     "DESCRIPTION": "Electric [ElectricIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs on hit, dealing an additional #b50% of the damage to a random enemy. NL #yBlock: Apples #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs on hit, dealing an additional #b50% of the damage to a random enemy. NL #yBlock: Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
                             "#yDamage: Arcs on hit, dealing an additional #b50% of the damage to a random enemy.",
-                            "#yBlock: Apples #yShock to the attacker when this Block is damaged. Used #bbefore other Block types."]
+                            "#yBlock: Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types."]
   },
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
@@ -61,7 +61,7 @@
   },
   "ShadowSiren:ElectricBlock": {
     "NAME": "Electric Shield [ElectricIcon]",
-    "DESCRIPTION": "Apples #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
+    "DESCRIPTION": "Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
     "EXTENDED_DESCRIPTION": ["When attacking, deal a secondary #b"," [ElectricIcon] damage. When attacked, deals #b"," [ElectricIcon] damage back."]
   },
   "ShadowSiren:ChargeModifier": {

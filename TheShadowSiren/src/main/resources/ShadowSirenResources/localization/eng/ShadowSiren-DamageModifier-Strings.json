@@ -7,9 +7,9 @@
   "ShadowSiren:ElectricDamage": {
     "NAME": "Electric",
     "DESCRIPTION": "Electric [ElectricIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Activate the #yCharge of all cards in play. NL #yBlock: If this Block is left over at the beginning of your turn, activate the #yCharge of all cards in play.",
-                            "#yDamage: Activate the #yCharge of all cards in play.",
-                            "#yBlock: If this Block is left over at the beginning of your turn, activate the #yCharge of all cards in play."]
+    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs on hit, dealing an additional #b50% of the damage to a random enemy. NL #yBlock: Apples #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
+                            "#yDamage: Arcs on hit, dealing an additional #b50% of the damage to a random enemy.",
+                            "#yBlock: Apples #yShock to the attacker when this Block is damaged. Used #bbefore other Block types."]
   },
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
@@ -33,9 +33,9 @@
   "ShadowSiren:ShadowDamage": {
     "NAME": "Shadow",
     "DESCRIPTION": "Shadow [DarkIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. NL #yBlock: At the beginning of turn, retain as much of this Block as enemies have #yShadow #ySplit.",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. NL #yBlock: When attacked, applies 3 #yShadow #ySplit to the attacker.",
                             "#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage.",
-                            "#yBlock: At the beginning of turn, retain as much of this Block as enemies have #yShadow #ySplit."]
+                            "#yBlock: When attacked, applies 3 #yShadow #ySplit to the attacker."]
   },
   "ShadowSiren:ElementallyInert": {
     "NAME": "Inert",
@@ -57,11 +57,11 @@
   },
   "ShadowSiren:ShadowBlock": {
     "NAME": "Shadow Shield [DarkIcon]",
-    "DESCRIPTION": "This Block is not lost at the beginning of turn."
+    "DESCRIPTION": "When attacked, applies 3 #yShadow #ySplit to the attacker."
   },
   "ShadowSiren:ElectricBlock": {
     "NAME": "Electric Shield [ElectricIcon]",
-    "DESCRIPTION": "If this Block is left over at the beginning of your turn, activate the #yCharge of all cards in play.",
+    "DESCRIPTION": "Apples #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
     "EXTENDED_DESCRIPTION": ["When attacking, deal a secondary #b"," [ElectricIcon] damage. When attacked, deals #b"," [ElectricIcon] damage back."]
   },
   "ShadowSiren:ChargeModifier": {

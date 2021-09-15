@@ -24,7 +24,8 @@
   },
   "ShadowSiren:Appeal": {
     "NAME": "Appeal",
-    "DESCRIPTION": "Gain !M! shadowsiren:Star_Power. NL Exhaust."
+    "DESCRIPTION": "Gain !M! shadowsiren:Star_Power. NL Draw !M! card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain !M! shadowsiren:Star_Power. NL Draw !M! cards. NL Exhaust."
   },
   "ShadowSiren:ArcaneShelter": {
     "NAME": "Arcane Shelter",
@@ -75,7 +76,7 @@
   },
   "ShadowSiren:ChargeUp": {
     "NAME": "Charge Up",
-    "DESCRIPTION": "Apply !M! shadowsiren:Charge to a card in your hand."
+    "DESCRIPTION": "Gain !M! shadowsiren:Charge."
   },
   "ShadowSiren:CreepingShadows": {
     "NAME": "Creeping Shadows",
@@ -127,8 +128,12 @@
   },
   "ShadowSiren:EnergyConversion": {
     "NAME": "Energy Conversion",
-    "DESCRIPTION": "At the beginning of your turn, activate the shadowsiren:Charge of all cards in play.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the beginning of your turn, activate the shadowsiren:Charge of all cards in play."
+    "DESCRIPTION": "Whenever you deal *Electric damage, gain !M! shadowsiren:Charge.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you deal *Electric damage, gain !M! shadowsiren:Charge."
+  },
+  "ShadowSiren:EscapePlan": {
+    "NAME": "Escape Plan",
+    "DESCRIPTION": "Gain !B! Block. NL Enter shadowsiren:Veil. NL Exhaust."
   },
   "ShadowSiren:FieryJinx": {
     "NAME": "Fiery Jinx",
@@ -188,6 +193,10 @@
     "NAME": "Ice Wall",
     "DESCRIPTION": "Gain !B! [IceIcon] Block. NL Deal !D! [IceIcon] damage."
   },
+  "ShadowSiren:IcyWind": {
+    "NAME": "Icy Wind",
+    "DESCRIPTION": "Gain !B! [IceIcon] Block. NL Apply !M! shadowsiren:Chill to ALL enemies."
+  },
   "ShadowSiren:Immolate": {
     "NAME": "Immolate",
     "DESCRIPTION": "Whenever you attack, the target loses !M! Max HP."
@@ -222,7 +231,7 @@
   },
   "ShadowSiren:PiezoCapacitor": {
     "NAME": "Piezo Capacitor",
-    "DESCRIPTION": "Whenever you are attacked, apply !M! shadowsiren:Charge to a random card in your draw pile."
+    "DESCRIPTION": "Whenever you are attacked, gain !M! shadowsiren:Charge."
   },
   "ShadowSiren:PlasmaBeam": {
     "NAME": "Plasma Beam",
@@ -287,7 +296,7 @@
   },
   "ShadowSiren:SinisterReflection": {
     "NAME": "Sinister Reflection",
-    "DESCRIPTION": "When an enemy applies a debuff to you, it is also applied to ALL enemies."
+    "DESCRIPTION": "Whenever a debuff is applied to you, deal !M! damage to ALL enemies."
   },
   "ShadowSiren:SnowBlind": {
     "NAME": "Snowblind",
@@ -333,8 +342,8 @@
   },
   "ShadowSiren:TurboCharged": {
     "NAME": "Turbo Charged",
-    "DESCRIPTION": "Apply X shadowsiren:Charge to all cards in your hand. NL (Applies !ShadowSiren:SecondMagic! shadowsiren:Charge) NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Apply X shadowsiren:Charge to all cards in your hand. NL (Applies !ShadowSiren:SecondMagic! shadowsiren:Charge)"
+    "DESCRIPTION": "Gain 4X shadowsiren:Charge. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge) NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain 4X shadowsiren:Charge. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge)"
   },
   "ShadowSiren:VigorousShift": {
     "NAME": "Vigorous Shift",

@@ -13,7 +13,7 @@
         },
         "ShadowSiren:ChargePower": {
                 "NAME": "Charged",
-                "DESCRIPTIONS": ["The damage and/or Block of your next card is #b","% stronger.",
+                "DESCRIPTIONS": ["Increases the damage and/or #yBlock of your next played card by #b"," this combat.",
                                 "The damage and/or Block of your next #b"," cards are #b"]
         },
         "ShadowSiren:ChillPower": {
@@ -48,7 +48,7 @@
         },
         "ShadowSiren:EnergyConversionPower": {
                 "NAME": "Energy Conversion",
-                "DESCRIPTIONS": ["At the beginning of your turn, trigger the #yCharge of all cards in play #b"," time."," times."]
+                "DESCRIPTIONS": ["Whenever you deal #yElectric damage, gain #b"," #yCharge."]
         },
         "ShadowSiren:EnergyReversionPower": {
                 "NAME": "Energy Reversion",
@@ -112,7 +112,7 @@
         },
         "ShadowSiren:PiezoCapacitorPower": {
                 "NAME": "Piezo Capacitor",
-                "DESCRIPTIONS": ["Whenever you are attacked, apply #b"," #yCharge to a random card in your draw pile."]
+                "DESCRIPTIONS": ["Whenever you are attacked, gain #b"," #yCharge."]
         },
         "ShadowSiren:PocketDimensionPower": {
                 "NAME": "Pocket Dimension",
@@ -132,7 +132,7 @@
         },
         "ShadowSiren:SinisterReflectionPower": {
                 "NAME": "Sinister Reflections",
-                "DESCRIPTIONS": ["Debuffs that enemies apply to you are also applied to ALL enemies","."," #b"," times."]
+                "DESCRIPTIONS": ["Whenever a debuff is applies to you, deal #b"," damage to ALL enemies."]
         },
         "ShadowSiren:SoftPower": {
                 "NAME": "Soft",
@@ -197,5 +197,9 @@
         "ShadowSiren:ElementalistFormPower": {
                 "NAME": "Elemental Mastery",
                 "DESCRIPTIONS": ["At the end of your turn, gain #b"," Strength an Dexterity for each active #yElement."]
+        },
+        "ShadowSiren:ShockPower": {
+                "NAME": "Shocked",
+                "DESCRIPTIONS": ["Receives #b"," more damage from your next #yAttack."]
         }
 }

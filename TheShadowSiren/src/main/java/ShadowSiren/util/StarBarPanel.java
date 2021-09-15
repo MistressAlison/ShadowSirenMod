@@ -52,9 +52,9 @@ public class StarBarPanel {
     private static final boolean FORCE_COMPLETE_ANIMATION = false;
     private static final float TIP_OFFSET_X = 0.0F * Settings.scale;
     private static final float TIP_OFFSET_Y = -50.0F * Settings.scale;
+    private static final float CARD_SCALE = 0.35f;
     private static final float CARD_OFFSET_X = 0f * Settings.scale;
     private static final float CARD_OFFSET_Y = 120f * Settings.scale;
-    private static final float CARD_SCALE = 0.35f;
     private static Texture orbVfx;
     private static float hueSlider;
     private static float vfxScale;
@@ -71,8 +71,6 @@ public class StarBarPanel {
     private static final HashMap<AbstractCard, AbstractCard> previewMap = new HashMap<>();
     private static final ArrayList<AbstractCard> previews = new ArrayList<>();
 
-
-    
     static {
         orbVfx = ImageMaster.loadImage("ShadowSirenResources/images/starBar/vfx.png");
         hueSlider = 0;
@@ -114,6 +112,9 @@ public class StarBarPanel {
         }
         for (StarOrb o : orbs) {
             o.update();
+        }
+        for (AbstractCard c : previews) {
+            c.hb.update();
         }
     }
 
@@ -157,6 +158,7 @@ public class StarBarPanel {
         clickable.move(current_x, current_y);
         clickable.render(sb);
     }
+
     public static void renderOrbs(SpriteBatch sb, float x, float y) {
         if (open || barAnimationTimer != 0) {
             for (int i = orbs.size()-1 ; i >= 0 ; i--) {
@@ -168,6 +170,7 @@ public class StarBarPanel {
                     previews.get(i).current_y = y + CARD_OFFSET_Y + i*Y_OFFSET_PER_ORB*offsetMulti;
                     previews.get(i).drawScale = CARD_SCALE;
                     previews.get(i).render(sb);
+                    previews.get(i).hb.render(sb);
                 }
             }
         } else if (!orbs.isEmpty()) {

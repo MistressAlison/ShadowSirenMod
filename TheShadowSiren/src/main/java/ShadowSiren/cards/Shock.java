@@ -49,7 +49,6 @@ public class Shock extends AbstractElectricCard implements ModularDescription {
         baseBlock = block = BLOCK;
         magicNumber = baseMagicNumber = DRAW;
         BlockModifierManager.addModifier(this, new ElectricBlock());
-        CardModifierManager.addModifier(this, new ChargeModifier(1, true));
     }
 
     // Actions the card should do.

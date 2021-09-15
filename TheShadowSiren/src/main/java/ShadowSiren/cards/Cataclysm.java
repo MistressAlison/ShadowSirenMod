@@ -41,7 +41,6 @@ public class Cataclysm extends AbstractElectricCard implements MagicAnimation {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         isMultiDamage = true;
-        CardModifierManager.addModifier(this, new ChargeModifier(3, true));
     }
 
     // Actions the card should do.

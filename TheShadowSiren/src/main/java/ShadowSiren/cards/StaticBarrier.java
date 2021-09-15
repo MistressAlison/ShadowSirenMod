@@ -3,13 +3,9 @@ package ShadowSiren.cards;
 import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.ElectricBlock;
-import ShadowSiren.blockTypes.FireBlock;
-import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
-import ShadowSiren.cards.abstractCards.AbstractFireCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -47,7 +43,6 @@ public class StaticBarrier extends AbstractElectricCard {
         baseBlock = block = BLOCK;
         magicNumber = baseMagicNumber = TIMES;
         BlockModifierManager.addModifier(this, new ElectricBlock());
-        CardModifierManager.addModifier(this, new ChargeModifier(1, true));
         selfRetain = true;
     }
 

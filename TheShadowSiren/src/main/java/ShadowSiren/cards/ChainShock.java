@@ -47,7 +47,6 @@ public class ChainShock extends AbstractElectricCard implements MagicAnimation {
         baseDamage = damage = DAMAGE;
         isMultiDamage = true;
         this.exhaust = true;
-        CardModifierManager.addModifier(this, new ChargeModifier(1, true));
     }
 
     // Actions the card should do.

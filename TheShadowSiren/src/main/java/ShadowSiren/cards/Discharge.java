@@ -1,12 +1,10 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.ChargeMultiEffect;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.oldStuff.powers.ChargePower;
-import basemod.helpers.CardModifierManager;
+import ShadowSiren.powers.ChargePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -51,7 +49,6 @@ public class Discharge extends AbstractElectricCard implements ChargeMultiEffect
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = CHARGE_MULTI;
-        CardModifierManager.addModifier(this, new ChargeModifier(1, true));
     }
 
     // Actions the card should do.

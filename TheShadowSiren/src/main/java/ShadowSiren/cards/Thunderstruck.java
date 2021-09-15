@@ -51,7 +51,6 @@ public class Thunderstruck extends AbstractElectricCard implements MagicAnimatio
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = DEBUFF;
         shuffleBackIntoDrawPile = true;
-        CardModifierManager.addModifier(this, new ChargeModifier(1, true));
     }
 
     // Actions the card should do.
@@ -60,7 +59,6 @@ public class Thunderstruck extends AbstractElectricCard implements MagicAnimatio
         this.addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
         this.addToBot(new SFXAction("THUNDERCLAP", 0.05F));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
-        //this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
         this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
     }
 

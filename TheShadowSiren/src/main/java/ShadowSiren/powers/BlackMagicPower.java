@@ -2,6 +2,7 @@ package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class BlackMagicPower extends AbstractPower implements CloneablePowerInterface {
+public class BlackMagicPower extends AbstractPower implements CloneablePowerInterface, BetterOnApplyPowerPower {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("BlackMagicPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -38,19 +39,19 @@ public class BlackMagicPower extends AbstractPower implements CloneablePowerInte
         updateDescription();
     }
 
-    @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (source == owner && target != owner && power.type == PowerType.DEBUFF) {
-            int sign = power.amount >= 0 ? 1 : -1;
-            if (target.hasPower(power.ID)) {
-                target.getPower(power.ID).stackPower(this.amount*sign);
-            } else {
-                power.stackPower(this.amount*sign);
-            }
-            flash();
-        }
-        super.onApplyPower(power, target, source);
-    }
+//    @Override
+//    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+//        if (source == owner && target != owner && power.type == PowerType.DEBUFF) {
+//            int sign = power.amount >= 0 ? 1 : -1;
+//            if (target.hasPower(power.ID)) {
+//                target.getPower(power.ID).stackPower(this.amount*sign);
+//            } else {
+//                power.stackPower(this.amount*sign);
+//            }
+//            flash();
+//        }
+//        super.onApplyPower(power, target, source);
+//    }
 
     @Override
     public void updateDescription() {
@@ -64,5 +65,32 @@ public class BlackMagicPower extends AbstractPower implements CloneablePowerInte
     @Override
     public AbstractPower makeCopy() {
         return new BlackMagicPower(owner, amount);
+    }
+
+    @Override
+    public boolean betterOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (target != owner && power.type == PowerType.DEBUFF) {
+            if (power.amount > 0) {
+                power.amount++;
+                flash();
+            } else if (power.amount < 0) {
+                power.amount++;
+                flash();
+            }
+            power.updateDescription();
+        }
+        return true;
+    }
+
+    @Override
+    public int betterOnApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
+        if (target != owner && power.type == PowerType.DEBUFF) {
+            if (stackAmount > 0) {
+                stackAmount++;
+            } else {
+                stackAmount--;
+            }
+        }
+        return stackAmount;
     }
 }

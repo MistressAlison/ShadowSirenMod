@@ -1,15 +1,11 @@
 package ShadowSiren.cards;
 
-import IconsAddon.actions.GainCustomBlockAction;
-import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
-import ShadowSiren.cards.tempCards.Hammer;
+import ShadowSiren.cards.tempCards.IceShard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -47,7 +43,7 @@ public class BrickBreaker extends AbstractIceCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
         baseBlock = block = BLOCK;
         magicNumber = baseMagicNumber = CARDS;
-        this.cardsToPreview = new Hammer();
+        this.cardsToPreview = new IceShard();
         grabPreviewKeywords();
     }
 
@@ -63,7 +59,9 @@ public class BrickBreaker extends AbstractIceCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_CARDS);
+            //upgradeMagicNumber(UPGRADE_PLUS_CARDS);
+            cardsToPreview.upgrade();
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

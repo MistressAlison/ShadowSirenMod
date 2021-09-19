@@ -4,6 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractItemCard;
 import ShadowSiren.cards.interfaces.OnLoseHPLastCard;
 import ShadowSiren.characters.Vivian;
+import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,7 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class AutoArmor extends AbstractItemCard implements OnLoseHPLastCard {
 
 

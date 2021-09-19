@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-public class ElementalistFormPower extends AbstractPower implements CloneablePowerInterface {
+public class ElementalMasteryPower extends AbstractPower implements CloneablePowerInterface {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("ElementalistFormPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -22,7 +22,7 @@ public class ElementalistFormPower extends AbstractPower implements CloneablePow
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public ElementalistFormPower(AbstractCreature owner, int amount) {
+    public ElementalMasteryPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -43,6 +43,7 @@ public class ElementalistFormPower extends AbstractPower implements CloneablePow
     public void atEndOfTurn(boolean isPlayer) {
         int elements = ElementalPower.numActiveElements();
         if (elements * amount > 0) {
+            flash();
             this.addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount * elements)));
             this.addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount * elements)));
         }
@@ -55,7 +56,7 @@ public class ElementalistFormPower extends AbstractPower implements CloneablePow
 
     @Override
     public AbstractPower makeCopy() {
-        return new ElementalistFormPower(owner, amount);
+        return new ElementalMasteryPower(owner, amount);
     }
 
 }

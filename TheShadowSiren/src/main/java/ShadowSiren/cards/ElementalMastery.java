@@ -3,7 +3,7 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ElementalistFormPower;
+import ShadowSiren.powers.ElementalMasteryPower;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,10 +11,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Elementalist extends AbstractDynamicCard {
+public class ElementalMastery extends AbstractDynamicCard {
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(Elementalist.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(ElementalMastery.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderPower.png");
 
     // /TEXT DECLARATION/
@@ -35,7 +35,7 @@ public class Elementalist extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
 
-    public Elementalist() {
+    public ElementalMastery() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
         isEthereal = true;
@@ -45,7 +45,7 @@ public class Elementalist extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new ElementalistFormPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new ElementalMasteryPower(p, magicNumber)));
     }
 
     //Upgraded stats.

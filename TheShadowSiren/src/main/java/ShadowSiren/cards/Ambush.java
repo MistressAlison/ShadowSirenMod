@@ -3,14 +3,12 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.FreezePower;
-import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
@@ -49,9 +47,28 @@ public class Ambush extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!m.isDeadOrEscaped() && (m.getIntentBaseDmg() > 0 || m.hasPower(StunMonsterPower.POWER_ID) || m.hasPower(FreezePower.POWER_ID))) {
+        //if (!m.isDeadOrEscaped() && (m.getIntentBaseDmg() > 0 || m.hasPower(StunMonsterPower.POWER_ID) || m.hasPower(FreezePower.POWER_ID))) {
+        if (!m.isDeadOrEscaped() && m.getIntentBaseDmg() > 0) {
             this.addToBot(new GainEnergyAction(secondMagicNumber));
             this.addToBot(new ApplyPowerAction(p, p, new VigorPower(p, magicNumber)));
+        }
+    }
+
+    private boolean enemyIntendsToAttack() {
+        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+            if (!aM.isDeadOrEscaped() && aM.getIntentBaseDmg() > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        if (enemyIntendsToAttack()) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        } else {
+            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
         }
     }
 

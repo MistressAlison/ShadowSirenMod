@@ -1,15 +1,16 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.cutCards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.BlackMagicPower;
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class BlackMagic extends AbstractDynamicCard {
 
     // TEXT DECLARATION

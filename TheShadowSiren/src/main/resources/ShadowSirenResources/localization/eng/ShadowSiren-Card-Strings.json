@@ -64,7 +64,8 @@
   },
   "ShadowSiren:BrickBreaker": {
     "NAME": "Brick Breaker",
-    "DESCRIPTION": "Apply !M! Weak. NL Add !M! *Hammer to your hand."
+    "DESCRIPTION": "Apply !M! Weak. NL Add !M! *Ice *Shard to your hand.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Weak. NL Add !M! *Ice\u200B *Shard+ to your hand."
   },
   "ShadowSiren:Cataclysm": {
     "NAME": "Cataclysm",
@@ -116,10 +117,14 @@
     "NAME": "Elemental Burst",
     "DESCRIPTION": "Deal !D! damage for each active shadowsiren:Element."
   },
-  "ShadowSiren:Elementalist": {
+  "ShadowSiren:ElementalMastery": {
     "NAME": "Elemental Mastery",
     "DESCRIPTION": "Ethereal. NL At the end of your turn, gain !M! Strength and Dexterity for each active shadowsiren:Element.",
     "UPGRADE_DESCRIPTION": "At the end of your turn, gain !M! Strength and Dexterity for each active shadowsiren:Element."
+  },
+  "ShadowSiren:ElementalShroud": {
+    "NAME": "Elemental Shroud",
+    "DESCRIPTION": "At the end of your turn, gain !M! Block for each active shadowsiren:Element."
   },
   "ShadowSiren:EnergizingFlush": {
     "NAME": "Energized Flush",
@@ -188,6 +193,10 @@
   "ShadowSiren:IceOrb": {
     "NAME": "Ice Orb",
     "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL *Attack shadowsiren:Follow-Up: NL Deal !D! [IceIcon] damage. NL *Skill shadowsiren:Follow-Up: NL Gain !B! Block."
+  },
+  "ShadowSiren:IceShard": {
+    "NAME": "Ice Shard",
+    "DESCRIPTION": "Deal !D! [IceIcon] damage. NL If the target has Block, deal !D! [IceIcon] damage again. NL Exhaust."
   },
   "ShadowSiren:IceWall": {
     "NAME": "Ice Wall",

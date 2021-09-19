@@ -194,12 +194,16 @@
                 "NAME": "Frostbite",
                 "DESCRIPTIONS": ["Receive #b","% more damage from #yAttacks."]
         },
-        "ShadowSiren:ElementalistFormPower": {
+        "ShadowSiren:ElementalMasteryPower": {
                 "NAME": "Elemental Mastery",
-                "DESCRIPTIONS": ["At the end of your turn, gain #b"," Strength an Dexterity for each active #yElement."]
+                "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yStrength and #yDexterity for each active #yElement."]
         },
         "ShadowSiren:ShockPower": {
                 "NAME": "Shocked",
                 "DESCRIPTIONS": ["Receives #b"," more damage from your next #yAttack."]
+        },
+        "ShadowSiren:ElementalShroudPower": {
+                "NAME": "Elemental Shroud",
+                "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yBlock for each active #yElement."]
         }
 }

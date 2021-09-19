@@ -3,10 +3,8 @@ package ShadowSiren.powers;
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -39,20 +37,6 @@ public class BlackMagicPower extends AbstractPower implements CloneablePowerInte
         updateDescription();
     }
 
-//    @Override
-//    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-//        if (source == owner && target != owner && power.type == PowerType.DEBUFF) {
-//            int sign = power.amount >= 0 ? 1 : -1;
-//            if (target.hasPower(power.ID)) {
-//                target.getPower(power.ID).stackPower(this.amount*sign);
-//            } else {
-//                power.stackPower(this.amount*sign);
-//            }
-//            flash();
-//        }
-//        super.onApplyPower(power, target, source);
-//    }
-
     @Override
     public void updateDescription() {
         if (amount == 1) {
@@ -71,10 +55,10 @@ public class BlackMagicPower extends AbstractPower implements CloneablePowerInte
     public boolean betterOnApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (target != owner && power.type == PowerType.DEBUFF) {
             if (power.amount > 0) {
-                power.amount++;
+                power.amount += amount;
                 flash();
             } else if (power.amount < 0) {
-                power.amount++;
+                power.amount -= amount;
                 flash();
             }
             power.updateDescription();
@@ -86,9 +70,9 @@ public class BlackMagicPower extends AbstractPower implements CloneablePowerInte
     public int betterOnApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
         if (target != owner && power.type == PowerType.DEBUFF) {
             if (stackAmount > 0) {
-                stackAmount++;
+                stackAmount += amount;
             } else {
-                stackAmount--;
+                stackAmount -= amount;
             }
         }
         return stackAmount;

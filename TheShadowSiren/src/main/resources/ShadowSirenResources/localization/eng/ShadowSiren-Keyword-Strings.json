@@ -39,7 +39,7 @@
     "NAMES": [
       "chill"
     ],
-    "DESCRIPTION": "Creatures deal #b5% less damage per stack of Chill. NL At the end of each round, Chill is reduced by #b1. NL At #b10 stacks, Chill is removed, the creature loses its turn, and it takes #b25% more damage this combat."
+    "DESCRIPTION": "Creatures deal #b5% less damage per stack of Chill. NL At the end of each round, Chill is reduced by #b1. NL At #b10 stacks, Chill is removed, the creature loses its turn, and it takes #b25% more damage from Attacks this combat."
   },
   {
     "PROPER_NAME": "Elements",

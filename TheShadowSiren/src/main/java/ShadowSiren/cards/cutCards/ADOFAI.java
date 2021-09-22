@@ -1,4 +1,4 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.cutCards;
 
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
@@ -9,13 +9,14 @@ import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.FireDamage;
 import ShadowSiren.damageModifiers.IceDamage;
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class ADOFAI extends AbstractMultiElementCard implements MagicAnimation {
 
 

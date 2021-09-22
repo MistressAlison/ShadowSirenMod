@@ -1,4 +1,4 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.cutCards;
 
 import IconsAddon.actions.GainCustomBlockAction;
 import IconsAddon.util.BlockModifierManager;
@@ -11,11 +11,12 @@ import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.FireDamage;
 import ShadowSiren.damageModifiers.IceDamage;
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class FrostflameBarrier extends AbstractMultiElementCard {
 
 

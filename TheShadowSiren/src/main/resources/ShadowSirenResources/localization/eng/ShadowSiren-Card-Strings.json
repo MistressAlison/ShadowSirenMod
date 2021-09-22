@@ -85,8 +85,8 @@
   },
   "ShadowSiren:Cryogenesis": {
     "NAME": "Cryogenesis",
-    "DESCRIPTION": "Whenever you gain Block from cards, gain !M! more. NL Block you gain becomes [IceIcon] Block.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you gain Block from cards, gain !M! more. NL Block you gain becomes [IceIcon] Block."
+    "DESCRIPTION": "Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [IceIcon] Block.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [IceIcon] Block."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",

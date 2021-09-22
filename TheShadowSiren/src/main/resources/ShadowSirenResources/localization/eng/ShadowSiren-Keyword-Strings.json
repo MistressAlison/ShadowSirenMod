@@ -45,9 +45,11 @@
     "PROPER_NAME": "Elements",
     "NAMES": [
       "elements",
-      "element"
+      "element",
+      "elementless",
+      "non-elemental"
     ],
-    "DESCRIPTION": "#yFire, #yIce, #yElectric, and #yShadow."
+    "DESCRIPTION": "#yFire [FireIcon] , #yIce [IceIcon] , #yElectric [ElectricIcon] , and #yShadow [DarkIcon] ."
   },
   {
     "PROPER_NAME": "Charge",

@@ -10,6 +10,7 @@ import ShadowSiren.powers.PiezoCapacitorPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -46,7 +47,10 @@ public class Cryogenesis extends AbstractIceCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new CryogenesisPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber)));
+        if (!p.hasPower(CryogenesisPower.POWER_ID)) {
+            this.addToBot(new ApplyPowerAction(p, p, new CryogenesisPower(p)));
+        }
     }
 
     //Upgraded stats.

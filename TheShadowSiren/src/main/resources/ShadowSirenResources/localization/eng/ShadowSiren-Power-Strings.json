@@ -184,7 +184,7 @@
         },
         "ShadowSiren:CryogenesisPower": {
                 "NAME": "Cryogenesis",
-                "DESCRIPTIONS": ["Increases #yBlock gained from cards by #b",". Whenever you gain #yBlock, it also becomes [IceIcon] Block."]
+                "DESCRIPTIONS": ["Whenever you gain #yEementless #yBlock, it becomes [IceIcon] Block."]
         },
         "ShadowSiren:StarFormPower": {
                 "NAME": "Star Form",

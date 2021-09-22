@@ -25,11 +25,10 @@ public class CryogenesisPower extends AbstractPower implements CloneablePowerInt
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public CryogenesisPower(AbstractCreature owner, int amount) {
+    public CryogenesisPower(AbstractCreature owner) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
-        this.amount = amount;
 
         this.type = PowerType.BUFF;
         this.isTurnBased = false;
@@ -41,18 +40,19 @@ public class CryogenesisPower extends AbstractPower implements CloneablePowerInt
         updateDescription();
     }
 
-    public float modifyBlock(float blockAmount) {
-        return blockAmount+amount;
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0]+amount+DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new CryogenesisPower(owner, amount);
+        return new CryogenesisPower(owner);
     }
 
     @Override

@@ -29,7 +29,7 @@
   },
   "ShadowSiren:ArcaneShelter": {
     "NAME": "Arcane Shelter",
-    "DESCRIPTION": "Gain !B! [DarkIcon] Block X times. NL Gain X Dexterity this turn. NL (Gain !ShadowSiren:SecondMagic! Block and !ShadowSiren:ThirdMagic! Dexterity this turn)"
+    "DESCRIPTION": "Gain !B! [DarkIcon] Block X times. NL Gain X Dexterity this turn."
   },
   "ShadowSiren:ArtOfWar": {
     "NAME": "Art Of War",
@@ -64,8 +64,8 @@
   },
   "ShadowSiren:BrickBreaker": {
     "NAME": "Brick Breaker",
-    "DESCRIPTION": "Apply !M! Weak. NL Add !M! *Ice *Shard to your hand.",
-    "UPGRADE_DESCRIPTION": "Apply !M! Weak. NL Add !M! *Ice\u200B *Shard+ to your hand."
+    "DESCRIPTION": "Apply !M! Weak. NL Add !M! *Ice *Shard into your hand.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Weak. NL Add !M! *Ice\u200B *Shard+ into your hand."
   },
   "ShadowSiren:Cataclysm": {
     "NAME": "Cataclysm",
@@ -159,7 +159,8 @@
   },
   "ShadowSiren:FlashFreeze": {
     "NAME": "Flash Freeze",
-    "DESCRIPTION": "Apply !M! shadowsiren:Freeze to ALL enemies."
+    "DESCRIPTION": "Apply !M! *Chill to ALL enemies X times. NL Add 1 *Ice *Shard into your hand X times.",
+    "UPGRADE_DESCRIPTION": "Apply !M! *Chill to ALL enemies X times. NL Add 1 *Ice\u200B *Shard+ into your hand X times."
   },
   "ShadowSiren:Frostbite": {
     "NAME": "Frostbite",
@@ -175,8 +176,8 @@
   },
   "ShadowSiren:Glaciate": {
     "NAME": "Glaciate",
-    "DESCRIPTION": "Deal !D! [IceIcon] damage !M! time. NL If the target has Weak, increase this cards hits by !ShadowSiren:SecondMagic! this combat.",
-    "UPGRADE_DESCRIPTION": "Deal !D! [IceIcon] damage !M! times. NL If the target has Weak, increase this cards hits by !ShadowSiren:SecondMagic! this combat."
+    "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Add !M! *Ice *Shard into your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! [IceIcon] damage. NL Add !M! *Ice\u200B *Shard+ into your hand."
   },
   "ShadowSiren:Hammer": {
     "NAME": "Hammer",
@@ -204,7 +205,7 @@
   },
   "ShadowSiren:IcyWind": {
     "NAME": "Icy Wind",
-    "DESCRIPTION": "Gain !B! [IceIcon] Block. NL Apply !M! shadowsiren:Chill to ALL enemies."
+    "DESCRIPTION": "Gain !B! [IceIcon] Block. NL Apply !M! *Chill to ALL enemies."
   },
   "ShadowSiren:Immolate": {
     "NAME": "Immolate",
@@ -317,8 +318,7 @@
   },
   "ShadowSiren:StarFall": {
     "NAME": "Star Fall",
-    "DESCRIPTION": "Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! times)",
-    "EXTENDED_DESCRIPTION": ["Deal !D! damage to a random enemy X times for each active shadowsiren:Element. NL (Hits !ShadowSiren:SecondMagic! time)"]
+    "DESCRIPTION": "Deal !D! damage to a random enemy X times for each active shadowsiren:Element."
   },
   "ShadowSiren:StarForm": {
     "NAME": "Star Form",
@@ -351,8 +351,8 @@
   },
   "ShadowSiren:TurboCharged": {
     "NAME": "Turbo Charged",
-    "DESCRIPTION": "Gain 4X shadowsiren:Charge. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge) NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Gain 4X shadowsiren:Charge. NL (Gains !ShadowSiren:SecondMagic! shadowsiren:Charge)"
+    "DESCRIPTION": "Gain 4X shadowsiren:Charge. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain 4X shadowsiren:Charge."
   },
   "ShadowSiren:VigorousShift": {
     "NAME": "Vigorous Shift",

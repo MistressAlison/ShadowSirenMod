@@ -45,7 +45,7 @@ public class ArcaneShelter extends AbstractShadowCard {
 
     public ArcaneShelter() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
-        secondMagicNumber = baseSecondMagicNumber = thirdMagicNumber = baseThirdMagicNumber = BASE_EFFECT;
+//        secondMagicNumber = baseSecondMagicNumber = thirdMagicNumber = baseThirdMagicNumber = BASE_EFFECT;
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = DEX;
         BlockModifierManager.addModifier(this, new ShadowBlock());
@@ -69,19 +69,19 @@ public class ArcaneShelter extends AbstractShadowCard {
         }
     }
 
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        updateExtraValues();
-        initializeDescription();
-    }
-
-    private void updateExtraValues() {
-        secondMagicNumber = XCostGrabber.getXCostAmount(this, true) * block;
-        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
-        thirdMagicNumber = XCostGrabber.getXCostAmount(this, true);
-        isThirdMagicNumberModified = thirdMagicNumber != baseThirdMagicNumber;
-    }
+//    @Override
+//    public void applyPowers() {
+//        super.applyPowers();
+//        updateExtraValues();
+//        initializeDescription();
+//    }
+//
+//    private void updateExtraValues() {
+//        secondMagicNumber = XCostGrabber.getXCostAmount(this, true) * block;
+//        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
+//        thirdMagicNumber = XCostGrabber.getXCostAmount(this, true);
+//        isThirdMagicNumberModified = thirdMagicNumber != baseThirdMagicNumber;
+//    }
 
     //Upgraded stats.
     @Override

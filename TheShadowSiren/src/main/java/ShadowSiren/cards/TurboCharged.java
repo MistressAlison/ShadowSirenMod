@@ -36,7 +36,7 @@ public class TurboCharged extends AbstractElectricCard {
 
     public TurboCharged() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        secondMagicNumber = baseSecondMagicNumber = BASE_EFFECT;
+//        secondMagicNumber = baseSecondMagicNumber = BASE_EFFECT;
         exhaust = true;
     }
 
@@ -54,17 +54,17 @@ public class TurboCharged extends AbstractElectricCard {
         }
     }
 
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        updateSecondValue();
-        initializeDescription();
-    }
-
-    private void updateSecondValue() {
-        secondMagicNumber = XCostGrabber.getXCostAmount(this, true)*MULTI;
-        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
-    }
+//    @Override
+//    public void applyPowers() {
+//        super.applyPowers();
+//        updateSecondValue();
+//        initializeDescription();
+//    }
+//
+//    private void updateSecondValue() {
+//        secondMagicNumber = XCostGrabber.getXCostAmount(this, true)*MULTI;
+//        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
+//    }
 
     //Upgraded stats.
     @Override

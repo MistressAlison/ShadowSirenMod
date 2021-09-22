@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class StarFall extends AbstractInertCard implements MagicAnimation, ModularDescription {
+public class StarFall extends AbstractInertCard implements MagicAnimation {
 
     // TEXT DECLARATION
 
@@ -56,11 +56,11 @@ public class StarFall extends AbstractInertCard implements MagicAnimation, Modul
 
     // /STAT DECLARATION/
 
-
+    //TODO rebalance
     public StarFall() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        secondMagicNumber = baseSecondMagicNumber = 0;
+//        secondMagicNumber = baseSecondMagicNumber = 0;
         //this.exhaust = true;
     }
 
@@ -194,17 +194,17 @@ public class StarFall extends AbstractInertCard implements MagicAnimation, Modul
         }
     }
 
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        updateSecondValue();
-        initializeDescription();
-    }
-
-    private void updateSecondValue() {
-        secondMagicNumber = XCostGrabber.getXCostAmount(this, true) * ElementalPower.getActiveElements().size();
-        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
-    }
+//    @Override
+//    public void applyPowers() {
+//        super.applyPowers();
+//        updateSecondValue();
+//        initializeDescription();
+//    }
+//
+//    private void updateSecondValue() {
+//        secondMagicNumber = XCostGrabber.getXCostAmount(this, true) * ElementalPower.getActiveElements().size();
+//        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
+//    }
 
     //Upgraded stats.
     @Override
@@ -216,14 +216,14 @@ public class StarFall extends AbstractInertCard implements MagicAnimation, Modul
         }
     }
 
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (secondMagicNumber != 1) {
-                rawDescription = DESCRIPTION;
-            } else {
-                rawDescription = EXTENDED_DESCRIPTION[0];
-            }
-        }
-    }
+//    @Override
+//    public void changeDescription() {
+//        if (DESCRIPTION != null) {
+//            if (secondMagicNumber != 1) {
+//                rawDescription = DESCRIPTION;
+//            } else {
+//                rawDescription = EXTENDED_DESCRIPTION[0];
+//            }
+//        }
+//    }
 }

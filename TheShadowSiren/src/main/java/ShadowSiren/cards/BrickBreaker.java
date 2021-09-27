@@ -33,7 +33,6 @@ public class BrickBreaker extends AbstractIceCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 1;
     private static final int CARDS = 2;
     private static final int UPGRADE_PLUS_CARDS = 1;
 
@@ -41,7 +40,6 @@ public class BrickBreaker extends AbstractIceCard {
 
     public BrickBreaker() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
-        baseBlock = block = BLOCK;
         magicNumber = baseMagicNumber = CARDS;
         this.cardsToPreview = new IceShard();
         grabPreviewKeywords();

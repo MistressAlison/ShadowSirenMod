@@ -2,6 +2,9 @@ package ShadowSiren.util;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.powers.StarFormPower;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
@@ -63,6 +66,15 @@ public class StarBarManager {
     public static void applyTemporaryStarPower(int amount) {
         maxStarPower += amount;
         tempMaxStarPower += amount;
+    }
+
+    @SpirePatch(clz = AbstractPlayer.class, method = "preBattlePrep")
+    public static class ResetToZero {
+        @SpirePostfixPatch
+        public static void byeBye(AbstractPlayer __instance) {
+            progress = 0;
+            starPower = 0;
+        }
     }
 
 }

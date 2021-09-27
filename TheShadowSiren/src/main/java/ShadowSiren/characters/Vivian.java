@@ -81,6 +81,10 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 0;
+    public static final int SP_PROGRESS_PER_BLOCK_COMMAND = 0; //5
+    public static final int SP_PROGRESS_PER_ATTACK_COMMAND = 0; //not implemented
+    public static final int SP_PROGRESS_PER_ATTACK_PLAYED = 20; // 5
+    public static final int SP_PROGRESS_PER_TURN = 0; // 0
     //public static final int TALK_PERCENT = 100; //We will make a mod setting for this
 
     // =============== /BASE STATS/ =================
@@ -203,7 +207,7 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(FrozenShield.ID);
-        retVal.add(Appeal.ID);
+        //retVal.add(Appeal.ID);
 
         //*/
 
@@ -381,7 +385,7 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
                 } else {
                     playAnimation("punch");
                 }
-                int sp = 5;
+                int sp = SP_PROGRESS_PER_ATTACK_PLAYED;
                 if (c instanceof StylishStrike) {
                     sp *= c.magicNumber;
                 }
@@ -495,18 +499,18 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
             playAnimation("guard");
             guardAnimation = true;
         }
-        StarBarManager.addProgress(5);
+        StarBarManager.addProgress(SP_PROGRESS_PER_BLOCK_COMMAND);
     }
 
     @Override
     public void applyStartOfTurnPowers() {
         super.applyStartOfTurnPowers();
-        //StarBarManager.addProgress(1);
+        //StarBarManager.addProgress(SP_PROGRESS_PER_TURN);
     }
 
     @Override
     public void onSuccessfulAttackCommand(AbstractCard card) {
-        StarBarManager.addProgress(10);
+        StarBarManager.addProgress(SP_PROGRESS_PER_ATTACK_COMMAND);
     }
 
     //Maybe, currently just moved to Homemark relic

@@ -1,15 +1,14 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.IntensifyAction;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
@@ -52,37 +51,7 @@ public class ShadowSneak extends AbstractShadowCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageRandomEnemyAction(new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                baseDamage += magicNumber;
-                applyPowers();
-
-                for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
-                    if (c instanceof ShadowSneak) {
-                        c.baseDamage += magicNumber;
-                        c.applyPowers();
-                    }
-                }
-
-                for (AbstractCard c: AbstractDungeon.player.drawPile.group) {
-                    if (c instanceof ShadowSneak) {
-                        c.baseDamage += magicNumber;
-                        c.applyPowers();
-                    }
-                }
-
-                for (AbstractCard c: AbstractDungeon.player.hand.group) {
-                    if (c instanceof ShadowSneak) {
-                        c.baseDamage += magicNumber;
-                        c.applyPowers();
-                    }
-                }
-
-                this.isDone = true;
-            }
-        });
+        this.addToBot(new IntensifyAction(this, magicNumber, IntensifyAction.EffectType.DAMAGE));
     }
 
     // Upgraded stats.

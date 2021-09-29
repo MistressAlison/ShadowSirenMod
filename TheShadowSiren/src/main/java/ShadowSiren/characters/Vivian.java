@@ -385,11 +385,11 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
                 } else {
                     playAnimation("punch");
                 }
-                int sp = SP_PROGRESS_PER_ATTACK_PLAYED;
-                if (c instanceof StylishStrike) {
-                    sp *= c.magicNumber;
-                }
-                StarBarManager.addProgress(sp);
+//                int sp = SP_PROGRESS_PER_ATTACK_PLAYED;
+//                if (c instanceof StylishStrike) {
+//                    sp *= c.magicNumber;
+//                }
+                StarBarManager.addProgress(SP_PROGRESS_PER_ATTACK_PLAYED);
                 break;
             case POWER:
                 RandomChatterHelper.showChatter(RandomChatterHelper.getPowerText(), cardTalkProbability, enableCardBattleTalkEffect);

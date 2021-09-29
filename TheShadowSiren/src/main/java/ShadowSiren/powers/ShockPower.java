@@ -2,6 +2,7 @@ package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -54,7 +55,7 @@ public class ShockPower extends AbstractPower implements CloneablePowerInterface
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL && info.owner == AbstractDungeon.player) {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, amount));
         }
         return damageAmount;
     }

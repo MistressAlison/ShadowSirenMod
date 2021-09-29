@@ -55,7 +55,7 @@
   },
   "ShadowSiren:BlastBurn": {
     "NAME": "Blast Burn",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage to ALL enemies. NL Add !M! *Ashes to your hand. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [FireIcon] damage to ALL enemies. NL Add !M! *Ashes into your hand. NL Exhaust."
   },
   "ShadowSiren:Blitz": {
     "NAME": "Blitz",
@@ -87,6 +87,10 @@
     "NAME": "Cryogenesis",
     "DESCRIPTION": "Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [IceIcon] Block.",
     "UPGRADE_DESCRIPTION": "Innate. NL Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [IceIcon] Block."
+  },
+  "ShadowSiren:DarkShield": {
+    "NAME": "Dark Shield",
+    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL Gain !M! Strength this turn."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
@@ -215,9 +219,17 @@
     "NAME": "Infatuate",
     "DESCRIPTION": "Apply !M! Vulnerable and Weak to ALL enemies."
   },
+  "ShadowSiren:Kindle": {
+    "NAME": "Kindle",
+    "DESCRIPTION": "Gain !M! Vigor. NL Add an *Ashes into your hand. NL Exhaust."
+  },
   "ShadowSiren:LightTheWay": {
     "NAME": "Light the Way",
     "DESCRIPTION": "Draw !M! cards. NL Shuffle an *Ashes into your draw pile."
+  },
+  "ShadowSiren:Livewire": {
+    "NAME": "Livewire",
+    "DESCRIPTION": "Deal !D! [ElectricIcon] damage and apply !M! shadowsiren:Shock to a random enemy."
   },
   "ShadowSiren:MagicCloak": {
     "NAME": "Magic Cloak",
@@ -226,6 +238,10 @@
   "ShadowSiren:MagneticStrike": {
     "NAME": "Magnetic Strike",
     "DESCRIPTION": "Deal !D! [IceIcon] [ElectricIcon] damage. NL Deals 50% more damage if the target has Block."
+  },
+  "ShadowSiren:OminousFrost": {
+    "NAME": "Ominous Frost",
+    "DESCRIPTION": "Deal !D! [IceIcon] [DarkIcon] damage. NL Apply !M! *Chill."
   },
   "ShadowSiren:Overheat": {
     "NAME": "Overheat",
@@ -296,7 +312,7 @@
     "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain !B! Block for each shadowsiren:Element lost."
   },
   "ShadowSiren:Shock": {
-    "NAME": "Shock",
+    "NAME": "Electro Shield",
     "DESCRIPTION": "Gain !B! [ElectricIcon] Block. NL Draw !M! card.",
     "UPGRADE_DESCRIPTION": "Gain !B! [ElectricIcon] Block. NL Draw !M! cards."
   },
@@ -311,6 +327,15 @@
   "ShadowSiren:SnowBlind": {
     "NAME": "Snowblind",
     "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Apply !M! Weak."
+  },
+  "ShadowSiren:SnowFort": {
+    "NAME": "Snow Fort",
+    "DESCRIPTION": "Gain !B! [IceIcon] Block. NL Add an *Ice *Shard into your hand.",
+    "UPGRADE_DESCRIPTION": "Gain !B! [IceIcon] Block. NL Add an *Ice\u200B *Shard+ into your hand."
+  },
+  "ShadowSiren:SpiritBurn": {
+    "NAME": "Spirit Burn",
+    "DESCRIPTION": "Deal !D! [FireIcon] [DarkIcon] damage. NL Enemy loses !M! Strength. NL Exhaust."
   },
   "ShadowSiren:SpiritDrain": {
     "NAME": "Spirit Drain",

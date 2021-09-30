@@ -59,8 +59,7 @@
   },
   "ShadowSiren:Blitz": {
     "NAME": "Blitz",
-    "DESCRIPTION": "Ethereal. NL Deal !D! damage !M! time. NL Increase this cards cost and hits by 1 this combat. NL shadowsiren:Reshuffle.",
-    "UPGRADE_DESCRIPTION": "Ethereal. NL Deal !D! damage !M! times. NL Increase this cards cost and hits by 1 this combat. NL shadowsiren:Reshuffle."
+    "DESCRIPTION": "Deal !D! damage. NL shadowsiren:Intensify damage by !M!. NL shadowsiren:Reshuffle."
   },
   "ShadowSiren:BrickBreaker": {
     "NAME": "Brick Breaker",

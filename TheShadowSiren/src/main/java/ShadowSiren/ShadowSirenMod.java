@@ -9,7 +9,7 @@ import ShadowSiren.potions.FreezePotion;
 import ShadowSiren.potions.VigorPotion;
 import ShadowSiren.relics.*;
 import ShadowSiren.util.IDCheckDontTouchPls;
-import ShadowSiren.util.StarBarManager;
+//import ShadowSiren.util.StarBarManager;
 import ShadowSiren.util.TextureLoader;
 import ShadowSiren.variables.*;
 import basemod.*;
@@ -1035,10 +1035,10 @@ public class ShadowSirenMod implements
 
     @Override
     public void receiveStartAct() {
-        if (AbstractDungeon.actNum == 1) {
-            StarBarManager.resetVars();
-        } else if (AbstractDungeon.actNum <= 4) {
-            StarBarManager.modifyMaxAmount(2);
-        }
+//        if (AbstractDungeon.actNum == 1) {
+//            StarBarManager.resetVars();
+//        } else if (AbstractDungeon.actNum <= 4) {
+//            StarBarManager.modifyMaxAmount(2);
+//        }
     }
 }

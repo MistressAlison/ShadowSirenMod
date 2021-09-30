@@ -4,7 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.util.StarBarManager;
+//import ShadowSiren.util.StarBarManager;
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -52,7 +52,7 @@ public class Appeal extends AbstractDynamicCard implements ModularDescription {
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                StarBarManager.addProgress(magicNumber*100); //Convert to percent
+                //StarBarManager.addProgress(magicNumber*100); //Convert to percent
                 this.isDone = true;
             }
         });

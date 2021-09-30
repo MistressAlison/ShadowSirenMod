@@ -12,7 +12,7 @@ import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.relics.BooSheet;
 import ShadowSiren.stances.HugeStance;
 import ShadowSiren.stances.VeilStance;
-import ShadowSiren.util.StarBarManager;
+//import ShadowSiren.util.StarBarManager;
 import ShadowSiren.vfx.StarBreakerVictoryEffect;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
@@ -389,7 +389,7 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
 //                if (c instanceof StylishStrike) {
 //                    sp *= c.magicNumber;
 //                }
-                StarBarManager.addProgress(SP_PROGRESS_PER_ATTACK_PLAYED);
+                //StarBarManager.addProgress(SP_PROGRESS_PER_ATTACK_PLAYED);
                 break;
             case POWER:
                 RandomChatterHelper.showChatter(RandomChatterHelper.getPowerText(), cardTalkProbability, enableCardBattleTalkEffect);
@@ -499,7 +499,7 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
             playAnimation("guard");
             guardAnimation = true;
         }
-        StarBarManager.addProgress(SP_PROGRESS_PER_BLOCK_COMMAND);
+        //StarBarManager.addProgress(SP_PROGRESS_PER_BLOCK_COMMAND);
     }
 
     @Override
@@ -510,7 +510,7 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
 
     @Override
     public void onSuccessfulAttackCommand(AbstractCard card) {
-        StarBarManager.addProgress(SP_PROGRESS_PER_ATTACK_COMMAND);
+        //StarBarManager.addProgress(SP_PROGRESS_PER_ATTACK_COMMAND);
     }
 
     //Maybe, currently just moved to Homemark relic

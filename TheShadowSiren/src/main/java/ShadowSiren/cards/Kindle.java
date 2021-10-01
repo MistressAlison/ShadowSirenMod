@@ -39,7 +39,7 @@ public class Kindle extends AbstractFireCard {
     // /STAT DECLARATION/
 
     public Kindle() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = VIGOR;
         cardsToPreview = new Ashes();
         exhaust = true;

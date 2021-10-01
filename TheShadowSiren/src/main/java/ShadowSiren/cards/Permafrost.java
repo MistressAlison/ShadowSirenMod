@@ -45,7 +45,7 @@ public class Permafrost extends AbstractIceCard {
     // /STAT DECLARATION/
 
     public Permafrost() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
         magicNumber = baseMagicNumber = WEAK;
         BlockModifierManager.addModifier(this, new IceBlock());
     }

@@ -38,7 +38,7 @@ public class LightTheWay extends AbstractFireCard {
     // /STAT DECLARATION/
 
     public LightTheWay() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DRAW;
         cardsToPreview = new Ashes();
     }

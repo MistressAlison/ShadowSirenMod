@@ -38,7 +38,7 @@ public class Immolate extends AbstractFireCard {
     // /STAT DECLARATION/
 
     public Immolate() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DMG;
     }
 

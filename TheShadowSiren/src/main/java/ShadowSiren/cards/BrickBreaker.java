@@ -39,10 +39,10 @@ public class BrickBreaker extends AbstractIceCard {
     // /STAT DECLARATION/
 
     public BrickBreaker() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = CARDS;
         this.cardsToPreview = new IceShard();
-        grabPreviewKeywords();
+        //grabPreviewKeywords();
     }
 
     // Actions the card should do.

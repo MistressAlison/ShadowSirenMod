@@ -40,7 +40,7 @@ public class SnowFort extends AbstractIceCard {
     // /STAT DECLARATION/
 
     public SnowFort() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
         baseBlock = block = BLOCK;
         cardsToPreview = new IceShard();
         BlockModifierManager.addModifier(this, new IceBlock());

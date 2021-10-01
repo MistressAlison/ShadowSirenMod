@@ -5,6 +5,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.ChillPower;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -44,7 +45,7 @@ public class IcyWind extends AbstractIceCard {
     // /STAT DECLARATION/
 
     public IcyWind() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = CHILL;
         BlockModifierManager.addModifier(this, new IceBlock());

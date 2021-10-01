@@ -45,7 +45,7 @@ public class FlashFreeze extends AbstractIceCard {
     // /STAT DECLARATION/
 
     public FlashFreeze() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 //        secondMagicNumber = baseSecondMagicNumber = thirdMagicNumber = baseThirdMagicNumber = BASE_EFFECT;
         magicNumber = baseMagicNumber = CHILL;
         this.cardsToPreview = new IceShard();

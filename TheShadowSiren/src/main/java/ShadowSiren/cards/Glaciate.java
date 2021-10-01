@@ -44,7 +44,7 @@ public class Glaciate extends AbstractIceCard {
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = CARDS;
         this.cardsToPreview = new IceShard();
-        grabPreviewKeywords();
+        //grabPreviewKeywords();
     }
 
     // Actions the card should do.

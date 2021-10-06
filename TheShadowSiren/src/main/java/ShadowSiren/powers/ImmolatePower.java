@@ -42,7 +42,7 @@ public class ImmolatePower extends AbstractPower implements CloneablePowerInterf
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature targetHit) {
-        if (targetHit != owner) {
+        if (targetHit != owner && info.type == DamageInfo.DamageType.NORMAL) {
             this.addToBot(new AbstractGameAction() {
                 boolean firstPass = true;
                 @Override

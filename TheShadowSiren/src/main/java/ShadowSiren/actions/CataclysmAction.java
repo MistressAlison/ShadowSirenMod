@@ -38,18 +38,16 @@ public class CataclysmAction extends AbstractGameAction {
         tickDuration();
 
         if (this.isDone) {
-            int energy = 0;
+            int alive = 0;
             for (AbstractPower p : AbstractDungeon.player.powers) {
                 p.onDamageAllEnemies(this.damage);
             }
 
             for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
                 if (!m.isDeadOrEscaped()) {
+                    alive++;
                     AbstractDungeon.effectList.add(new BurnToAshEffect(m.drawX, m.drawY));
                     m.damage(new DamageInfo(this.source, this.damage[AbstractDungeon.getMonsters().monsters.indexOf(m)], this.damageType));
-                    if ((m.isDying || m.currentHealth <= 0) && !m.halfDead) {
-                        energy++;
-                    }
                 }
             }
 
@@ -57,11 +55,35 @@ public class CataclysmAction extends AbstractGameAction {
                 AbstractDungeon.actionManager.clearPostCombatActions();
             }
 
-            if (energy > 0) {
-                this.addToTop(new GainEnergyAction(energy));
+            if (alive > 0) {
+                this.addToBot(new CataclysmFollowupAction(alive));
             } else if (!Settings.FAST_MODE) {
                 this.addToTop(new WaitAction(0.1F));
             }
+        }
+    }
+
+    private static class CataclysmFollowupAction extends AbstractGameAction {
+        int initial;
+
+        public CataclysmFollowupAction(int initial) {
+            this.initial = initial;
+        }
+
+        @Override
+        public void update() {
+            int current = 0;
+            int killed;
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (!m.isDeadOrEscaped() && m.currentHealth > 0) {
+                    current++;
+                }
+            }
+            killed = initial - current;
+            if (killed > 0) {
+                this.addToTop(new GainEnergyAction(killed));
+            }
+            this.isDone = true;
         }
     }
 }

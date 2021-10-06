@@ -1,4 +1,4 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.cutCards;
 
 import IconsAddon.actions.GainCustomBlockAction;
 import IconsAddon.util.BlockModifierManager;
@@ -12,11 +12,12 @@ import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.*;
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class Polychrome extends AbstractMultiElementCard implements MagicAnimation {
 
 

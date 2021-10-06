@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class SinisterReflectionPower extends AbstractPower implements CloneablePowerInterface, OnReceivePowerPower {
+public class SinisterReflectionPower extends AbstractPower implements CloneablePowerInterface {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("SinisterReflectionPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -51,11 +51,26 @@ public class SinisterReflectionPower extends AbstractPower implements CloneableP
     }
 
     @Override
-    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power.type == PowerType.DEBUFF) {
-            flash();
-            this.addToBot(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
+    public void atEndOfTurn(boolean isPlayer) {
+        int debuffs = 0;
+        for (AbstractPower p : owner.powers) {
+            if (p.type == PowerType.DEBUFF) {
+                debuffs++;
+            }
         }
-        return true;
+        if (debuffs > 0) {
+            flash();
+            this.addToBot(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(debuffs*amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
+        }
+
     }
+
+//    @Override
+//    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+//        if (power.type == PowerType.DEBUFF) {
+//            flash();
+//            this.addToBot(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
+//        }
+//        return true;
+//    }
 }

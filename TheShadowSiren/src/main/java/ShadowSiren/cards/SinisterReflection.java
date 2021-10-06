@@ -30,7 +30,7 @@ public class SinisterReflection extends AbstractShadowCard {
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
 
-    private static final int EFFECT = 5;
+    private static final int EFFECT = 3;
 
     // /STAT DECLARATION/
 

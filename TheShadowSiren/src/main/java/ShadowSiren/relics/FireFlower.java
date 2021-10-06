@@ -1,19 +1,19 @@
 package ShadowSiren.relics;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.powers.BurnPower;
 import ShadowSiren.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -28,10 +28,13 @@ public class FireFlower extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("FireFlower.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("FireFlower.png"));
 
-    private static final int BURN = 3;
+    private static final int BURN = 5;
 
     HashMap<String, Integer> stats = new HashMap<>();
-    private final String BURN_STAT = DESCRIPTIONS[2];
+    private final String MAX_HP_LOSS_STAT = DESCRIPTIONS[2];
+    private final String HP_LOSS_STAT = DESCRIPTIONS[3];
+    private final String PER_TURN_STRING = DESCRIPTIONS[5];
+    private final String PER_COMBAT_STRING = DESCRIPTIONS[4];
 
     public FireFlower() {
         super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.FLAT);
@@ -45,13 +48,16 @@ public class FireFlower extends CustomRelic {
     }
 
     @Override
-    public void atBattleStart() {
+    public void atTurnStart() {
         flash();
         this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if(!aM.isDeadOrEscaped()) {
-                this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new BurnPower(aM, AbstractDungeon.player, BURN)));
-                stats.put(BURN_STAT, stats.get(BURN_STAT) + BURN);
+                int loss = aM.maxHealth > BURN ? BURN : aM.maxHealth - 1;
+                int hpLoss = aM.maxHealth - loss >= aM.currentHealth ? 0 : aM.currentHealth - aM.maxHealth - loss;
+                this.addToBot(new LoseHPAction(aM, AbstractDungeon.player, loss));
+                stats.put(MAX_HP_LOSS_STAT, stats.get(MAX_HP_LOSS_STAT) + loss);
+                stats.put(HP_LOSS_STAT, stats.get(HP_LOSS_STAT) + hpLoss);
             }
         }
     }
@@ -66,30 +72,47 @@ public class FireFlower extends CustomRelic {
     }
 
     public String getStatsDescription() {
-        return BURN_STAT + stats.get(BURN_STAT);
+        return MAX_HP_LOSS_STAT + stats.get(MAX_HP_LOSS_STAT) + HP_LOSS_STAT + stats.get(HP_LOSS_STAT);
     }
 
     public String getExtendedStatsDescription(int totalCombats, int totalTurns) {
-        // You would just return getStatsDescription() if you don't want to display per-combat and per-turn stats
-        return getStatsDescription();
+        StringBuilder builder = new StringBuilder();
+        builder.append(getStatsDescription());
+        float stat = (float)stats.get(MAX_HP_LOSS_STAT);
+        // Relic Stats truncates these extended stats to 3 decimal places, so we do the same
+        DecimalFormat perTurnFormat = new DecimalFormat("#.###");
+        builder.append(PER_TURN_STRING);
+        builder.append(perTurnFormat.format(stat / Math.max(totalTurns, 1)));
+        builder.append(PER_COMBAT_STRING);
+        builder.append(perTurnFormat.format(stat / Math.max(totalCombats, 1)));
+
+        stat = (float)stats.get(HP_LOSS_STAT);
+        builder.append(PER_TURN_STRING);
+        builder.append(perTurnFormat.format(stat / Math.max(totalTurns, 1)));
+        builder.append(PER_COMBAT_STRING);
+        builder.append(perTurnFormat.format(stat / Math.max(totalCombats, 1)));
+        return builder.toString();
     }
 
     public void resetStats() {
-        stats.put(BURN_STAT, 0);
+        stats.put(MAX_HP_LOSS_STAT, 0);
+        stats.put(HP_LOSS_STAT, 0);
     }
 
     public JsonElement onSaveStats() {
         // An array makes more sense if you want to store more than one stat
         Gson gson = new Gson();
         ArrayList<Integer> statsToSave = new ArrayList<>();
-        statsToSave.add(stats.get(BURN_STAT));
+        statsToSave.add(stats.get(MAX_HP_LOSS_STAT));
+        statsToSave.add(stats.get(HP_LOSS_STAT));
         return gson.toJsonTree(statsToSave);
     }
 
     public void onLoadStats(JsonElement jsonElement) {
         if (jsonElement != null) {
             JsonArray jsonArray = jsonElement.getAsJsonArray();
-            stats.put(BURN_STAT, jsonArray.get(0).getAsInt());
+            stats.put(MAX_HP_LOSS_STAT, jsonArray.get(0).getAsInt());
+            stats.put(HP_LOSS_STAT, jsonArray.get(1).getAsInt());
         } else {
             resetStats();
         }

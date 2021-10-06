@@ -1,0 +1,54 @@
+//TODO Reworks needed
+
+=== Relics ===
+
+Boo Sheet / Super Sheet - See mechanics rework
+
+Mystery Box - Needs new effect that wont bug out
+
+Ice Pop / Fire Pop / Electro Pop - Give elemental effects? What about Shadow?
+
+Power Punch - First interface removed, needs new effect
+
+Hot Sauce - Burn removed, perhaps Rare Fire relic?
+
+Repel Cape - broken
+
+Ruin Powder - Soft removed, perhaps rework to Common/Uncommon Shadow relic?
+
+Spite Powder - Perhaps rework to Rare Shadow relic? Probably not, but should be reworked either way
+
+Point Swap - just stupid rn
+
+Common Elemental Relics - Fire Pop, Ice Pop, Electro Pop, ?
+
+Uncommon Elemental Relics - Fire Flower, Ice Storm, Volt Shroom, ?
+
+Rare Elemental Relics - ?, Stop Watch, Tasty Tonic, ?
+
+
+
+=== Cards ===
+
+Star Fall - Currently too similar to Elemental Burst?
+
+Esc Plan -
+
+Tri Attack -
+
+Polychrome -
+
+White Out - Currently far too strong. Repeated elemental combo
+
+Ashes - Retain, exhaust when dealing Fire damage?
+
+
+=== Mechanics ===
+
+Veil / Hyper - Currently implemented as stances via relics only. Bad cohesion.
+
+
+=== Fixes ===
+
+Overheat - Cards drawn before power is ready, so drawn Curses/Status might not exhaust
+

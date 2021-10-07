@@ -831,7 +831,7 @@ public class ShadowSirenMod implements
         //BaseMod.addRelicToCustomPool(new DataCollector(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new EarthQuake(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new ElectroPop(), Vivian.Enums.VOODOO_CARD_COLOR);
-        //BaseMod.addRelicToCustomPool(new FireFlower(), Vivian.Enums.VOODOO_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new FireFlower(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new FirePop(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new GoldenLeaf(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new HotSauce(), Vivian.Enums.VOODOO_CARD_COLOR);
@@ -850,7 +850,7 @@ public class ShadowSirenMod implements
         BaseMod.addRelicToCustomPool(new SuperSheet(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new TastyTonic(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new UpArrow(), Vivian.Enums.VOODOO_CARD_COLOR);
-        //BaseMod.addRelicToCustomPool(new VoltShroom(), Vivian.Enums.VOODOO_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new VoltShroom(), Vivian.Enums.VOODOO_CARD_COLOR);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -863,7 +863,7 @@ public class ShadowSirenMod implements
         //UnlockTracker.markRelicAsSeen(DataCollector.ID);
         UnlockTracker.markRelicAsSeen(EarthQuake.ID);
         //UnlockTracker.markRelicAsSeen(ElectroPop.ID);
-        //UnlockTracker.markRelicAsSeen(FireFlower.ID);
+        UnlockTracker.markRelicAsSeen(FireFlower.ID);
         //UnlockTracker.markRelicAsSeen(FirePop.ID);
         UnlockTracker.markRelicAsSeen(GoldenLeaf.ID);
         //UnlockTracker.markRelicAsSeen(HotSauce.ID);
@@ -882,7 +882,7 @@ public class ShadowSirenMod implements
         UnlockTracker.markRelicAsSeen(SuperSheet.ID);
         UnlockTracker.markRelicAsSeen(TastyTonic.ID);
         UnlockTracker.markRelicAsSeen(UpArrow.ID);
-        //UnlockTracker.markRelicAsSeen(VoltShroom.ID);
+        UnlockTracker.markRelicAsSeen(VoltShroom.ID);
         logger.info("Done adding relics!");
     }
     

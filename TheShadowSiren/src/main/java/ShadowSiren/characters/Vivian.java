@@ -1,18 +1,18 @@
 package ShadowSiren.characters;
 
-import ActionCommands.interfaces.PlayerWithActionCommands;
 import ShadowSiren.CustomAnimationListener;
 import ShadowSiren.CustomSpriterAnimation;
 import ShadowSiren.RandomChatterHelper;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.*;
+import ShadowSiren.cards.Defend;
+import ShadowSiren.cards.FrozenShield;
+import ShadowSiren.cards.ShadeFist;
+import ShadowSiren.cards.Strike;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.cards.tempCards.DireStrike;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.relics.BooSheet;
 import ShadowSiren.stances.HugeStance;
-import ShadowSiren.stances.VeilStance;
-//import ShadowSiren.util.StarBarManager;
 import ShadowSiren.vfx.StarBreakerVictoryEffect;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
@@ -32,7 +32,10 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.*;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
@@ -47,11 +50,13 @@ import java.util.List;
 import static ShadowSiren.ShadowSirenMod.*;
 import static ShadowSiren.characters.Vivian.Enums.VOODOO_CARD_COLOR;
 
+//import ShadowSiren.util.StarBarManager;
+
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
 
-public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
+public class Vivian extends CustomPlayer /*implements PlayerWithActionCommands*/ {
     public static final Logger logger = LogManager.getLogger(ShadowSirenMod.class.getName());
 
     // =============== CHARACTER ENUMERATORS =================
@@ -445,12 +450,10 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
     }
 
     public void resetToIdleAnimation() {
-        switch (AbstractDungeon.player.stance.ID) {
-            case "ShadowSiren:VeilStance":
-                playAnimation("hide");
-                break;
-            default:
-                playAnimation("idle");
+        if (AbstractDungeon.player.stance.ID.equals("ShadowSiren:VeilStance")) {
+            playAnimation("hide");
+        } else {
+            playAnimation("idle");
         }
     }
 
@@ -493,14 +496,14 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ElementalPower(this)));
     }
 
-    @Override
-    public void onSuccessfulBlockCommand() {
-        if (!AbstractDungeon.player.stance.ID.equals(VeilStance.STANCE_ID)) {
-            playAnimation("guard");
-            guardAnimation = true;
-        }
-        //StarBarManager.addProgress(SP_PROGRESS_PER_BLOCK_COMMAND);
-    }
+//    @Override
+//    public void onSuccessfulBlockCommand() {
+//        if (!AbstractDungeon.player.stance.ID.equals(VeilStance.STANCE_ID)) {
+//            playAnimation("guard");
+//            guardAnimation = true;
+//        }
+//        //StarBarManager.addProgress(SP_PROGRESS_PER_BLOCK_COMMAND);
+//    }
 
     @Override
     public void applyStartOfTurnPowers() {
@@ -508,26 +511,8 @@ public class Vivian extends CustomPlayer implements PlayerWithActionCommands {
         //StarBarManager.addProgress(SP_PROGRESS_PER_TURN);
     }
 
-    @Override
-    public void onSuccessfulAttackCommand(AbstractCard card) {
-        //StarBarManager.addProgress(SP_PROGRESS_PER_ATTACK_COMMAND);
-    }
-
-    //Maybe, currently just moved to Homemark relic
-    /*
-    @Override
-    public void loseGold(int goldAmount) {
-        super.loseGold(goldAmount);
-    }*/
-
-    /*
-    @Override
-    public void render(SpriteBatch sb) {
-        if (this.stance.ID.equals(VeilStance.STANCE_ID)) {
-            //AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.BLACK.cpy(), false));
-        } else if (this.stance.ID.equals(AbyssStance.STANCE_ID)) {
-            //AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.LIGHT_GRAY.cpy(), false));
-        }
-        super.render(sb);
-    }*/
+//    @Override
+//    public void onSuccessfulAttackCommand(AbstractCard card) {
+//        //StarBarManager.addProgress(SP_PROGRESS_PER_ATTACK_COMMAND);
+//    }
 }

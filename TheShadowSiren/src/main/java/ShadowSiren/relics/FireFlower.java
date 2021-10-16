@@ -7,11 +7,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -53,11 +54,18 @@ public class FireFlower extends CustomRelic {
         this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if(!aM.isDeadOrEscaped()) {
-                int loss = aM.maxHealth > BURN ? BURN : aM.maxHealth - 1;
-                int hpLoss = aM.maxHealth - loss >= aM.currentHealth ? 0 : aM.currentHealth - aM.maxHealth - loss;
-                this.addToBot(new LoseHPAction(aM, AbstractDungeon.player, loss));
-                stats.put(MAX_HP_LOSS_STAT, stats.get(MAX_HP_LOSS_STAT) + loss);
-                stats.put(HP_LOSS_STAT, stats.get(HP_LOSS_STAT) + hpLoss);
+                this.addToBot(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        int loss = aM.maxHealth > BURN ? BURN : aM.maxHealth - 1;
+                        int hpLoss = aM.maxHealth - loss >= aM.currentHealth ? 0 : aM.currentHealth - (aM.maxHealth - loss);
+                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(aM.hb.cX, aM.hb.cY, AbstractGameAction.AttackEffect.FIRE));
+                        aM.decreaseMaxHealth(loss);
+                        stats.put(MAX_HP_LOSS_STAT, stats.get(MAX_HP_LOSS_STAT) + loss);
+                        stats.put(HP_LOSS_STAT, stats.get(HP_LOSS_STAT) + hpLoss);
+                        this.isDone = true;
+                    }
+                });
             }
         }
     }
@@ -77,7 +85,8 @@ public class FireFlower extends CustomRelic {
 
     public String getExtendedStatsDescription(int totalCombats, int totalTurns) {
         StringBuilder builder = new StringBuilder();
-        builder.append(getStatsDescription());
+        //builder.append(getStatsDescription());
+        builder.append(MAX_HP_LOSS_STAT).append(stats.get(MAX_HP_LOSS_STAT));
         float stat = (float)stats.get(MAX_HP_LOSS_STAT);
         // Relic Stats truncates these extended stats to 3 decimal places, so we do the same
         DecimalFormat perTurnFormat = new DecimalFormat("#.###");
@@ -86,6 +95,7 @@ public class FireFlower extends CustomRelic {
         builder.append(PER_COMBAT_STRING);
         builder.append(perTurnFormat.format(stat / Math.max(totalCombats, 1)));
 
+        builder.append(HP_LOSS_STAT).append(stats.get(HP_LOSS_STAT));
         stat = (float)stats.get(HP_LOSS_STAT);
         builder.append(PER_TURN_STRING);
         builder.append(perTurnFormat.format(stat / Math.max(totalTurns, 1)));

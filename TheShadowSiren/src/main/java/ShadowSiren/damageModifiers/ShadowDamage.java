@@ -44,7 +44,7 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
         super(ID, tipType);
         this.innate = innate;
         this.automaticBindingForCards = autoAdd;
-        this.priority = -2;
+        this.priority = 0;
     }
 
     @Override

@@ -36,7 +36,7 @@ public class FlameShield extends AbstractFireCard implements ModularDescription,
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 8;
+    private static final int BLOCK = 7;
     private static final int UPGRADE_PLUS_BLOCK = 3;
     private static final int CARDS = 1;
     private static final int UPGRADE_PLUS_CARDS = 1;

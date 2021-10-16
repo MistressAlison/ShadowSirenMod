@@ -32,15 +32,23 @@ Rare Elemental Relics - ?, Stop Watch, Tasty Tonic, ?
 
 Star Fall - Currently too similar to Elemental Burst?
 
-Esc Plan -
-
-Tri Attack -
-
-Polychrome -
-
-White Out - Currently far too strong. Repeated elemental combo
-
 Ashes - Retain, exhaust when dealing Fire damage?
+
+Recuperate / Trick - Give one a similar but different effect
+
+Flash Fire - new conditional
+
+Permafrost - Bad, give new effect?
+
+Immolate - new name?
+
+New Rares:
+
+Preparation - Retain your hand this turn. Next turn gain Energy
+
+Ricochet - The next card you play is returned to your hand.
+
+
 
 
 === Mechanics ===
@@ -48,7 +56,19 @@ Ashes - Retain, exhaust when dealing Fire damage?
 Veil / Hyper - Currently implemented as stances via relics only. Bad cohesion.
 
 
+
 === Fixes ===
 
-Overheat - Cards drawn before power is ready, so drawn Curses/Status might not exhaust
+Overheat - Cards drawn before power is ready, so drawn Curses/Status might not exhaust / Draw 2(3) cards. Exhaust any Status or Curse cards drawn this way?
 
+
+
+=== Multi Element Stuff ===
+
+FI - Frostfire
+FS - Spirit Burn
+EI - Mag Strike
+ES - Shade Shock
+
+IS - White Out
+FE - Plasma Beam

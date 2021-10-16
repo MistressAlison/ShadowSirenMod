@@ -5,7 +5,7 @@ import ShadowSiren.cards.interfaces.VigorBlockBuff;
 import ShadowSiren.cards.interfaces.VigorMagicBuff;
 import ShadowSiren.powers.ChargePower;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -51,7 +51,7 @@ public class ValueBuffPatches {
             //Attacks already cause us to lose Vigor, so we need to remove it only if our card implements the Vigor buff and is not an attack
             if (card.type != AbstractCard.CardType.ATTACK && (card instanceof VigorMagicBuff || card instanceof VigorBlockBuff)) {
                 __instance.flash();
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance.owner, __instance.owner, VigorPower.POWER_ID));
+                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(__instance.owner, __instance.owner, __instance, __instance.amount));
             }
         }
     }

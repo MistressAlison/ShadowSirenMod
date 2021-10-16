@@ -69,8 +69,8 @@
     "NAME": "Fire Flower",
     "FLAVOR": "Can also be used for cooking.",
     "DESCRIPTIONS": [
-      "At the beginning of combat, apply #b"," #yshadowsiren:Burn to ALL enemies.",
-      "Burn applied: "
+      "At the start of your turn, ALL enemies lose #b"," Max HP.",
+      "Max HP removed: "," NL HP removed: "," NL Per combat: "," NL Per turn: "
     ]
   },
   "ShadowSiren:FirePop": {
@@ -136,8 +136,8 @@
     "NAME": "Point Swap",
     "FLAVOR": "What's yours is mine.",
     "DESCRIPTIONS": [
-      "The first enemy who attempts to buff has their buff stolen. If a buff cannot be stolen, it is negated instead.",
-      "Buffs stolen: "," NL Buffs negated: "
+      "Whenever an enemy applies a buff, gain #b"," #yStrength.",
+      "Strength gained: "," NL Per combat: "," NL Per turn: "
     ]
   },
   "ShadowSiren:POWBlock": {
@@ -173,7 +173,7 @@
     ]
   },
   "ShadowSiren:SpitePowder": {
-    "NAME": "Spite Powder",
+    "NAME": "Spite Pouch",
     "FLAVOR": "\"This will keep 'em in line.\" - Slaver",
     "DESCRIPTIONS": [
       "When taking unblocked attack damage, deal #b","% of the damage back.",
@@ -200,7 +200,7 @@
     "NAME": "Super Sheet",
     "FLAVOR": "Outta mind.",
     "DESCRIPTIONS": [
-      "Start each combat in #yshadowsiren:Hyper."
+      "Replaces #pBoo #pSheet. Start each combat in #yshadowsiren:Hyper."
     ]
   },
   "ShadowSiren:TastyTonic": {
@@ -223,8 +223,8 @@
     "NAME": "Volt Shroom",
     "FLAVOR": "Doubles as a backup battery.",
     "DESCRIPTIONS": [
-      "At the beginning of combat, gain #b"," #yshadowsiren:Electric.",
-      "Damage dealt: "," NL Per combat: "," NL Per turn: "
+      "At the beginning of combat, gain #b"," #yshadowsiren:Charge.",
+      "Charge gained: "," NL Per combat: "," NL Per turn: "
     ]
   },
   "ShadowSiren:Chronometer": {

@@ -111,6 +111,10 @@
     "NAME": "Discharge",
     "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL shadowsiren:Charge affects this card !M! times."
   },
+  "ShadowSiren:Discipline": {
+    "NAME": "Discipline",
+    "DESCRIPTION": "Retain. NL Increase the damage of all cards in your hand by !M! this combat."
+  },
   "ShadowSiren:ElectricOrb": {
     "NAME": "Electric Orb",
     "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL When Retained, gain !M! shadowsiren:Charge.",
@@ -141,7 +145,8 @@
   },
   "ShadowSiren:EscapePlan": {
     "NAME": "Escape Plan",
-    "DESCRIPTION": "Gain !B! Block. NL Enter shadowsiren:Veil. NL Exhaust."
+    "DESCRIPTION": "Gain !B! Block. NL Gain [E] . NL Draw !M! card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain [E] . NL Draw !M! cards. NL Exhaust."
   },
   "ShadowSiren:FieryJinx": {
     "NAME": "Fiery Jinx",
@@ -162,12 +167,16 @@
   },
   "ShadowSiren:FlashFreeze": {
     "NAME": "Flash Freeze",
-    "DESCRIPTION": "Apply !M! *Chill to ALL enemies X times. NL Add 1 *Ice *Shard into your hand X times.",
-    "UPGRADE_DESCRIPTION": "Apply !M! *Chill to ALL enemies X times. NL Add 1 *Ice\u200B *Shard+ into your hand X times."
+    "DESCRIPTION": "Apply !M! *Chill to ALL enemies X times. NL Add X *Ice *Shard into your hand.",
+    "UPGRADE_DESCRIPTION": "Apply !M! *Chill to ALL enemies X times. NL Add X *Ice\u200B *Shard+ into your hand."
   },
   "ShadowSiren:Frostbite": {
     "NAME": "Frostbite",
     "DESCRIPTION": "Deal !D! [IceIcon] damage to ALL enemies. NL Deal !D! [IceIcon] damage again to ALL enemies that have Weak."
+  },
+  "ShadowSiren:Frostfire": {
+    "NAME": "Frostfire",
+    "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] damage to NL a random enemy !M! times."
   },
   "ShadowSiren:FrostflameBarrier": {
     "NAME": "Frostflame Barrier",
@@ -296,6 +305,10 @@
     "NAME": "Shade Fist",
     "DESCRIPTION": "Deal !D! [FireIcon] damage."
   },
+  "ShadowSiren:ShadeShock": {
+    "NAME": "Shade Shock",
+    "DESCRIPTION": "Deal !D! [ElectricIcon] [DarkIcon] damage and apply that much shadowsiren:Shock. NL Exhaust."
+  },
   "ShadowSiren:ShadowOrb": {
     "NAME": "Shadow Orb",
     "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL When Retained, remove !M! debuff if you have any.",
@@ -325,7 +338,7 @@
   },
   "ShadowSiren:SinisterReflection": {
     "NAME": "Sinister Reflection",
-    "DESCRIPTION": "Whenever a debuff is applied to you, deal !M! damage to ALL enemies."
+    "DESCRIPTION": "At the end of your turn, deal !M! damage to ALL enemies for each debuff you have."
   },
   "ShadowSiren:SnowBlind": {
     "NAME": "Snowblind",
@@ -346,7 +359,7 @@
   },
   "ShadowSiren:StarFall": {
     "NAME": "Star Fall",
-    "DESCRIPTION": "Deal !D! damage to a random enemy X times for each active shadowsiren:Element."
+    "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Deal !D! damage to ALL enemies for each shadowsiren:Element lost."
   },
   "ShadowSiren:StarForm": {
     "NAME": "Star Form",

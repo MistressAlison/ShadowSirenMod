@@ -1,4 +1,4 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.cutCards;
 
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
@@ -8,6 +8,7 @@ import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.IceDamage;
 import ShadowSiren.damageModifiers.ShadowDamage;
 import ShadowSiren.powers.ChillPower;
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -16,7 +17,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class OminousFrost extends AbstractMultiElementCard implements MagicAnimation {
 
 

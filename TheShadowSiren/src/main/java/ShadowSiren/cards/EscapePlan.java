@@ -2,16 +2,17 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.stances.VeilStance;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class EscapePlan extends AbstractDynamicCard {
+public class EscapePlan extends AbstractDynamicCard implements ModularDescription {
 
     // TEXT DECLARATION
 
@@ -28,15 +29,19 @@ public class EscapePlan extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int BLOCK = 10;
+    private static final int COST = 0;
+    private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 4;
+    private static final int ENERGY = 1;
+    private static final int CARDS = 1;
 
     // /STAT DECLARATION/
 
+    //TODO rework
     public EscapePlan() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = block = BLOCK;
+        magicNumber = baseMagicNumber = CARDS;
         exhaust = true;
     }
 
@@ -44,7 +49,8 @@ public class EscapePlan extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, p, block));
-        this.addToBot(new ChangeStanceAction(new VeilStance()));
+        this.addToBot(new GainEnergyAction(ENERGY));
+        this.addToBot(new DrawCardAction(magicNumber));
     }
 
     //Upgraded stats.
@@ -54,6 +60,17 @@ public class EscapePlan extends AbstractDynamicCard {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void changeDescription() {
+        if (DESCRIPTION != null) {
+            if (magicNumber > 1) {
+                rawDescription = UPGRADE_DESCRIPTION;
+            } else {
+                rawDescription = DESCRIPTION;
+            }
         }
     }
 }

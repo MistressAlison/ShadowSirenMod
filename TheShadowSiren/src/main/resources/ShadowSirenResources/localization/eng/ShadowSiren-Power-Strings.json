@@ -205,5 +205,9 @@
         "ShadowSiren:ElementalShroudPower": {
                 "NAME": "Elemental Shroud",
                 "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yBlock for each active #yElement."]
+        },
+        "ShadowSiren:NextTurnTempDexPower": {
+                "NAME": "Arcane Shelter",
+                "DESCRIPTIONS": ["Next turn, gain #b"," temporary #yDexterity."]
         }
 }

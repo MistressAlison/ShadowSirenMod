@@ -6,15 +6,12 @@ import ShadowSiren.blockTypes.ShadowBlock;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
+import ShadowSiren.powers.NextTurnTempDexPower;
 import ShadowSiren.util.XCostGrabber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
@@ -45,7 +42,6 @@ public class ArcaneShelter extends AbstractShadowCard {
 
     public ArcaneShelter() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
-//        secondMagicNumber = baseSecondMagicNumber = thirdMagicNumber = baseThirdMagicNumber = BASE_EFFECT;
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = DEX;
         BlockModifierManager.addModifier(this, new ShadowBlock());
@@ -60,28 +56,13 @@ public class ArcaneShelter extends AbstractShadowCard {
             for (int i = 0 ; i < effect ; i++) {
                 this.addToBot(new GainBlockAction(p, block));
             }
-            this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, effect), effect));
-            this.addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, effect), effect));
+            this.addToBot(new ApplyPowerAction(p, p, new NextTurnTempDexPower(p, effect)));
         }
 
         if (!this.freeToPlayOnce) {
             p.energy.use(EnergyPanel.totalCount);
         }
     }
-
-//    @Override
-//    public void applyPowers() {
-//        super.applyPowers();
-//        updateExtraValues();
-//        initializeDescription();
-//    }
-//
-//    private void updateExtraValues() {
-//        secondMagicNumber = XCostGrabber.getXCostAmount(this, true) * block;
-//        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
-//        thirdMagicNumber = XCostGrabber.getXCostAmount(this, true);
-//        isThirdMagicNumberModified = thirdMagicNumber != baseThirdMagicNumber;
-//    }
 
     //Upgraded stats.
     @Override

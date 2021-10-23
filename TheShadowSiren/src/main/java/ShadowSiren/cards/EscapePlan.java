@@ -30,27 +30,22 @@ public class EscapePlan extends AbstractDynamicCard implements ModularDescriptio
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 0;
-    private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 4;
-    private static final int ENERGY = 1;
-    private static final int CARDS = 1;
+    private static final int BLOCK = 6;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
 
     // /STAT DECLARATION/
 
-    //TODO rework
     public EscapePlan() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = block = BLOCK;
-        magicNumber = baseMagicNumber = CARDS;
-        exhaust = true;
+        selfRetain = true;
+        shuffleBackIntoDrawPile = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, p, block));
-        this.addToBot(new GainEnergyAction(ENERGY));
-        this.addToBot(new DrawCardAction(magicNumber));
     }
 
     //Upgraded stats.

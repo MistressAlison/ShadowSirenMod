@@ -9,7 +9,7 @@ import ShadowSiren.cards.FrozenShield;
 import ShadowSiren.cards.ShadeFist;
 import ShadowSiren.cards.Strike;
 import ShadowSiren.cards.interfaces.MagicAnimation;
-import ShadowSiren.cards.tempCards.DireStrike;
+import ShadowSiren.cards.uniqueCards.DireStrike;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.powers.VeilPower;
 import ShadowSiren.relics.BooSheet;

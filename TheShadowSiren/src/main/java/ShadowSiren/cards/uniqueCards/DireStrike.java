@@ -1,7 +1,8 @@
-package ShadowSiren.cards.tempCards;
+package ShadowSiren.cards.uniqueCards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -14,7 +15,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class DireStrike extends AbstractDynamicCard implements TempCard {
+public class DireStrike extends AbstractDynamicCard implements UniqueCard {
 
 
     // TEXT DECLARATION

@@ -1,12 +1,12 @@
 package ShadowSiren.relics;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.stances.VeilStance;
+import ShadowSiren.powers.VeilPower;
 import ShadowSiren.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import static ShadowSiren.ShadowSirenMod.makeRelicOutlinePath;
@@ -19,6 +19,8 @@ public class BooSheet extends CustomRelic {
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("BooSheet.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("BooSheet.png"));
+
+    private static final int TURNS = 1;
 
     public BooSheet() {
         super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
@@ -33,7 +35,7 @@ public class BooSheet extends CustomRelic {
     @Override
     public void atBattleStart() {
         flash();
-        this.addToBot(new ChangeStanceAction(new VeilStance()));
+        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VeilPower(AbstractDungeon.player, TURNS)));
         this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
 }

@@ -1,12 +1,12 @@
 package ShadowSiren.relics;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.stances.HyperStance;
+import ShadowSiren.powers.VeilPower;
 import ShadowSiren.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
@@ -20,6 +20,8 @@ public class SuperSheet extends CustomRelic {
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("SuperSheet.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("SuperSheet.png"));
+
+    private static final int TURNS = 2;
 
     public SuperSheet() {
         super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.MAGICAL);
@@ -58,7 +60,7 @@ public class SuperSheet extends CustomRelic {
     @Override
     public void atBattleStart() {
         flash();
-        this.addToBot(new ChangeStanceAction(new HyperStance()));
+        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VeilPower(AbstractDungeon.player, TURNS)));
         this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
 }

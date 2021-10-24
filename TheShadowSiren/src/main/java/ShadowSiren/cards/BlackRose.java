@@ -34,7 +34,8 @@ public class BlackRose extends AbstractShadowCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 2;
+    private static final int UPGRADE_COST = 1;
 
     // /STAT DECLARATION/
 
@@ -62,8 +63,9 @@ public class BlackRose extends AbstractShadowCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.exhaust = false;
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeBaseCost(UPGRADE_COST);
+//            this.exhaust = false;
+//            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

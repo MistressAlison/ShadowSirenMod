@@ -209,5 +209,9 @@
         "ShadowSiren:NextTurnTempDexPower": {
                 "NAME": "Arcane Shelter",
                 "DESCRIPTIONS": ["Next turn, gain #b"," temporary #yDexterity."]
+        },
+        "ShadowSiren:VeilPower": {
+                "NAME": "Veil",
+                "DESCRIPTIONS": ["Receive #b50% less damage from #yAttacks for #b"," turn."," turns."]
         }
 }

@@ -122,7 +122,7 @@
       "veil",
       "veiled"
     ],
-    "DESCRIPTION": "Damage taken is halved. Exit this #yStance at the start of your next turn."
+    "DESCRIPTION": "Receive #b50% less damage from #yAttacks."
   },
   {
     "PROPER_NAME": "Star Card",

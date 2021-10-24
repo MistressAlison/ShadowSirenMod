@@ -163,7 +163,7 @@
   },
   "ShadowSiren:FlashFire": {
     "NAME": "Flash Fire",
-    "DESCRIPTION": "Innate. NL Deal !D! [FireIcon] damage. NL If the target has full HP, deal !D! [FireIcon] damage again."
+    "DESCRIPTION": "Innate. NL Deal !D! [FireIcon] damage. NL Exhaust."
   },
   "ShadowSiren:FlashFreeze": {
     "NAME": "Flash Freeze",

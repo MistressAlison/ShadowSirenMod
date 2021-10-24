@@ -61,6 +61,9 @@ public class Permafrost extends AbstractIceCard {
                 if (!aM.hasPower(ArtifactPower.POWER_ID)) {
                     sum += magicNumber;
                 }
+                if (aM.hasPower(WeakPower.POWER_ID)) {
+                    sum += aM.getPower(WeakPower.POWER_ID).amount;
+                }
             }
         }
         if (sum > 0) {

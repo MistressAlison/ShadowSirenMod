@@ -2,11 +2,9 @@ package ShadowSiren.cards;
 
 import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

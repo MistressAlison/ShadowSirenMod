@@ -4,7 +4,6 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.cards.tempCards.IceShard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.oldStuff.cards.dualityCards.abyss.AbyssalSurgeDual;
-import ShadowSiren.characters.Vivian;
 import ShadowSiren.stances.AbyssStance;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;

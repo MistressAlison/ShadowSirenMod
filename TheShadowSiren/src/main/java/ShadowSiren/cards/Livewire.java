@@ -1,6 +1,5 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
@@ -15,8 +14,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.vfx.combat.LightningOrbActivateEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;

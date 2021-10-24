@@ -1,27 +1,19 @@
 package ShadowSiren.cards.itemCards;
 
-import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractItemCard;
 import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.FireDamage;
 import ShadowSiren.damageModifiers.ShadowDamage;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 

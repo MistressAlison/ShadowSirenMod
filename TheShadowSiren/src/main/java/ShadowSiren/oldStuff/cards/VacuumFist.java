@@ -2,10 +2,10 @@ package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cardModifiers.BideModifier;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
-import ShadowSiren.oldStuff.cards.dualityCards.abyss.VacuumFistDual;
 import ShadowSiren.cards.interfaces.FistAttack;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
+import ShadowSiren.oldStuff.cards.dualityCards.abyss.VacuumFistDual;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

@@ -1,6 +1,5 @@
 package ShadowSiren.patches;
 
-import ShadowSiren.stances.*;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

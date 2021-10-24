@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.oldStuff.cards.dualityCards.hyper.ResidualStaticDual;
-import ShadowSiren.characters.Vivian;
 import ShadowSiren.patches.ChargeCounterPatches;
 import ShadowSiren.powers.ChargePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

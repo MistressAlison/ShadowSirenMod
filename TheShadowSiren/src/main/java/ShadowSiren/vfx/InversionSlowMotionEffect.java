@@ -3,15 +3,12 @@ package ShadowSiren.vfx;
 import ShadowSiren.util.GameSpeedController;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 public class InversionSlowMotionEffect extends GameSpeedController.SlowMotionEffect {
     //private final AtlasRegion img = ImageMaster.WHITE_RING;

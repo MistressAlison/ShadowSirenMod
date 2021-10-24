@@ -6,7 +6,6 @@ import ShadowSiren.cards.interfaces.ModularDescription;
 import basemod.BaseMod;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
-import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.mod.stslib.patches.HitboxRightClick;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -17,7 +16,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class BideModifier extends AbstractCardModifier {
     float duration = 0;

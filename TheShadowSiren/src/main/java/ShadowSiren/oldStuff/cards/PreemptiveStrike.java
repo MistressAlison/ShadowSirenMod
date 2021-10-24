@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.oldStuff.cards.dualityCards.hyper.PreemptiveStrikeDual;
-import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

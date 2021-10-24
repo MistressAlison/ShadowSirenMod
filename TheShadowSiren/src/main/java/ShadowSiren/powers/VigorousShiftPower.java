@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
-import com.megacrit.cardcrawl.stances.AbstractStance;
 
 public class VigorousShiftPower extends AbstractPower implements CloneablePowerInterface, OnChangeElementPower {
 

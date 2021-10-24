@@ -2,9 +2,9 @@ package ShadowSiren.oldStuff.cards.dualityCards.hyper;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cardModifiers.BideModifier;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.powers.ChargePower;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

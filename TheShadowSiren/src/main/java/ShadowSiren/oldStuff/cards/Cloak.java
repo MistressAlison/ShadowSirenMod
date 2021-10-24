@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
 import ShadowSiren.oldStuff.cards.dualityCards.smoke.CloakDual;
-import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

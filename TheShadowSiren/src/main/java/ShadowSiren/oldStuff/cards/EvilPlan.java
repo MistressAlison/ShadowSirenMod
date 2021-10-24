@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.oldStuff.cards.dualityCards.veil.EvilPlanDual;
-import ShadowSiren.characters.Vivian;
 import ShadowSiren.stances.VeilStance;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;

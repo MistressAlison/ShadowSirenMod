@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards.dualityCards.veil;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.powers.FreezePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -12,7 +12,10 @@ import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.*;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 

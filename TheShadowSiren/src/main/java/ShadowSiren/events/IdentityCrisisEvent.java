@@ -1,5 +1,6 @@
 package ShadowSiren.events;
 
+import ShadowSiren.ShadowSirenMod;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.colorless.Apotheosis;
@@ -13,7 +14,6 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
-import ShadowSiren.ShadowSirenMod;
 
 import static ShadowSiren.ShadowSirenMod.makeEventPath;
 

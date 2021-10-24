@@ -3,7 +3,6 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.BlackMagicPower;
 import ShadowSiren.powers.ElementalShroudPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

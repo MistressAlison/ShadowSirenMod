@@ -6,7 +6,6 @@ import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
-import ShadowSiren.powers.FreezePower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -14,7 +13,8 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.*;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;

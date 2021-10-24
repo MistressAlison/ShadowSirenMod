@@ -2,10 +2,10 @@ package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cardModifiers.BideModifier;
-import ShadowSiren.oldStuff.cards.abstractCards.prismatics.AbstractPrismaticBaseCard;
 import ShadowSiren.cards.interfaces.ModularDescription;
-import ShadowSiren.oldStuff.cards.prismaticCards.*;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.prismatics.AbstractPrismaticBaseCard;
+import ShadowSiren.oldStuff.cards.prismaticCards.*;
 import ShadowSiren.powers.PocketDimensionPower;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

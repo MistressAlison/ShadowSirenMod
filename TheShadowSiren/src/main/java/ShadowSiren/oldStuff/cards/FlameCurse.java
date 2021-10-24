@@ -1,10 +1,10 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
-import ShadowSiren.oldStuff.cards.dualityCards.abyss.FlameCurseDual;
 import ShadowSiren.cards.interfaces.VigorMagicBuff;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
+import ShadowSiren.oldStuff.cards.dualityCards.abyss.FlameCurseDual;
 import ShadowSiren.oldStuff.powers.BurnPower;
 import ShadowSiren.oldStuff.powers.HexingPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

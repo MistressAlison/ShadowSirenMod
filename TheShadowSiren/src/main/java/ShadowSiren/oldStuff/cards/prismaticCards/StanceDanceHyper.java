@@ -2,11 +2,11 @@ package ShadowSiren.oldStuff.cards.prismaticCards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.EnterAnyStanceAction;
-import ShadowSiren.oldStuff.cards.abstractCards.prismatics.AbstractPrismaticHyperCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.patches.StanceCounterPatches;
+import ShadowSiren.oldStuff.cards.abstractCards.prismatics.AbstractPrismaticHyperCard;
 import ShadowSiren.oldStuff.powers.ElectricPower;
+import ShadowSiren.patches.StanceCounterPatches;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

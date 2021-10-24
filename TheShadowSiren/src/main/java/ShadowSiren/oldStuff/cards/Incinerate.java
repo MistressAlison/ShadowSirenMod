@@ -2,9 +2,9 @@ package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.NerfedBlastBurnAction;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
 import ShadowSiren.oldStuff.cards.dualityCards.smoke.IncinerateDual;
-import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 

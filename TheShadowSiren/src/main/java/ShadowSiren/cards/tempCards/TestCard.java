@@ -4,7 +4,6 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.powers.ElectricPower;
-//import ShadowSiren.util.StarBarManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

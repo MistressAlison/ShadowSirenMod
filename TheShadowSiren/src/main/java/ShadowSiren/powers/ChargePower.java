@@ -1,15 +1,12 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.interfaces.ChargeMagicBuff;
 import ShadowSiren.cards.interfaces.ChargeMultiEffect;
 import ShadowSiren.patches.ChargeCounterPatches;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.colorless.RitualDagger;

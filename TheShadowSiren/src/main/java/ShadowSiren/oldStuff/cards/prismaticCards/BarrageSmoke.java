@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards.prismaticCards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.cards.abstractCards.prismatics.AbstractPrismaticSmokeCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.prismatics.AbstractPrismaticSmokeCard;
 import ShadowSiren.oldStuff.powers.BurnPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

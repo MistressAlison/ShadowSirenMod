@@ -2,11 +2,9 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.CataclysmAction;
-import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 

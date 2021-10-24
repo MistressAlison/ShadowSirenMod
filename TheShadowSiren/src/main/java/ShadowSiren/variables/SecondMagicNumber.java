@@ -1,8 +1,8 @@
 package ShadowSiren.variables;
 
+import ShadowSiren.cards.abstractCards.AbstractModdedCard;
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import ShadowSiren.cards.abstractCards.AbstractModdedCard;
 
 import static ShadowSiren.ShadowSirenMod.makeID;
 

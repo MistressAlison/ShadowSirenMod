@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractHugeCard;
 import ShadowSiren.oldStuff.cards.dualityCards.huge.MultiplyDual;
-import ShadowSiren.characters.Vivian;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

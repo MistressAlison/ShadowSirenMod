@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractHyperCard;
 import ShadowSiren.oldStuff.cards.dualityCards.hyper.HyperModeDual;
-import ShadowSiren.characters.Vivian;
 import ShadowSiren.stances.HyperStance;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;

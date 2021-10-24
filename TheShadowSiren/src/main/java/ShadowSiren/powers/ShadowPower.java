@@ -8,22 +8,14 @@ import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.InstantKillAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
-import com.megacrit.cardcrawl.actions.common.SuicideAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import com.megacrit.cardcrawl.vfx.combat.HeartBuffEffect;
-
-import java.text.DecimalFormat;
 
 public class ShadowPower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower, OnModifyMaxHPPower {
 

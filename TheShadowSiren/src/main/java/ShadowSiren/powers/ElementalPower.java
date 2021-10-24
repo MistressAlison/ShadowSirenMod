@@ -6,8 +6,6 @@ import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
-import ShadowSiren.damageModifiers.ElementallyInert;
-import ShadowSiren.patches.ElementalPatches;
 import ShadowSiren.powers.interfaces.OnChangeElementPower;
 import ShadowSiren.util.ParticleOrbitRenderer;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;

@@ -1,10 +1,10 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
-import ShadowSiren.oldStuff.cards.dualityCards.smoke.AshCloudDual;
 import ShadowSiren.cards.interfaces.VigorMagicBuff;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
+import ShadowSiren.oldStuff.cards.dualityCards.smoke.AshCloudDual;
 import ShadowSiren.oldStuff.powers.BurnPower;
 import ShadowSiren.stances.SmokeStance;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

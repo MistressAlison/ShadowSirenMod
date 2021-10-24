@@ -3,7 +3,6 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.DiamondDustPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

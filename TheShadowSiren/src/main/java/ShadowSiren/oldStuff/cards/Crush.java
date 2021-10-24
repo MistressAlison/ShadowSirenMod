@@ -2,9 +2,9 @@ package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.CrushAction;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.oldStuff.cards.dualityCards.abyss.CrushDual;
-import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

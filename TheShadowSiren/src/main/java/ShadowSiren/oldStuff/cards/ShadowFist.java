@@ -1,10 +1,10 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractShadowCard;
-import ShadowSiren.oldStuff.cards.dualityCards.veil.ShadowFistDual;
 import ShadowSiren.cards.interfaces.FistAttack;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractShadowCard;
+import ShadowSiren.oldStuff.cards.dualityCards.veil.ShadowFistDual;
 import ShadowSiren.stances.VeilStance;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;

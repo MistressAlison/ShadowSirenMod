@@ -4,7 +4,6 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.cards.tempCards.IceShard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.ChillPower;
 import ShadowSiren.util.XCostGrabber;
 import com.badlogic.gdx.graphics.Color;

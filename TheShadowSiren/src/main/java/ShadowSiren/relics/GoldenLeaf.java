@@ -1,24 +1,18 @@
 package ShadowSiren.relics;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.powers.FreezePower;
 import ShadowSiren.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

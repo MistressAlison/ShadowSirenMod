@@ -1,22 +1,18 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.blockTypes.ShadowBlock;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.*;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 

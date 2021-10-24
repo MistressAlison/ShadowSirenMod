@@ -1,7 +1,6 @@
 package ShadowSiren.oldStuff.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.powers.GiantsHeart;
 import basemod.interfaces.CloneablePowerInterface;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnMyBlockBrokenPower;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;

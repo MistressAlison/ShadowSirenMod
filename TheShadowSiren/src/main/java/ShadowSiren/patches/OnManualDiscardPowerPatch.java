@@ -1,7 +1,8 @@
 package ShadowSiren.patches;
 
 import ShadowSiren.powers.interfaces.OnDiscardCardPower;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;

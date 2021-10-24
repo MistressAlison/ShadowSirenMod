@@ -2,7 +2,6 @@ package ShadowSiren.cards.uniqueCards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;

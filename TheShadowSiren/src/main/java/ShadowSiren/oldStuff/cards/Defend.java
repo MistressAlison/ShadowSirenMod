@@ -1,12 +1,12 @@
 package ShadowSiren.oldStuff.cards;
 
+import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.characters.Vivian;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 

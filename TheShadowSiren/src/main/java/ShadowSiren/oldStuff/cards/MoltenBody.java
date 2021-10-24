@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
 import ShadowSiren.oldStuff.cards.dualityCards.smoke.MoltenBodyDual;
-import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.powers.MoltenBodyPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

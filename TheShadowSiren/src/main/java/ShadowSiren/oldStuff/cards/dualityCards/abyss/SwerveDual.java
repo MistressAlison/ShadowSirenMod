@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards.dualityCards.abyss;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.oldStuff.powers.ConfusedPower;
 import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

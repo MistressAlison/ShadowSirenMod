@@ -1,9 +1,9 @@
 package ShadowSiren.oldStuff.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.characters.Vivian;
 import ShadowSiren.oldStuff.cards.abstractCards.AbstractAbyssCard;
 import ShadowSiren.oldStuff.cards.dualityCards.abyss.BlizzardDual;
-import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.FreezePower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

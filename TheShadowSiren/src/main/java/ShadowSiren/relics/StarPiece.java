@@ -4,7 +4,6 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.oldStuff.cards.MarkingFist;
 import ShadowSiren.oldStuff.cards.tempCards.Anchor;
 import ShadowSiren.util.TextureLoader;
-//import ShadowSiren.util.starStore.StarPieceShopScreen;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;

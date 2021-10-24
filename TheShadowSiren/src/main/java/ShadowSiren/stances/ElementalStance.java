@@ -4,19 +4,11 @@ import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElementalCard;
-import ShadowSiren.cards.abstractCards.AbstractItemCard;
-import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
-import ShadowSiren.damageModifiers.FireDamage;
-import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.StanceStrings;
 import com.megacrit.cardcrawl.stances.AbstractStance;
-import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 
 import java.util.ArrayList;
 

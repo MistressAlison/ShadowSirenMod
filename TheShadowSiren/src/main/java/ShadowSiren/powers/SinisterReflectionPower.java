@@ -2,7 +2,6 @@ package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;

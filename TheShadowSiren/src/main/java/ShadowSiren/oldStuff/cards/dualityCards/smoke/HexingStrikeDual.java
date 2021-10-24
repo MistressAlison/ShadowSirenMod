@@ -2,9 +2,9 @@ package ShadowSiren.oldStuff.cards.dualityCards.smoke;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.BlazingAction;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

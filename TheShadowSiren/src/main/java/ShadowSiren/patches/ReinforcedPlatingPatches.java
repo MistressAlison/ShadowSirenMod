@@ -1,7 +1,9 @@
 package ShadowSiren.patches;
 
 import ShadowSiren.oldStuff.powers.ReinforcedPlatingPower;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class ReinforcedPlatingPatches {

@@ -2,10 +2,10 @@ package ShadowSiren.oldStuff.cards.dualityCards.smoke;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.TriggerBurnAction;
-import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.cards.uniqueCards.UniqueCard;
 import ShadowSiren.characters.Vivian;
+import ShadowSiren.oldStuff.cards.abstractCards.AbstractSmokeCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;

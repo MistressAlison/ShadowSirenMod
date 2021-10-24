@@ -7,9 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class ShadowBlock extends AbstractBlockModifier {
 

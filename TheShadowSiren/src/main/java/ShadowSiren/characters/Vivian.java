@@ -11,6 +11,7 @@ import ShadowSiren.cards.Strike;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.cards.tempCards.DireStrike;
 import ShadowSiren.powers.ElementalPower;
+import ShadowSiren.powers.VeilPower;
 import ShadowSiren.relics.BooSheet;
 import ShadowSiren.stances.HugeStance;
 import ShadowSiren.vfx.StarBreakerVictoryEffect;
@@ -450,7 +451,7 @@ public class Vivian extends CustomPlayer /*implements PlayerWithActionCommands*/
     }
 
     public void resetToIdleAnimation() {
-        if (AbstractDungeon.player.stance.ID.equals("ShadowSiren:VeilStance")) {
+        if (this.stance.ID.equals("ShadowSiren:VeilStance") || this.hasPower(VeilPower.POWER_ID)) {
             playAnimation("hide");
         } else {
             playAnimation("idle");

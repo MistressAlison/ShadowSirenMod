@@ -44,27 +44,29 @@ public class SpiritDrain extends AbstractShadowCard {
 
 
     public SpiritDrain() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = AMOUNT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int sum = 0;
+        //int sum = 0;
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
                 this.addToBot(new ApplyPowerAction(aM, p, new StrengthPower(aM, -this.magicNumber), -this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
                 if (!aM.hasPower(ArtifactPower.POWER_ID)) {
                     this.addToBot(new ApplyPowerAction(aM, p, new GainStrengthPower(aM, this.magicNumber), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
-                    sum += magicNumber;
+                    //sum += magicNumber;
                 }
             }
         }
-        if (sum > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, sum), sum));
-            this.addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, sum), sum));
-        }
+        this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, magicNumber)));
+//        if (sum > 0) {
+//            this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, sum)));
+//            this.addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, sum)));
+//        }
     }
 
     //Upgraded stats.

@@ -359,7 +359,7 @@
   },
   "ShadowSiren:SpiritDrain": {
     "NAME": "Spirit Drain",
-    "DESCRIPTION": "ALL enemies lose !M! Strength this turn. NL Gain Strength this turn equal to amount removed."
+    "DESCRIPTION": "ALL enemies lose !M! Strength this turn. NL Gain !M! Strength this turn."
   },
   "ShadowSiren:StarFall": {
     "NAME": "Star Fall",

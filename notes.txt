@@ -32,15 +32,15 @@ Rare Elemental Relics - ?, Stop Watch, Tasty Tonic, ?
 
 Star Fall - Currently too similar to Elemental Burst?
 
-Ashes - Retain, exhaust when dealing Fire damage?
+Ashes - Potentially rework -> Retain, exhaust when dealing Fire damage? Seems problematic
 
 Recuperate / Trick - Give one a similar but different effect
 
 Flash Fire - new conditional
 
-Permafrost - Bad, give new effect?
-
 Immolate - new name?
+
+Black Roses - nerf?
 
 New Rares:
 
@@ -54,6 +54,8 @@ Ricochet - The next card you play is returned to your hand.
 === Mechanics ===
 
 Veil / Hyper - Currently implemented as stances via relics only. Bad cohesion.
+
+Fire Damage - Now even worse with the rework
 
 
 

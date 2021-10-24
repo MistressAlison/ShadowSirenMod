@@ -36,17 +36,39 @@ Ashes - Potentially rework -> Retain, exhaust when dealing Fire damage? Seems pr
 
 Recuperate / Trick - Give one a similar but different effect
 
-Flash Fire - new conditional
+Frostbite - rework so less text? lol
 
 Immolate - new name?
 
-Black Roses - nerf?
+Spirit Drain - Gain 2 Str instead of sum?
+
+Black Roses - Remove ALL Shadow Split. ALL enemies lose HP equal to amount removed.
 
 New Rares:
 
 Preparation - Retain your hand this turn. Next turn gain Energy
 
 Ricochet - The next card you play is returned to your hand.
+
+
+=== Description Shrinking ===
+
+Patch Up - 5 lines
+
+Spirit Drain - 5 lines
+
+Frostbite - 5 lines
+
+Permafrost - 5 lines
+
+Black Hole - 5 lines
+
+Blast Burn - 5 lines
+
+Elemental Mastery - 5 lines
+
+Star Fall - 5 lines
+
 
 
 

@@ -29,7 +29,7 @@
   },
   "ShadowSiren:ArcaneShelter": {
     "NAME": "Arcane Shelter",
-    "DESCRIPTION": "Gain !B! [DarkIcon] Block X times. NL Gain X Dexterity this turn."
+    "DESCRIPTION": "Gain !B! [DarkIcon] Block X times. NL Next turn, gain X temporary Dexterity."
   },
   "ShadowSiren:ArtOfWar": {
     "NAME": "Art Of War",
@@ -89,7 +89,7 @@
   },
   "ShadowSiren:DarkShield": {
     "NAME": "Dark Shield",
-    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL Gain !M! Strength this turn."
+    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL Gain !M! Dexterity this turn."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
@@ -145,8 +145,8 @@
   },
   "ShadowSiren:EscapePlan": {
     "NAME": "Escape Plan",
-    "DESCRIPTION": "Gain !B! Block. NL Gain [E] . NL Draw !M! card. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Gain [E] . NL Draw !M! cards. NL Exhaust."
+    "DESCRIPTION": "Retain. NL Gain !B! Block. NL shadowsiren:Reshuffle.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Gain !B! Block. NL shadowsiren:Reshuffle."
   },
   "ShadowSiren:FieryJinx": {
     "NAME": "Fiery Jinx",
@@ -247,6 +247,10 @@
     "NAME": "Magnetic Strike",
     "DESCRIPTION": "Deal !D! [IceIcon] [ElectricIcon] damage. NL Deals 50% more damage if the target has Block."
   },
+  "ShadowSiren:ManaBattery": {
+    "NAME": "Mana Battery",
+    "DESCRIPTION": "Gain !M! [E] . NL shadowsiren:Intensify Energy by !ShadowSiren:SecondMagic!."
+  },
   "ShadowSiren:OminousFrost": {
     "NAME": "Ominous Frost",
     "DESCRIPTION": "Deal !D! [IceIcon] [DarkIcon] damage. NL Apply !M! *Chill."
@@ -261,7 +265,7 @@
   },
   "ShadowSiren:Permafrost": {
     "NAME": "Permafrost",
-    "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL Gain [IceIcon] Block equal to Weak applied."
+    "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL Gain [IceIcon] Block equal to the amount of Weak on ALL enemies."
   },
   "ShadowSiren:PiezoCapacitor": {
     "NAME": "Piezo Capacitor",

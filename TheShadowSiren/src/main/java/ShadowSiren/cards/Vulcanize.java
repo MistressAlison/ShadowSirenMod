@@ -35,7 +35,7 @@ public class Vulcanize extends AbstractFireCard {
 
 
     public Vulcanize() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
     }
 
     // Actions the card should do.

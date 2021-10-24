@@ -33,8 +33,8 @@ public class FlashFire extends AbstractFireCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 7;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 12;
+    private static final int UPGRADE_PLUS_DMG = 4;
 
     // /STAT DECLARATION/
 
@@ -42,35 +42,35 @@ public class FlashFire extends AbstractFireCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         isInnate = true;
-        //exhaust = true;
+        exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.currentHealth == m.maxHealth) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE, true));
-        }
+//        if (m.currentHealth == m.maxHealth) {
+//            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE, true));
+//        }
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
     }
 
-    private boolean enemyHasFullHP() {
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (aM.currentHealth == aM.maxHealth) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void triggerOnGlowCheck() {
-        super.triggerOnGlowCheck();
-        if (enemyHasFullHP()) {
-            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-        } else {
-            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-        }
-    }
+//    private boolean enemyHasFullHP() {
+//        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+//            if (aM.currentHealth == aM.maxHealth) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    public void triggerOnGlowCheck() {
+//        super.triggerOnGlowCheck();
+//        if (enemyHasFullHP()) {
+//            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+//        } else {
+//            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+//        }
+//    }
 
     // Upgraded stats.
     @Override

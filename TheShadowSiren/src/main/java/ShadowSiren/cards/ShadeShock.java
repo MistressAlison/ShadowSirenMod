@@ -40,15 +40,12 @@ public class ShadeShock extends AbstractMultiElementCard implements MagicAnimati
     private static final int COST = 1;
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int SHOCK = 6;
-    private static final int UPGRADE_PLUS_SHOCK = 3;
 
     // /STAT DECLARATION/
 
     public ShadeShock() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = SHOCK;
         exhaust = true;
         DamageModifierManager.addModifier(this, new ElectricDamage());
         DamageModifierManager.addModifier(this, new ShadowDamage());
@@ -76,7 +73,6 @@ public class ShadeShock extends AbstractMultiElementCard implements MagicAnimati
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_SHOCK);
             initializeDescription();
         }
     }

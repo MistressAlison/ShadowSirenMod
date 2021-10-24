@@ -50,7 +50,7 @@
   },
   "ShadowSiren:BlackRose": {
     "NAME": "Black Roses",
-    "DESCRIPTION": "ALL enemies lose HP equal to their *Shadow *Split. NL Exhaust.",
+    "DESCRIPTION": "ALL enemies lose their *Shadow *Split and an equal amount of HP.",
     "UPGRADE_DESCRIPTION": "ALL enemies lose HP equal to their *Shadow *Split."
   },
   "ShadowSiren:BlastBurn": {

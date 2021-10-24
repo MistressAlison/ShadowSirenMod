@@ -8,6 +8,7 @@ import ShadowSiren.powers.ShadowPower;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -34,15 +35,15 @@ public class BlackRose extends AbstractShadowCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 2;
-    private static final int UPGRADE_COST = 1;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
 
     // /STAT DECLARATION/
 
     //TODO rework
     public BlackRose() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        exhaust = true;
+        //exhaust = true;
     }
 
     // Actions the card should do.
@@ -51,6 +52,7 @@ public class BlackRose extends AbstractShadowCard {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
                 if (aM.hasPower(ShadowPower.POWER_ID)) {
+                    this.addToBot(new RemoveSpecificPowerAction(aM, aM, ShadowPower.POWER_ID));
                     this.addToBot(new VFXAction(new CardPoofEffect(aM.hb.cX, aM.hb.cY)));
                     this.addToBot(new LoseHPAction(aM, p, aM.getPower(ShadowPower.POWER_ID).amount));
                 }

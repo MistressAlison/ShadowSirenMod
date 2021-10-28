@@ -52,26 +52,26 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
         return true;
     }
 
-    @Override
-    public boolean ignoresTempHP(AbstractCreature target) {
-        return true;
-    }
+//    @Override
+//    public boolean ignoresTempHP(AbstractCreature target) {
+//        return true;
+//    }
 
-    @Override
-    public int onAttackToChangeDamage(DamageInfo info, int damageAmount, AbstractCreature target) {
-        /*AbstractPower pow = target.getPower(ShadowPower.POWER_ID);
-        if (pow instanceof ShadowPower && ((ShadowPower) pow).checkIfSurpassedHP()) {
-            return damageAmount;
-        } else if (damageAmount > 0) {
-            this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount),damageAmount, true));
-            AbstractDungeon.effectList.add(new CardPoofEffect(target.hb.cX, target.hb.cY));
-        }*/
-        if (damageAmount != 0) {
-            this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount), damageAmount, true));
-        }
-        AbstractDungeon.effectList.add(new CardPoofEffect(target.hb.cX, target.hb.cY));
-        return 0;
-    }
+//    @Override
+//    public int onAttackToChangeDamage(DamageInfo info, int damageAmount, AbstractCreature target) {
+//        /*AbstractPower pow = target.getPower(ShadowPower.POWER_ID);
+//        if (pow instanceof ShadowPower && ((ShadowPower) pow).checkIfSurpassedHP()) {
+//            return damageAmount;
+//        } else if (damageAmount > 0) {
+//            this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount),damageAmount, true));
+//            AbstractDungeon.effectList.add(new CardPoofEffect(target.hb.cX, target.hb.cY));
+//        }*/
+//        if (damageAmount != 0) {
+//            this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new ShadowPower(target, damageAmount), damageAmount, true));
+//        }
+//        AbstractDungeon.effectList.add(new CardPoofEffect(target.hb.cX, target.hb.cY));
+//        return 0;
+//    }
 
     @Override
     public ArrayList<TooltipInfo> getCustomTooltips() {
@@ -95,10 +95,10 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
                 break;
             case DAMAGE:
                 l.add(shadowDamageTooltip);
-                l.add(shadowSplitTooltip);
                 break;
             case BLOCK:
                 l.add(shadowBlockTooltip);
+                l.add(shadowSplitTooltip);
                 break;
         }
         return l;

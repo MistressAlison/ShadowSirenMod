@@ -5,6 +5,7 @@ import ShadowSiren.cards.abstractCards.AbstractFireCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -33,12 +34,14 @@ public class FlashFire extends AbstractFireCard {
     private static final int COST = 1;
     private static final int DAMAGE = 12;
     private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DRAW = 2;
 
     // /STAT DECLARATION/
 
     public FlashFire() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        magicNumber = baseMagicNumber = DRAW;
         isInnate = true;
         exhaust = true;
     }
@@ -46,29 +49,9 @@ public class FlashFire extends AbstractFireCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-//        if (m.currentHealth == m.maxHealth) {
-//            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE, true));
-//        }
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
+        this.addToBot(new DrawCardAction(magicNumber));
     }
-
-//    private boolean enemyHasFullHP() {
-//        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-//            if (aM.currentHealth == aM.maxHealth) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public void triggerOnGlowCheck() {
-//        super.triggerOnGlowCheck();
-//        if (enemyHasFullHP()) {
-//            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-//        } else {
-//            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-//        }
-//    }
 
     // Upgraded stats.
     @Override

@@ -4,7 +4,9 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ShadowPower;
+import ShadowSiren.powers.ShadowSplitPower;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -35,13 +37,14 @@ public class BlackRose extends AbstractShadowCard {
 
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
+    private static final int EFFECT = 6;
 
     // /STAT DECLARATION/
 
-    //TODO rework
     public BlackRose() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        //exhaust = true;
+        magicNumber = baseMagicNumber = EFFECT;
+        exhaust = true;
     }
 
     // Actions the card should do.
@@ -49,11 +52,7 @@ public class BlackRose extends AbstractShadowCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
-                if (aM.hasPower(ShadowPower.POWER_ID)) {
-                    this.addToBot(new RemoveSpecificPowerAction(aM, aM, ShadowPower.POWER_ID));
-                    this.addToBot(new VFXAction(new CardPoofEffect(aM.hb.cX, aM.hb.cY)));
-                    this.addToBot(new LoseHPAction(aM, p, aM.getPower(ShadowPower.POWER_ID).amount));
-                }
+                this.addToBot(new ApplyPowerAction(aM, p, new ShadowSplitPower(aM, magicNumber)));
             }
         }
     }
@@ -64,8 +63,6 @@ public class BlackRose extends AbstractShadowCard {
         if (!upgraded) {
             upgradeName();
             upgradeBaseCost(UPGRADE_COST);
-//            this.exhaust = false;
-//            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

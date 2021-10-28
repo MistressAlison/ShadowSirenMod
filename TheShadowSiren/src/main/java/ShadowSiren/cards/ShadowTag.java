@@ -1,12 +1,11 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.MoveCardsOfTypeToHandAction;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -32,10 +31,10 @@ public class ShadowTag extends AbstractShadowCard {
 
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
+    private static final int CARDS_TO_MOVE = 1;
 
     // /STAT DECLARATION/
 
-    //TODO rework
     public ShadowTag() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
     }
@@ -43,62 +42,7 @@ public class ShadowTag extends AbstractShadowCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                if (p.drawPile.isEmpty()) {
-                    this.isDone = true;
-                    return;
-                }
-                CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-
-                for (AbstractCard c : p.drawPile.group) {
-                    if (c.type == CardType.ATTACK) {
-                        tmp.addToRandomSpot(c);
-                    }
-                }
-
-                if (tmp.size() == 0) {
-                    this.isDone = true;
-                    return;
-                }
-
-                tmp.shuffle();
-
-                AbstractCard card = tmp.getBottomCard();
-                tmp.removeCard(card);
-                card.setCostForTurn(0);
-                /*if (card instanceof AbstractShadowCard || DamageModifierManager.modifiers(card).stream().anyMatch(m -> m instanceof ShadowDamage)) {
-                    card.setCostForTurn(0);
-                }*/
-                /*if (ElementalPatches.noElementalModifiers(card) && !(card instanceof ElementallyInert) && !(card instanceof AbstractInertCard)) {
-                    DamageModifierManager.addModifier(card, new ShadowDamage(false));
-                    CardModifierManager.addModifier(card, new AddIconHelper.AddShadowIconMod(AddIconToDescriptionMod.DAMAGE));
-                    //card.setCostForTurn(0);
-                    if (card instanceof AbstractModdedCard) {
-                        ((AbstractModdedCard)card).setBackgroundTexture(ShadowSirenMod.ATTACK_SHADOW, ShadowSirenMod.ATTACK_SHADOW_PORTRAIT);
-                    }
-                }*/
-                if (p.hand.size() == 10) {
-                    p.drawPile.moveToDiscardPile(card);
-                    p.createHandIsFullDialog();
-                } else {
-                    card.unhover();
-                    card.lighten(true);
-                    card.setAngle(0.0F);
-                    card.drawScale = 0.12F;
-                    card.targetDrawScale = 0.75F;
-                    card.current_x = CardGroup.DRAW_PILE_X;
-                    card.current_y = CardGroup.DRAW_PILE_Y;
-                    p.drawPile.removeCard(card);
-                    AbstractDungeon.player.hand.addToTop(card);
-                    AbstractDungeon.player.hand.refreshHandLayout();
-                    AbstractDungeon.player.hand.applyPowers();
-                }
-
-                this.isDone = true;
-            }
-        });
+        this.addToBot(new MoveCardsOfTypeToHandAction(CardType.ATTACK, CARDS_TO_MOVE, true));
     }
 
     private boolean noAttacks() {

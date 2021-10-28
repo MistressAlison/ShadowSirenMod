@@ -59,6 +59,16 @@ public class RicochetPower extends AbstractPower implements CloneablePowerInterf
                         this.isDone = true;
                     }
                 });
+                if (card.shuffleBackIntoDrawPile) {
+                    card.shuffleBackIntoDrawPile = false;
+                    this.addToTop(new AbstractGameAction() {
+                        @Override
+                        public void update() {
+                            card.shuffleBackIntoDrawPile = true;
+                            this.isDone = true;
+                        }
+                    });
+                }
                 if (this.amount == 1) {
                     this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));
                 } else {

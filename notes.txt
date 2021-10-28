@@ -40,9 +40,7 @@ Frostbite - rework so less text? lol
 
 Immolate - new name?
 
-Spirit Drain - Gain 2 Str instead of sum?
-
-Black Roses - Remove ALL Shadow Split. ALL enemies lose HP equal to amount removed.
+Shadow Sneak - rework?
 
 New Rares:
 
@@ -54,8 +52,6 @@ Ricochet - The next card you play is returned to your hand.
 === Description Shrinking ===
 
 Patch Up - 5 lines
-
-Spirit Drain - 5 lines
 
 Frostbite - 5 lines
 
@@ -96,3 +92,48 @@ ES - Shade Shock
 
 IS - White Out
 FE - Plasma Beam
+
+=== Element Themes ===
+
+Fire - Max HP reduction (Innate) -> Fire Damage, Singe, Vulcanize, Immolate
+     - Vigor (Primary) -> [Fire Block], Ashes, Kindle, Pyre
+     - Card Draw (Secondary) -> Flame Shield, Flash Fire, Overheat, Light the Way
+     - Ashes (Tertiary, gives Vigor and Card Draw) -> [Overheat], Fiery Jinx, Kindle, Light the Way, Pyre, Blast Burn
+     - Uncategorized -> Shade Fist
+
+Ice - Chill (Innate) -> Ice Damage, [Ice Block], [Diamond Dust], Icy Wind, Flash Freeze
+    - Ice Shard (Primary, applies Chill) -> Brick Breaker, Snow Fort, Glaciate, Flash Freeze
+    - Weak (Secondary) -> Brick Breaker, Snow Blind, [Frostbite], Permafrost
+    - Uncategorized -> Frozen Shield, Ice Wall, Cryogenesis
+
+Elec - Chain Hit (Innate) -> Elec Damage
+     - Charge Scaling (Primary) -> Charge Up, [Discharge], Energy Conversion, Turbo Charged, Piezo Capacitor
+     - Damage Boosting (Secondary) -> Elec Block, Live Wire, Thunderstruck
+     - Uncategorized -> Electro Shield, Chain Shock, Static Barrier, Cataclysm
+
+Shadow - Block Pierce (Innate) -> Shadow Damage
+       - Shadow Split (Innate) -> Shadow Damage, Shadow Block, [Black Roses]
+       - Flex (Primary) -> Dark Shield, Spirit Drain, Arcane Shelter, [Sinister Reflection], Creeping Shadows
+       - Debuff Removal (Secondary) -> Trick, Recuperate, Black Hole
+       - Cost Manipulation (Tertiary) -> Shadow Tag, Black Hole
+       - Uncategorized -> Shadow Sneak
+
+Shadow 2 - Block Pierce (Innate) -> Shadow Damage
+         - Shadow Split (Primary) -> [Shadow Damage], Shadow Block, [Absorb], Haunt, Black Roses, Trick, Sinister Reflection
+         - Draw Manipulation (Secondary) -> Dark Shield, Shadow Sneak, Shadow Tag, Creeping Shadow
+         - Cost Manipulation (Tertiary) -> Shadow Tag, Recuperate, Black Hole
+         - Absorb (?) ->
+         - Uncategorized -> Spirit Drain
+
+Shadow 2 reworks:
+
+Shadow ignores Block and applies 1 Split on hit. Split makes the target take 5% more shadow damage to a maximum of 5 stacks (+25% more damage).
+Absorb (Keyword) - Remove Shadow Split from the target and gain Shadow Block/Temp HP/Whatever
+
+Black Roses - ?
+Creeping Shadows - The first card you play each turn is put on the bottom of your draw pile. It costs 0 until played?
+Sinister Reflection - ?
+? - If Fatal condition?
+
+
+Electric rework theory: Deals +?% more damage per target, but spreads damage to all targets.

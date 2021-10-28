@@ -6,12 +6,11 @@ import ShadowSiren.blockTypes.ShadowBlock;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
+import ShadowSiren.powers.RicochetPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -38,14 +37,14 @@ public class DarkShield extends AbstractShadowCard {
     private static final int UPGRADE_COST = 0;
     private static final int BLOCK = 6;
     private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int TEMP_STR = 1;
+    private static final int EFFECT = 1;
 
     // /STAT DECLARATION/
 
     public DarkShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
         baseBlock = block = BLOCK;
-        magicNumber = baseMagicNumber = TEMP_STR;
+        magicNumber = baseMagicNumber = EFFECT;
         BlockModifierManager.addModifier(this, new ShadowBlock());
     }
 
@@ -53,8 +52,7 @@ public class DarkShield extends AbstractShadowCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, block));
-        this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
-        this.addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, magicNumber), magicNumber));
+        this.addToBot(new ApplyPowerAction(p, p, new RicochetPower(p, magicNumber), magicNumber));
     }
 
     // Upgraded stats.
@@ -62,7 +60,6 @@ public class DarkShield extends AbstractShadowCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            //upgradeBaseCost(UPGRADE_COST);
             upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
         }

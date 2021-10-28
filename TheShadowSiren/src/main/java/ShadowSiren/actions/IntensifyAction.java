@@ -44,6 +44,7 @@ public class IntensifyAction extends AbstractGameAction {
                     if (c.getClass().equals(card.getClass())) {
                         c.baseDamage += amount;
                         c.applyPowers();
+                        c.superFlash();
                     }
                 }
                 break;
@@ -69,6 +70,7 @@ public class IntensifyAction extends AbstractGameAction {
                     if (c.getClass().equals(card.getClass())) {
                         c.baseBlock += amount;
                         c.applyPowers();
+                        c.superFlash();
                     }
                 }
                 break;
@@ -98,6 +100,7 @@ public class IntensifyAction extends AbstractGameAction {
                         c.baseMagicNumber += amount;
                         c.magicNumber += amount;
                         c.applyPowers();
+                        c.superFlash();
                     }
                 }
                 break;

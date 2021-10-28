@@ -3,6 +3,7 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.IntensifyAction;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class ManaBattery extends AbstractDynamicCard {
+public class ManaBattery extends AbstractDynamicCard implements ModularDescription {
 
     // TEXT DECLARATION
 
@@ -38,6 +39,7 @@ public class ManaBattery extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ENERGY;
         secondMagicNumber = baseSecondMagicNumber = INTENSIFY;
+        initializeDescription();
     }
 
     // Actions the card should do.
@@ -54,6 +56,23 @@ public class ManaBattery extends AbstractDynamicCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_ENERGY);
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void changeDescription() {
+        if (DESCRIPTION != null) {
+            if (magicNumber > 5) {
+                rawDescription = DESCRIPTION;
+            } else {
+                StringBuilder sb = new StringBuilder();
+                sb.append(EXTENDED_DESCRIPTION[0]);
+                for (int i = 0 ; i < magicNumber ; i++) {
+                    sb.append(EXTENDED_DESCRIPTION[1]);
+                }
+                sb.append(EXTENDED_DESCRIPTION[2]);
+                rawDescription = sb.toString();
+            }
         }
     }
 }

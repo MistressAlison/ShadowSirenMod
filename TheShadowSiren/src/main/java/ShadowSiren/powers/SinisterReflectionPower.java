@@ -2,8 +2,7 @@ package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -50,19 +49,28 @@ public class SinisterReflectionPower extends AbstractPower implements CloneableP
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        int debuffs = 0;
-        for (AbstractPower p : owner.powers) {
-            if (p.type == PowerType.DEBUFF) {
-                debuffs++;
-            }
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
+            this.flash();
+            this.addToTop(new ApplyPowerAction(info.owner, owner, new ShadowSplitPower(info.owner, amount)));
         }
-        if (debuffs > 0) {
-            flash();
-            this.addToBot(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(debuffs*amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
-        }
-
+        return damageAmount;
     }
+
+    //    @Override
+//    public void atEndOfTurn(boolean isPlayer) {
+//        int debuffs = 0;
+//        for (AbstractPower p : owner.powers) {
+//            if (p.type == PowerType.DEBUFF) {
+//                debuffs++;
+//            }
+//        }
+//        if (debuffs > 0) {
+//            flash();
+//            this.addToBot(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(debuffs*amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
+//        }
+//
+//    }
 
 //    @Override
 //    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {

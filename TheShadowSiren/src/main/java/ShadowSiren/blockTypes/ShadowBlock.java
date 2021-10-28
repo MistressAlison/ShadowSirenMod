@@ -3,6 +3,7 @@ package ShadowSiren.blockTypes;
 import IconsAddon.blockModifiers.AbstractBlockModifier;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.powers.ShadowPower;
+import ShadowSiren.powers.ShadowSplitPower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -22,7 +23,7 @@ public class ShadowBlock extends AbstractBlockModifier {
     @Override
     public void onAttacked(DamageInfo info, int damageAmount) {
         if (info.type == DamageInfo.DamageType.NORMAL && info.owner != null && info.owner != this.owner) {
-            this.addToBot(new ApplyPowerAction(info.owner, owner, new ShadowPower(info.owner, AMOUNT)));
+            this.addToBot(new ApplyPowerAction(info.owner, owner, new ShadowSplitPower(info.owner, AMOUNT)));
         }
     }
 

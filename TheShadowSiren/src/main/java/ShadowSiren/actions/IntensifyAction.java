@@ -1,8 +1,12 @@
 package ShadowSiren.actions;
 
+import ShadowSiren.cards.interfaces.ModularDescription;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class IntensifyAction extends AbstractGameAction {
     public enum EffectType {
@@ -21,91 +25,35 @@ public class IntensifyAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        switch (type) {
-            case DAMAGE:
-                card.baseDamage += amount;
-                card.applyPowers();
+        ArrayList<AbstractCard> matches = new ArrayList<>();
+        matches.add(card);
+        matches.addAll(AbstractDungeon.player.hand.group.stream().filter(c -> c.getClass().equals(card.getClass())).collect(Collectors.toCollection(ArrayList::new)));
+        matches.addAll(AbstractDungeon.player.drawPile.group.stream().filter(c -> c.getClass().equals(card.getClass())).collect(Collectors.toCollection(ArrayList::new)));
+        matches.addAll(AbstractDungeon.player.discardPile.group.stream().filter(c -> c.getClass().equals(card.getClass())).collect(Collectors.toCollection(ArrayList::new)));
 
-                for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
-                    if (c.getClass().equals(card.getClass())) {
-                        c.baseDamage += amount;
-                        c.applyPowers();
-                    }
-                }
-
-                for (AbstractCard c: AbstractDungeon.player.drawPile.group) {
-                    if (c.getClass().equals(card.getClass())) {
-                        c.baseDamage += amount;
-                        c.applyPowers();
-                    }
-                }
-
-                for (AbstractCard c: AbstractDungeon.player.hand.group) {
-                    if (c.getClass().equals(card.getClass())) {
-                        c.baseDamage += amount;
-                        c.applyPowers();
-                        c.superFlash();
-                    }
-                }
-                break;
-            case BLOCK:
-                card.baseBlock += amount;
-                card.applyPowers();
-
-                for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
-                    if (c.getClass().equals(card.getClass())) {
-                        c.baseBlock += amount;
-                        c.applyPowers();
-                    }
-                }
-
-                for (AbstractCard c: AbstractDungeon.player.drawPile.group) {
-                    if (c.getClass().equals(card.getClass())) {
-                        c.baseBlock += amount;
-                        c.applyPowers();
-                    }
-                }
-
-                for (AbstractCard c: AbstractDungeon.player.hand.group) {
-                    if (c.getClass().equals(card.getClass())) {
-                        c.baseBlock += amount;
-                        c.applyPowers();
-                        c.superFlash();
-                    }
-                }
-                break;
-            case MAGIC:
-                card.baseMagicNumber += amount;
-                card.magicNumber += amount;
-                card.applyPowers();
-
-                for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
-                    if (c.getClass().equals(card.getClass())) {
-                        c.baseMagicNumber += amount;
-                        c.magicNumber += amount;
-                        c.applyPowers();
-                    }
-                }
-
-                for (AbstractCard c: AbstractDungeon.player.drawPile.group) {
-                    if (c.getClass().equals(card.getClass())) {
-                        c.baseMagicNumber += amount;
-                        c.magicNumber += amount;
-                        c.applyPowers();
-                    }
-                }
-
-                for (AbstractCard c: AbstractDungeon.player.hand.group) {
-                    if (c.getClass().equals(card.getClass())) {
-                        c.baseMagicNumber += amount;
-                        c.magicNumber += amount;
-                        c.applyPowers();
-                        c.superFlash();
-                    }
-                }
-                break;
+        for (AbstractCard c : matches) {
+            applyVarChange(c);
         }
 
         this.isDone = true;
+    }
+
+    private void applyVarChange(AbstractCard c) {
+        switch (type) {
+            case DAMAGE:
+                c.baseDamage += amount;
+                break;
+            case BLOCK:
+                c.baseBlock += amount;
+                break;
+            case MAGIC:
+                c.baseMagicNumber += amount;
+                c.magicNumber += amount;
+                break;
+        }
+        c.applyPowers();
+        if (c instanceof ModularDescription) {
+            c.initializeDescription();
+        }
     }
 }

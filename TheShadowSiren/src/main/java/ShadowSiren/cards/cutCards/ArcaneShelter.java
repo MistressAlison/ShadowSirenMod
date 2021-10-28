@@ -1,4 +1,4 @@
-package ShadowSiren.cards;
+package ShadowSiren.cards.cutCards;
 
 import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
@@ -8,6 +8,7 @@ import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.NextTurnTempDexPower;
 import ShadowSiren.util.XCostGrabber;
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,7 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
-
+@AutoAdd.Ignore
 public class ArcaneShelter extends AbstractShadowCard {
 
     // TEXT DECLARATION

@@ -16,7 +16,7 @@ public class StarFall extends AbstractInertCard implements MagicAnimation {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(StarFall.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("StarFall.png");
 
     // /TEXT DECLARATION/
 

@@ -33,8 +33,8 @@
   "ShadowSiren:ShadowDamage": {
     "NAME": "Shadow",
     "DESCRIPTION": "Shadow [DarkIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage. NL #yBlock: When attacked, applies 3 #yShadow #ySplit to the attacker.",
-                            "#yDamage: Ignores #yBlock and applies #yShadow #ySplit instead of dealing damage.",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and causes the target to lose HP equal to their #yShadow #ySplit. NL #yBlock: When attacked, applies 3 #yShadow #ySplit to the attacker.",
+                            "#yDamage: Ignores #yBlock and causes the target to lose HP equal to their #yShadow #ySplit.",
                             "#yBlock: When attacked, applies 3 #yShadow #ySplit to the attacker."]
   },
   "ShadowSiren:ElementallyInert": {

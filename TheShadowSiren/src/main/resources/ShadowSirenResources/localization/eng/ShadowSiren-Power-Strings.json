@@ -132,7 +132,7 @@
         },
         "ShadowSiren:SinisterReflectionPower": {
                 "NAME": "Sinister Reflections",
-                "DESCRIPTIONS": ["At the end of your turn, deal #b"," damage to ALL enemies for each debuff you have."]
+                "DESCRIPTIONS": ["Whenever you are attacked, apply #b"," #yShadow #ySplit to the attacker."]
         },
         "ShadowSiren:SoftPower": {
                 "NAME": "Soft",
@@ -172,7 +172,7 @@
         },
         "ShadowSiren:CreepingShadowsPower": {
                 "NAME": "Creeping Shadows",
-                "DESCRIPTIONS": ["At the beginning of your turn, gain #b"," temporary #yStrength and #yDexterity."]
+                "DESCRIPTIONS": ["The first card you play each turn is placed on top of your draw pile.","The first #b"," cards you play each turn are placed on top of your draw pile."]
         },
         "ShadowSiren:OverheatPower": {
                 "NAME": "Overheat",
@@ -213,5 +213,9 @@
         "ShadowSiren:VeilPower": {
                 "NAME": "Veil",
                 "DESCRIPTIONS": ["Receive #b50% less damage from #yAttacks for #b"," turn."," turns."]
+        },
+        "ShadowSiren:ShadowSplitPower": {
+                "NAME": "Shadow Split",
+                "DESCRIPTIONS": ["Lose #b"," HP whenever #yShadow damage is received."]
         }
 }

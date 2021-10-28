@@ -85,7 +85,7 @@
     "NAMES": [
       "intensify"
     ],
-    "DESCRIPTION": "Increase the effect of ALL instances of this card this combat."
+    "DESCRIPTION": "Increase the effect of ALL copies of this card this combat."
   },
   {
     "PROPER_NAME": "Item",
@@ -107,7 +107,7 @@
       "Shadow Split",
       "shadow_split"
     ],
-    "DESCRIPTION": "Targets dies when Shadow Split equals their current HP."
+    "DESCRIPTION": "Creatures with Split lose HP when receiving #yShadow damage."
   },
   {
     "PROPER_NAME": "Hyper",

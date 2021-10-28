@@ -41,7 +41,7 @@
   },
   "ShadowSiren:BlackHole": {
     "NAME": "Black Hole",
-    "DESCRIPTION": "Remove ALL your debuffs. NL Deal !D! [DarkIcon] damage plus !M! for each removed debuff to ALL enemies.",
+    "DESCRIPTION": "Reduce the cost of all cards in your hand by !M! this turn.",
     "EXTENDED_DESCRIPTION": ["Remove ALL your debuffs. NL Deal !D! [DarkIcon] damage plus !M! for each removed debuff to ALL enemies."]
   },
   "ShadowSiren:BlackMagic": {
@@ -50,8 +50,7 @@
   },
   "ShadowSiren:BlackRose": {
     "NAME": "Black Roses",
-    "DESCRIPTION": "ALL enemies lose their *Shadow *Split and an equal amount of HP.",
-    "UPGRADE_DESCRIPTION": "ALL enemies lose HP equal to their *Shadow *Split."
+    "DESCRIPTION": "Apply !M! shadowsiren:Shadow_Split to ALL enemies. NL Exhaust."
   },
   "ShadowSiren:BlastBurn": {
     "NAME": "Blast Burn",
@@ -80,7 +79,8 @@
   },
   "ShadowSiren:CreepingShadows": {
     "NAME": "Creeping Shadows",
-    "DESCRIPTION": "At the start of your turn, gain !M! temporary Strength and Dexterity."
+    "DESCRIPTION": "The first card you play each turn is placed on top of your draw pile.",
+    "UPGRADE_DESCRIPTION": "Innate. NL The first card you play each turn is placed on top of your draw pile."
   },
   "ShadowSiren:Cryogenesis": {
     "NAME": "Cryogenesis",
@@ -89,7 +89,7 @@
   },
   "ShadowSiren:DarkShield": {
     "NAME": "Dark Shield",
-    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL Gain !M! Dexterity this turn."
+    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL The next card you play this turn is returned to your hand."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
@@ -163,7 +163,7 @@
   },
   "ShadowSiren:FlashFire": {
     "NAME": "Flash Fire",
-    "DESCRIPTION": "Innate. NL Deal !D! [FireIcon] damage. NL Exhaust."
+    "DESCRIPTION": "Innate. NL Deal !D! [FireIcon] damage. NL Draw !M! cards. NL Exhaust."
   },
   "ShadowSiren:FlashFreeze": {
     "NAME": "Flash Freeze",
@@ -202,6 +202,10 @@
   "ShadowSiren:HammerToss": {
     "NAME": "Hammer Toss",
     "DESCRIPTION": "Deal !D! damage to a random enemy. NL Add !M! *Hammer to your hand."
+  },
+  "ShadowSiren:Haunt": {
+    "NAME": "Haunt",
+    "DESCRIPTION": "Apply !M! shadowsiren:Shadow_Split."
   },
   "ShadowSiren:IceOrb": {
     "NAME": "Ice Orb",
@@ -249,7 +253,8 @@
   },
   "ShadowSiren:ManaBattery": {
     "NAME": "Mana Battery",
-    "DESCRIPTION": "Gain !M! [E] . NL shadowsiren:Intensify Energy by !ShadowSiren:SecondMagic!."
+    "DESCRIPTION": "Gain !M! [E] . NL shadowsiren:Intensify [E] gain by !ShadowSiren:SecondMagic!.",
+    "EXTENDED_DESCRIPTION": ["Gain ","[E] ",". NL shadowsiren:Intensify [E] gain by !ShadowSiren:SecondMagic!."]
   },
   "ShadowSiren:OminousFrost": {
     "NAME": "Ominous Frost",
@@ -294,7 +299,7 @@
   },
   "ShadowSiren:Recuperate": {
     "NAME": "Recuperate",
-    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL Remove !M! debuff if you have any, otherwise draw !M! card.",
+    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL A random card in your hand costs 0 this turn.",
     "UPGRADE_DESCRIPTION": "Gain !B! [DarkIcon] Block. NL Remove up to !M! debuffs if you have any, otherwise draw up to !M! cards."
   },
   "ShadowSiren:ReturningStrike": {
@@ -320,11 +325,11 @@
   },
   "ShadowSiren:ShadowSneak": {
     "NAME": "Shadow Sneak",
-    "DESCRIPTION": "Autoplay. NL Deal !D! [DarkIcon] damage to a random enemy. NL shadowsiren:Intensify damage by !M!."
+    "DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Put a random cost 0 card from your draw pile into your hand."
   },
   "ShadowSiren:ShadowTag": {
     "NAME": "Shadow Tag",
-    "DESCRIPTION": "Put a random *Attack from your draw pile into your hand. NL It costs 0 this turn.",
+    "DESCRIPTION": "Put a random Attack from your draw pile into your hand. NL It costs 0 this turn.",
     "EXTENDED_DESCRIPTION": ["NL If it has no shadowsiren:Element, it becomes a *Shadow card."]
   },
   "ShadowSiren:ShieldConversion": {
@@ -342,7 +347,7 @@
   },
   "ShadowSiren:SinisterReflection": {
     "NAME": "Sinister Reflection",
-    "DESCRIPTION": "At the end of your turn, deal !M! damage to ALL enemies for each debuff you have."
+    "DESCRIPTION": "Whenever you are attacked, apply !M! shadowsiren:Shadow_Split to the attacker."
   },
   "ShadowSiren:SnowBlind": {
     "NAME": "Snowblind",
@@ -359,7 +364,7 @@
   },
   "ShadowSiren:SpiritDrain": {
     "NAME": "Spirit Drain",
-    "DESCRIPTION": "ALL enemies lose !M! Strength this turn. NL Gain !M! Strength this turn."
+    "DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Enemy loses !M! Strength this turn."
   },
   "ShadowSiren:StarFall": {
     "NAME": "Star Fall",
@@ -391,8 +396,7 @@
   },
   "ShadowSiren:Trick": {
     "NAME": "Trick",
-    "DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Remove !M! debuff if you have any, otherwise draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Remove up to !M! debuffs if you have any, otherwise draw up to !M! cards."
+    "DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Remove a debuff if you have any, otherwise apply !M! shadowsiren:Shadow_Split."
   },
   "ShadowSiren:TurboCharged": {
     "NAME": "Turbo Charged",

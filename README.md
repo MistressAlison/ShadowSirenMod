@@ -25,6 +25,9 @@ _Electric_ - Electric cards overall have strong offensive nature and scaling cap
 
 _Shadow_ - Shadow cards overall have weaker damage and block, but excel in support and 0 cost builds. It does have access to some scaling via Shadow Split though, should you run a shadow only deck. Shadow Damage ignores Block and causes the enemy to lose HP equal to its Shadow Split (similar to Pressure Points with Mark). Shadow Damage applies Shadow Split to the attacker.
 
+_**Elemental Control:**_ 
+Whenever Vivian plays an Elemental card (Fire, Ice, Electric, or Shadow), she will channel that element around her. When Vivian plays a Non-Elemental Attack, all channeled elements are added to that card, activating the effects of each one and removing the channeled Elements. 
+
 
 ---
 

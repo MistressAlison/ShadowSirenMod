@@ -65,13 +65,13 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature targetHit) {
         if (targetHit instanceof AbstractMonster && !LoopCastCheck.loopCast.get(info)) {
-            if (lastDamageTaken > 1) {
+            if (lastDamageTaken > 0) {
                 this.addToTop(new AbstractGameAction() {
                     @Override
                     public void update() {
                         targetHit.tint.color = Color.YELLOW.cpy();
                         targetHit.tint.changeColor(Color.WHITE.cpy());
-                        int damage = (lastDamageTaken)/DIVISOR;
+                        int damage = Math.max(1, lastDamageTaken/DIVISOR);
                         target = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
                         if (target != null) {
                             AbstractDungeon.effectList.add(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY));

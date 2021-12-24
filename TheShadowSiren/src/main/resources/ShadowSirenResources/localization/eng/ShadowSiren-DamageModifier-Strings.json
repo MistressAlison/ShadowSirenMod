@@ -7,8 +7,8 @@
   "ShadowSiren:ElectricDamage": {
     "NAME": "Electric",
     "DESCRIPTION": "Electric [ElectricIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs on hit, dealing an additional #b50% of the damage to a random enemy. NL #yBlock: Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
-                            "#yDamage: Arcs on hit, dealing an additional #b50% of the damage to a random enemy.",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Arcs once when dealing unblocked damage, hitting a random enemy for #b50% of the damage dealt. NL #yBlock: Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
+                            "#yDamage: Arcs once when dealing unblocked damage, hitting a random enemy for #b50% of the damage dealt.",
                             "#yBlock: Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types."]
   },
   "ShadowSiren:FireDamage": {

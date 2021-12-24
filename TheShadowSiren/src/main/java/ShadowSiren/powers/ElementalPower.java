@@ -1,7 +1,7 @@
 package ShadowSiren.powers;
 
 import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.powers.OnCreateDamageInfoPower;
+import IconsAddon.powers.DamageModApplyingPower;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
@@ -10,21 +10,27 @@ import ShadowSiren.powers.interfaces.OnChangeElementPower;
 import ShadowSiren.util.ParticleOrbitRenderer;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
+import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import javassist.CannotCompileException;
+import javassist.CtBehavior;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ElementalPower extends AbstractPower implements InvisiblePower, OnCreateDamageInfoPower {
+public class ElementalPower extends AbstractPower implements InvisiblePower, DamageModApplyingPower {
     public static final String POWER_ID = ShadowSirenMod.makeID("ElementalPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -61,6 +67,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
             for (Class<?> modClass : newMods.keySet()) {
                 AbstractVivianDamageModifier copy = (AbstractVivianDamageModifier) newMods.get(modClass).makeCopy();
                 copy.tipType = AbstractVivianDamageModifier.TipType.DAMAGE;
+                copy.putIconOnCard = true;
                 mods.add(copy);
                 DamageModifierManager.addModifier(this, copy);
             }
@@ -161,17 +168,41 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, OnC
     }
 
     @Override
-    public void onCreateDamageInfo(DamageInfo damageInfo, AbstractCard card) {
-        if (hasAnElement() && card != null && !(card instanceof AbstractInertCard) && card.type == AbstractCard.CardType.ATTACK && (DamageModifierManager.getDamageMods(damageInfo).isEmpty() || DamageModifierManager.getDamageMods(damageInfo).stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement))) {
-            DamageModifierManager.bindDamageModsFromObject(damageInfo, this);
-            this.addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    removeAllElements();
-                    this.isDone = true;
-                }
-            });
-        }
+    public void onAddedDamageModsToDamageInfo(DamageInfo damageInfo, AbstractCard card) {
+        this.addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                removeAllElements();
+                this.isDone = true;
+            }
+        });
         ParticleOrbitRenderer.increaseSpeed(ParticleOrbitRenderer.NORMAL_BOOST);
+    }
+
+    @Override
+    public boolean shouldPushMods(DamageInfo damageInfo, AbstractCard card, List<AbstractDamageModifier> list) {
+        return hasAnElement() && card != null && !(card instanceof AbstractInertCard) && card.type == AbstractCard.CardType.ATTACK && list.stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement);
+    }
+
+    @Override
+    public ArrayList<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, AbstractCard card, List<AbstractDamageModifier> list) {
+        return new ArrayList<>(DamageModifierManager.modifiers(this));
+    }
+
+    @SpirePatch2(clz = AbstractPlayer.class, method = "renderPowerTips")
+    public static class RenderElementalTooltip {
+        @SpireInsertPatch(locator = Locator.class, localvars = {"tips"})
+        public static void patch(AbstractPlayer __instance, ArrayList<PowerTip> tips) {
+            if (__instance.hasPower(ElementalPower.POWER_ID)) {
+                tips.add(new PowerTip(__instance.getPower(ElementalPower.POWER_ID).name, __instance.getPower(ElementalPower.POWER_ID).description));
+            }
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            public int[] Locate(CtBehavior ctMethodToPatch) throws CannotCompileException, PatchingException {
+                Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractPlayer.class, "stance");
+                return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
+            }
+        }
     }
 }

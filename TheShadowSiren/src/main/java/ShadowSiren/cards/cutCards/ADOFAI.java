@@ -1,5 +1,6 @@
 package ShadowSiren.cards.cutCards;
 
+import IconsAddon.util.DamageModContainer;
 import IconsAddon.util.DamageModifierHelper;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
@@ -40,8 +41,8 @@ public class ADOFAI extends AbstractMultiElementCard implements MagicAnimation {
     private static final int DAMAGE = 5;
     private static final int UPGRADE_PLUS_DMG = 2;
 
-    private final Object fire = new Object();
-    private final Object ice = new Object();
+    private final DamageModContainer fire = new DamageModContainer(new FireDamage());
+    private final DamageModContainer ice = new DamageModContainer(new IceDamage());
 
     private final FireDamage fireDamage = new FireDamage(AbstractVivianDamageModifier.TipType.DAMAGE, true, false);
     private final IceDamage iceDamage = new IceDamage(AbstractVivianDamageModifier.TipType.DAMAGE, true, false);
@@ -53,8 +54,6 @@ public class ADOFAI extends AbstractMultiElementCard implements MagicAnimation {
         baseDamage = damage = secondMagicNumber = baseSecondMagicNumber = DAMAGE;
         DamageModifierManager.addModifier(this, fireDamage);
         DamageModifierManager.addModifier(this, iceDamage);
-        DamageModifierManager.addModifier(fire, new FireDamage());
-        DamageModifierManager.addModifier(ice, new IceDamage());
     }
 
     // Actions the card should do.

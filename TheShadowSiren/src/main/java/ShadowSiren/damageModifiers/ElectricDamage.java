@@ -76,7 +76,7 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
                         if (target != null) {
                             AbstractDungeon.effectList.add(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY));
                             CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.2f);
-                            DamageInfo di = DamageModifierHelper.makeBoundDamageInfoFromArray(DamageModifierManager.getDamageMods(info), info.owner, damage, DamageInfo.DamageType.THORNS);
+                            DamageInfo di = DamageModifierHelper.makeBoundDamageInfo(DamageModifierManager.getDamageMods(info), info.owner, damage, DamageInfo.DamageType.THORNS);
                             LoopCastCheck.loopCast.set(di, true);
                             this.addToTop(new DamageAction(target, di, AbstractGameAction.AttackEffect.NONE, true));
                             //this.addToTop(new VFXAction(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY)));

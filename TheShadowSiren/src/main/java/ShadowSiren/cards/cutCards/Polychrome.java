@@ -1,6 +1,7 @@
 package ShadowSiren.cards.cutCards;
 
 import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.util.BlockModContainer;
 import IconsAddon.util.BlockModifierManager;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
@@ -41,10 +42,10 @@ public class Polychrome extends AbstractMultiElementCard implements MagicAnimati
     private static final int BLOCK = 4;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
-    private Object fire = new Object();
-    private Object ice = new Object();
-    private Object elec = new Object();
-    private Object shadow = new Object();
+    private BlockModContainer fire = new BlockModContainer(new FireBlock());
+    private BlockModContainer ice = new BlockModContainer(new IceBlock());
+    private BlockModContainer elec = new BlockModContainer(new ElectricBlock());
+    private BlockModContainer shadow = new BlockModContainer(new ShadowBlock());
 
     // /STAT DECLARATION/
 
@@ -55,10 +56,6 @@ public class Polychrome extends AbstractMultiElementCard implements MagicAnimati
         DamageModifierManager.addModifier(this, new IceDamage(AbstractVivianDamageModifier.TipType.BLOCK));
         DamageModifierManager.addModifier(this, new ElectricDamage(AbstractVivianDamageModifier.TipType.BLOCK));
         DamageModifierManager.addModifier(this, new ShadowDamage(AbstractVivianDamageModifier.TipType.BLOCK));
-        BlockModifierManager.addModifier(fire, new FireBlock());
-        BlockModifierManager.addModifier(ice, new IceBlock());
-        BlockModifierManager.addModifier(elec, new ElectricBlock());
-        BlockModifierManager.addModifier(shadow, new ShadowBlock());
         this.exhaust = true;
     }
 

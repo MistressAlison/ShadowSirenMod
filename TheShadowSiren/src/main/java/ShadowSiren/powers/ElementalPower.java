@@ -2,6 +2,7 @@ package ShadowSiren.powers;
 
 import IconsAddon.damageModifiers.AbstractDamageModifier;
 import IconsAddon.powers.DamageModApplyingPower;
+import IconsAddon.util.DamageModContainer;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
@@ -35,7 +36,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private final ArrayList<AbstractDamageModifier> mods = new ArrayList<>();
+    public DamageModContainer con = new DamageModContainer();
 
     public ElementalPower(AbstractCreature owner) {
         this.owner = owner;
@@ -60,7 +61,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
                 newMods.put(mod.getClass(), (AbstractVivianDamageModifier) mod.makeCopy());
             }
         }
-        for (AbstractDamageModifier mod : mods) {
+        for (AbstractDamageModifier mod : con.modifiers()) {
             newMods.remove(mod.getClass());
         }
         if (newMods.size() > 0) {
@@ -68,8 +69,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
                 AbstractVivianDamageModifier copy = (AbstractVivianDamageModifier) newMods.get(modClass).makeCopy();
                 copy.tipType = AbstractVivianDamageModifier.TipType.DAMAGE;
                 copy.putIconOnCard = true;
-                mods.add(copy);
-                DamageModifierManager.addModifier(this, copy);
+                con.addModifier(copy);
             }
             updateDescription();
             for (AbstractPower pow : owner.powers) {
@@ -80,54 +80,14 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
         }
     }
 
-    /*public void grabElementsOffCard(AbstractCard card) {
-        if (elementsAreDifferent(card)) {
-            mods.clear();
-            for (AbstractDamageModifier mod : DamageModifierManager.modifiers(card)) {
-                if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).isAnElement) {
-                    if (!mods.contains(mod)) {
-                        mods.add(mod);
-                    }
-                }
-            }
-            if (!mods.isEmpty()) {
-                DamageModifierManager.removeAllModifiers(this);
-                for (AbstractDamageModifier mod : mods) {
-                    DamageModifierManager.addModifier(this, mod);
-                }
-                updateDescription();
-            }
-            for (AbstractPower pow : owner.powers) {
-                if (pow instanceof OnChangeElementPower) {
-                    ((OnChangeElementPower) pow).onChangeElement();
-                }
-            }
-        }
-    }*/
-
-    /*private boolean elementsAreDifferent(AbstractCard c) {
-        ArrayList<Class<?>> uniqueClasses = new ArrayList<>();
-        for (AbstractDamageModifier mod : mods) {
-            uniqueClasses.add(mod.getClass());
-        }
-        for (AbstractDamageModifier mod : DamageModifierManager.modifiers(c)) {
-            if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).isAnElement) {
-                if (!uniqueClasses.remove(mod.getClass())) {
-                    return true;
-                }
-            }
-        }
-        return uniqueClasses.size() != 0;
-    }*/
-
     @Override
     public void updateDescription() {
         StringBuilder sb = new StringBuilder();
         sb.append(DESCRIPTIONS[0]);
-        if (DamageModifierManager.modifiers(this).size() > 0) {
+        if (!con.modifiers().isEmpty()) {
             sb.append(DESCRIPTIONS[1]);
         }
-        for (AbstractDamageModifier mod : mods) {
+        for (AbstractDamageModifier mod : con.modifiers()) {
             if (mod instanceof AbstractVivianDamageModifier) {
                 sb.append(" NL ").append(((AbstractVivianDamageModifier) mod).cardStrings.DESCRIPTION);
             }
@@ -146,23 +106,22 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
     public static void removeAllElements() {
         if (hasElementalPower()) {
             ElementalPower p = getElementalPower();
-            p.mods.clear();
-            DamageModifierManager.removeAllModifiers(p);
+            p.con.clearModifiers();
             p.updateDescription();
         }
     }
 
     public static boolean hasAnElement() {
-        return !DamageModifierManager.modifiers(getElementalPower()).isEmpty();
+        return !getElementalPower().con.modifiers().isEmpty();
     }
 
     public static int numActiveElements() {
-        return DamageModifierManager.modifiers(getElementalPower()).size();
+        return getElementalPower().con.modifiers().size();
     }
 
     public static List<AbstractDamageModifier> getActiveElements() {
         if (hasElementalPower()) {
-            return DamageModifierManager.modifiers(getElementalPower());
+            return getElementalPower().con.modifiers();
         }
         return new ArrayList<>();
     }
@@ -186,7 +145,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
 
     @Override
     public ArrayList<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, AbstractCard card, List<AbstractDamageModifier> list) {
-        return new ArrayList<>(DamageModifierManager.modifiers(this));
+        return new ArrayList<>(con.modifiers());
     }
 
     @SpirePatch2(clz = AbstractPlayer.class, method = "renderPowerTips")

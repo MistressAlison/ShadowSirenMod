@@ -16,15 +16,8 @@ public class ElectricBlock extends AbstractBlockModifier {
     public static final String ID = ShadowSirenMod.makeID("ElectricBlock");
     public final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final Color c = Color.YELLOW.cpy();
-    private static Object electricContainer;
-    private static final int DAMAGE = 3;
 
-    public ElectricBlock() {
-        if (electricContainer == null) {
-            electricContainer = new Object();
-            DamageModifierManager.addModifier(electricContainer, new ElectricDamage());
-        }
-    }
+    public ElectricBlock() {}
 
     @Override
     public void onThisBlockDamaged(DamageInfo info, int lostAmount) {

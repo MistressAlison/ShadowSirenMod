@@ -95,7 +95,7 @@ public class StarFallAction extends AbstractGameAction {
                     delayedHitVFX = null;
                 }
                 if (delayedHitCreature != null) {
-                    delayedHitCreature.damage(DamageModifierHelper.makeBoundDamageInfo(this, AbstractDungeon.player, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(delayedHitCreature)], damageTypeForTurn));
+                    delayedHitCreature.damage(new DamageInfo(AbstractDungeon.player, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(delayedHitCreature)], damageTypeForTurn));
                     delayedHitCreature = null;
                 }
             }

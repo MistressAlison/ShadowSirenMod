@@ -1,6 +1,7 @@
 package ShadowSiren.util;
 
 import IconsAddon.damageModifiers.AbstractDamageModifier;
+import IconsAddon.util.DamageModContainer;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.ElementalPower;
@@ -112,9 +113,9 @@ public class ParticleOrbitRenderer {
             angle -= BASE_ANGLE_SPEED*angleSpeedMulti*Gdx.graphics.getDeltaTime();
             angle %= 360;
             if (__instance.hasPower(ElementalPower.POWER_ID)) {
-                da = 360f/ DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID)).stream().filter(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement).count();
+                da = 360f/ ElementalPower.getActiveElements().stream().filter(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement).count();
                 a = 0;
-                for (AbstractDamageModifier mod : DamageModifierManager.modifiers(AbstractDungeon.player.getPower(ElementalPower.POWER_ID))) {
+                for (AbstractDamageModifier mod : ElementalPower.getActiveElements()) {
                     if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).isAnElement) {
                         if (particleTimer < 0.0F) {
                             AbstractDungeon.effectList.add(new ElementParticleEffect((AbstractVivianDamageModifier) mod, x + orbitNormalOffset, y + orbitHeight, -orbitNormalOffset, -orbitHeight, renderScale, angle+a));

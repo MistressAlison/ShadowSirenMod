@@ -1,6 +1,7 @@
 package ShadowSiren.cards.cutCards;
 
 import IconsAddon.actions.GainCustomBlockAction;
+import IconsAddon.util.BlockModContainer;
 import IconsAddon.util.BlockModifierManager;
 import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
@@ -40,8 +41,8 @@ public class FrostflameBarrier extends AbstractMultiElementCard {
     private static final int BLOCK = 4;
     private static final int UPGRADE_PLUS_BLOCK = 2;
 
-    private Object fire = new Object();
-    private Object ice = new Object();
+    private BlockModContainer fire = new BlockModContainer(new IceBlock());
+    private BlockModContainer ice = new BlockModContainer(new FireBlock());
 
     // /STAT DECLARATION/
 
@@ -50,8 +51,6 @@ public class FrostflameBarrier extends AbstractMultiElementCard {
         baseBlock = block = BLOCK;
         DamageModifierManager.addModifier(this, new FireDamage(AbstractVivianDamageModifier.TipType.BLOCK));
         DamageModifierManager.addModifier(this, new IceDamage(AbstractVivianDamageModifier.TipType.BLOCK));
-        BlockModifierManager.addModifier(ice, new IceBlock());
-        BlockModifierManager.addModifier(fire, new FireBlock());
     }
 
     // Actions the card should do.

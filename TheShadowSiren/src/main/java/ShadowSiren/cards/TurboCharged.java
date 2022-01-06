@@ -4,10 +4,10 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ChargePower;
-import ShadowSiren.util.XCostGrabber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
@@ -43,7 +43,11 @@ public class TurboCharged extends AbstractElectricCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = XCostGrabber.getXCostAmount(this)*MULTI;
+        int effect = energyOnUse;
+
+        if (p.hasRelic(ChemicalX.ID)) {
+            effect += ChemicalX.BOOST;
+        }
 
         if (effect > 0) {
             this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, effect)));

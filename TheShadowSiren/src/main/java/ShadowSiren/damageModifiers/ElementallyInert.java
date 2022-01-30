@@ -1,10 +1,8 @@
 package ShadowSiren.damageModifiers;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.icons.AbstractCustomIcon;
-import IconsAddon.icons.GearIcon;
 import ShadowSiren.ShadowSirenMod;
 import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 
 import java.util.ArrayList;
 
@@ -31,11 +29,6 @@ public class ElementallyInert extends AbstractVivianDamageModifier {
     @Override
     public String getCardDescriptor() {
         return cardStrings.NAME;
-    }
-
-    @Override
-    public AbstractCustomIcon getAccompanyingIcon() {
-        return GearIcon.get();
     }
 
     @Override

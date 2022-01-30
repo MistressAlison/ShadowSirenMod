@@ -1,7 +1,7 @@
 package ShadowSiren.cards.abstractCards;
 
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.damageModifiers.ElementallyInert;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 
 public abstract class AbstractInertCard extends AbstractDynamicCard {
     public AbstractInertCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {

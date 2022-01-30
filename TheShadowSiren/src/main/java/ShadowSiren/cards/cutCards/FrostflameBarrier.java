@@ -1,9 +1,5 @@
 package ShadowSiren.cards.cutCards;
 
-import IconsAddon.actions.GainCustomBlockAction;
-import IconsAddon.util.BlockModContainer;
-import IconsAddon.util.BlockModifierManager;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.FireBlock;
 import ShadowSiren.blockTypes.IceBlock;
@@ -13,6 +9,9 @@ import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.FireDamage;
 import ShadowSiren.damageModifiers.IceDamage;
 import basemod.AutoAdd;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModContainer;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 

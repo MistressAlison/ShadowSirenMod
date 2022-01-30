@@ -1,6 +1,5 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.IntensifyAction;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
@@ -8,6 +7,7 @@ import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.ElementalPower;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -77,7 +77,7 @@ public class WildMagic extends AbstractInertCard {
                 break;
 
         }
-        this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(this, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+        this.addToBot(new DamageAction(m, BindingHelper.makeInfo(this, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
         int effect = ElementalPower.numActiveElements() * magicNumber;
         if (effect > 0) {
             this.addToBot(new IntensifyAction(this, effect, IntensifyAction.EffectType.DAMAGE));

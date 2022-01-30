@@ -1,12 +1,16 @@
 package ShadowSiren.icons;
 
-import IconsAddon.icons.AbstractCustomIcon;
-import IconsAddon.util.TextureLoader;
-import com.badlogic.gdx.graphics.Texture;
+import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.util.TextureLoader;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 
 public class HatIcon extends AbstractCustomIcon {
-
+    public static final String ID = ShadowSirenMod.makeID("Hat");
     private static HatIcon singleton;
+
+    public HatIcon() {
+        super(ID, TextureLoader.getTexture("ShadowSirenResources/images/icons/Hat.png"));
+    }
 
     public static HatIcon get()
     {
@@ -15,15 +19,4 @@ public class HatIcon extends AbstractCustomIcon {
         }
         return singleton;
     }
-
-    @Override
-    public String name() {
-        return "Hat";
-    }
-
-    @Override
-    public Texture getTexture() {
-        return TextureLoader.getTexture("ShadowSirenResources/images/icons/Hat.png");
-    }
-
 }

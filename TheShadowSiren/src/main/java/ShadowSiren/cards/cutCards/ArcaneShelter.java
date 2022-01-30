@@ -1,6 +1,5 @@
 package ShadowSiren.cards.cutCards;
 
-import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.ShadowBlock;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
@@ -8,6 +7,7 @@ import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.NextTurnTempDexPower;
 import basemod.AutoAdd;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

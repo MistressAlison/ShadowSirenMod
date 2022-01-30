@@ -6,21 +6,21 @@
   },
   "ShadowSiren:ElectricDamage": {
     "NAME": "Electric",
-    "DESCRIPTION": "Electric [ElectricIcon]",
+    "DESCRIPTION": "Electric [ShadowSiren:ElectricIcon]",
     "EXTENDED_DESCRIPTION": ["#yDamage: Arcs once when dealing unblocked damage, hitting a random enemy for #b50% of the damage dealt. NL #yBlock: Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
                             "#yDamage: Arcs once when dealing unblocked damage, hitting a random enemy for #b50% of the damage dealt.",
                             "#yBlock: Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types."]
   },
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
-    "DESCRIPTION": "Fire [FireIcon]",
+    "DESCRIPTION": "Fire [ShadowSiren:FireIcon]",
     "EXTENDED_DESCRIPTION": ["#yDamage: Target loses Max HP equal to unblocked damage dealt. Deals #b25% more attack damage to targets at or above #b75% HP. NL #yBlock: Application scales with #yVigor, consuming it.",
                             "#yDamage: Target loses Max HP equal to unblocked damage dealt. Deals #b25% more attack damage to targets at or above #b75% HP.",
                             "#yBlock: Application scales with #yVigor, consuming it."]
   },
   "ShadowSiren:IceDamage": {
     "NAME": "Ice",
-    "DESCRIPTION": "Ice [IceIcon]",
+    "DESCRIPTION": "Ice [ShadowSiren:IceIcon]",
     "EXTENDED_DESCRIPTION": ["#yDamage: Applies #yChill on hit. NL #yBlock: Attackers take damage equal to their #yChill.",
                             "#yDamage: Applies #yChill on hit.",
                             "#yBlock: Attackers take damage equal to their #yChill."]
@@ -32,7 +32,7 @@
   },
   "ShadowSiren:ShadowDamage": {
     "NAME": "Shadow",
-    "DESCRIPTION": "Shadow [DarkIcon]",
+    "DESCRIPTION": "Shadow [ShadowSiren:DarkIcon]",
     "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and causes the target to lose HP equal to their #yShadow #ySplit. NL #yBlock: When attacked, applies 3 #yShadow #ySplit to the attacker.",
                             "#yDamage: Ignores #yBlock and causes the target to lose HP equal to their #yShadow #ySplit.",
                             "#yBlock: When attacked, applies 3 #yShadow #ySplit to the attacker."]
@@ -43,7 +43,7 @@
     "EXTENDED_DESCRIPTION": ["Can not deal #yElemental damage."]
   },
   "ShadowSiren:IceBlock": {
-    "NAME": "Ice Shield [IceIcon]",
+    "NAME": "Ice Shield [ShadowSiren:IceIcon]",
     "DESCRIPTION": "Attackers take damage equal to their #yChill."
   },
   "ShadowSiren:StickyBlock": {
@@ -51,16 +51,16 @@
     "DESCRIPTION": "Only reduced by #b1 at the start of turn."
   },
   "ShadowSiren:FireBlock": {
-    "NAME": "Fire Shield [FireIcon]",
+    "NAME": "Fire Shield [ShadowSiren:FireIcon]",
     "DESCRIPTION": "Application scales with #yVigor, consuming it.",
     "EXTENDED_DESCRIPTION": ["When you are attacked, deals #b"," [FireIcon] damage to the attacker."]
   },
   "ShadowSiren:ShadowBlock": {
-    "NAME": "Shadow Shield [DarkIcon]",
+    "NAME": "Shadow Shield [ShadowSiren:DarkIcon]",
     "DESCRIPTION": "When attacked, applies 3 #yShadow #ySplit to the attacker."
   },
   "ShadowSiren:ElectricBlock": {
-    "NAME": "Electric Shield [ElectricIcon]",
+    "NAME": "Electric Shield [ShadowSiren:ElectricIcon]",
     "DESCRIPTION": "Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
     "EXTENDED_DESCRIPTION": ["When attacking, deal a secondary #b"," [ElectricIcon] damage. When attacked, deals #b"," [ElectricIcon] damage back."]
   },

@@ -1,12 +1,12 @@
 package ShadowSiren.damageModifiers;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.icons.AbstractCustomIcon;
-import IconsAddon.icons.IceIcon;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.icons.IceIcon;
 import ShadowSiren.powers.ChillPower;
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;

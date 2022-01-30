@@ -1,7 +1,6 @@
 package ShadowSiren.damageModifiers;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.icons.AbstractCustomIcon;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

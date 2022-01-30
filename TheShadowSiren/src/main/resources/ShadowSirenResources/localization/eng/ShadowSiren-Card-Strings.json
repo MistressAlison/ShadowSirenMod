@@ -15,7 +15,7 @@
   },
   "ShadowSiren:ADOFAI": {
     "NAME": "ADOFAI",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [ShadowSiren:IceIcon] damage."
   },
   "ShadowSiren:Ambush": {
     "NAME": "Ambush",
@@ -29,7 +29,7 @@
   },
   "ShadowSiren:ArcaneShelter": {
     "NAME": "Arcane Shelter",
-    "DESCRIPTION": "Gain !B! [DarkIcon] Block X times. NL Next turn, gain X temporary Dexterity."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:DarkIcon] Block X times. NL Next turn, gain X temporary Dexterity."
   },
   "ShadowSiren:ArtOfWar": {
     "NAME": "Art Of War",
@@ -42,7 +42,7 @@
   "ShadowSiren:BlackHole": {
     "NAME": "Black Hole",
     "DESCRIPTION": "Reduce the cost of all cards in your hand by !M! this turn.",
-    "EXTENDED_DESCRIPTION": ["Remove ALL your debuffs. NL Deal !D! [DarkIcon] damage plus !M! for each removed debuff to ALL enemies."]
+    "EXTENDED_DESCRIPTION": ["Remove ALL your debuffs. NL Deal !D! [ShadowSiren:DarkIcon] damage plus !M! for each removed debuff to ALL enemies."]
   },
   "ShadowSiren:BlackMagic": {
     "NAME": "Black Magic",
@@ -54,7 +54,7 @@
   },
   "ShadowSiren:BlastBurn": {
     "NAME": "Blast Burn",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage to ALL enemies. NL Add !M! *Ashes into your hand. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] damage to ALL enemies. NL Add !M! *Ashes into your hand. NL Exhaust."
   },
   "ShadowSiren:Blitz": {
     "NAME": "Blitz",
@@ -67,11 +67,11 @@
   },
   "ShadowSiren:Cataclysm": {
     "NAME": "Cataclysm",
-    "DESCRIPTION": "Deal !D! [ElectricIcon] damage to ALL enemies. NL Gain [E] for each enemy this kills."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:ElectricIcon] damage to ALL enemies. NL Gain [E] for each enemy this kills."
   },
   "ShadowSiren:ChainShock": {
     "NAME": "Chain Shock",
-    "DESCRIPTION": "Deal !D! [ElectricIcon] damage to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:ElectricIcon] damage to ALL enemies. NL Exhaust."
   },
   "ShadowSiren:ChargeUp": {
     "NAME": "Charge Up",
@@ -84,12 +84,12 @@
   },
   "ShadowSiren:Cryogenesis": {
     "NAME": "Cryogenesis",
-    "DESCRIPTION": "Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [IceIcon] Block.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [IceIcon] Block."
+    "DESCRIPTION": "Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [ShadowSiren:IceIcon] Block.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [ShadowSiren:IceIcon] Block."
   },
   "ShadowSiren:DarkShield": {
     "NAME": "Dark Shield",
-    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL The next card you play this turn is returned to your hand."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:DarkIcon] Block. NL The next card you play this turn is returned to your hand."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
@@ -109,7 +109,7 @@
   },
   "ShadowSiren:Discharge": {
     "NAME": "Discharge",
-    "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL shadowsiren:Charge affects this card !M! times."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:ElectricIcon] damage. NL shadowsiren:Charge affects this card !M! times."
   },
   "ShadowSiren:Discipline": {
     "NAME": "Discipline",
@@ -150,20 +150,20 @@
   },
   "ShadowSiren:FieryJinx": {
     "NAME": "Fiery Jinx",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage to ALL enemies. NL Shuffle an *Ashes into your draw pile."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] damage to ALL enemies. NL Shuffle an *Ashes into your draw pile."
   },
   "ShadowSiren:FireOrb": {
     "NAME": "Fire Orb",
-    "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL *Attack shadowsiren:Follow-Up: NL Deal !D! [FireIcon] damage. NL *Skill shadowsiren:Follow-Up: NL Gain !M! Vigor."
+    "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL *Attack shadowsiren:Follow-Up: NL Deal !D! [ShadowSiren:FireIcon] damage. NL *Skill shadowsiren:Follow-Up: NL Gain !M! Vigor."
   },
   "ShadowSiren:FlameShield": {
     "NAME": "Flame Shield",
-    "DESCRIPTION": "Gain !B! [FireIcon] Block. NL Draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Gain !B! [FireIcon] Block. NL Draw !M! cards."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Draw !M! cards."
   },
   "ShadowSiren:FlashFire": {
     "NAME": "Flash Fire",
-    "DESCRIPTION": "Innate. NL Deal !D! [FireIcon] damage. NL Draw !M! cards. NL Exhaust."
+    "DESCRIPTION": "Innate. NL Deal !D! [ShadowSiren:FireIcon] damage. NL Draw !M! cards. NL Exhaust."
   },
   "ShadowSiren:FlashFreeze": {
     "NAME": "Flash Freeze",
@@ -172,24 +172,24 @@
   },
   "ShadowSiren:Frostbite": {
     "NAME": "Frostbite",
-    "DESCRIPTION": "Deal !D! [IceIcon] damage to ALL enemies. NL Deal !D! [IceIcon] damage again to ALL enemies that have Weak."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] damage to ALL enemies. NL Deal !D! [ShadowSiren:IceIcon] damage again to ALL enemies that have Weak."
   },
   "ShadowSiren:Frostfire": {
     "NAME": "Frostfire",
-    "DESCRIPTION": "Deal !D! [FireIcon] [IceIcon] damage to NL a random enemy !M! times."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] [ShadowSiren:IceIcon] damage to NL a random enemy !M! times."
   },
   "ShadowSiren:FrostflameBarrier": {
     "NAME": "Frostflame Barrier",
-    "DESCRIPTION": "Gain !B! [FireIcon] Block. NL Gain !B! [IceIcon] Block."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Gain !B! [ShadowSiren:IceIcon] Block."
   },
   "ShadowSiren:FrozenShield": {
     "NAME": "Frozen Shield",
-    "DESCRIPTION": "Gain !B! [IceIcon] Block."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block."
   },
   "ShadowSiren:Glaciate": {
     "NAME": "Glaciate",
-    "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Add !M! *Ice *Shard into your hand.",
-    "UPGRADE_DESCRIPTION": "Deal !D! [IceIcon] damage. NL Add !M! *Ice\u200B *Shard+ into your hand."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] damage. NL Add !M! *Ice *Shard into your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] damage. NL Add !M! *Ice\u200B *Shard+ into your hand."
   },
   "ShadowSiren:Hammer": {
     "NAME": "Hammer",
@@ -209,19 +209,19 @@
   },
   "ShadowSiren:IceOrb": {
     "NAME": "Ice Orb",
-    "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL *Attack shadowsiren:Follow-Up: NL Deal !D! [IceIcon] damage. NL *Skill shadowsiren:Follow-Up: NL Gain !B! Block."
+    "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL *Attack shadowsiren:Follow-Up: NL Deal !D! [ShadowSiren:IceIcon] damage. NL *Skill shadowsiren:Follow-Up: NL Gain !B! Block."
   },
   "ShadowSiren:IceShard": {
     "NAME": "Ice Shard",
-    "DESCRIPTION": "Deal !D! [IceIcon] damage. NL If the target has Block, deal !D! [IceIcon] damage again. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] damage. NL If the target has Block, deal !D! [ShadowSiren:IceIcon] damage again. NL Exhaust."
   },
   "ShadowSiren:IceWall": {
     "NAME": "Ice Wall",
-    "DESCRIPTION": "Gain !B! [IceIcon] Block. NL Deal !D! [IceIcon] damage."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block. NL Deal !D! [ShadowSiren:IceIcon] damage."
   },
   "ShadowSiren:IcyWind": {
     "NAME": "Icy Wind",
-    "DESCRIPTION": "Gain !B! [IceIcon] Block. NL Apply !M! *Chill to ALL enemies."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block. NL Apply !M! *Chill to ALL enemies."
   },
   "ShadowSiren:Immolate": {
     "NAME": "Immolate",
@@ -241,7 +241,7 @@
   },
   "ShadowSiren:Livewire": {
     "NAME": "Livewire",
-    "DESCRIPTION": "Deal !D! [ElectricIcon] damage and apply !M! shadowsiren:Shock to a random enemy."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:ElectricIcon] damage and apply !M! shadowsiren:Shock to a random enemy."
   },
   "ShadowSiren:MagicCloak": {
     "NAME": "Magic Cloak",
@@ -249,7 +249,7 @@
   },
   "ShadowSiren:MagneticStrike": {
     "NAME": "Magnetic Strike",
-    "DESCRIPTION": "Deal !D! [IceIcon] [ElectricIcon] damage. NL Deals 50% more damage if the target has Block."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] [ShadowSiren:ElectricIcon] damage. NL Deals 50% more damage if the target has Block."
   },
   "ShadowSiren:ManaBattery": {
     "NAME": "Mana Battery",
@@ -258,7 +258,7 @@
   },
   "ShadowSiren:OminousFrost": {
     "NAME": "Ominous Frost",
-    "DESCRIPTION": "Deal !D! [IceIcon] [DarkIcon] damage. NL Apply !M! *Chill."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] [ShadowSiren:DarkIcon] damage. NL Apply !M! *Chill."
   },
   "ShadowSiren:Overheat": {
     "NAME": "Overheat",
@@ -270,7 +270,7 @@
   },
   "ShadowSiren:Permafrost": {
     "NAME": "Permafrost",
-    "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL Gain [IceIcon] Block equal to the amount of Weak on ALL enemies."
+    "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL Gain [ShadowSiren:IceIcon] Block equal to the amount of Weak on ALL enemies."
   },
   "ShadowSiren:PiezoCapacitor": {
     "NAME": "Piezo Capacitor",
@@ -278,7 +278,7 @@
   },
   "ShadowSiren:PlasmaBeam": {
     "NAME": "Plasma Beam",
-    "DESCRIPTION": "Deal !D! [FireIcon] [ElectricIcon] damage to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] [ShadowSiren:ElectricIcon] damage to ALL enemies. NL Exhaust."
   },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",
@@ -287,7 +287,7 @@
   },
   "ShadowSiren:Polychrome": {
     "NAME": "Polychrome",
-    "DESCRIPTION": "Gain !B! [FireIcon] Block. NL Gain !B! [IceIcon] Block. NL Gain !B! [ElectricIcon] Block. NL Gain !B! [DarkIcon] Block. NL Exhaust."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Gain !B! [ShadowSiren:IceIcon] Block. NL Gain !B! [ShadowSiren:ElectricIcon] Block. NL Gain !B! [ShadowSiren:DarkIcon] Block. NL Exhaust."
   },
   "ShadowSiren:PureStrike": {
     "NAME": "Pure Strike",
@@ -295,12 +295,12 @@
   },
   "ShadowSiren:Pyre": {
     "NAME": "Pyre",
-    "DESCRIPTION": "Gain !B! [FireIcon] Block. NL Gain !M! Vigor. NL Shuffle an *Ashes into your draw pile."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Gain !M! Vigor. NL Shuffle an *Ashes into your draw pile."
   },
   "ShadowSiren:Recuperate": {
     "NAME": "Recuperate",
-    "DESCRIPTION": "Gain !B! [DarkIcon] Block. NL A random card in your hand costs 0 this turn.",
-    "UPGRADE_DESCRIPTION": "Gain !B! [DarkIcon] Block. NL Remove up to !M! debuffs if you have any, otherwise draw up to !M! cards."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:DarkIcon] Block. NL A random card in your hand costs 0 this turn.",
+    "UPGRADE_DESCRIPTION": "Gain !B! [ShadowSiren:DarkIcon] Block. NL Remove up to !M! debuffs if you have any, otherwise draw up to !M! cards."
   },
   "ShadowSiren:ReturningStrike": {
     "NAME": "Returning Strike",
@@ -312,11 +312,11 @@
   },
   "ShadowSiren:ShadeFist": {
     "NAME": "Shade Fist",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] damage."
   },
   "ShadowSiren:ShadeShock": {
     "NAME": "Shade Shock",
-    "DESCRIPTION": "Deal !D! [ElectricIcon] [DarkIcon] damage and apply that much shadowsiren:Shock. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:ElectricIcon] [ShadowSiren:DarkIcon] damage and apply that much shadowsiren:Shock. NL Exhaust."
   },
   "ShadowSiren:ShadowOrb": {
     "NAME": "Shadow Orb",
@@ -325,7 +325,7 @@
   },
   "ShadowSiren:ShadowSneak": {
     "NAME": "Shadow Sneak",
-    "DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Put a random cost 0 card from your draw pile into your hand."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:DarkIcon] damage. NL Put a random cost 0 card from your draw pile into your hand."
   },
   "ShadowSiren:ShadowTag": {
     "NAME": "Shadow Tag",
@@ -338,8 +338,8 @@
   },
   "ShadowSiren:Shock": {
     "NAME": "Electro Shield",
-    "DESCRIPTION": "Gain !B! [ElectricIcon] Block. NL Draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Gain !B! [ElectricIcon] Block. NL Draw !M! cards."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:ElectricIcon] Block. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! [ShadowSiren:ElectricIcon] Block. NL Draw !M! cards."
   },
   "ShadowSiren:Singe": {
     "NAME": "Singe",
@@ -351,20 +351,20 @@
   },
   "ShadowSiren:SnowBlind": {
     "NAME": "Snowblind",
-    "DESCRIPTION": "Deal !D! [IceIcon] damage. NL Apply !M! Weak."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] damage. NL Apply !M! Weak."
   },
   "ShadowSiren:SnowFort": {
     "NAME": "Snow Fort",
-    "DESCRIPTION": "Gain !B! [IceIcon] Block. NL Add an *Ice *Shard into your hand.",
-    "UPGRADE_DESCRIPTION": "Gain !B! [IceIcon] Block. NL Add an *Ice\u200B *Shard+ into your hand."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block. NL Add an *Ice *Shard into your hand.",
+    "UPGRADE_DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block. NL Add an *Ice\u200B *Shard+ into your hand."
   },
   "ShadowSiren:SpiritBurn": {
     "NAME": "Spirit Burn",
-    "DESCRIPTION": "Deal !D! [FireIcon] [DarkIcon] damage. NL Enemy loses !M! Strength. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] [ShadowSiren:DarkIcon] damage. NL Enemy loses !M! Strength. NL Exhaust."
   },
   "ShadowSiren:SpiritDrain": {
     "NAME": "Spirit Drain",
-    "DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Enemy loses !M! Strength this turn."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:DarkIcon] damage. NL Enemy loses !M! Strength this turn."
   },
   "ShadowSiren:StarFall": {
     "NAME": "Star Fall",
@@ -376,7 +376,7 @@
   },
   "ShadowSiren:StaticBarrier": {
     "NAME": "Static Barrier",
-    "DESCRIPTION": "Retain. NL Gain !B! [ElectricIcon] Block !M! times."
+    "DESCRIPTION": "Retain. NL Gain !B! [ShadowSiren:ElectricIcon] Block !M! times."
   },
   "ShadowSiren:Strike": {
     "NAME": "Strike",
@@ -388,15 +388,15 @@
   },
   "ShadowSiren:Thunderstruck": {
     "NAME": "Thunderstruck",
-    "DESCRIPTION": "Deal !D! [ElectricIcon] damage. NL Apply !M! Vulnerable. NL shadowsiren:Reshuffle."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:ElectricIcon] damage. NL Apply !M! Vulnerable. NL shadowsiren:Reshuffle."
   },
   "ShadowSiren:TriAttack": {
     "NAME": "Tri Attack",
-    "DESCRIPTION": "Deal !D! [FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [IceIcon] damage. NL Deal !ShadowSiren:ThirdMagic! [ElectricIcon] damage. NL shadowsiren:Intensify damage by !M!."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] damage. NL Deal !ShadowSiren:SecondMagic! [ShadowSiren:IceIcon] damage. NL Deal !ShadowSiren:ThirdMagic! [ShadowSiren:ElectricIcon] damage. NL shadowsiren:Intensify damage by !M!."
   },
   "ShadowSiren:Trick": {
     "NAME": "Trick",
-    "DESCRIPTION": "Deal !D! [DarkIcon] damage. NL Remove a debuff if you have any, otherwise apply !M! shadowsiren:Shadow_Split."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:DarkIcon] damage. NL Remove a debuff if you have any, otherwise apply !M! shadowsiren:Shadow_Split."
   },
   "ShadowSiren:TurboCharged": {
     "NAME": "Turbo Charged",
@@ -409,11 +409,11 @@
   },
   "ShadowSiren:Vulcanize": {
     "NAME": "Vulcanize",
-    "DESCRIPTION": "Unblocked [FireIcon] damage causes enemies to lose 25% more Max HP."
+    "DESCRIPTION": "Unblocked [ShadowSiren:FireIcon] damage causes enemies to lose 25% more Max HP."
   },
   "ShadowSiren:WhiteOut": {
     "NAME": "White Out",
-    "DESCRIPTION": "Deal !D! [IceIcon] [DarkIcon] damage and apply !M! Weak to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] [ShadowSiren:DarkIcon] damage and apply !M! Weak to ALL enemies. NL Exhaust."
   },
   "ShadowSiren:WildMagic": {
     "NAME": "Wild Magic",

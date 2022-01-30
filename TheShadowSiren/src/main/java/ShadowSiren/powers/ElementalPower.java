@@ -1,15 +1,15 @@
 package ShadowSiren.powers;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.powers.DamageModApplyingPower;
-import IconsAddon.util.DamageModContainer;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.interfaces.OnChangeElementPower;
 import ShadowSiren.util.ParticleOrbitRenderer;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModContainer;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
@@ -36,7 +36,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public DamageModContainer con = new DamageModContainer();
+    public DamageModContainer con = new DamageModContainer(this);
 
     public ElementalPower(AbstractCreature owner) {
         this.owner = owner;
@@ -127,7 +127,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
     }
 
     @Override
-    public void onAddedDamageModsToDamageInfo(DamageInfo damageInfo, AbstractCard card) {
+    public void onAddedDamageModsToDamageInfo(DamageInfo damageInfo, Object o) {
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
@@ -139,12 +139,12 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
     }
 
     @Override
-    public boolean shouldPushMods(DamageInfo damageInfo, AbstractCard card, List<AbstractDamageModifier> list) {
-        return hasAnElement() && card != null && !(card instanceof AbstractInertCard) && card.type == AbstractCard.CardType.ATTACK && list.stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement);
+    public boolean shouldPushMods(DamageInfo damageInfo, Object o, List<AbstractDamageModifier> list) {
+        return hasAnElement() && o instanceof AbstractCard && !(o instanceof AbstractInertCard) && ((AbstractCard) o).type == AbstractCard.CardType.ATTACK && list.stream().noneMatch(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement);
     }
 
     @Override
-    public ArrayList<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, AbstractCard card, List<AbstractDamageModifier> list) {
+    public List<AbstractDamageModifier> modsToPush(DamageInfo damageInfo, Object u, List<AbstractDamageModifier> list) {
         return new ArrayList<>(con.modifiers());
     }
 

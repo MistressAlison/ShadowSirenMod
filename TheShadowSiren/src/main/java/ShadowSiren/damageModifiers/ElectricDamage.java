@@ -1,15 +1,15 @@
 package ShadowSiren.damageModifiers;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.icons.AbstractCustomIcon;
-import IconsAddon.icons.ElectricIcon;
-import IconsAddon.util.DamageModifierHelper;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.icons.ElectricIcon;
 import ShadowSiren.powers.EnergyConversionPower;
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -76,7 +76,7 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
                         if (target != null) {
                             AbstractDungeon.effectList.add(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY));
                             CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.2f);
-                            DamageInfo di = DamageModifierHelper.makeBoundDamageInfo(DamageModifierManager.getDamageMods(info), info.owner, damage, DamageInfo.DamageType.THORNS);
+                            DamageInfo di = BindingHelper.makeInfo(DamageModifierManager.getDamageMods(info), info.owner, damage, DamageInfo.DamageType.THORNS);
                             LoopCastCheck.loopCast.set(di, true);
                             this.addToTop(new DamageAction(target, di, AbstractGameAction.AttackEffect.NONE, true));
                             //this.addToTop(new VFXAction(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY)));

@@ -1,6 +1,5 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
@@ -9,6 +8,7 @@ import ShadowSiren.damageModifiers.ElectricDamage;
 import ShadowSiren.damageModifiers.ShadowDamage;
 import ShadowSiren.powers.ShockPower;
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;

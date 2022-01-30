@@ -1,11 +1,10 @@
 package ShadowSiren.powers;
 
-import IconsAddon.blockModifiers.AbstractBlockModifier;
-import IconsAddon.powers.OnCreateBlockContainerPower;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.IceBlock;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.AbstractBlockModifier;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnCreateBlockInstancePower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -13,7 +12,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.HashSet;
 
-public class CryogenesisPower extends AbstractPower implements CloneablePowerInterface, OnCreateBlockContainerPower {
+public class CryogenesisPower extends AbstractPower implements CloneablePowerInterface, OnCreateBlockInstancePower {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("CryogenesisPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -56,7 +55,7 @@ public class CryogenesisPower extends AbstractPower implements CloneablePowerInt
     }
 
     @Override
-    public void onCreateBlockContainer(HashSet<AbstractBlockModifier> hashSet, AbstractCard abstractCard) {
+    public void onCreateBlockInstance(HashSet<AbstractBlockModifier> hashSet, Object instigator) {
         if (hashSet.isEmpty()) {
             hashSet.add(new IceBlock());
         }

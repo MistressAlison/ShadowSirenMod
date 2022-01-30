@@ -1,11 +1,11 @@
 package ShadowSiren.damageModifiers;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.icons.AbstractCustomIcon;
-import IconsAddon.icons.FireIcon;
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.icons.FireIcon;
 import ShadowSiren.powers.VulcanizePower;
 import basemod.helpers.TooltipInfo;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;

@@ -1,11 +1,11 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractMultiElementCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.ElectricDamage;
 import ShadowSiren.damageModifiers.IceDamage;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;

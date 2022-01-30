@@ -1,9 +1,9 @@
 package ShadowSiren.cards.abstractCards;
 
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.damageModifiers.ShadowDamage;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 
 public abstract class AbstractShadowCard extends AbstractElementalCard {
 

@@ -1,6 +1,5 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.BlockModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.FireBlock;
 import ShadowSiren.cards.abstractCards.AbstractFireCard;
@@ -8,6 +7,7 @@ import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.cards.interfaces.VigorBlockBuff;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

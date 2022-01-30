@@ -1,14 +1,12 @@
 package ShadowSiren.util;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.util.DamageModContainer;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.vfx.ElementParticleEffect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.patches.HitboxRightClick;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;

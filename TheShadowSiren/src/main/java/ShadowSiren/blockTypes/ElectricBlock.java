@@ -1,11 +1,9 @@
 package ShadowSiren.blockTypes;
 
-import IconsAddon.blockModifiers.AbstractBlockModifier;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.damageModifiers.ElectricDamage;
 import ShadowSiren.powers.ShockPower;
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.blockmods.AbstractBlockModifier;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

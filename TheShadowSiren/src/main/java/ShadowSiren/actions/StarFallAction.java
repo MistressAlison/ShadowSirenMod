@@ -1,7 +1,5 @@
 package ShadowSiren.actions;
 
-import IconsAddon.damageModifiers.AbstractDamageModifier;
-import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.damageModifiers.*;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.util.ParticleOrbitRenderer;
@@ -9,6 +7,7 @@ import ShadowSiren.vfx.ElementParticleEffect;
 import basemod.helpers.VfxBuilder;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

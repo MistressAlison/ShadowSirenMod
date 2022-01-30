@@ -1,10 +1,10 @@
 package ShadowSiren.cards;
 
-import IconsAddon.util.DamageModifierHelper;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -60,7 +60,7 @@ public class ChainShock extends AbstractElectricCard implements MagicAnimation {
                     if (!aM.isDeadOrEscaped()) {
                         CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.2f);
                         AbstractDungeon.effectList.add(new LightningOrbActivateEffect(aM.hb.cX, aM.hb.cY));
-                        aM.damage(DamageModifierHelper.makeBoundDamageInfo(ChainShock.this, p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn));
+                        aM.damage(BindingHelper.makeInfo(ChainShock.this, p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn));
                     }
                 }
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {

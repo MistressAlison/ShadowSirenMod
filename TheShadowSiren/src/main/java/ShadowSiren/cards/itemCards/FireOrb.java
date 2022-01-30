@@ -1,12 +1,12 @@
 package ShadowSiren.cards.itemCards;
 
-import IconsAddon.util.DamageModifierHelper;
-import IconsAddon.util.DamageModifierManager;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractItemCard;
 import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.FireDamage;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -64,11 +64,11 @@ public class FireOrb extends AbstractItemCard implements TempCard {
         if (isActive && c != this) {
             if (c.type == CardType.ATTACK) {
                 if (m != null) {
-                    this.addToBot(new DamageAction(m, DamageModifierHelper.makeBoundDamageInfo(this, AbstractDungeon.player, damage, DamageInfo.DamageType.THORNS), true));
+                    this.addToBot(new DamageAction(m, BindingHelper.makeInfo(this, AbstractDungeon.player, damage, DamageInfo.DamageType.THORNS), true));
                 } else {
                     AbstractCreature target = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
                     if (target != null) {
-                        this.addToBot(new DamageAction(target, DamageModifierHelper.makeBoundDamageInfo(this, AbstractDungeon.player, damage, DamageInfo.DamageType.THORNS), true));
+                        this.addToBot(new DamageAction(target, BindingHelper.makeInfo(this, AbstractDungeon.player, damage, DamageInfo.DamageType.THORNS), true));
                     }
                 }
                 this.superFlash();

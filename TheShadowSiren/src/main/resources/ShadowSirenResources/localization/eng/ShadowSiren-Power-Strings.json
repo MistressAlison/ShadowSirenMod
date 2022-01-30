@@ -184,7 +184,7 @@
         },
         "ShadowSiren:CryogenesisPower": {
                 "NAME": "Cryogenesis",
-                "DESCRIPTIONS": ["Whenever you gain #yEementless #yBlock, it becomes [IceIcon] Block."]
+                "DESCRIPTIONS": ["Whenever you gain #yEementless #yBlock, it becomes NL [ShadowSiren:IceIcon] Block."]
         },
         "ShadowSiren:StarFormPower": {
                 "NAME": "Star Form",

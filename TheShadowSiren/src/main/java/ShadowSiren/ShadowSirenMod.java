@@ -1,8 +1,10 @@
 package ShadowSiren;
 
-import IconsAddon.util.CustomIconHelper;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.icons.HatIcon;
+import ShadowSiren.icons.DarkIcon;
+import ShadowSiren.icons.ElectricIcon;
+import ShadowSiren.icons.FireIcon;
+import ShadowSiren.icons.IceIcon;
 import ShadowSiren.potions.ChargePotion;
 import ShadowSiren.potions.CleansingPotion;
 import ShadowSiren.potions.FreezePotion;
@@ -18,6 +20,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.mod.widepotions.WidePotionsMod;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
@@ -523,9 +526,6 @@ public class ShadowSirenMod implements
 
             //WidePotionsMod.whitelistComplexPotion(MyOtherPotion.POTION_ID, new WideMyOtherPotion());
         }
-        if (Loader.isModLoaded("IconsAddon")) {
-            CustomIconHelper.addCustomIcon(HatIcon.get());
-        }
 
         logger.info("Loading badge image and mod options");
         
@@ -719,36 +719,7 @@ public class ShadowSirenMod implements
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
         // =============== SAVABLES =================
-        logger.info("Preparing CustomSavables");
-//        BaseMod.addSaveField(StarBarManager.saveString, new CustomSavable<StarBarManager.Container>() {
-//            @Override
-//            public StarBarManager.Container onSave() {
-//                StarBarManager.Container c = new StarBarManager.Container();
-//                StarBarManager.maxStarPower -= StarBarManager.tempMaxStarPower;
-//                StarBarManager.tempMaxStarPower = 0;
-//                if (StarBarManager.starPower >= StarBarManager.maxStarPower) {
-//                    StarBarManager.starPower = StarBarManager.maxStarPower;
-//                    StarBarManager.progress = 0;
-//                }
-//                c.pro = StarBarManager.progress;
-//                c.pow = StarBarManager.starPower;
-//                c.mPow = StarBarManager.maxStarPower;
-//                return c;
-//            }
-//
-//            @Override
-//            public void onLoad(StarBarManager.Container c) {
-//                StarBarManager.progress = c.pro;
-//                StarBarManager.starPower = c.pow;
-//                StarBarManager.maxStarPower = c.mPow;
-//            }
-//
-//            @Override
-//            public Type savedType() {
-//                return new TypeToken<StarBarManager.Container>(){}.getType();
-//            }
-//        });
-
+        //logger.info("Preparing CustomSavables");
 
         // =============== /SAVABLES/ =================
 
@@ -888,6 +859,13 @@ public class ShadowSirenMod implements
     
     @Override
     public void receiveEditCards() {
+        //Add icons
+        logger.info("Adding Icons");
+        CustomIconHelper.addCustomIcon(FireIcon.get());
+        CustomIconHelper.addCustomIcon(IceIcon.get());
+        CustomIconHelper.addCustomIcon(ElectricIcon.get());
+        CustomIconHelper.addCustomIcon(DarkIcon.get());
+
         logger.info("Adding variables");
         //Ignore this
         pathCheck();

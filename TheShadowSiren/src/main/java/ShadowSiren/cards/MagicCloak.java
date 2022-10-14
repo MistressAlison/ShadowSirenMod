@@ -17,7 +17,7 @@ public class MagicCloak extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(MagicCloak.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("MagicCloak.png");
 
     // /TEXT DECLARATION/
 

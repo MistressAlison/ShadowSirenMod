@@ -15,7 +15,7 @@ public class ArtOfWar extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(ArtOfWar.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("ArtOfWar.png");
 
     // /TEXT DECLARATION/
 

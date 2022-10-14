@@ -18,7 +18,7 @@ public class Kindle extends AbstractFireCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Kindle.class.getSimpleName());
-    public static final String IMG = makeCardPath("Kindle.png");
+    public static final String IMG = makeCardPath("Kindling.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/

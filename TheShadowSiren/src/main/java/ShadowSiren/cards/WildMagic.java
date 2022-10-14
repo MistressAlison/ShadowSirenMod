@@ -25,7 +25,7 @@ public class WildMagic extends AbstractInertCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(WildMagic.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("WildMagic.png");
 
     // /TEXT DECLARATION/
 

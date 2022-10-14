@@ -16,7 +16,7 @@ public class PatchUp extends AbstractDynamicCard implements ManuallySizeAdjusted
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(PatchUp.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("PatchUp.png");
 
     // /TEXT DECLARATION/
 

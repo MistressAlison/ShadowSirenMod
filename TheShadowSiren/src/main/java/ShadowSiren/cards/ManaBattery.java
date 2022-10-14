@@ -16,7 +16,7 @@ public class ManaBattery extends AbstractDynamicCard implements ModularDescripti
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(ManaBattery.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("ManaBattery.png");
 
     // /TEXT DECLARATION/
 

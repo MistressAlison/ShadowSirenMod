@@ -18,7 +18,7 @@ public class FrozenShield extends AbstractIceCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(FrozenShield.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("FrozenShield.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/

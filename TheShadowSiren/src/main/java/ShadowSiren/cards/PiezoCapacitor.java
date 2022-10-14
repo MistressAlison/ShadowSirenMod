@@ -15,7 +15,7 @@ public class PiezoCapacitor extends AbstractElectricCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(PiezoCapacitor.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("PiezoCapacitor.png");
 
     // /TEXT DECLARATION/
 

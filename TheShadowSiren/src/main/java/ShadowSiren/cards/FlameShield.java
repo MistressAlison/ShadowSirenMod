@@ -22,7 +22,7 @@ public class FlameShield extends AbstractFireCard implements ModularDescription,
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(FlameShield.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("FlamingShield.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/

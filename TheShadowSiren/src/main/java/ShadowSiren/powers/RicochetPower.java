@@ -50,30 +50,18 @@ public class RicochetPower extends AbstractPower implements CloneablePowerInterf
             //Don't waste a use if the card already was going to return
             if (!card.returnToHand && !card.exhaust && !card.purgeOnUse && card.type != AbstractCard.CardType.POWER) {
                 this.flash();
-                //action.returnToHand = true;
                 card.returnToHand = true;
+                boolean[] shuffleFix = {card.shuffleBackIntoDrawPile};
+                card.shuffleBackIntoDrawPile = false;
                 this.addToTop(new AbstractGameAction() {
                     @Override
                     public void update() {
                         card.returnToHand = false;
+                        card.shuffleBackIntoDrawPile = shuffleFix[0];
                         this.isDone = true;
                     }
                 });
-                if (card.shuffleBackIntoDrawPile) {
-                    card.shuffleBackIntoDrawPile = false;
-                    this.addToTop(new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                            card.shuffleBackIntoDrawPile = true;
-                            this.isDone = true;
-                        }
-                    });
-                }
-                if (this.amount == 1) {
-                    this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-                } else {
-                    this.addToBot(new ReducePowerAction(owner, owner, this, 1));
-                }
+                this.addToBot(new ReducePowerAction(owner, owner, this, 1));
             }
         }
     }

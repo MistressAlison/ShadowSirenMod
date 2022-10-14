@@ -16,7 +16,7 @@ public class PocketDimension extends AbstractDynamicCard implements ModularDescr
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(PocketDimension.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("PocketDimension.png");
 
     // /TEXT DECLARATION/
 

@@ -28,7 +28,7 @@ public class BlackHole extends AbstractShadowCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(BlackHole.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("BlackHole.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/

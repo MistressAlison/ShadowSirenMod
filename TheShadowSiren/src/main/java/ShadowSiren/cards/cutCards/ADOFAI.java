@@ -61,12 +61,7 @@ public class ADOFAI extends AbstractMultiElementCard implements MagicAnimation {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.hasPower(VulnerablePower.POWER_ID)) {
-            this.addToBot(new DamageAction(m, BindingHelper.makeInfo(fire, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        } else {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        }
-
+        this.addToBot(new DamageAction(m, BindingHelper.makeInfo(fire, p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         this.addToBot(new DamageAction(m, BindingHelper.makeInfo(ice, p, secondMagicNumber, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 

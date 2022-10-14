@@ -17,7 +17,7 @@ public class BlastBurn extends AbstractFireCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(BlastBurn.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("BlastBurn.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/

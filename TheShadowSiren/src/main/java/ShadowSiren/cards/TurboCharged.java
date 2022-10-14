@@ -50,7 +50,7 @@ public class TurboCharged extends AbstractElectricCard {
         }
 
         if (effect > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, effect)));
+            this.addToBot(new ApplyPowerAction(p, p, new ChargePower(p, effect * MULTI)));
         }
 
         if (!this.freeToPlayOnce) {

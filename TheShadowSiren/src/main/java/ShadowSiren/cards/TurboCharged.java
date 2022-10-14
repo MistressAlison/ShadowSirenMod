@@ -17,7 +17,7 @@ public class TurboCharged extends AbstractElectricCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(TurboCharged.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("TurboCharge.png");
 
     // /TEXT DECLARATION/
 

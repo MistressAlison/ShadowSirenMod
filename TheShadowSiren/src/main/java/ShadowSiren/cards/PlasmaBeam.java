@@ -28,7 +28,7 @@ public class PlasmaBeam extends AbstractMultiElementCard implements MagicAnimati
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(PlasmaBeam.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("Plasma.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/

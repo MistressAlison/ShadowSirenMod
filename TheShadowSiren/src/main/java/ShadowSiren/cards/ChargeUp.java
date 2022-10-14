@@ -15,7 +15,7 @@ public class ChargeUp extends AbstractElectricCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(ChargeUp.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Charge.png");
 
     // /TEXT DECLARATION/
 

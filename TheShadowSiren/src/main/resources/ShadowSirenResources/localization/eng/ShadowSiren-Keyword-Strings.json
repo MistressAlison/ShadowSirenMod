@@ -49,7 +49,7 @@
       "elementless",
       "non-elemental"
     ],
-    "DESCRIPTION": "#yFire [FireIcon] , #yIce [IceIcon] , #yElectric [ElectricIcon] , and #yShadow [DarkIcon] ."
+    "DESCRIPTION": "#yFire [ShadowSiren:FireIcon] , #yIce [ShadowSiren:IceIcon] , #yElectric [ShadowSiren:ElectricIcon] , and #yShadow [ShadowSiren:DarkIcon] ."
   },
   {
     "PROPER_NAME": "Charge",

@@ -52,7 +52,7 @@ public class SnowFort extends AbstractIceCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, block));
         this.addToBot(new MakeTempCardInHandAction(cardsToPreview.makeStatEquivalentCopy()));
-        this.addToBot(new GainCustomBlockAction(this, p, block));
+        //this.addToBot(new GainCustomBlockAction(this, p, block));
     }
 
     // Upgraded stats.

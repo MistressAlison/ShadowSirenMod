@@ -1,4 +1,4 @@
-package ShadowSiren.cards.itemCards;
+package ShadowSiren.oldStuff;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractItemCard;

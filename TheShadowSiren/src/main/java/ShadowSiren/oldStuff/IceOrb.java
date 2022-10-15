@@ -1,30 +1,29 @@
-package ShadowSiren.cards.itemCards;
+package ShadowSiren.oldStuff;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractItemCard;
 import ShadowSiren.cards.tempCards.TempCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.FireDamage;
+import ShadowSiren.damageModifiers.IceDamage;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class FireOrb extends AbstractItemCard implements TempCard {
+public class IceOrb extends AbstractItemCard implements TempCard {
 
 
     // TEXT DECLARATION
 
-    public static final String ID = ShadowSirenMod.makeID(FireOrb.class.getSimpleName());
+    public static final String ID = ShadowSirenMod.makeID(IceOrb.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderSkill.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
@@ -40,19 +39,19 @@ public class FireOrb extends AbstractItemCard implements TempCard {
 
     private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 2;
-    private static final int VIGOR = 2;
-    private static final int UPGRADE_PLUS_VIGOR = 1;
+    private static final int BLOCK = 3;
+    private static final int UPGRADE_PLUS_BLOCK = 1;
     private static final int USES = 4;
     private static final int UPGRADE_PLUS_USES = 2;
 
     // /STAT DECLARATION/
 
-    public FireOrb() {
+    public IceOrb() {
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        baseMagicNumber = magicNumber = VIGOR;
+        baseBlock = block = BLOCK;
         baseUsesCount = usesCount = USES;
-        DamageModifierManager.addModifier(this, new FireDamage());
+        DamageModifierManager.addModifier(this, new IceDamage());
     }
 
     // Actions the card should do.
@@ -74,7 +73,7 @@ public class FireOrb extends AbstractItemCard implements TempCard {
                 this.superFlash();
                 this.applyEffect();
             } else if (c.type == CardType.SKILL) {
-                this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VigorPower(AbstractDungeon.player, magicNumber), magicNumber, true));
+                this.addToBot(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block, true));
                 this.superFlash();
                 this.applyEffect();
             }
@@ -87,7 +86,7 @@ public class FireOrb extends AbstractItemCard implements TempCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_VIGOR);
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
         }
     }

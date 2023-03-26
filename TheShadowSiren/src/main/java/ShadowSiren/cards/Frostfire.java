@@ -21,7 +21,7 @@ public class Frostfire extends AbstractMultiElementCard implements MagicAnimatio
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Frostfire.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("Frostfire.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/

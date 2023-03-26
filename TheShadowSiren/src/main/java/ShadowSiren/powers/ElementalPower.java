@@ -112,11 +112,14 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
     }
 
     public static boolean hasAnElement() {
-        return !getElementalPower().con.modifiers().isEmpty();
+        return hasElementalPower() && !getElementalPower().con.modifiers().isEmpty();
     }
 
     public static int numActiveElements() {
-        return getElementalPower().con.modifiers().size();
+        if (hasElementalPower()) {
+            return getElementalPower().con.modifiers().size();
+        }
+        return 0;
     }
 
     public static List<AbstractDamageModifier> getActiveElements() {

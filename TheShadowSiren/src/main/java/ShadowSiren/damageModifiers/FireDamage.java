@@ -50,7 +50,10 @@ public class FireDamage extends AbstractVivianDamageModifier {
     @Override
     public float atDamageFinalGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
         //return damage * (1 + 0.25f*((float)target.currentHealth/target.maxHealth));
-        return ((float)target.currentHealth/target.maxHealth) >= 0.75f ? damage * 1.25f : damage;
+        if (target != null) {
+            return ((float)target.currentHealth/target.maxHealth) >= 0.75f ? damage * 1.25f : damage;
+        }
+        return damage;
     }
 
     @Override

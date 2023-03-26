@@ -17,7 +17,7 @@ public class Cryogenesis extends AbstractIceCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Cryogenesis.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("Cryogenesis.png");
 
     // /TEXT DECLARATION/
 

@@ -25,7 +25,7 @@ public class Permafrost extends AbstractIceCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Permafrost.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Permafrost.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/

@@ -23,7 +23,7 @@ public class SpiritDrain extends AbstractShadowCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(SpiritDrain.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("SpiritDrain.png");
 
     // /TEXT DECLARATION/
 

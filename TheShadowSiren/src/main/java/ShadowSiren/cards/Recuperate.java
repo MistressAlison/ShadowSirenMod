@@ -19,7 +19,7 @@ public class Recuperate extends AbstractShadowCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Recuperate.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Recuperate.png");
 
     // /TEXT DECLARATION/
 

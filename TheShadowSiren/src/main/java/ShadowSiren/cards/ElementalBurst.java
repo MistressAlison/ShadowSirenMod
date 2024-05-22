@@ -16,7 +16,7 @@ public class ElementalBurst extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(ElementalBurst.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("ElementalBurst.png");
 
     // /TEXT DECLARATION/
 

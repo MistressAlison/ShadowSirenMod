@@ -16,7 +16,7 @@ public class Singe extends AbstractFireCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Singe.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Singe.png");
 
     // /TEXT DECLARATION/
 

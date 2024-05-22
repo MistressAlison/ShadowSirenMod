@@ -17,7 +17,7 @@ public class ShadowTag extends AbstractShadowCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(ShadowTag.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("ShadowTag.png");
 
     // /TEXT DECLARATION/
 

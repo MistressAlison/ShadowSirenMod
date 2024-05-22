@@ -15,7 +15,7 @@ public class Vulcanize extends AbstractFireCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Vulcanize.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("Vulcanize.png");
 
     // /TEXT DECLARATION/
 

@@ -15,7 +15,7 @@ public class ElementalMastery extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(ElementalMastery.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("ElementalMastery.png");
 
     // /TEXT DECLARATION/
 

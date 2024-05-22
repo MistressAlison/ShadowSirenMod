@@ -15,7 +15,7 @@ public class VigorousShift extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(VigorousShift.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("VigorousShift.png");
 
     // /TEXT DECLARATION/
 

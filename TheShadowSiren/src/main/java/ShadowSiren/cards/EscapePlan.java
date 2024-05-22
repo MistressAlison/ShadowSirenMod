@@ -15,7 +15,7 @@ public class EscapePlan extends AbstractDynamicCard implements ModularDescriptio
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(EscapePlan.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("EscapePlan.png");
 
     // /TEXT DECLARATION/
 

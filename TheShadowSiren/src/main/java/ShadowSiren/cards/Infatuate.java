@@ -17,7 +17,7 @@ public class Infatuate extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Infatuate.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Infatuate.png");
 
     // /TEXT DECLARATION/
 

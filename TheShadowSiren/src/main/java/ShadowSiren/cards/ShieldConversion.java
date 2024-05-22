@@ -18,7 +18,7 @@ public class ShieldConversion extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(ShieldConversion.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("ShieldConversion.png");
 
     // /TEXT DECLARATION/
 

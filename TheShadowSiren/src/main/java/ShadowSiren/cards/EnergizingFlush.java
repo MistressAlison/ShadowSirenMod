@@ -18,7 +18,7 @@ public class EnergizingFlush extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(EnergizingFlush.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("EnergizedFlush.png");
 
     // /TEXT DECLARATION/
 

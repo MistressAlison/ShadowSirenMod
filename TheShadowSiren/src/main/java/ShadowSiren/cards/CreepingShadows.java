@@ -15,7 +15,7 @@ public class CreepingShadows extends AbstractShadowCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(CreepingShadows.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("CreepingShadows.png");
 
     // /TEXT DECLARATION/
 

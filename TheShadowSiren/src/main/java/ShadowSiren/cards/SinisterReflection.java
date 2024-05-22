@@ -15,7 +15,7 @@ public class SinisterReflection extends AbstractShadowCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(SinisterReflection.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("SinisterReflection.png");
 
     // /TEXT DECLARATION/
 

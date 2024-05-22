@@ -14,7 +14,7 @@ public class Daydream extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Daydream.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Daydream.png");
 
     // /TEXT DECLARATION/
 

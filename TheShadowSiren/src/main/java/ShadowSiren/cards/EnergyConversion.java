@@ -15,7 +15,7 @@ public class EnergyConversion extends AbstractElectricCard {
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(EnergyConversion.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("EnergyConversion.png");
 
     // /TEXT DECLARATION/
 

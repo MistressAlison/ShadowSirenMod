@@ -145,8 +145,7 @@
   },
   "ShadowSiren:EscapePlan": {
     "NAME": "Escape Plan",
-    "DESCRIPTION": "Retain. NL Gain !B! Block. NL shadowsiren:Reshuffle.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Gain !B! Block. NL shadowsiren:Reshuffle."
+    "DESCRIPTION": "Retain. NL Gain !B! Block. NL shadowsiren:Reshuffle."
   },
   "ShadowSiren:FieryJinx": {
     "NAME": "Fiery Jinx",
@@ -158,8 +157,7 @@
   },
   "ShadowSiren:FlameShield": {
     "NAME": "Flame Shield",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Draw !M! cards."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Draw !M! card{@@}{!M!|>1=s}."
   },
   "ShadowSiren:FlashFire": {
     "NAME": "Flash Fire",
@@ -253,8 +251,7 @@
   },
   "ShadowSiren:ManaBattery": {
     "NAME": "Mana Battery",
-    "DESCRIPTION": "Gain !M! [E] . NL shadowsiren:Intensify [E] gain by !ShadowSiren:SecondMagic!.",
-    "EXTENDED_DESCRIPTION": ["Gain ","[E] ",". NL shadowsiren:Intensify [E] gain by !ShadowSiren:SecondMagic!."]
+    "DESCRIPTION": "Gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|@=!M! [E]} . NL shadowsiren:Intensify [E] gain by !ShadowSiren:SecondMagic!."
   },
   "ShadowSiren:OminousFrost": {
     "NAME": "Ominous Frost",
@@ -282,8 +279,7 @@
   },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",
-    "DESCRIPTION": "Whenever you change active shadowsiren:Elements, draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Whenever you change active shadowsiren:Elements, draw !M! cards."
+    "DESCRIPTION": "Whenever you change active shadowsiren:Elements, draw !M! card{@@}{!M!|>1=s}."
   },
   "ShadowSiren:Polychrome": {
     "NAME": "Polychrome",
@@ -338,8 +334,7 @@
   },
   "ShadowSiren:Shock": {
     "NAME": "Electro Shield",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:ElectricIcon] Block. NL Draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Gain !B! [ShadowSiren:ElectricIcon] Block. NL Draw !M! cards."
+    "DESCRIPTION": "Gain !B! [ShadowSiren:ElectricIcon] Block. NL Next turn, draw !M! additional card{@@}{!M!|>1=s}."
   },
   "ShadowSiren:Singe": {
     "NAME": "Singe",

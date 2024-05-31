@@ -3,7 +3,6 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.FireBlock;
 import ShadowSiren.cards.abstractCards.AbstractFireCard;
-import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.cards.interfaces.VigorBlockBuff;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;

@@ -2,7 +2,6 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.powers.PocketDimensionPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

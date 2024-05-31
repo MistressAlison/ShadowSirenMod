@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class EscapePlan extends AbstractDynamicCard implements ModularDescription {
+public class EscapePlan extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
@@ -53,17 +53,6 @@ public class EscapePlan extends AbstractDynamicCard implements ModularDescriptio
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }

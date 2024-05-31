@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class FlameShield extends AbstractFireCard implements ModularDescription, VigorBlockBuff {
+public class FlameShield extends AbstractFireCard implements VigorBlockBuff {
 
 
     // TEXT DECLARATION
@@ -69,17 +69,6 @@ public class FlameShield extends AbstractFireCard implements ModularDescription,
             upgradeBlock(UPGRADE_PLUS_BLOCK);
             //upgradeMagicNumber(UPGRADE_PLUS_CARDS);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }

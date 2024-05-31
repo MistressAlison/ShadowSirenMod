@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class ManaBattery extends AbstractDynamicCard implements ModularDescription {
+public class ManaBattery extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
@@ -56,23 +56,6 @@ public class ManaBattery extends AbstractDynamicCard implements ModularDescripti
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_ENERGY);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 5) {
-                rawDescription = DESCRIPTION;
-            } else {
-                StringBuilder sb = new StringBuilder();
-                sb.append(EXTENDED_DESCRIPTION[0]);
-                for (int i = 0 ; i < magicNumber ; i++) {
-                    sb.append(EXTENDED_DESCRIPTION[1]);
-                }
-                sb.append(EXTENDED_DESCRIPTION[2]);
-                rawDescription = sb.toString();
-            }
         }
     }
 }

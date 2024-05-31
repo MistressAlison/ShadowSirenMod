@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class PocketDimension extends AbstractDynamicCard implements ModularDescription {
+public class PocketDimension extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
@@ -54,17 +54,6 @@ public class PocketDimension extends AbstractDynamicCard implements ModularDescr
             upgradeName();
             upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }

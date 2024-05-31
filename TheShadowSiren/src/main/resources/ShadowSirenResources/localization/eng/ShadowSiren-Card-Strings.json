@@ -182,7 +182,7 @@
   },
   "ShadowSiren:FrozenShield": {
     "NAME": "Frozen Shield",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block."
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! *Chill."
   },
   "ShadowSiren:Glaciate": {
     "NAME": "Glaciate",

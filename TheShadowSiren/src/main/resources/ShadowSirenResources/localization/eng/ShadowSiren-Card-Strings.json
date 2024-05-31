@@ -370,7 +370,7 @@
   },
   "ShadowSiren:StaticBarrier": {
     "NAME": "Static Barrier",
-    "DESCRIPTION": "Retain. NL Gain !B! [ShadowSiren:ElectricIcon] Block !M! times."
+    "DESCRIPTION": "Retain. NL Gain !B! Block. NL While held, deal !M! damage back whenever you are attacked."
   },
   "ShadowSiren:Strike": {
     "NAME": "Strike",

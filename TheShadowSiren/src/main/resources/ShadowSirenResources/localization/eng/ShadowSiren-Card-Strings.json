@@ -89,7 +89,7 @@
   },
   "ShadowSiren:DarkShield": {
     "NAME": "Dark Shield",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:DarkIcon] Block. NL The next card you play this turn is returned to your hand."
+    "DESCRIPTION": "Gain !B! Block. NL The next card you play this turn is returned to your hand."
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
@@ -295,8 +295,7 @@
   },
   "ShadowSiren:Recuperate": {
     "NAME": "Recuperate",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:DarkIcon] Block. NL A random card in your hand costs 0 this turn.",
-    "UPGRADE_DESCRIPTION": "Gain !B! [ShadowSiren:DarkIcon] Block. NL Remove up to !M! debuffs if you have any, otherwise draw up to !M! cards."
+    "DESCRIPTION": "Gain !B! Block. NL A random card in your hand costs 0 this turn."
   },
   "ShadowSiren:ReturningStrike": {
     "NAME": "Returning Strike",

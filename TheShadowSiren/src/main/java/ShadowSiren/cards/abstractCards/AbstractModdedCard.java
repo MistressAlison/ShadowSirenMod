@@ -73,7 +73,7 @@ public abstract class AbstractModdedCard extends CustomCard {
         isInvertedNumberModified = false;
         isUsesCountModified = false;
 
-        CommonKeywordIconsField.useIcons.set(this, true);
+        //CommonKeywordIconsField.useIcons.set(this, true);
 
         cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
         DESCRIPTION = cardStrings.DESCRIPTION;

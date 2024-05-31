@@ -3,18 +3,18 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.blockTypes.ElectricBlock;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
-import ShadowSiren.cards.interfaces.ModularDescription;
 import ShadowSiren.characters.Vivian;
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Shock extends AbstractElectricCard implements ModularDescription {
+public class Shock extends AbstractElectricCard {
 
 
     // TEXT DECLARATION
@@ -51,7 +51,7 @@ public class Shock extends AbstractElectricCard implements ModularDescription {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, block));
-        this.addToBot(new DrawCardAction(magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, magicNumber)));
     }
 
     // Upgraded stats.
@@ -61,17 +61,6 @@ public class Shock extends AbstractElectricCard implements ModularDescription {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }

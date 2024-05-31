@@ -157,7 +157,7 @@
   },
   "ShadowSiren:FlameShield": {
     "NAME": "Flame Shield",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Draw !M! card{@@}{!M!|>1=s}."
+    "DESCRIPTION": "Gain !B! Block. NL Gains additional Block equal to your Vigor."
   },
   "ShadowSiren:FlashFire": {
     "NAME": "Flash Fire",

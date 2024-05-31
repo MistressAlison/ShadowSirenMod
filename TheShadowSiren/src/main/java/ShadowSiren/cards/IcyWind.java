@@ -1,12 +1,9 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.ChillPower;
-import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -38,17 +35,16 @@ public class IcyWind extends AbstractIceCard {
 
     private static final int COST = 1;
     private static final int BLOCK = 7;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
     private static final int CHILL = 2;
     private static final int UPGRADE_PLUS_CHILL = 1;
 
     // /STAT DECLARATION/
 
     public IcyWind() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = CHILL;
-        BlockModifierManager.addModifier(this, new IceBlock());
     }
 
     // Actions the card should do.
@@ -69,6 +65,7 @@ public class IcyWind extends AbstractIceCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
+            upgradeMagicNumber(UPGRADE_PLUS_CHILL);
             initializeDescription();
         }
     }

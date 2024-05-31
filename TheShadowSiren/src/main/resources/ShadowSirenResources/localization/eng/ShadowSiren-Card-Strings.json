@@ -219,7 +219,7 @@
   },
   "ShadowSiren:IcyWind": {
     "NAME": "Icy Wind",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block. NL Apply !M! *Chill to ALL enemies."
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! *Chill to ALL enemies."
   },
   "ShadowSiren:Immolate": {
     "NAME": "Immolate",

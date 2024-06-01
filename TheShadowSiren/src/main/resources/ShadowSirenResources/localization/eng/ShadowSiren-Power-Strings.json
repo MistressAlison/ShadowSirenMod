@@ -18,7 +18,7 @@
         },
         "ShadowSiren:ChillPower": {
                 "NAME": "Chill",
-                "DESCRIPTIONS": ["#yAttacks deals #b","% less damage. NL At the end of it's turn, Chill is reduced by #b1. NL At #b"," stacks, Chill is removed, and this creatures is #yFrozen and #yFrostbitten."]
+                "DESCRIPTIONS": ["#yAttacks deals #b","% less damage. NL At #b"," #yChill, this creature becomes #yFrozen."]
         },
         "ShadowSiren:ConfusedPower": {
                 "NAME": "Confused",

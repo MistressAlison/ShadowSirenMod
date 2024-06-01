@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -23,7 +24,7 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public static final int REDUCTION_PERCENT = 5;
+    public static final int REDUCTION_PERCENT = 10;
     public static final int MAX_STACKS = 10;
     private static final float DECAY_RATE = 1/2f;
 
@@ -32,7 +33,6 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    //TODO its OP, lol
     public ChillPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
@@ -75,7 +75,7 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
         if (amount >= MAX_STACKS) {
             int effect = amount / MAX_STACKS;
             this.addToTop(new ReducePowerAction(owner, owner, this, effect * MAX_STACKS));
-            this.addToTop(new ApplyPowerAction(owner, owner, new FrostyPower(owner, effect)));
+            //this.addToTop(new ApplyPowerAction(owner, owner, new FrostyPower(owner, effect)));
             this.addToTop(new ApplyPowerAction(owner, owner, new FreezePower(owner, effect)));
         }
     }
@@ -92,7 +92,7 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
     @Override
     public void atEndOfRound() {
         this.flashWithoutSound();
-        this.addToTop(new ReducePowerAction(owner, owner, this, 1));
+        this.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     public void onIceBlockTrigger(AbstractCreature source) {

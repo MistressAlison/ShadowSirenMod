@@ -8,21 +8,21 @@
     "NAME": "Electric",
     "DESCRIPTION": "Electric [ShadowSiren:ElectricIcon]",
     "EXTENDED_DESCRIPTION": ["#yDamage: Arcs once when dealing unblocked damage, hitting a random enemy for #b50% of the damage dealt. NL #yBlock: Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types.",
-                            "#yDamage: Arcs once when dealing unblocked damage, hitting a random enemy for #b50% of the damage dealt.",
+                            "#yActivate #yElectric, imbuing your next Elementless Attack with #yElectric #yDamage: Arcs once when dealing unblocked damage, hitting a random enemy for #b50% of the damage dealt.",
                             "#yBlock: Applies #yShock to the attacker when this Block is damaged. Used #bbefore other Block types."]
   },
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
     "DESCRIPTION": "Fire [ShadowSiren:FireIcon]",
     "EXTENDED_DESCRIPTION": ["#yDamage: Gain #b3 #yVigor when dealing unblocked damage. NL #yBlock: Application scales with #yVigor, consuming it.",
-                            "#yDamage: Gain #b3 #yVigor when dealing unblocked damage.",
+                            "#yActivate #yFire, imbuing your next Elementless Attack with #yFire #yDamage: Gain #b3 #yVigor when dealing unblocked damage.",
                             "#yBlock: Application scales with #yVigor, consuming it."]
   },
   "ShadowSiren:IceDamage": {
     "NAME": "Ice",
     "DESCRIPTION": "Ice [ShadowSiren:IceIcon]",
     "EXTENDED_DESCRIPTION": ["#yDamage: Applies #yChill on hit. NL #yBlock: Attackers take damage equal to their #yChill.",
-                            "#yDamage: Applies #yChill on hit.",
+                            "#yActivate #yIce, imbuing your next Elementless Attack with #yIce #yDamage: Applies #yChill on hit.",
                             "#yBlock: Attackers take damage equal to their #yChill."]
   },
   "ShadowSiren:LightDamage": {
@@ -34,7 +34,7 @@
     "NAME": "Shadow",
     "DESCRIPTION": "Shadow [ShadowSiren:DarkIcon]",
     "EXTENDED_DESCRIPTION": ["#yDamage: Ignores #yBlock and causes the target to lose HP equal to their #yShadow #ySplit. NL #yBlock: When attacked, applies 3 #yShadow #ySplit to the attacker.",
-                            "#yDamage: Ignores #yBlock and causes the target to lose HP equal to their #yShadow #ySplit.",
+                            "#yActivate #yShadow, imbuing your next Elementless Attack with #yShadow #yDamage: Ignores #yBlock and causes the target to lose HP equal to their #yShadow #ySplit.",
                             "#yBlock: When attacked, applies 3 #yShadow #ySplit to the attacker."]
   },
   "ShadowSiren:ElementallyInert": {

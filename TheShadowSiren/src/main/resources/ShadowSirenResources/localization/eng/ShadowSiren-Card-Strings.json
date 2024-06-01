@@ -125,21 +125,21 @@
   },
   "ShadowSiren:ElementalBurst": {
     "NAME": "Elemental Burst",
-    "DESCRIPTION": "Deal !D! damage for each active shadowsiren:Element."
+    "DESCRIPTION": "Deal !D! damage for each shadowsiren:Active shadowsiren:Element."
   },
   "ShadowSiren:ElementalMastery": {
     "NAME": "Elemental Form",
-    "DESCRIPTION": "Ethereal. NL At the end of your turn, gain !M! Strength and Dexterity for each active shadowsiren:Element.",
-    "UPGRADE_DESCRIPTION": "At the end of your turn, gain !M! Strength and Dexterity for each active shadowsiren:Element."
+    "DESCRIPTION": "Ethereal. NL At the end of your turn, gain !M! Strength and Dexterity for each shadowsiren:Active shadowsiren:Element.",
+    "UPGRADE_DESCRIPTION": "At the end of your turn, gain !M! Strength and Dexterity for each shadowsiren:Active shadowsiren:Element."
   },
   "ShadowSiren:ElementalShroud": {
     "NAME": "Elemental Shroud",
-    "DESCRIPTION": "At the end of your turn, gain !M! Block for each active shadowsiren:Element."
+    "DESCRIPTION": "At the end of your turn, gain !M! Block for each shadowsiren:Active shadowsiren:Element."
   },
   "ShadowSiren:EnergizingFlush": {
     "NAME": "Energized Flush",
-    "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Lose all active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost."
+    "DESCRIPTION": "Lose all shadowsiren:Active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Lose all shadowsiren:Active shadowsiren:Elements. NL Gain [E] for each shadowsiren:Element lost."
   },
   "ShadowSiren:EnergyConversion": {
     "NAME": "Energy Conversion",
@@ -282,7 +282,7 @@
   },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",
-    "DESCRIPTION": "Whenever you change active shadowsiren:Elements, draw !M! card{@@}{!M!|>1=s}."
+    "DESCRIPTION": "Whenever you shadowsiren:Activate an shadowsiren:Element, draw !M! card{@@}{!M!|>1=s}."
   },
   "ShadowSiren:Polychrome": {
     "NAME": "Polychrome",
@@ -290,7 +290,7 @@
   },
   "ShadowSiren:PureStrike": {
     "NAME": "Pure Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Deals 50% more damage if you have no active shadowsiren:Element."
+    "DESCRIPTION": "Deal !D! damage. NL Deals 50% more damage if you have no shadowsiren:Active shadowsiren:Element."
   },
   "ShadowSiren:Pyre": {
     "NAME": "Pyre",
@@ -332,7 +332,7 @@
   },
   "ShadowSiren:ShieldConversion": {
     "NAME": "Shield Conversion",
-    "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain !B! Block for each shadowsiren:Element lost."
+    "DESCRIPTION": "Lose all shadowsiren:Active shadowsiren:Elements. NL Gain !B! Block for each shadowsiren:Element lost."
   },
   "ShadowSiren:Singe": {
     "NAME": "Singe",
@@ -360,7 +360,7 @@
   },
   "ShadowSiren:StarFall": {
     "NAME": "Star Fall",
-    "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Deal !D! damage to ALL enemies for each shadowsiren:Element lost."
+    "DESCRIPTION": "Lose all shadowsiren:Active shadowsiren:Elements. NL Deal !D! damage to ALL enemies for each shadowsiren:Element lost."
   },
   "ShadowSiren:StarForm": {
     "NAME": "Star Form",
@@ -397,7 +397,7 @@
   },
   "ShadowSiren:VigorousShift": {
     "NAME": "Vigorous Shift",
-    "DESCRIPTION": "Whenever you change active shadowsiren:Elements, gain !M! Vigor."
+    "DESCRIPTION": "Whenever you shadowsiren:Activate an shadowsiren:Element, gain !M! Vigor."
   },
   "ShadowSiren:Vulcanize": {
     "NAME": "Vulcanize",
@@ -409,8 +409,8 @@
   },
   "ShadowSiren:WildMagic": {
     "NAME": "Wild Magic",
-    "DESCRIPTION": "Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each active shadowsiren:Element.",
-    "EXTENDED_DESCRIPTION":["Lose all active shadowsiren:Elements. NL Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each shadowsiren:Element lost."]
+    "DESCRIPTION": "Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each shadowsiren:Active shadowsiren:Element.",
+    "EXTENDED_DESCRIPTION":["Lose all shadowsiren:Active shadowsiren:Elements. NL Deal !D! damage. NL shadowsiren:Intensify damage by !M! for each shadowsiren:Element lost."]
   },
   "ShadowSiren:ArtAttack": {
     "NAME": "Art Attack",

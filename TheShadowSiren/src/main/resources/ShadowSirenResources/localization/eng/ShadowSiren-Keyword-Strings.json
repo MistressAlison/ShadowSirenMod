@@ -146,5 +146,13 @@
       "shock"
     ],
     "DESCRIPTION": "Shocked creatures take additional damage the next time they are attacked."
+  },
+  {
+    "PROPER_NAME": "Activate",
+    "NAMES": [
+      "activate",
+      "active"
+    ],
+    "DESCRIPTION": "Prepare an #yElement to be added to your next Elementless Attack."
   }
 ]

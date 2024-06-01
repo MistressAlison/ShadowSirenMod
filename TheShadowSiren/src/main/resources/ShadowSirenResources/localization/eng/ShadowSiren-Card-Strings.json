@@ -336,7 +336,7 @@
   },
   "ShadowSiren:Singe": {
     "NAME": "Singe",
-    "DESCRIPTION": "Target loses !D! HP and !M! times that much Max HP. NL Scales as damage."
+    "DESCRIPTION": "Target loses !M! HP and twice that much Max HP."
   },
   "ShadowSiren:SinisterReflection": {
     "NAME": "Sinister Reflection",

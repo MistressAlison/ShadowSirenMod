@@ -30,26 +30,23 @@ public class Singe extends AbstractFireCard {
     private static final int COST = 0;
     private static final int HP_LOSS = 5;
     private static final int UPGRADE_PLUS_HP_LOSS = 2;
-    private static final int MULTIPLIER = 2;
-    private static final int UPGRADE_PLUS_MULTIPLIER = 1;
 
     // /STAT DECLARATION/
 
 
     public Singe() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        damage = baseDamage = HP_LOSS;
-        magicNumber = baseMagicNumber = MULTIPLIER;
+        magicNumber = baseMagicNumber = HP_LOSS;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new LoseHPAction(m, p, damage, AbstractGameAction.AttackEffect.FIRE));
+        this.addToBot(new LoseHPAction(m, p, magicNumber, AbstractGameAction.AttackEffect.FIRE));
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                m.decreaseMaxHealth(damage*magicNumber);
+                m.decreaseMaxHealth(magicNumber*2);
                 this.isDone = true;
             }
         });
@@ -60,8 +57,7 @@ public class Singe extends AbstractFireCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_HP_LOSS);
-            //upgradeMagicNumber(UPGRADE_PLUS_MULTIPLIER);
+            upgradeMagicNumber(UPGRADE_PLUS_HP_LOSS);
         }
     }
 }

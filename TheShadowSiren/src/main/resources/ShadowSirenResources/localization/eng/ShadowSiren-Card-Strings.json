@@ -291,7 +291,7 @@
   },
   "ShadowSiren:Pyre": {
     "NAME": "Pyre",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:FireIcon] Block. NL Gain !M! Vigor. NL Shuffle an *Ashes into your draw pile."
+    "DESCRIPTION": "Exhaust 1 card. NL Gain !M! Vigor. NL Shuffle an *Ashes into your draw pile."
   },
   "ShadowSiren:Recuperate": {
     "NAME": "Recuperate",

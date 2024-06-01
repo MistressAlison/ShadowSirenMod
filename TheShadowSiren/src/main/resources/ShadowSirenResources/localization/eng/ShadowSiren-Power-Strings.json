@@ -152,7 +152,7 @@
         },
         "ShadowSiren:VigorousShiftPower": {
                 "NAME": "Vigorous Shift",
-                "DESCRIPTIONS": ["Whenever you change active #yElements, gain #b"," Vigor."]
+                "DESCRIPTIONS": ["Whenever you #yActivate an #yElement, gain #b"," Vigor."]
         },
         "ShadowSiren:FoxFirePower": {
                 "NAME": "Fox-Fire",
@@ -196,7 +196,7 @@
         },
         "ShadowSiren:ElementalMasteryPower": {
                 "NAME": "Elemental Mastery",
-                "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yStrength and #yDexterity for each active #yElement."]
+                "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yStrength and #yDexterity for each #yActive #yElement."]
         },
         "ShadowSiren:ShockPower": {
                 "NAME": "Shocked",
@@ -204,7 +204,7 @@
         },
         "ShadowSiren:ElementalShroudPower": {
                 "NAME": "Elemental Shroud",
-                "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yBlock for each active #yElement."]
+                "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yBlock for each #yActive #yElement."]
         },
         "ShadowSiren:NextTurnTempDexPower": {
                 "NAME": "Arcane Shelter",

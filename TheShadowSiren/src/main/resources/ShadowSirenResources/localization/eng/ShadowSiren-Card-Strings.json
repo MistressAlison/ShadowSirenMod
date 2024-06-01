@@ -129,7 +129,7 @@
     "DESCRIPTION": "Deal !D! damage for each active shadowsiren:Element."
   },
   "ShadowSiren:ElementalMastery": {
-    "NAME": "Elemental Mastery",
+    "NAME": "Elemental Form",
     "DESCRIPTION": "Ethereal. NL At the end of your turn, gain !M! Strength and Dexterity for each active shadowsiren:Element.",
     "UPGRADE_DESCRIPTION": "At the end of your turn, gain !M! Strength and Dexterity for each active shadowsiren:Element."
   },

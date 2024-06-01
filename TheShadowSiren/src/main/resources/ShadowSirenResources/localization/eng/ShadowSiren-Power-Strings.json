@@ -217,5 +217,13 @@
         "ShadowSiren:ShadowSplitPower": {
                 "NAME": "Shadow Split",
                 "DESCRIPTIONS": ["Lose #b"," HP whenever #yShadow damage is received."]
+        },
+        "ShadowSiren:LosePowerPower": {
+                "NAME": "Lose ",
+                "DESCRIPTIONS": ["At the end of your turn, lose #b"," ","."]
+        },
+        "ShadowSiren:NextTurnPowerPower": {
+                "NAME": "Next Turn ",
+                "DESCRIPTIONS": ["Next turn, gain #b"," ","."]
         }
 }

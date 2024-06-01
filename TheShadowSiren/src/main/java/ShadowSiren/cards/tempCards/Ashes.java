@@ -1,12 +1,11 @@
 package ShadowSiren.cards.tempCards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import ShadowSiren.cards.abstractCards.AbstractFireCard;
+import ShadowSiren.cards.interfaces.ManuallySizeAdjustedCard;
+import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -14,7 +13,7 @@ import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Ashes extends AbstractDynamicCard {
+public class Ashes extends AbstractFireCard implements TempCard, ManuallySizeAdjustedCard {
 
 
     // TEXT DECLARATION
@@ -29,11 +28,11 @@ public class Ashes extends AbstractDynamicCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.SPECIAL;
-    private static final CardTarget TARGET = CardTarget.NONE;
+    private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = CardColor.COLORLESS;
+    public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = -2;
+    private static final int COST = 1;
     private static final int VIGOR = 5;
     private static final int UPGRADE_PLUS_VIGOR = 2;
     private static final int DRAW = 1;
@@ -43,19 +42,17 @@ public class Ashes extends AbstractDynamicCard {
     public Ashes() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = VIGOR;
-        isEthereal = true;
+        exhaust = true;
     }
 
     // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-    }
+    public void use(AbstractPlayer p, AbstractMonster m) {}
 
     @Override
     public void triggerOnExhaust() {
-        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VigorPower(AbstractDungeon.player, magicNumber)));
-        this.addToBot(new DrawCardAction(DRAW));
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VigorPower(AbstractDungeon.player, magicNumber)));
+        addToBot(new DrawCardAction(DRAW));
     }
 
     // Upgraded stats.
@@ -66,5 +63,10 @@ public class Ashes extends AbstractDynamicCard {
             upgradeMagicNumber(UPGRADE_PLUS_VIGOR);
             initializeDescription();
         }
+    }
+
+    @Override
+    public float getAdjustedScale() {
+        return 0.95f;
     }
 }

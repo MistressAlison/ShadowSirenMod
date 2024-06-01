@@ -226,7 +226,7 @@
   },
   "ShadowSiren:Immolate": {
     "NAME": "Immolate",
-    "DESCRIPTION": "Whenever you attack, the target loses !M! Max HP."
+    "DESCRIPTION": "Whenever you attack, the target loses !M! HP and Max HP."
   },
   "ShadowSiren:Infatuate": {
     "NAME": "Infatuate",
@@ -401,7 +401,7 @@
   },
   "ShadowSiren:Vulcanize": {
     "NAME": "Vulcanize",
-    "DESCRIPTION": "Unblocked [ShadowSiren:FireIcon] damage causes enemies to lose 25% more Max HP."
+    "DESCRIPTION": "Whenever you gain Vigor, gain !M! additional Vigor."
   },
   "ShadowSiren:WhiteOut": {
     "NAME": "White Out",

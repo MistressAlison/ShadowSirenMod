@@ -2,19 +2,19 @@ package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
-public class VulcanizePower extends AbstractPower implements CloneablePowerInterface {
+public class VulcanizePower extends AbstractPower implements CloneablePowerInterface, OnReceivePowerPower {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("VulcanizePower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
-    public static final int INCREASE_PERCENT = 25;
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
@@ -40,7 +40,7 @@ public class VulcanizePower extends AbstractPower implements CloneablePowerInter
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount*INCREASE_PERCENT + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
@@ -48,4 +48,21 @@ public class VulcanizePower extends AbstractPower implements CloneablePowerInter
         return new VulcanizePower(owner, amount);
     }
 
+    @Override
+    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (power instanceof VigorPower) {
+            flash();
+            power.amount += amount;
+        }
+        return true;
+    }
+
+    @Override
+    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
+        if (power instanceof VigorPower) {
+            flash();
+            stackAmount += amount;
+        }
+        return stackAmount;
+    }
 }

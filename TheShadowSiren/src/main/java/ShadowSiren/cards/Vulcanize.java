@@ -28,19 +28,21 @@ public class Vulcanize extends AbstractFireCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
+    private static final int EFFECT = 3;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
 
     public Vulcanize() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        baseMagicNumber = magicNumber = EFFECT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new VulcanizePower(p, 1)));
+        this.addToBot(new ApplyPowerAction(p, p, new VulcanizePower(p, magicNumber)));
     }
 
     //Upgraded stats.
@@ -48,7 +50,7 @@ public class Vulcanize extends AbstractFireCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }

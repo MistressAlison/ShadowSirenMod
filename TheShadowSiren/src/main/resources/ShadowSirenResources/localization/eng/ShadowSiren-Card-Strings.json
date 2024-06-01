@@ -282,7 +282,7 @@
   },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",
-    "DESCRIPTION": "Whenever you shadowsiren:Activate an shadowsiren:Element, draw !M! card{@@}{!M!|>1=s}."
+    "DESCRIPTION": "Whenever you shadowsiren:Activate all 4 shadowsiren:Elements, draw !M! card{@@}{!M!|>1=s}."
   },
   "ShadowSiren:Polychrome": {
     "NAME": "Polychrome",

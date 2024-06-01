@@ -116,7 +116,7 @@
         },
         "ShadowSiren:PocketDimensionPower": {
                 "NAME": "Pocket Dimension",
-                "DESCRIPTIONS": ["Whenever you change active #yElements, draw #b"," card."," cards."]
+                "DESCRIPTIONS": ["Whenever you #yActivate all #b4 #yElements, draw #b"," card."," cards."]
         },
         "ShadowSiren:ReinforcedPlatingPower": {
                 "NAME": "Reinforced Plating",

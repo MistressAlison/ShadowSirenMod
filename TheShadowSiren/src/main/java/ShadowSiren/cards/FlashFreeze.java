@@ -1,6 +1,7 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.EasyXCostAction;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.cards.tempCards.IceShard;
 import ShadowSiren.characters.Vivian;
@@ -11,9 +12,9 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.relics.ChemicalX;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
+
+import java.util.Arrays;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -37,74 +38,40 @@ public class FlashFreeze extends AbstractIceCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = -1;
-    private static final int BASE_EFFECT = 0;
-    private static final int CHILL = 2;
-    private static final int UPGRADE_PLUS_CHILL = 1;
 
     // /STAT DECLARATION/
 
     public FlashFreeze() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-//        secondMagicNumber = baseSecondMagicNumber = thirdMagicNumber = baseThirdMagicNumber = BASE_EFFECT;
-        magicNumber = baseMagicNumber = CHILL;
+
         this.cardsToPreview = new IceShard();
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = energyOnUse;
-
-        if (p.hasRelic(ChemicalX.ID)) {
-            effect += ChemicalX.BOOST;
-        }
-
-        if (effect > 0) {
-            AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.WHITE.cpy(), true));
-            for (int i = 0 ; i < effect ; i++) {
+        addToBot(new EasyXCostAction(this, (base, params) -> {
+            int effect = base + Arrays.stream(params).sum();
+            if (effect > 0) {
+                AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.WHITE.cpy(), true));
+                addToTop(new MakeTempCardInHandAction(cardsToPreview.makeStatEquivalentCopy(), effect));
                 for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
                     if (!aM.isDeadOrEscaped()) {
-                        this.addToBot(new ApplyPowerAction(aM, p, new ChillPower(aM, magicNumber), magicNumber, true));
+                        addToTop(new ApplyPowerAction(aM, p, new ChillPower(aM, effect), effect, true));
                         aM.tint.color = Color.BLUE.cpy();
                         aM.tint.changeColor(Color.WHITE.cpy());
                     }
                 }
             }
-            this.addToBot(new MakeTempCardInHandAction(cardsToPreview.makeStatEquivalentCopy(), effect));
-        }
-
-        if (!this.freeToPlayOnce) {
-            p.energy.use(EnergyPanel.totalCount);
-        }
+            return true;
+        }));
     }
-
-//    @Override
-//    public void applyPowers() {
-//        super.applyPowers();
-//        updateExtraValues();
-//        initializeDescription();
-//    }
-//
-//    @Override
-//    public void calculateCardDamage(AbstractMonster mo) {
-//        super.calculateCardDamage(mo);
-//        updateExtraValues();
-//        initializeDescription();
-//    }
-//
-//    private void updateExtraValues() {
-//        secondMagicNumber = XCostGrabber.getXCostAmount(this, true) * magicNumber;
-//        isSecondMagicNumberModified = secondMagicNumber != baseSecondMagicNumber;
-//        thirdMagicNumber = XCostGrabber.getXCostAmount(this, true);
-//        isThirdMagicNumberModified = thirdMagicNumber != baseThirdMagicNumber;
-//    }
 
     // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            //upgradeMagicNumber(UPGRADE_PLUS_CHILL);
             cardsToPreview.upgrade();
             rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();

@@ -3,9 +3,8 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractFireCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.OverheatPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -31,23 +30,21 @@ public class Overheat extends AbstractFireCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DMG = 2;
-    private static final int UPGRADE_PLUS_DMG = 1;
-    private static final int DRAW = 2;
+    private static final int CARDS = 2;
+    private static final int UPGRADE_PLUS_CARDS = 1;
 
     // /STAT DECLARATION/
 
     public Overheat() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DMG;
-        secondMagicNumber = baseSecondMagicNumber = DRAW;
+        magicNumber = baseMagicNumber = CARDS;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new OverheatPower(p, magicNumber)));
-        this.addToBot(new DrawCardAction(secondMagicNumber));
+        addToBot(new DrawCardAction(magicNumber));
+        addToBot(new ExhaustAction(magicNumber, false));
     }
 
     // Upgraded stats.
@@ -55,7 +52,7 @@ public class Overheat extends AbstractFireCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_PLUS_CARDS);
             initializeDescription();
         }
     }

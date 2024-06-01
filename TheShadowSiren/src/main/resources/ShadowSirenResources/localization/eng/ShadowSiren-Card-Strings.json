@@ -263,7 +263,7 @@
   },
   "ShadowSiren:Overheat": {
     "NAME": "Overheat",
-    "DESCRIPTION": "Exhaust the next !M! Status or Curse cards you draw. NL Draw !ShadowSiren:SecondMagic! cards."
+    "DESCRIPTION": "Draw !M! cards. NL Exhaust !M! cards."
   },
   "ShadowSiren:PatchUp": {
     "NAME": "Patch Up",

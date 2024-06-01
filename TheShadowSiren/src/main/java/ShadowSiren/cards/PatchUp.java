@@ -5,7 +5,7 @@ import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.cards.interfaces.ManuallySizeAdjustedCard;
 import ShadowSiren.characters.Vivian;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -29,25 +29,24 @@ public class PatchUp extends AbstractDynamicCard implements ManuallySizeAdjusted
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int TEMP_HP = 4;
-    private static final int UPGRADE_PLUS_TEMP_HP = 2;
-    private static final int CARDS = 2;
+    private static final int EFFECT = 4;
+    private static final int UPGRADE_PLUS_EFFECT = 2;
 
     // /STAT DECLARATION/
 
 
     public PatchUp() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        block = baseBlock = TEMP_HP;
-        magicNumber = baseMagicNumber = CARDS;
+        block = baseBlock = EFFECT;
+        magicNumber = baseMagicNumber = EFFECT;
         this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new AddTemporaryHPAction(p, p, block));
-        this.addToBot(new DrawCardAction(magicNumber));
+        addToBot(new GainBlockAction(p, p, block));
+        addToBot(new AddTemporaryHPAction(p, p, magicNumber));
     }
 
     //Upgraded stats.
@@ -55,7 +54,8 @@ public class PatchUp extends AbstractDynamicCard implements ManuallySizeAdjusted
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_TEMP_HP);
+            upgradeBlock(UPGRADE_PLUS_EFFECT);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }

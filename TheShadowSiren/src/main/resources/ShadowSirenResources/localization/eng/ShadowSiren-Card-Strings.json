@@ -267,7 +267,7 @@
   },
   "ShadowSiren:Permafrost": {
     "NAME": "Permafrost",
-    "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL Gain [ShadowSiren:IceIcon] Block equal to the amount of Weak on ALL enemies."
+    "DESCRIPTION": "Apply !M! Weak to ALL enemies. NL Gain Block equal to the amount of Weak on ALL enemies.{@@}{!Location!|0=NL (Gain !B! Block)}"
   },
   "ShadowSiren:PiezoCapacitor": {
     "NAME": "Piezo Capacitor",

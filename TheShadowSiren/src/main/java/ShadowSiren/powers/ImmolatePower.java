@@ -51,6 +51,7 @@ public class ImmolatePower extends AbstractPower implements CloneablePowerInterf
                         firstPass = false;
                         this.duration = 0.05f;
                         AbstractDungeon.effectList.add(new FlashAtkImgEffect(targetHit.hb.cX, targetHit.hb.cY, AbstractGameAction.AttackEffect.FIRE));
+                        targetHit.damage(new DamageInfo(owner, ImmolatePower.this.amount, DamageInfo.DamageType.HP_LOSS));
                         targetHit.decreaseMaxHealth(ImmolatePower.this.amount);
                         flash();
                     }

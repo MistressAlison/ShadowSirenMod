@@ -219,7 +219,7 @@
   },
   "ShadowSiren:IceWall": {
     "NAME": "Ice Wall",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block. NL Deal !D! [ShadowSiren:IceIcon] damage."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] damage. NL Gain Block equal to unblocked damage dealt."
   },
   "ShadowSiren:IcyWind": {
     "NAME": "Icy Wind",

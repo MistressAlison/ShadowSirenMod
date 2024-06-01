@@ -120,6 +120,10 @@
     "DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL When Retained, gain !M! shadowsiren:Charge.",
     "UPGRADE_DESCRIPTION": "*Uses !ShadowSiren:UsesCount! NL When Retained, gain !M! shadowsiren:Charges."
   },
+  "ShadowSiren:ElectroShield": {
+    "NAME": "Electro Shield",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! shadowsiren:Shock."
+  },
   "ShadowSiren:ElementalBurst": {
     "NAME": "Elemental Burst",
     "DESCRIPTION": "Deal !D! damage for each active shadowsiren:Element."
@@ -330,10 +334,6 @@
   "ShadowSiren:ShieldConversion": {
     "NAME": "Shield Conversion",
     "DESCRIPTION": "Lose all active shadowsiren:Elements. NL Gain !B! Block for each shadowsiren:Element lost."
-  },
-  "ShadowSiren:Shock": {
-    "NAME": "Electro Shield",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:ElectricIcon] Block. NL Next turn, draw !M! additional card{@@}{!M!|>1=s}."
   },
   "ShadowSiren:Singe": {
     "NAME": "Singe",

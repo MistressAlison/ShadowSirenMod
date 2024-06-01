@@ -1,14 +1,11 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.actions.CleansePowerAction;
 import ShadowSiren.cards.abstractCards.AbstractShadowCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ShadowSplitPower;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -37,7 +34,7 @@ public class Trick extends AbstractShadowCard {
     private static final int COST = 1;
     private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DAMAGE = 3;
-    private static final int SPLIT = 3;
+    private static final int CLEANSE = 1;
 
     // /STAT DECLARATION/
 
@@ -45,24 +42,14 @@ public class Trick extends AbstractShadowCard {
     public Trick() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = SPLIT;
+        baseMagicNumber = magicNumber = CLEANSE;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        boolean cleansed = false;
-        for (AbstractPower pow : p.powers) {
-            if (pow.type == AbstractPower.PowerType.DEBUFF && !(pow instanceof InvisiblePower)) {
-                cleansed = true;
-                this.addToBot(new RemoveSpecificPowerAction(p, p, pow));
-                break;
-            }
-        }
-        if (!cleansed) {
-            this.addToBot(new ApplyPowerAction(m, p, new ShadowSplitPower(m, magicNumber)));
-        }
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        addToBot(new CleansePowerAction(p, magicNumber, pow -> pow.type == AbstractPower.PowerType.DEBUFF));
     }
 
     private boolean hasDebuff() {

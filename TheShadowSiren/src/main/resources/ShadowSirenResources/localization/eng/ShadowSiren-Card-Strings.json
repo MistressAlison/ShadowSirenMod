@@ -388,7 +388,7 @@
   },
   "ShadowSiren:Trick": {
     "NAME": "Trick",
-    "DESCRIPTION": "Deal !D! [ShadowSiren:DarkIcon] damage. NL Remove a debuff if you have any, otherwise apply !M! shadowsiren:Shadow_Split."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:DarkIcon] damage. NL Remove !M! of your debuffs."
   },
   "ShadowSiren:TurboCharged": {
     "NAME": "Turbo Charged",

@@ -21,7 +21,7 @@ public abstract class AbstractPowerCard extends AbstractDynamicCard {
     public AbstractPower storedPower;
 
     public AbstractPowerCard(AbstractPower power) {
-        super(ShadowSirenMod.makeID(power.ID+"Card"), "",-2, AbstractCard.CardType.SKILL, AbstractCard.CardColor.COLORLESS, AbstractCard.CardRarity.SPECIAL, AbstractCard.CardTarget.NONE);
+        super(ShadowSirenMod.makeID(power.ID+"Card"), null,-2, AbstractCard.CardType.SKILL, AbstractCard.CardColor.COLORLESS, AbstractCard.CardRarity.SPECIAL, AbstractCard.CardTarget.NONE);
         TypeOverridePatch.setOverride(this, TEXT[2]);
         this.storedPower = power;
         this.name = power.name;

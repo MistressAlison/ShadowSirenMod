@@ -1,17 +1,14 @@
 package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.blockTypes.IceBlock;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
-import ShadowSiren.cards.tempCards.IceShard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.GainCustomBlockAction;
-import com.evacipated.cardcrawl.mod.stslib.blockmods.BlockModifierManager;
+import ShadowSiren.powers.LosePowerPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ThornsPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -35,24 +32,25 @@ public class SnowFort extends AbstractIceCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 2;
-    private static final int BLOCK = 12;
+    private static final int BLOCK = 10;
     private static final int UPGRADE_PLUS_BLOCK = 4;
+    private static final int THORNS = 3;
+    private static final int UPGRADE_PLUS_THORNS = 2;
 
     // /STAT DECLARATION/
 
     public SnowFort() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.DAMAGE_AND_BLOCK);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = block = BLOCK;
-        cardsToPreview = new IceShard();
-        BlockModifierManager.addModifier(this, new IceBlock());
+        baseMagicNumber = magicNumber = THORNS;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new GainBlockAction(p, block));
-        this.addToBot(new MakeTempCardInHandAction(cardsToPreview.makeStatEquivalentCopy()));
-        //this.addToBot(new GainCustomBlockAction(this, p, block));
+        addToBot(new GainBlockAction(p, block));
+        addToBot(new ApplyPowerAction(p, p, new ThornsPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new LosePowerPower(p, new ThornsPower(p, magicNumber), magicNumber)));
     }
 
     // Upgraded stats.
@@ -60,11 +58,8 @@ public class SnowFort extends AbstractIceCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            //upgradeBaseCost(UPGRADE_COST);
             upgradeBlock(UPGRADE_PLUS_BLOCK);
-            cardsToPreview.upgrade();
-            rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
+            upgradeMagicNumber(UPGRADE_PLUS_THORNS);
         }
     }
 }

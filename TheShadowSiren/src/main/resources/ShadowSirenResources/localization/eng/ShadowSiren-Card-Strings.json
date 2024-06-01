@@ -349,8 +349,7 @@
   },
   "ShadowSiren:SnowFort": {
     "NAME": "Snow Fort",
-    "DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block. NL Add an *Ice *Shard into your hand.",
-    "UPGRADE_DESCRIPTION": "Gain !B! [ShadowSiren:IceIcon] Block. NL Add an *Ice\u200B *Shard+ into your hand."
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Thorns. NL At the end of this turn, lose !M! Thorns."
   },
   "ShadowSiren:SpiritBurn": {
     "NAME": "Spirit Burn",

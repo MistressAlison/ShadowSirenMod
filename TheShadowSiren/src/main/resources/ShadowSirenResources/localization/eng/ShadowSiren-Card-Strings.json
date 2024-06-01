@@ -33,7 +33,7 @@
   },
   "ShadowSiren:ArtOfWar": {
     "NAME": "Art Of War",
-    "DESCRIPTION": "Gain !B! Block for each *Attack played this turn. NL (Gain !ShadowSiren:SecondMagic! Block)"
+    "DESCRIPTION": "Gain !B! Block for each *Attack played this turn.{@@}{!Location!|0= NL (Gain !ShadowSiren:SecondMagic! Block)}"
   },
   "ShadowSiren:AutoArmor": {
     "NAME": "Auto-Armor",

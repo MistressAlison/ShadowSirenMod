@@ -226,7 +226,7 @@
   },
   "ShadowSiren:Immolate": {
     "NAME": "Immolate",
-    "DESCRIPTION": "Whenever you attack, the target loses !M! HP and Max HP."
+    "DESCRIPTION": "Whenever a card is Exhausted, ALL enemies lose !M! HP and Max HP."
   },
   "ShadowSiren:Infatuate": {
     "NAME": "Infatuate",

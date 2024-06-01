@@ -3,11 +3,13 @@ package ShadowSiren.powers;
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
@@ -41,18 +43,19 @@ public class ImmolatePower extends AbstractPower implements CloneablePowerInterf
     }
 
     @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature targetHit) {
-        if (targetHit != owner && info.type == DamageInfo.DamageType.NORMAL) {
-            this.addToBot(new AbstractGameAction() {
+    public void onExhaust(AbstractCard card) {
+        flash();
+        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
+            addToBot(new AbstractGameAction() {
                 boolean firstPass = true;
                 @Override
                 public void update() {
                     if (firstPass) {
                         firstPass = false;
                         this.duration = 0.05f;
-                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(targetHit.hb.cX, targetHit.hb.cY, AbstractGameAction.AttackEffect.FIRE));
-                        targetHit.damage(new DamageInfo(owner, ImmolatePower.this.amount, DamageInfo.DamageType.HP_LOSS));
-                        targetHit.decreaseMaxHealth(ImmolatePower.this.amount);
+                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(mon.hb.cX, mon.hb.cY, AbstractGameAction.AttackEffect.FIRE));
+                        mon.damage(new DamageInfo(owner, ImmolatePower.this.amount, DamageInfo.DamageType.HP_LOSS));
+                        mon.decreaseMaxHealth(ImmolatePower.this.amount);
                         flash();
                     }
                     tickDuration();

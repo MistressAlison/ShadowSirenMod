@@ -30,8 +30,8 @@ public class Immolate extends AbstractFireCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DMG = 2;
-    private static final int UPGRADE_PLUS_DMG = 1;
+    private static final int DMG = 5;
+    private static final int UPGRADE_PLUS_DMG = 2;
 
     // /STAT DECLARATION/
 

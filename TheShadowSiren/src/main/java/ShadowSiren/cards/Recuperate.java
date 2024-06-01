@@ -27,8 +27,8 @@ public class Recuperate extends AbstractShadowCard {
     private static final AbstractCard.CardType TYPE = CardType.SKILL;
     public static final AbstractCard.CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int BLOCK = 6;
+    private static final int COST = 2;
+    private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 3;
 
     // /STAT DECLARATION/

@@ -2,7 +2,6 @@ package ShadowSiren.cards.tempCards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
-import ShadowSiren.cards.interfaces.ManuallySizeAdjustedCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -15,13 +14,13 @@ import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class Ashes extends AbstractDynamicCard implements ManuallySizeAdjustedCard {
+public class Ashes extends AbstractDynamicCard {
 
 
     // TEXT DECLARATION
 
     public static final String ID = ShadowSirenMod.makeID(Ashes.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Ashes.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/
@@ -29,9 +28,9 @@ public class Ashes extends AbstractDynamicCard implements ManuallySizeAdjustedCa
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.NONE;
-    private static final CardType TYPE = CardType.STATUS;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = CardColor.COLORLESS;
 
     private static final int COST = -2;
@@ -67,10 +66,5 @@ public class Ashes extends AbstractDynamicCard implements ManuallySizeAdjustedCa
             upgradeMagicNumber(UPGRADE_PLUS_VIGOR);
             initializeDescription();
         }
-    }
-
-    @Override
-    public float getAdjustedScale() {
-        return 0.95f;
     }
 }

@@ -70,13 +70,13 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
                 copy.tipType = AbstractVivianDamageModifier.TipType.DAMAGE;
                 copy.putIconOnCard = true;
                 con.addModifier(copy);
-            }
-            updateDescription();
-            for (AbstractPower pow : owner.powers) {
-                if (pow instanceof OnChangeElementPower) {
-                    ((OnChangeElementPower) pow).onChangeElement();
+                for (AbstractPower pow : owner.powers) {
+                    if (pow instanceof OnChangeElementPower) {
+                        ((OnChangeElementPower) pow).onChangeElement();
+                    }
                 }
             }
+            updateDescription();
         }
     }
 

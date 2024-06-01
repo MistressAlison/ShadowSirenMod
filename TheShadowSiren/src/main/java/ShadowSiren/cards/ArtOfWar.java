@@ -2,6 +2,7 @@ package ShadowSiren.cards;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
+import ShadowSiren.cards.interfaces.ManuallySizeAdjustedCard;
 import ShadowSiren.characters.Vivian;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
-public class ArtOfWar extends AbstractDynamicCard {
+public class ArtOfWar extends AbstractDynamicCard implements ManuallySizeAdjustedCard {
 
     // TEXT DECLARATION
 
@@ -66,5 +67,10 @@ public class ArtOfWar extends AbstractDynamicCard {
             upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
         }
+    }
+
+    @Override
+    public float getAdjustedScale() {
+        return 0.95f;
     }
 }

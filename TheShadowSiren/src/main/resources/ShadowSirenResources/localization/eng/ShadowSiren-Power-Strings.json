@@ -18,7 +18,7 @@
         },
         "ShadowSiren:ChillPower": {
                 "NAME": "Chill",
-                "DESCRIPTIONS": ["#yAttacks deals #b","% less damage. NL At #b"," #yChill, this creature becomes #yFrozen."]
+                "DESCRIPTIONS": ["#yAttacks deal #b","% less damage this turn. NL At #b"," #yChill, this creature becomes #yFrozen."]
         },
         "ShadowSiren:ConfusedPower": {
                 "NAME": "Confused",

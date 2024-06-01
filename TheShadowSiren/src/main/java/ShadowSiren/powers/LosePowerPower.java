@@ -36,7 +36,7 @@ public class LosePowerPower extends AbstractPower {
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
+    public void atEndOfRound() {
         flash();
         addToBot(new ReducePowerAction(owner, owner, powerToLose.ID, amount));
         addToBot(new RemoveSpecificPowerAction(owner, owner, this.ID));

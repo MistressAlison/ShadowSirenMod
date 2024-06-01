@@ -1,18 +1,16 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.blockTypes.IceBlock;
 import basemod.interfaces.CloneablePowerInterface;
-import com.evacipated.cardcrawl.mod.stslib.blockmods.AbstractBlockModifier;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnCreateBlockInstancePower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import java.util.HashSet;
-
-public class CryogenesisPower extends AbstractPower implements CloneablePowerInterface, OnCreateBlockInstancePower {
+public class CryogenesisPower extends AbstractPower implements CloneablePowerInterface {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("CryogenesisPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -24,10 +22,11 @@ public class CryogenesisPower extends AbstractPower implements CloneablePowerInt
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public CryogenesisPower(AbstractCreature owner) {
+    public CryogenesisPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
+        this.amount = amount;
 
         this.type = PowerType.BUFF;
         this.isTurnBased = false;
@@ -40,24 +39,25 @@ public class CryogenesisPower extends AbstractPower implements CloneablePowerInt
     }
 
     @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-    }
-
-    @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new CryogenesisPower(owner);
+        return new CryogenesisPower(owner, amount);
     }
 
     @Override
-    public void onCreateBlockInstance(HashSet<AbstractBlockModifier> hashSet, Object instigator) {
-        if (hashSet.isEmpty()) {
-            hashSet.add(new IceBlock());
+    public void atStartOfTurnPostDraw() {
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+            this.flash();
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (!m.isDeadOrEscaped()) {
+                    this.addToBot(new ApplyPowerAction(m, this.owner, new ChillPower(m, this.amount), this.amount));
+                }
+            }
         }
+
     }
 }

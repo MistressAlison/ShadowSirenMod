@@ -184,7 +184,7 @@
         },
         "ShadowSiren:CryogenesisPower": {
                 "NAME": "Cryogenesis",
-                "DESCRIPTIONS": ["Whenever you gain #yEementless #yBlock, it becomes NL [ShadowSiren:IceIcon] Block."]
+                "DESCRIPTIONS": ["At the start of your turn, apply #b"," #yChill to ALL enemies."]
         },
         "ShadowSiren:StarFormPower": {
                 "NAME": "Star Form",

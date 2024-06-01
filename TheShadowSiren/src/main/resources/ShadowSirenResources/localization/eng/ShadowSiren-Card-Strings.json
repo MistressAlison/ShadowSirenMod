@@ -84,8 +84,7 @@
   },
   "ShadowSiren:Cryogenesis": {
     "NAME": "Cryogenesis",
-    "DESCRIPTION": "Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [ShadowSiren:IceIcon] Block.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Gain !M! Dexterity. NL shadowsiren:Non-Elemental Block you gain becomes [ShadowSiren:IceIcon] Block."
+    "DESCRIPTION": "At the start of your turn, apply !M! *Chill to ALL enemies."
   },
   "ShadowSiren:DarkShield": {
     "NAME": "Dark Shield",

@@ -3,12 +3,10 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractIceCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
 import ShadowSiren.powers.CryogenesisPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -31,24 +29,21 @@ public class Cryogenesis extends AbstractIceCard {
 
     private static final int COST = 2;
     private static final int UPGRADE_COST = 1;
-    private static final int BLOCK_BOOST = 3;
-    private static final int UPGRADE_PLUS_BLOCK_BOOST = 2;
+    private static final int EFFECT = 2;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
 
     public Cryogenesis() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, AbstractVivianDamageModifier.TipType.BLOCK);
-        magicNumber = baseMagicNumber = BLOCK_BOOST;
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        magicNumber = baseMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber)));
-        if (!p.hasPower(CryogenesisPower.POWER_ID)) {
-            this.addToBot(new ApplyPowerAction(p, p, new CryogenesisPower(p)));
-        }
+        this.addToBot(new ApplyPowerAction(p, p, new CryogenesisPower(p, magicNumber)));
     }
 
     //Upgraded stats.
@@ -56,7 +51,8 @@ public class Cryogenesis extends AbstractIceCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            //upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }

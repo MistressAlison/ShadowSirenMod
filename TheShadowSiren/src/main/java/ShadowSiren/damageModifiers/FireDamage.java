@@ -2,16 +2,13 @@ package ShadowSiren.damageModifiers;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.icons.FireIcon;
-import ShadowSiren.powers.VulcanizePower;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import java.util.ArrayList;
 
@@ -46,37 +43,10 @@ public class FireDamage extends AbstractVivianDamageModifier {
         this.priority = -3;
     }
 
-    //TODO this is actually worse
-    @Override
-    public float atDamageFinalGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        //return damage * (1 + 0.25f*((float)target.currentHealth/target.maxHealth));
-        if (target != null) {
-            return ((float)target.currentHealth/target.maxHealth) >= 0.75f ? damage * 1.25f : damage;
-        }
-        return damage;
-    }
-
     @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature targetHit) {
         if (lastDamageTaken > 0) {
-            this.addToTop(new AbstractGameAction() {
-                boolean firstPass = true;
-                @Override
-                public void update() {
-                    if (firstPass) {
-                        firstPass = false;
-                        this.duration = 0.05f;
-                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(targetHit.hb.cX, targetHit.hb.cY, AbstractGameAction.AttackEffect.FIRE));
-                        float multiplier = 1;
-                        if (info.owner.hasPower(VulcanizePower.POWER_ID)) {
-                            multiplier += (info.owner.getPower(VulcanizePower.POWER_ID).amount*VulcanizePower.INCREASE_PERCENT/100f);
-                            info.owner.getPower(VulcanizePower.POWER_ID).flash();
-                        }
-                        targetHit.decreaseMaxHealth((int)(lastDamageTaken*multiplier));
-                    }
-                    tickDuration();
-                }
-            });
+            addToBot(new ApplyPowerAction(info.owner, info.owner, new VigorPower(info.owner, 3)));
         }
     }
 

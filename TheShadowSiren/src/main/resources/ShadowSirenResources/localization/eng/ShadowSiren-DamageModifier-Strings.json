@@ -14,8 +14,8 @@
   "ShadowSiren:FireDamage": {
     "NAME": "Fire",
     "DESCRIPTION": "Fire [ShadowSiren:FireIcon]",
-    "EXTENDED_DESCRIPTION": ["#yDamage: Target loses Max HP equal to unblocked damage dealt. Deals #b25% more attack damage to targets at or above #b75% HP. NL #yBlock: Application scales with #yVigor, consuming it.",
-                            "#yDamage: Target loses Max HP equal to unblocked damage dealt. Deals #b25% more attack damage to targets at or above #b75% HP.",
+    "EXTENDED_DESCRIPTION": ["#yDamage: Gain #b3 #yVigor when dealing unblocked damage. NL #yBlock: Application scales with #yVigor, consuming it.",
+                            "#yDamage: Gain #b3 #yVigor when dealing unblocked damage.",
                             "#yBlock: Application scales with #yVigor, consuming it."]
   },
   "ShadowSiren:IceDamage": {

@@ -306,7 +306,7 @@
   },
   "ShadowSiren:Reversal": {
     "NAME": "Reversal",
-    "DESCRIPTION": "Deal !D! damage plus half the targets intent. NL (Deals !ShadowSiren:SecondMagic! damage)"
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage if the enemy intends to attack."
   },
   "ShadowSiren:ShadeFist": {
     "NAME": "Shade Fist",

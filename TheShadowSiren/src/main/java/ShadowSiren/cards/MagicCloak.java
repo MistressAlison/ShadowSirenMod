@@ -32,7 +32,7 @@ public class MagicCloak extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int MULTI = 2;
+    private static final int MULTI = 3;
 
     // /STAT DECLARATION/
 

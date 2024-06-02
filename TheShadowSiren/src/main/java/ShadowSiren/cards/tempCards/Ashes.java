@@ -43,6 +43,7 @@ public class Ashes extends AbstractFireCard implements TempCard, ManuallySizeAdj
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = VIGOR;
         exhaust = true;
+        isEthereal = true;
     }
 
     // Actions the card should do.

@@ -25,7 +25,7 @@ public class FreezePotion extends CustomPotion {
 
     public FreezePotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
-        super(NAME, POTION_ID, PotionRarity.UNCOMMON, PotionSize.SPIKY, PotionColor.FIRE);
+        super(NAME, POTION_ID, PotionRarity.RARE, PotionSize.SPIKY, PotionColor.FIRE);
 
         // Do you throw this potion at an enemy or do you just consume it.
         isThrown = true;

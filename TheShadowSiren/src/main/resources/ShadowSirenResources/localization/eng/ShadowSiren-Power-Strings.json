@@ -196,7 +196,7 @@
         },
         "ShadowSiren:ElementalMasteryPower": {
                 "NAME": "Elemental Mastery",
-                "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yStrength and #yDexterity for each #yActive #yElement."]
+                "DESCRIPTIONS": ["Whenever you #yActivate all #b4 #yElements, gain #b"," #yStrength."]
         },
         "ShadowSiren:ShockPower": {
                 "NAME": "Shocked",

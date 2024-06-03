@@ -28,9 +28,9 @@ public class ElementalShroud extends AbstractDynamicCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
 
-    private static final int EFFECT = 2;
-    private static final int UPGRADE_PLUS_EFFECT = 1;
+    private static final int EFFECT = 1;
 
     // /STAT DECLARATION/
 
@@ -51,7 +51,7 @@ public class ElementalShroud extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
         }
     }

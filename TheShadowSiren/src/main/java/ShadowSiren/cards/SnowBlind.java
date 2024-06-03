@@ -33,8 +33,8 @@ public class SnowBlind extends AbstractIceCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 13;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DAMAGE = 12;
+    private static final int UPGRADE_PLUS_DMG = 3;
     private static final int WEAK = 2;
     private static final int UPGRADE_PLUS_WEAK = 1;
 

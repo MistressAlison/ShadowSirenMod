@@ -2,71 +2,71 @@
   "ShadowSiren:AttackTextContainer": {
     "NAME": "Generic Attack Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing an attack.",
-    "EXTENDED_DESCRIPTION": ["Just burn.","Ashes.","Bang!","Ahahahaha!"]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:SkillTextContainer": {
     "NAME": "Generic Skill Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a skill.",
-    "EXTENDED_DESCRIPTION": ["Ufufufu.","Let's go.","How about this?"]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:PowerTextContainer": {
     "NAME": "Generic Power Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a power.",
-    "EXTENDED_DESCRIPTION": ["Okay, I'll use this!","Let's see what'll happen.","I think I'll give it a shot."]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:BattleStartTextContainer": {
     "NAME": "Battle Start Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat.",
-    "EXTENDED_DESCRIPTION": ["Amuse me, okay?","Sure, I have time for you.","Fufufu... Some prey has appeared.","You want me to burn you?"]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:LowHPBattleStartTextContainer": {
     "NAME": "Low HP Battle Start Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat if you are badly injured.",
-    "EXTENDED_DESCRIPTION": ["I hate it. Geez!","Get out of my way!","This is stupid.","So annoying."]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:BattleEndTextContainer": {
     "NAME": "Battle End Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the end of combat.",
-    "EXTENDED_DESCRIPTION": ["That was a beautiful flame!","Look at how clean and tidy it's around here.","AhahaHAHAHA!","And this ends it here.","Ufufu, look how burned you are."]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:BossFightTextContainer": {
     "NAME": "Boss Fight Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of a boss fight.",
-    "EXTENDED_DESCRIPTION": ["Here it is! A powerful one!","Ahaha! This is going to be fun.","I'm sure you'll burn well."]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:HealingTextContainer": {
     "NAME": "Healing Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when healing.",
-    "EXTENDED_DESCRIPTION": ["I can continue...","Fufu... It feels nice.","I'm ready to fight again.","I feel better.","I'm not hurt anymore! Ahaha!"]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:FieldDamageTextContainer": {
     "NAME": "Field Damage Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking thorns damage.",
-    "EXTENDED_DESCRIPTION": ["Kya!","Au.","Ow.","You little..."]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:LightDamageTextContainer": {
     "NAME": "Light Damage Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking light damage.",
-    "EXTENDED_DESCRIPTION": ["Jeez.","Au.","You...","Ugh."]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:HeavyDamageTextContainer": {
     "NAME": "Heavy Damage Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking heavy damage.",
-    "EXTENDED_DESCRIPTION": ["This is not fair.","It hurts... It huuuurts!","That hurt!","This is ridiculous.","Uuuuu."]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:BlockedDamageTextContainer": {
     "NAME": "Blocked Damage Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when blocking damage.",
-    "EXTENDED_DESCRIPTION": ["Aha!","You can't get to me.","What, did you just do something?"]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:HomemarkTextContainer": {
     "NAME": "Homemark Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when spending gold with the Homemark.",
-    "EXTENDED_DESCRIPTION": ["Dang, I wanted to burn them.","Fufufu, they're all shattered now.","I don't need this many of these.","These coins are nothing but a burden.","*sigh* What I want is war, not these stupid things."]
+    "EXTENDED_DESCRIPTION": [""]
   },
   "ShadowSiren:KOTextContainer": {
     "NAME": "KO Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when defeated in battle.",
-    "EXTENDED_DESCRIPTION": ["No... This is not happening.","Defeat makes my life meaningless...","No way... Why do I even exist?","I-I got defeated by a thing like that...","I had to win... I must always win!"]
+    "EXTENDED_DESCRIPTION": [""]
   }
 }

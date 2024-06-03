@@ -13,7 +13,6 @@ import ShadowSiren.cards.uniqueCards.DireStrike;
 import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.powers.VeilPower;
 import ShadowSiren.relics.BooSheet;
-import ShadowSiren.stances.HugeStance;
 import ShadowSiren.vfx.StarBreakerVictoryEffect;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
@@ -365,14 +364,6 @@ public class Vivian extends CustomPlayer /*implements PlayerWithActionCommands*/
     public void onVictory() {
         super.onVictory();
         playAnimation("happy");
-        if (AbstractDungeon.player.stance.ID.equals(HugeStance.STANCE_ID)) {
-            ((Vivian) AbstractDungeon.player).getAnimation().myPlayer.setScale(((Vivian) AbstractDungeon.player).getAnimation().myPlayer.getScale()/HugeStance.FACTOR);
-            AbstractDungeon.player.hb.height /= HugeStance.FACTOR;
-            AbstractDungeon.player.hb_h /= HugeStance.FACTOR;
-            AbstractDungeon.player.hb.width /= HugeStance.FACTOR;
-            AbstractDungeon.player.hb_w /= HugeStance.FACTOR;
-            ((Vivian) AbstractDungeon.player).refreshHealthBar();
-        }
     }
 
     public void refreshHealthBar() {

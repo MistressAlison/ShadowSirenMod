@@ -214,7 +214,7 @@
   },
   "ShadowSiren:IceShard": {
     "NAME": "Ice Shard",
-    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] damage. NL If the target has Block, deal !D! [ShadowSiren:IceIcon] damage again. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:IceIcon] damage. NL Exhaust."
   },
   "ShadowSiren:IceWall": {
     "NAME": "Ice Wall",

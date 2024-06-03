@@ -35,7 +35,6 @@ public class IceShard extends AbstractIceCard implements TempCard {
     private static final int COST = 0;
     private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 2;
-    private static final int CARDS = 1;
 
     // /STAT DECLARATION/
 
@@ -48,31 +47,8 @@ public class IceShard extends AbstractIceCard implements TempCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m.currentBlock > 0) {
-            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
-        }
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        //this.addToBot(new DrawCardAction(CARDS));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
-
-    private boolean enemyHasBlock() {
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (!aM.isDeadOrEscaped() && aM.currentBlock > 0){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void triggerOnGlowCheck() {
-        super.triggerOnGlowCheck();
-        if (enemyHasBlock()) {
-            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
-        } else {
-            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-        }
-    }
-
 
     // Upgraded stats.
     @Override

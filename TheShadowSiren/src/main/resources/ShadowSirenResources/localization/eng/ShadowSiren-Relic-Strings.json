@@ -206,7 +206,7 @@
     "NAME": "Tasty Tonic",
     "FLAVOR": "A very tasty tonic.",
     "DESCRIPTIONS": [
-      "Gain #b1 #yshadowsiren:Charge for each #yEnergy left at the end of your turn.",
+      "Gain #b"," #yshadowsiren:Charge for each #yEnergy left at the end of your turn.",
       "Charge gained: "," NL Per combat: "," NL Per turn: "
     ]
   },

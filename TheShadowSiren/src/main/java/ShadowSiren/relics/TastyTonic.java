@@ -29,6 +29,8 @@ public class TastyTonic extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("TastyTonic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("TastyTonic.png"));
 
+    private static final int CHARGE = 2;
+
     HashMap<String, Integer> stats = new HashMap<>();
     private final String CHARGE_STAT = DESCRIPTIONS[1];
     private final String PER_COMBAT_STRING = DESCRIPTIONS[2];
@@ -42,7 +44,7 @@ public class TastyTonic extends CustomRelic {
     // Description
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0];
+        return DESCRIPTIONS[0] + CHARGE + DESCRIPTIONS[1];
     }
 
     @Override
@@ -50,8 +52,8 @@ public class TastyTonic extends CustomRelic {
         if (EnergyPanel.totalCount > 0) {
             flash();
             this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-            this.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ChargePower(AbstractDungeon.player, EnergyPanel.totalCount)));
-            stats.put(CHARGE_STAT, stats.get(CHARGE_STAT) + EnergyPanel.totalCount);
+            this.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new ChargePower(AbstractDungeon.player, EnergyPanel.totalCount*CHARGE)));
+            stats.put(CHARGE_STAT, stats.get(CHARGE_STAT) + EnergyPanel.totalCount*CHARGE);
         }
     }
 

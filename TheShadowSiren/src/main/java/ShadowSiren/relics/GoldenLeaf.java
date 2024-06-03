@@ -38,7 +38,7 @@ public class GoldenLeaf extends CustomRelic {
     private final String PER_TURN_STRING = DESCRIPTIONS[5];
 
     public GoldenLeaf() {
-        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.FLAT);
+        super(ID, IMG, OUTLINE, RelicTier.RARE, LandingSound.FLAT);
         resetStats();
     }
 

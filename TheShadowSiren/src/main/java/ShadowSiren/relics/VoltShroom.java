@@ -27,13 +27,13 @@ public class VoltShroom extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("VoltShroom.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("VoltShroom.png"));
 
-    private static final int CHARGE_PROVIDED = 3;
+    private static final int CHARGE_PROVIDED = 4;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String CHARGE_STAT = DESCRIPTIONS[2];
 
     public VoltShroom() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.FLAT);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.FLAT);
         resetStats();
     }
 

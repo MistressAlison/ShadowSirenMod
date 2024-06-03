@@ -262,7 +262,7 @@
   },
   "ShadowSiren:Overheat": {
     "NAME": "Overheat",
-    "DESCRIPTION": "Draw !M! cards. NL Exhaust !M! cards."
+    "DESCRIPTION": "Draw !M! card{@@}{!M!|>1=s}. NL Exhaust !M! card{!M!|>1=s}."
   },
   "ShadowSiren:PatchUp": {
     "NAME": "Patch Up",

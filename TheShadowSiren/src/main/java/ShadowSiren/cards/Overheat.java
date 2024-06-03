@@ -29,8 +29,8 @@ public class Overheat extends AbstractFireCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int CARDS = 2;
+    private static final int COST = 0;
+    private static final int CARDS = 1;
     private static final int UPGRADE_PLUS_CARDS = 1;
 
     // /STAT DECLARATION/

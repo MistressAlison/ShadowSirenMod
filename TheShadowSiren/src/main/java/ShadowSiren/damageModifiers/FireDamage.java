@@ -17,7 +17,6 @@ public class FireDamage extends AbstractVivianDamageModifier {
 
     TooltipInfo fireTooltip = null;
     TooltipInfo fireDamageTooltip = null;
-    TooltipInfo fireBlockTooltip = null;
     public boolean innate;
 
     public FireDamage() {
@@ -54,25 +53,13 @@ public class FireDamage extends AbstractVivianDamageModifier {
     public ArrayList<TooltipInfo> getCustomTooltips() {
         ArrayList<TooltipInfo> l = super.getCustomTooltips();
         if (fireTooltip == null) {
-            fireTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
+            fireTooltip = new TooltipInfo(cardStrings.NAME, cardStrings.DESCRIPTION);
         }
         if (fireDamageTooltip == null) {
-            fireDamageTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[1]);
+            fireDamageTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[0], cardStrings.EXTENDED_DESCRIPTION[1]);
         }
-        if (fireBlockTooltip == null) {
-            fireBlockTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[2]);
-        }
-        switch (tipType) {
-            case DAMAGE_AND_BLOCK:
-                l.add(fireTooltip);
-                break;
-            case DAMAGE:
-                l.add(fireDamageTooltip);
-                break;
-            case BLOCK:
-                l.add(fireBlockTooltip);
-                break;
-        }
+        l.add(fireTooltip);
+        l.add(fireDamageTooltip);
         return l;
     }
 

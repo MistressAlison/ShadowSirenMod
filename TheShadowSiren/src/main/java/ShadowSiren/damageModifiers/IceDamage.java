@@ -18,7 +18,6 @@ public class IceDamage extends AbstractVivianDamageModifier {
 
     TooltipInfo iceTooltip = null;
     TooltipInfo iceDamageTooltip = null;
-    TooltipInfo iceBlockTooltip = null;
     TooltipInfo chillTooltip = null;
     public boolean innate;
 
@@ -62,31 +61,17 @@ public class IceDamage extends AbstractVivianDamageModifier {
     public ArrayList<TooltipInfo> getCustomTooltips() {
         ArrayList<TooltipInfo> l = super.getCustomTooltips();
         if (iceTooltip == null) {
-            iceTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
+            iceTooltip = new TooltipInfo(cardStrings.NAME, cardStrings.DESCRIPTION);
         }
         if (iceDamageTooltip == null) {
-            iceDamageTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[1]);
-        }
-        if (iceBlockTooltip == null) {
-            iceBlockTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[2]);
+            iceDamageTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[0], cardStrings.EXTENDED_DESCRIPTION[1]);
         }
         if (chillTooltip == null) {
-            chillTooltip = new TooltipInfo(BaseMod.getKeywordTitle("shadowsiren:chill"), BaseMod.getKeywordDescription("shadowsiren:chill"));
+            chillTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[2], cardStrings.EXTENDED_DESCRIPTION[3]);
         }
-        switch (tipType) {
-            case DAMAGE_AND_BLOCK:
-                l.add(iceTooltip);
-                l.add(chillTooltip);
-                break;
-            case DAMAGE:
-                l.add(iceDamageTooltip);
-                l.add(chillTooltip);
-                break;
-            case BLOCK:
-                l.add(iceBlockTooltip);
-                l.add(chillTooltip);
-                break;
-        }
+        l.add(iceTooltip);
+        l.add(iceDamageTooltip);
+        l.add(chillTooltip);
         return l;
     }
 

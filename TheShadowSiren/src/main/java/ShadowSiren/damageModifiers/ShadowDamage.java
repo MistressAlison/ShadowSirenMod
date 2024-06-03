@@ -15,8 +15,6 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
 
     TooltipInfo shadowTooltip = null;
     TooltipInfo shadowDamageTooltip = null;
-    TooltipInfo shadowBlockTooltip = null;
-    TooltipInfo shadowSplitTooltip = null;
     public boolean innate;
 
     public ShadowDamage() {
@@ -51,30 +49,13 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     public ArrayList<TooltipInfo> getCustomTooltips() {
         ArrayList<TooltipInfo> l = super.getCustomTooltips();
         if (shadowTooltip == null) {
-            shadowTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
+            shadowTooltip = new TooltipInfo(cardStrings.NAME, cardStrings.DESCRIPTION);
         }
         if (shadowDamageTooltip == null) {
-            shadowDamageTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[1]);
+            shadowDamageTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[0], cardStrings.EXTENDED_DESCRIPTION[1]);
         }
-        if (shadowBlockTooltip == null) {
-            shadowBlockTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[2]);
-        }
-        if (shadowSplitTooltip == null) {
-            shadowSplitTooltip = new TooltipInfo(BaseMod.getKeywordTitle("shadowsiren:shadow_split"), BaseMod.getKeywordDescription("shadowsiren:shadow_split"));
-        }
-        switch (tipType) {
-            case DAMAGE_AND_BLOCK:
-                l.add(shadowTooltip);
-                l.add(shadowSplitTooltip);
-                break;
-            case DAMAGE:
-                l.add(shadowDamageTooltip);
-                break;
-            case BLOCK:
-                l.add(shadowBlockTooltip);
-                l.add(shadowSplitTooltip);
-                break;
-        }
+        l.add(shadowTooltip);
+        l.add(shadowDamageTooltip);
         return l;
     }
 

@@ -35,8 +35,6 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
 
     TooltipInfo electricTooltip = null;
     TooltipInfo electricDamageTooltip = null;
-    TooltipInfo electricBlockTooltip = null;
-    TooltipInfo shockTooltip = null;
     public boolean innate;
 
     public ElectricDamage() {
@@ -99,30 +97,13 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     public ArrayList<TooltipInfo> getCustomTooltips() {
         ArrayList<TooltipInfo> l = super.getCustomTooltips();
         if (electricTooltip == null) {
-            electricTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[0]);
+            electricTooltip = new TooltipInfo(cardStrings.NAME, cardStrings.DESCRIPTION);
         }
         if (electricDamageTooltip == null) {
-            electricDamageTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[1]);
+            electricDamageTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[0], cardStrings.EXTENDED_DESCRIPTION[1]);
         }
-        if (electricBlockTooltip == null) {
-            electricBlockTooltip = new TooltipInfo(cardStrings.DESCRIPTION, cardStrings.EXTENDED_DESCRIPTION[2]);
-        }
-        if (shockTooltip == null) {
-            shockTooltip = new TooltipInfo(BaseMod.getKeywordTitle("shadowsiren:shock"), BaseMod.getKeywordDescription("shadowsiren:shock"));
-        }
-        switch (tipType) {
-            case DAMAGE_AND_BLOCK:
-                l.add(electricTooltip);
-                l.add(shockTooltip);
-                break;
-            case DAMAGE:
-                l.add(electricDamageTooltip);
-                break;
-            case BLOCK:
-                l.add(electricBlockTooltip);
-                l.add(shockTooltip);
-                break;
-        }
+        l.add(electricTooltip);
+        l.add(electricDamageTooltip);
         return l;
     }
 

@@ -84,7 +84,7 @@
   },
   "ShadowSiren:Cryogenesis": {
     "NAME": "Cryogenesis",
-    "DESCRIPTION": "At the start of your turn, apply !M! *Chill to ALL enemies."
+    "DESCRIPTION": "*Chilled creatures now take 10% additional damage from attacks per *Chill."
   },
   "ShadowSiren:DarkShield": {
     "NAME": "Dark Shield",

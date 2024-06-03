@@ -29,21 +29,18 @@ public class Cryogenesis extends AbstractIceCard {
 
     private static final int COST = 2;
     private static final int UPGRADE_COST = 1;
-    private static final int EFFECT = 2;
-    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
 
     public Cryogenesis() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new CryogenesisPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new CryogenesisPower(p, 1)));
     }
 
     //Upgraded stats.
@@ -51,8 +48,7 @@ public class Cryogenesis extends AbstractIceCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            //upgradeBaseCost(UPGRADE_COST);
-            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
         }
     }

@@ -40,24 +40,11 @@ public class CryogenesisPower extends AbstractPower implements CloneablePowerInt
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount*ChillPower.REDUCTION_PERCENT + DESCRIPTIONS[1];
     }
 
     @Override
     public AbstractPower makeCopy() {
         return new CryogenesisPower(owner, amount);
-    }
-
-    @Override
-    public void atStartOfTurnPostDraw() {
-        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-            this.flash();
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                if (!m.isDeadOrEscaped()) {
-                    this.addToBot(new ApplyPowerAction(m, this.owner, new ChillPower(m, this.amount), this.amount));
-                }
-            }
-        }
-
     }
 }

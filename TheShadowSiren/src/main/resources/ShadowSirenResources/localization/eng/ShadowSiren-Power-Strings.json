@@ -184,7 +184,7 @@
         },
         "ShadowSiren:CryogenesisPower": {
                 "NAME": "Cryogenesis",
-                "DESCRIPTIONS": ["At the start of your turn, apply #b"," #yChill to ALL enemies."]
+                "DESCRIPTIONS": ["#yChilled creatures now take #b","% additional damage per #yChill."]
         },
         "ShadowSiren:StarFormPower": {
                 "NAME": "Star Form",

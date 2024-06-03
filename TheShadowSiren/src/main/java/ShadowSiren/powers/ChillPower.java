@@ -90,6 +90,17 @@ public class ChillPower extends AbstractPower implements CloneablePowerInterface
     }
 
     @Override
+    public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
+        if (damageType == DamageInfo.DamageType.NORMAL) {
+            AbstractPower cryo = AbstractDungeon.player.getPower(CryogenesisPower.POWER_ID);
+            if (cryo != null) {
+                damage *= (1 + (REDUCTION_PERCENT*amount)/100f);
+            }
+        }
+        return damage;
+    }
+
+    @Override
     public void atEndOfRound() {
         this.flashWithoutSound();
         this.addToTop(new RemoveSpecificPowerAction(owner, owner, this));

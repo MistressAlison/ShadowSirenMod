@@ -33,7 +33,7 @@ public class BlackKey extends CustomRelic {
     private final String USES_STAT = DESCRIPTIONS[1];
 
     public BlackKey() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.SHOP, LandingSound.CLINK);
         resetStats();
     }
 

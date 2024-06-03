@@ -392,8 +392,7 @@
   },
   "ShadowSiren:TurboCharged": {
     "NAME": "Turbo Charged",
-    "DESCRIPTION": "Gain !M!X shadowsiren:Charge. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Gain !M!X shadowsiren:Charge."
+    "DESCRIPTION": "Gain !M!X shadowsiren:Charge."
   },
   "ShadowSiren:VigorousShift": {
     "NAME": "Vigorous Shift",

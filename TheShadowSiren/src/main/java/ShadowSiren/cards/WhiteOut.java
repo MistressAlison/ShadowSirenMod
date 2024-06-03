@@ -38,8 +38,8 @@ public class WhiteOut extends AbstractMultiElementCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 15;
-    private static final int UPGRADE_PLUS_DMG = 5;
+    private static final int DAMAGE = 12;
+    private static final int UPGRADE_PLUS_DMG = 3;
     private static final int WEAK = 2;
     private static final int UPGRADE_PLUS_WEAK = 1;
 

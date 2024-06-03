@@ -54,7 +54,7 @@ public class WildMagic extends AbstractInertCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int vfx = MathUtils.random(0, 3);
+        int vfx = MathUtils.random(0, 2);
         switch (vfx) {
             case 0:
                 this.addToBot(new VFXAction(new FlashAtkImgEffect(m.hb.cX, m.hb.cY, AbstractGameAction.AttackEffect.FIRE)));

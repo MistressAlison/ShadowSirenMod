@@ -31,7 +31,7 @@ public class EarthQuake extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("EarthQuake.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("EarthQuake.png"));
 
-    private static final int DAMAGE = 4;
+    private static final int DAMAGE = 3;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String DAMAGE_STAT = DESCRIPTIONS[2];
@@ -39,7 +39,7 @@ public class EarthQuake extends CustomRelic {
     private final String PER_TURN_STRING = DESCRIPTIONS[4];
 
     public EarthQuake() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.HEAVY);
+        super(ID, IMG, OUTLINE, RelicTier.RARE, LandingSound.HEAVY);
         resetStats();
     }
 

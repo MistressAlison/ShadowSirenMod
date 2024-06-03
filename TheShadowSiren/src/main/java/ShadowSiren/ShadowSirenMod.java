@@ -810,9 +810,9 @@ public class ShadowSirenMod implements
         //BaseMod.addRelicToCustomPool(new PowerPunch(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new RepelCape(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new RuinPowder(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new SpitePowder(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new SpitePowder(), Vivian.Enums.VOODOO_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new StarPiece(), Vivian.Enums.VOODOO_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new StopWatch(), Vivian.Enums.VOODOO_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new StopWatch(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new SuperSheet(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new TastyTonic(), Vivian.Enums.VOODOO_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new UpArrow(), Vivian.Enums.VOODOO_CARD_COLOR);

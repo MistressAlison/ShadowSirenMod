@@ -30,7 +30,7 @@ public class TurboCharged extends AbstractElectricCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = -1;
-    private static final int MULTI = 3;
+    private static final int MULTI = 4;
     private static final int UPGRADE_PLUS_MULTI = 2;
 
     // /STAT DECLARATION/

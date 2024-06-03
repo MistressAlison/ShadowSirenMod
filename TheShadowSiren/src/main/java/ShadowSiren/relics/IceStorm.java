@@ -38,7 +38,7 @@ public class IceStorm extends CustomRelic {
     private final String FREEZE_STAT = DESCRIPTIONS[3];
 
     public IceStorm() {
-        super(ID, IMG, OUTLINE, RelicTier.UNCOMMON, LandingSound.FLAT);
+        super(ID, IMG, OUTLINE, RelicTier.RARE, LandingSound.FLAT);
         resetStats();
     }
 

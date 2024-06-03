@@ -327,15 +327,13 @@ public class Vivian extends CustomPlayer /*implements PlayerWithActionCommands*/
 
     @Override
     public Texture getCutsceneBg() {
-        return ImageMaster.loadImage("ShadowSirenResources/images/scene/greyBg.jpg");
+        return ImageMaster.loadImage("ShadowSirenResources/images/scene/bkg.jpg");
     }
 
     @Override
     public List<CutscenePanel> getCutscenePanels() {
         List<CutscenePanel> panels = new ArrayList<>();
-        panels.add(new CutscenePanel("ShadowSirenResources/images/scene/starbreaker1.png", "ATTACK_MAGIC_FAST_3"));
-        panels.add(new CutscenePanel("ShadowSirenResources/images/scene/starbreaker2.png", "TURN_EFFECT"));
-        panels.add(new CutscenePanel("ShadowSirenResources/images/scene/starbreaker3.png", "CEILING_BOOM_3"));
+        panels.add(new CutscenePanel("ShadowSirenResources/images/scene/HeartPanel.png", "ATTACK_FIRE"));
         return panels;
     }
 

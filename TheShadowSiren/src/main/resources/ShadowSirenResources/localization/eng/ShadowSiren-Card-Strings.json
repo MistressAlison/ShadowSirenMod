@@ -62,8 +62,8 @@
   },
   "ShadowSiren:BrickBreaker": {
     "NAME": "Brick Breaker",
-    "DESCRIPTION": "Apply !M! Weak. NL Add !M! *Ice *Shard into your hand.",
-    "UPGRADE_DESCRIPTION": "Apply !M! Weak. NL Add !M! *Ice\u200B *Shard+ into your hand."
+    "DESCRIPTION": "Add !M! *Ice *Shard into your hand.",
+    "UPGRADE_DESCRIPTION": "Add !M! *Ice\u200B *Shard+ into your hand."
   },
   "ShadowSiren:Cataclysm": {
     "NAME": "Cataclysm",

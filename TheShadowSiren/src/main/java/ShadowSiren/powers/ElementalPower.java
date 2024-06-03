@@ -89,7 +89,7 @@ public class ElementalPower extends AbstractPower implements InvisiblePower, Dam
         }
         for (AbstractDamageModifier mod : con.modifiers()) {
             if (mod instanceof AbstractVivianDamageModifier) {
-                sb.append(" NL ").append(((AbstractVivianDamageModifier) mod).cardStrings.DESCRIPTION);
+                sb.append(" NL ").append(((AbstractVivianDamageModifier) mod).cardStrings.NAME);
             }
         }
         this.description = sb.toString();

@@ -7,6 +7,8 @@ import ShadowSiren.powers.ChargePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -28,7 +30,7 @@ public class ChargeUp extends AbstractElectricCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int EFFECT = 5;
+    private static final int EFFECT = 3;
     private static final int UPGRADE_PLUS_EFFECT = 2;
 
     // /STAT DECLARATION/
@@ -42,7 +44,9 @@ public class ChargeUp extends AbstractElectricCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToTop(new ApplyPowerAction(p, p, new ChargePower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new ChargePower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));
     }
 
     //Upgraded stats.

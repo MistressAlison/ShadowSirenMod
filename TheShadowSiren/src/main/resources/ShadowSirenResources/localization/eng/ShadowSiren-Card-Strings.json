@@ -75,7 +75,7 @@
   },
   "ShadowSiren:ChargeUp": {
     "NAME": "Charge Up",
-    "DESCRIPTION": "Gain !M! shadowsiren:Charge."
+    "DESCRIPTION": "Gain !M! shadowsiren:Charge. NL Gain !M! Strength. NL At the end of this turn, lose !M! Strength."
   },
   "ShadowSiren:CreepingShadows": {
     "NAME": "Creeping Shadows",

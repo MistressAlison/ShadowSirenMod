@@ -32,9 +32,9 @@ public class TastyTonic extends CustomRelic {
     private static final int CHARGE = 2;
 
     HashMap<String, Integer> stats = new HashMap<>();
-    private final String CHARGE_STAT = DESCRIPTIONS[1];
-    private final String PER_COMBAT_STRING = DESCRIPTIONS[2];
-    private final String PER_TURN_STRING = DESCRIPTIONS[3];
+    private final String CHARGE_STAT = DESCRIPTIONS[2];
+    private final String PER_COMBAT_STRING = DESCRIPTIONS[3];
+    private final String PER_TURN_STRING = DESCRIPTIONS[4];
 
     public TastyTonic() {
         super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.CLINK);

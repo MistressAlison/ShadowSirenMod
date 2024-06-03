@@ -51,7 +51,7 @@ public class ShadowSplitPower extends AbstractPower implements CloneablePowerInt
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (DamageModifierManager.getDamageMods(info).stream().anyMatch(m -> m instanceof ShadowDamage)) {
             addToBot(new VFXAction(new HeartBuffEffect(owner.hb.cX, owner.hb.cY), 0.0f));
-            addToBot(new DamageAction(owner, new DamageInfo(null, amount, DamageInfo.DamageType.HP_LOSS), true));
+            addToBot(new DamageAction(owner, new DamageInfo(info.owner, amount, DamageInfo.DamageType.HP_LOSS), true));
             //addToBot(new LoseHPAction(this.owner, null, this.amount, AbstractGameAction.AttackEffect.NONE));
         }
         return damageAmount;

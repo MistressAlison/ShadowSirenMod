@@ -3,10 +3,11 @@ package ShadowSiren.powers;
 import ShadowSiren.ShadowSirenMod;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class SinisterReflectionPower extends AbstractPower implements CloneablePowerInterface {
@@ -49,35 +50,16 @@ public class SinisterReflectionPower extends AbstractPower implements CloneableP
     }
 
     @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
-            this.flash();
-            this.addToTop(new ApplyPowerAction(info.owner, owner, new ShadowSplitPower(info.owner, amount)));
+    public void atStartOfTurnPostDraw() {
+        boolean flashed = false;
+        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
+            if (!mon.isDeadOrEscaped() && mon.getIntentBaseDmg() > 0) {
+                if (!flashed) {
+                    flash();
+                    flashed = true;
+                }
+                addToBot(new ApplyPowerAction(mon, owner, new ShadowSplitPower(mon, amount)));
+            }
         }
-        return damageAmount;
     }
-
-    //    @Override
-//    public void atEndOfTurn(boolean isPlayer) {
-//        int debuffs = 0;
-//        for (AbstractPower p : owner.powers) {
-//            if (p.type == PowerType.DEBUFF) {
-//                debuffs++;
-//            }
-//        }
-//        if (debuffs > 0) {
-//            flash();
-//            this.addToBot(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(debuffs*amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
-//        }
-//
-//    }
-
-//    @Override
-//    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-//        if (power.type == PowerType.DEBUFF) {
-//            flash();
-//            this.addToBot(new DamageAllEnemiesAction(owner, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
-//        }
-//        return true;
-//    }
 }

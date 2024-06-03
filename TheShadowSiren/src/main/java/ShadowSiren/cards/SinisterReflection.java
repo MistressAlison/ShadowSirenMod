@@ -28,9 +28,9 @@ public class SinisterReflection extends AbstractShadowCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
 
-    private static final int EFFECT = 2;
+    private static final int EFFECT = 3;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
@@ -51,7 +51,7 @@ public class SinisterReflection extends AbstractShadowCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }

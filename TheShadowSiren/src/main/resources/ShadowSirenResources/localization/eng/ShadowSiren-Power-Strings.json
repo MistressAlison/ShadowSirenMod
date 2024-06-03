@@ -132,7 +132,7 @@
         },
         "ShadowSiren:SinisterReflectionPower": {
                 "NAME": "Sinister Reflections",
-                "DESCRIPTIONS": ["Whenever you are attacked, apply #b"," #yShadow #ySplit to the attacker."]
+                "DESCRIPTIONS": ["At the start of your turn, apply #b"," #yShadow #ySplit to the ALL enemies that intend to attack."]
         },
         "ShadowSiren:SoftPower": {
                 "NAME": "Soft",

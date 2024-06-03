@@ -340,7 +340,7 @@
   },
   "ShadowSiren:SinisterReflection": {
     "NAME": "Sinister Reflection",
-    "DESCRIPTION": "Whenever you are attacked, apply !M! shadowsiren:Shadow_Split to the attacker."
+    "DESCRIPTION": "At the start of your turn, apply !M! shadowsiren:Shadow_Split to ALL enemies that intend to attack."
   },
   "ShadowSiren:SnowBlind": {
     "NAME": "Snowblind",

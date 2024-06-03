@@ -1,8 +1,10 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.cardModifiers.ChargeModifier;
 import ShadowSiren.cards.interfaces.ChargeMultiEffect;
 import ShadowSiren.patches.ChargeCounterPatches;
+import basemod.helpers.CardModifierManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -64,12 +66,7 @@ public class ChargePower extends AbstractPower implements CloneablePowerInterfac
                 @Override
                 public void update() {
                     int effect = (int)(ChargePower.this.amount * (card instanceof ChargeMultiEffect ? ((ChargeMultiEffect) card).getChargeMultiplier() : 1));
-                    if (card.baseDamage >= 0) {
-                        card.baseDamage += effect;
-                    }
-                    if (card.baseBlock >= 0 && !(card instanceof RitualDagger)) {
-                        card.baseBlock += effect;
-                    }
+                    CardModifierManager.addModifier(card, new ChargeModifier(effect));
                     this.isDone = true;
                 }
             });

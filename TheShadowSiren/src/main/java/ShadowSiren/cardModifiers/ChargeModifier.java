@@ -1,71 +1,67 @@
 package ShadowSiren.cardModifiers;
 
-import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.cards.interfaces.ChargeMultiEffect;
+import ShadowSiren.util.TextureScaler;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evacipated.cardcrawl.mod.stslib.util.extraicons.ExtraIcons;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import java.util.ArrayList;
+
+import static ShadowSiren.ShadowSirenMod.makeID;
+
 
 public class ChargeModifier extends AbstractCardModifier {
-    public static final String ID = ShadowSirenMod.makeID("ChargeModifier");
-    public static final String[] TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
-    int amount;
-    boolean inherent;
-
+    public static String ID = makeID(ChargeModifier.class.getSimpleName());
+    public static Texture modIcon = TextureScaler.rescale(AbstractPower.atlas.findRegion("128/static_discharge"), 64, 64);
+    public int amount;
 
     public ChargeModifier(int amount) {
-        /*float tmp = amount;
-        for (AbstractPower p : AbstractDungeon.player.powers) {
-            if (p instanceof OnApplyChargePower) {
-                tmp = ((OnApplyChargePower) p).onApplyCharge(tmp);
-                p.flash();
-            }
-        }
-        this.amount = (int)tmp;*/
         this.amount = amount;
     }
 
-    public ChargeModifier(int amount, boolean inherent) {
-        this(amount);
-        this.inherent = inherent;
+    @Override
+    public float modifyBaseBlock(float block, AbstractCard card) {
+        if (block >= 0) {
+            block += amount;
+        }
+        return block;
     }
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-        //CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
-    }
-
-    @Override
-    public String modifyDescription(String rawDescription, AbstractCard card) {
-        return TEXT[0]+amount+TEXT[1]+rawDescription;
+    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+        if (damage >= 0) {
+            damage += amount;
+        }
+        return damage;
     }
 
     @Override
     public boolean shouldApply(AbstractCard card) {
-        if (CardModifierManager.hasModifier(card, identifier(card))) {
-            ChargeModifier mod = (ChargeModifier) CardModifierManager.getModifiers(card, identifier(card)).get(0);
+        ArrayList<AbstractCardModifier> mods = CardModifierManager.getModifiers(card, ID);
+        if (!mods.isEmpty()) {
+            ChargeModifier mod = (ChargeModifier) mods.get(0);
             mod.amount += amount;
-            card.initializeDescription();
-            CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
             return false;
         }
-        return amount > 0;
+        return true;
     }
 
-    public void applyEffect(AbstractCard card) {
-        float tmp = amount;
-        tmp *= card instanceof ChargeMultiEffect ? ((ChargeMultiEffect) card).getChargeMultiplier() : 1f;
-        if (card.baseDamage >= 0) {
-            card.baseDamage += (int)tmp;
-        }
-        if (card.baseBlock >= 0 && !(card instanceof RitualDagger)) {
-            card.baseBlock += (int)tmp;
-        }
-        card.applyPowers();
-       // card.superFlash();
+
+    @Override
+    public void onRender(AbstractCard card, SpriteBatch sb) {
+        ExtraIcons.icon(modIcon).text(String.valueOf(amount)).textOffsetX(3).drawColor(new Color(1, 1, 1, card.transparency)).render(card);
+    }
+
+    @Override
+    public void onSingleCardViewRender(AbstractCard card, SpriteBatch sb) {
+        ExtraIcons.icon(modIcon).text(String.valueOf(amount)).textOffsetX(6).drawColor(new Color(1, 1, 1, card.transparency)).render(card);
     }
 
     @Override
@@ -74,33 +70,7 @@ public class ChargeModifier extends AbstractCardModifier {
     }
 
     @Override
-    public boolean isInherent(AbstractCard card) {
-        return inherent;
-    }
-
-    @Override
     public AbstractCardModifier makeCopy() {
-        return new ChargeModifier(amount, inherent);
-    }
-
-    public static void triggerCharge() {
-        for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
-            if (CardModifierManager.hasModifier(c, ChargeModifier.ID)) {
-                ((ChargeModifier)(CardModifierManager.getModifiers(c, ChargeModifier.ID).get(0))).applyEffect(c);
-            }
-        }
-
-        for (AbstractCard c: AbstractDungeon.player.drawPile.group) {
-            if (CardModifierManager.hasModifier(c, ChargeModifier.ID)) {
-                ((ChargeModifier)(CardModifierManager.getModifiers(c, ChargeModifier.ID).get(0))).applyEffect(c);
-            }
-        }
-
-        for (AbstractCard c: AbstractDungeon.player.hand.group) {
-            if (CardModifierManager.hasModifier(c, ChargeModifier.ID)) {
-                ((ChargeModifier)(CardModifierManager.getModifiers(c, ChargeModifier.ID).get(0))).applyEffect(c);
-                c.superFlash();
-            }
-        }
+        return new ChargeModifier(amount);
     }
 }

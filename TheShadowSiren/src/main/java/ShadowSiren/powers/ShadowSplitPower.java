@@ -6,9 +6,8 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -51,8 +50,9 @@ public class ShadowSplitPower extends AbstractPower implements CloneablePowerInt
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (DamageModifierManager.getDamageMods(info).stream().anyMatch(m -> m instanceof ShadowDamage)) {
-            this.addToBot(new VFXAction(new HeartBuffEffect(owner.hb.cX, owner.hb.cY), 0.0f));
-            this.addToBot(new LoseHPAction(this.owner, null, this.amount, AbstractGameAction.AttackEffect.NONE));
+            addToBot(new VFXAction(new HeartBuffEffect(owner.hb.cX, owner.hb.cY), 0.0f));
+            addToBot(new DamageAction(owner, new DamageInfo(null, amount, DamageInfo.DamageType.HP_LOSS), true));
+            //addToBot(new LoseHPAction(this.owner, null, this.amount, AbstractGameAction.AttackEffect.NONE));
         }
         return damageAmount;
     }

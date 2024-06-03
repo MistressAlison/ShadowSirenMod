@@ -35,7 +35,7 @@ public class TastyTonic extends CustomRelic {
     private final String PER_TURN_STRING = DESCRIPTIONS[3];
 
     public TastyTonic() {
-        super(ID, IMG, OUTLINE, RelicTier.RARE, LandingSound.CLINK);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.CLINK);
         resetStats();
     }
 

@@ -46,21 +46,23 @@ public class ImmolatePower extends AbstractPower implements CloneablePowerInterf
     public void onExhaust(AbstractCard card) {
         flash();
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-            addToBot(new AbstractGameAction() {
-                boolean firstPass = true;
-                @Override
-                public void update() {
-                    if (firstPass) {
-                        firstPass = false;
-                        this.duration = 0.05f;
-                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(mon.hb.cX, mon.hb.cY, AbstractGameAction.AttackEffect.FIRE));
-                        mon.damage(new DamageInfo(owner, ImmolatePower.this.amount, DamageInfo.DamageType.HP_LOSS));
-                        mon.decreaseMaxHealth(ImmolatePower.this.amount);
-                        flash();
+            if (!mon.isDeadOrEscaped()) {
+                addToBot(new AbstractGameAction() {
+                    boolean firstPass = true;
+                    @Override
+                    public void update() {
+                        if (firstPass) {
+                            firstPass = false;
+                            this.duration = 0.05f;
+                            AbstractDungeon.effectList.add(new FlashAtkImgEffect(mon.hb.cX, mon.hb.cY, AbstractGameAction.AttackEffect.FIRE));
+                            mon.damage(new DamageInfo(owner, ImmolatePower.this.amount, DamageInfo.DamageType.HP_LOSS));
+                            mon.decreaseMaxHealth(ImmolatePower.this.amount);
+                            flash();
+                        }
+                        tickDuration();
                     }
-                    tickDuration();
-                }
-            });
+                });
+            }
         }
     }
 

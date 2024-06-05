@@ -52,7 +52,7 @@ public class DiamondDustPower extends AbstractPower implements CloneablePowerInt
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (source == owner && power instanceof ChillPower) {
-            this.addToBot(new GainBlockAction(owner, owner, amount, true));
+            this.addToTop(new GainBlockAction(owner, owner, amount, true));
             flash();
         }
     }

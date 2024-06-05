@@ -45,7 +45,7 @@ public class FireDamage extends AbstractVivianDamageModifier {
     @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature targetHit) {
         if (lastDamageTaken > 0) {
-            addToBot(new ApplyPowerAction(info.owner, info.owner, new VigorPower(info.owner, 3)));
+            addToTop(new ApplyPowerAction(info.owner, info.owner, new VigorPower(info.owner, 3)));
         }
     }
 

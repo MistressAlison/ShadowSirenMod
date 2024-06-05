@@ -46,7 +46,7 @@ public class IceDamage extends AbstractVivianDamageModifier {
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        this.addToBot(new ApplyPowerAction(target, info.owner, new ChillPower(target, 1), 1, true));
+        this.addToTop(new ApplyPowerAction(target, info.owner, new ChillPower(target, 1), 1, true));
     }
 
     /*@Override

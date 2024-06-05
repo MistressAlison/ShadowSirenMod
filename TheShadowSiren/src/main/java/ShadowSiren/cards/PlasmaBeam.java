@@ -51,7 +51,6 @@ public class PlasmaBeam extends AbstractMultiElementCard implements MagicAnimati
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         isMultiDamage = true;
-        exhaust = true;
         DamageModifierManager.addModifier(this, new FireDamage());
         DamageModifierManager.addModifier(this, new ElectricDamage());
     }

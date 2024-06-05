@@ -278,7 +278,7 @@
   },
   "ShadowSiren:PlasmaBeam": {
     "NAME": "Plasma Beam",
-    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] [ShadowSiren:ElectricIcon] damage to ALL enemies. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] [ShadowSiren:ElectricIcon] damage to ALL enemies."
   },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",

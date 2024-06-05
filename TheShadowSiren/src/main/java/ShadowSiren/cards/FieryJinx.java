@@ -31,7 +31,7 @@ public class FieryJinx extends AbstractFireCard implements MagicAnimation {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 8;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DAMAGE = 3;
 
     // /STAT DECLARATION/

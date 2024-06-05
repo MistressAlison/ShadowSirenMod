@@ -67,7 +67,7 @@
   },
   "ShadowSiren:Cataclysm": {
     "NAME": "Cataclysm",
-    "DESCRIPTION": "Deal !D! [ShadowSiren:ElectricIcon] damage to ALL enemies. NL Gain [E] for each enemy this kills."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:ElectricIcon] damage. NL Gain [E] for each enemy this kills."
   },
   "ShadowSiren:ChainShock": {
     "NAME": "Chain Shock",

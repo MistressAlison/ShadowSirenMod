@@ -32,7 +32,7 @@ public class IceStorm extends CustomRelic {
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("IceStorm.png"));
 
     private static final int FREEZE = 1;
-    private static final int TURN = 4;
+    private static final int TURN = 7;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String FREEZE_STAT = DESCRIPTIONS[3];

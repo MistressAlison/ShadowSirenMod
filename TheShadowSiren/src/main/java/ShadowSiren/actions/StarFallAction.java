@@ -155,7 +155,7 @@ public class StarFallAction extends AbstractGameAction {
 
             } else {
                 this.isDone = true;
-                ElementalPower.removeAllElements();
+                //ElementalPower.removeAllElements();
                 if (mouseReturn) {
                     ParticleOrbitRenderer.returnOrbitToMouse();
                 } else {

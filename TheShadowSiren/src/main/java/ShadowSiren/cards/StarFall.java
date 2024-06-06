@@ -34,7 +34,6 @@ public class StarFall extends AbstractInertCard implements MagicAnimation {
 
     // /STAT DECLARATION/
 
-    //TODO rebalance
     public StarFall() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;

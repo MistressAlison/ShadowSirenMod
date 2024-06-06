@@ -360,7 +360,7 @@
   },
   "ShadowSiren:StarFall": {
     "NAME": "Star Fall",
-    "DESCRIPTION": "Lose all shadowsiren:Active shadowsiren:Elements. NL Deal !D! damage to ALL enemies for each shadowsiren:Element lost."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies for each shadowsiren:Active shadowsiren:Element."
   },
   "ShadowSiren:StarForm": {
     "NAME": "Star Form",

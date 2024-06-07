@@ -29,7 +29,7 @@ public class Recuperate extends AbstractShadowCard {
 
     private static final int COST = 2;
     private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int UPGRADE_PLUS_BLOCK = 4;
 
     // /STAT DECLARATION/
 

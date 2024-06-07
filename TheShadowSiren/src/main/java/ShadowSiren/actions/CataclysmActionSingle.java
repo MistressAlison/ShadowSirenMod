@@ -29,7 +29,6 @@ public class CataclysmActionSingle extends AbstractGameAction {
                 this.isDone = true;
                 return;
             }
-            this.addToBot(new SFXAction("THUNDERCLAP", 0.05F));
             CardCrawlGame.sound.play("THUNDERCLAP", 0.1F);
             if (!target.isDeadOrEscaped()) {
                 AbstractDungeon.effectList.add(new LightningEffect(target.drawX, target.drawY));

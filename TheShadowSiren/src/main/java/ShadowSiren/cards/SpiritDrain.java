@@ -53,7 +53,7 @@ public class SpiritDrain extends AbstractShadowCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new VFXAction(new CardPoofEffect(m.hb.cX, m.hb.cY)));
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.POISON));
         this.addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
         if (!m.hasPower(ArtifactPower.POWER_ID)) {
             this.addToBot(new ApplyPowerAction(m, p, new GainStrengthPower(m, this.magicNumber), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));

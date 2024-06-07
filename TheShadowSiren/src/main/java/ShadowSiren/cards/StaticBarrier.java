@@ -60,7 +60,7 @@ public class StaticBarrier extends AbstractElectricCard implements InHandCard {
     @Override
     public void onDamaged(DamageInfo info) {
         if (info.owner != null && info.owner != AbstractDungeon.player && info.type == DamageInfo.DamageType.NORMAL) {
-            addToTop(new DamageAction(info.owner, new DamageInfo(AbstractDungeon.player, magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+            addToTop(new DamageAction(info.owner, new DamageInfo(AbstractDungeon.player, magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
             addToTop(new AbstractGameAction() {
                 @Override
                 public void update() {

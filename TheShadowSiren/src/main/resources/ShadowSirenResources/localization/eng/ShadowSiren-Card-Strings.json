@@ -336,7 +336,7 @@
   },
   "ShadowSiren:Singe": {
     "NAME": "Singe",
-    "DESCRIPTION": "Target loses !M! HP and twice that much Max HP."
+    "DESCRIPTION": "Apply !M! *Burn. NL shadowsiren:Intensify *Burn amount by !ShadowSiren:SecondMagic!"
   },
   "ShadowSiren:SinisterReflection": {
     "NAME": "Sinister Reflection",

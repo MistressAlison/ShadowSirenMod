@@ -28,7 +28,7 @@ public class Vulcanize extends AbstractFireCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int EFFECT = 2;
+    private static final int EFFECT = 3;
     private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/

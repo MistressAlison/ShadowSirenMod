@@ -38,7 +38,7 @@ public class Frostfire extends AbstractMultiElementCard implements MagicAnimatio
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 6;
+    private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DMG = 3;
 
     // /STAT DECLARATION/

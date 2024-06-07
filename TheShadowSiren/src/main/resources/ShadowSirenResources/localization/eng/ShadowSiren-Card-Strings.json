@@ -226,7 +226,7 @@
   },
   "ShadowSiren:Immolate": {
     "NAME": "Immolate",
-    "DESCRIPTION": "Whenever a card is Exhausted, ALL enemies lose !M! HP and Max HP."
+    "DESCRIPTION": "Whenever a card is Exhausted, apply !M! *Burn to ALL enemies."
   },
   "ShadowSiren:Infatuate": {
     "NAME": "Infatuate",

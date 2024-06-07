@@ -180,7 +180,7 @@
         },
         "ShadowSiren:ImmolatePower": {
                 "NAME": "Immolate",
-                "DESCRIPTIONS": ["Whenever a card is #yExhausted, ALL enemies lose #b"," HP and Max HP."]
+                "DESCRIPTIONS": ["Whenever a card is #yExhausted, apply #b"," #yBurn to ALL enemies."]
         },
         "ShadowSiren:CryogenesisPower": {
                 "NAME": "Cryogenesis",

@@ -38,7 +38,7 @@ public class Discharge extends AbstractElectricCard implements ChargeMultiEffect
 
     private static final int COST = 1;
     private static final int DAMAGE = 5;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int UPGRADE_PLUS_DMG = 3;
     private static final int CHARGE_MULTI = 3;
     private static final int UPGRADE_PLUS_CHARGE_MULTI = 2;
 
@@ -84,8 +84,8 @@ public class Discharge extends AbstractElectricCard implements ChargeMultiEffect
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            //upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_CHARGE_MULTI);
+            upgradeDamage(UPGRADE_PLUS_DMG);
+            //upgradeMagicNumber(UPGRADE_PLUS_CHARGE_MULTI);
             initializeDescription();
         }
     }

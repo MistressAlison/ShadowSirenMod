@@ -129,8 +129,7 @@
   },
   "ShadowSiren:ElementalMastery": {
     "NAME": "Elemental Form",
-    "DESCRIPTION": "Ethereal. NL Whenever you shadowsiren:Activate all 4 shadowsiren:Elements, gain !M! Strength.",
-    "UPGRADE_DESCRIPTION": "Whenever you shadowsiren:Activate all 4 shadowsiren:Elements, gain !M! Strength."
+    "DESCRIPTION": "Whenever you shadowsiren:Activate all 4 shadowsiren:Elements, gain !M! Strength."
   },
   "ShadowSiren:ElementalShroud": {
     "NAME": "Elemental Shroud",

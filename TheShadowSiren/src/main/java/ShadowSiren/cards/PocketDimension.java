@@ -31,6 +31,7 @@ public class PocketDimension extends AbstractDynamicCard {
     private static final int UPGRADE_COST = 0;
 
     private static final int EFFECT = 1;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
@@ -51,7 +52,8 @@ public class PocketDimension extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            //upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }

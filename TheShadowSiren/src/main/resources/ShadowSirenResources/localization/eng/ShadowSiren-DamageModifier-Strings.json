@@ -14,7 +14,9 @@
     "NAME": "Fire",
     "DESCRIPTION": "#yActivate this #yElement, imbuing your next Elementless Attack with #yFire #yDamage.",
     "EXTENDED_DESCRIPTION": ["Fire Damage [ShadowSiren:FireIcon]",
-                            "Gain #b3 #yVigor when dealing unblocked damage."]
+                            "Applies #yBurn on hit.",
+                            "Burn",
+                            "#yBurned creatures lose HP at the start of their turn."]
   },
   "ShadowSiren:IceDamage": {
     "NAME": "Ice",

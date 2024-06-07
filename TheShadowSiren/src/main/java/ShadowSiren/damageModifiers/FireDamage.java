@@ -2,13 +2,13 @@ package ShadowSiren.damageModifiers;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.icons.FireIcon;
+import ShadowSiren.powers.BurningPower;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import java.util.ArrayList;
 
@@ -17,6 +17,7 @@ public class FireDamage extends AbstractVivianDamageModifier {
 
     TooltipInfo fireTooltip = null;
     TooltipInfo fireDamageTooltip = null;
+    TooltipInfo burnTooltip = null;
     public boolean innate;
 
     public FireDamage() {
@@ -42,11 +43,16 @@ public class FireDamage extends AbstractVivianDamageModifier {
         this.priority = -3;
     }
 
-    @Override
+    /*@Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastDamageTaken, int overkillAmount, AbstractCreature targetHit) {
         if (lastDamageTaken > 0) {
             addToTop(new ApplyPowerAction(info.owner, info.owner, new VigorPower(info.owner, 3)));
         }
+    }*/
+
+    @Override
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        this.addToTop(new ApplyPowerAction(target, info.owner, new BurningPower(target, 1), 1, true));
     }
 
     @Override
@@ -58,8 +64,12 @@ public class FireDamage extends AbstractVivianDamageModifier {
         if (fireDamageTooltip == null) {
             fireDamageTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[0], cardStrings.EXTENDED_DESCRIPTION[1]);
         }
+        if (burnTooltip == null) {
+            burnTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[2], cardStrings.EXTENDED_DESCRIPTION[3]);
+        }
         l.add(fireTooltip);
         l.add(fireDamageTooltip);
+        l.add(burnTooltip);
         return l;
     }
 

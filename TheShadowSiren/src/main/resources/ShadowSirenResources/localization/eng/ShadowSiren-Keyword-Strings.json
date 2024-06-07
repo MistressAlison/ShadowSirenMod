@@ -159,8 +159,9 @@
     "PROPER_NAME": "Burn",
     "NAMES": [
       "burn",
-      "burned"
+      "burned",
+      "burning"
     ],
-    "DESCRIPTION": "Burned creatures lose HP at the start of their turn. Each turn, Burn is reduced by #b1."
+    "DESCRIPTION": "#yBurned creatures lose HP at the start of their turn."
   }
 ]

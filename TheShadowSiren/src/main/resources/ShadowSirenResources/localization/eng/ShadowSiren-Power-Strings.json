@@ -228,6 +228,6 @@
         },
         "ShadowSiren:BurningPower": {
                 "NAME": "Burn",
-                "DESCRIPTIONS": ["At the start of its turn, loses #b"," HP, then reduce #yBurn by #b1."]
+                "DESCRIPTIONS": ["At the start of its turn, loses #b"," HP."]
         }
 }

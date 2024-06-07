@@ -29,7 +29,6 @@ public class BurningPower extends AbstractPower implements HealthBarRenderPower 
         this.owner = owner;
         this.amount = amount;
         this.type = PowerType.DEBUFF;
-        this.isTurnBased = true;
         this.loadRegion("combust");
         updateDescription();
     }
@@ -49,7 +48,7 @@ public class BurningPower extends AbstractPower implements HealthBarRenderPower 
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             flashWithoutSound();
             addToBot(new BurningLoseHPAction(owner, owner, amount));
-            addToBot(new ReducePowerAction(owner, owner, this, 1));
+            //addToBot(new ReducePowerAction(owner, owner, this, 1));
         }
     }
 

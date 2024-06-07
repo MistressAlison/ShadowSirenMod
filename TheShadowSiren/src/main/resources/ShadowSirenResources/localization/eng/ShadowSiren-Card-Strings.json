@@ -164,7 +164,7 @@
   },
   "ShadowSiren:FlashFire": {
     "NAME": "Flash Fire",
-    "DESCRIPTION": "Innate. NL Deal !D! [ShadowSiren:FireIcon] damage. NL Draw !M! cards. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] damage. NL Deals additional damage equal to the target's *Burn."
   },
   "ShadowSiren:FlashFreeze": {
     "NAME": "Flash Freeze",

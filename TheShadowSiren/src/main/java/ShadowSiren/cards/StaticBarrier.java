@@ -4,13 +4,16 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractElectricCard;
 import ShadowSiren.cards.interfaces.InHandCard;
 import ShadowSiren.characters.Vivian;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.LightningOrbActivateEffect;
 
 import static ShadowSiren.ShadowSirenMod.makeCardPath;
 
@@ -58,6 +61,16 @@ public class StaticBarrier extends AbstractElectricCard implements InHandCard {
     public void onDamaged(DamageInfo info) {
         if (info.owner != null && info.owner != AbstractDungeon.player && info.type == DamageInfo.DamageType.NORMAL) {
             addToTop(new DamageAction(info.owner, new DamageInfo(AbstractDungeon.player, magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+            addToTop(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    info.owner.tint.color = Color.YELLOW.cpy();
+                    info.owner.tint.changeColor(Color.WHITE.cpy());
+                    AbstractDungeon.effectList.add(new LightningOrbActivateEffect(info.owner.hb.cX, info.owner.hb.cY));
+                    CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.2f);
+                    this.isDone = true;
+                }
+            });
         }
     }
 

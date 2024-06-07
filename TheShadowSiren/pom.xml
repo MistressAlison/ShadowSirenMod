@@ -6,7 +6,7 @@
     <groupId>ShadowSiren</groupId>
     <artifactId>ShadowSiren</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>The Shadow Siren</name>
-    <version>0.5.6</version>
+    <version>0.5.7</version>
     <description>Adds a new playable character, Vivian.</description>
 
     <properties>

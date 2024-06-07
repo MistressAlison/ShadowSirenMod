@@ -7,7 +7,7 @@
                 "NAME": "Blinding Counter",
                 "DESCRIPTIONS": ["When attacked, apply #b"," #yWeak to the attacker."]
         },
-        "ShadowSiren:BurnPower": {
+        "ShadowSiren:BurnPowerOLD": {
                 "NAME": "Burn",
                 "DESCRIPTIONS": ["After this target attacks, it takes #b"," damage. At the end of it's turn, Burn is reduced by a third."]
         },
@@ -225,5 +225,9 @@
         "ShadowSiren:NextTurnPowerPower": {
                 "NAME": "Next Turn ",
                 "DESCRIPTIONS": ["Next turn, gain #b"," ","."]
+        },
+        "ShadowSiren:BurningPower": {
+                "NAME": "Burn",
+                "DESCRIPTIONS": ["At the start of its turn, loses #b"," HP, then reduce #yBurn by #b1."]
         }
 }

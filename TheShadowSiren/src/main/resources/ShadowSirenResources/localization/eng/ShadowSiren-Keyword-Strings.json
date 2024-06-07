@@ -154,5 +154,13 @@
       "active"
     ],
     "DESCRIPTION": "Prepare an #yElement to be added to your next Elementless Attack."
+  },
+  {
+    "PROPER_NAME": "Burn",
+    "NAMES": [
+      "burn",
+      "burned"
+    ],
+    "DESCRIPTION": "Burned creatures lose HP at the start of their turn. Each turn, Burn is reduced by #b1."
   }
 ]

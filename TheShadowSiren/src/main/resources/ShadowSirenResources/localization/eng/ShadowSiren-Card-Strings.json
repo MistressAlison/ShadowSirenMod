@@ -177,7 +177,7 @@
   },
   "ShadowSiren:Frostfire": {
     "NAME": "Frostfire",
-    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] [ShadowSiren:IceIcon] damage to NL a random enemy !M! times."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] [ShadowSiren:IceIcon] damage. NL If the enemy has *Chill, deal !D! damage again."
   },
   "ShadowSiren:FrostflameBarrier": {
     "NAME": "Frostflame Barrier",

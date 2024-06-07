@@ -278,7 +278,7 @@
   },
   "ShadowSiren:PlasmaBeam": {
     "NAME": "Plasma Beam",
-    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] [ShadowSiren:ElectricIcon] damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] [ShadowSiren:ElectricIcon] damage and apply !M! Vulnerable to ALL enemies."
   },
   "ShadowSiren:PocketDimension": {
     "NAME": "Pocket Dimension",

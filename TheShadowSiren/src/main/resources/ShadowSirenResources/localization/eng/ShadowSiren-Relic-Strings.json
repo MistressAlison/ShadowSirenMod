@@ -68,8 +68,8 @@
     "NAME": "Fire Flower",
     "FLAVOR": "Can also be used for cooking.",
     "DESCRIPTIONS": [
-      "At the start of your turn, ALL enemies lose #b"," Max HP.",
-      "Max HP removed: "," NL HP removed: "," NL Per combat: "," NL Per turn: "
+      "At the start of your turn, apply #b"," #yshadowsiren:Burn to ALL enemies.",
+      "Burn applied: "," NL Per combat: "," NL Per turn: "
     ]
   },
   "ShadowSiren:FirePop": {

@@ -167,8 +167,7 @@
   },
   "ShadowSiren:FlashFreeze": {
     "NAME": "Flash Freeze",
-    "DESCRIPTION": "Apply X *Chill to ALL enemies. NL Add X *Ice *Shard into your hand.",
-    "UPGRADE_DESCRIPTION": "Apply X *Chill to ALL enemies. NL Add X *Ice\u200B *Shard+ into your hand."
+    "DESCRIPTION": "Apply !M!X *Chill to ALL enemies. NL Exhaust."
   },
   "ShadowSiren:Frostbite": {
     "NAME": "Frostbite",

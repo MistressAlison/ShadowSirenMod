@@ -33,7 +33,7 @@ public class FrozenShield extends AbstractIceCard {
     private static final int COST = 2;
     private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int CHILL = 2;
+    private static final int CHILL = 3;
     private static final int UPGRADE_PLUS_CHILL = 1;
 
     // /STAT DECLARATION/

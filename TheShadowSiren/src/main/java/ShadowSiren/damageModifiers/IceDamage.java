@@ -3,7 +3,6 @@ package ShadowSiren.damageModifiers;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.icons.IceIcon;
 import ShadowSiren.powers.ChillPower;
-import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
@@ -22,7 +21,7 @@ public class IceDamage extends AbstractVivianDamageModifier {
     public boolean innate;
 
     public IceDamage() {
-        this(TipType.DAMAGE, true);
+        this(TipType.TYPE_AND_DAMAGE, true);
     }
 
     public IceDamage(TipType tipType) {
@@ -30,7 +29,7 @@ public class IceDamage extends AbstractVivianDamageModifier {
     }
 
     public IceDamage(boolean innate) {
-        this(TipType.DAMAGE, innate);
+        this(TipType.TYPE_AND_DAMAGE, innate);
     }
 
     public IceDamage(TipType tipType, boolean innate) {
@@ -69,9 +68,14 @@ public class IceDamage extends AbstractVivianDamageModifier {
         if (chillTooltip == null) {
             chillTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[2], cardStrings.EXTENDED_DESCRIPTION[3]);
         }
-        l.add(iceTooltip);
-        l.add(iceDamageTooltip);
-        l.add(chillTooltip);
+        if (tipType == TipType.TYPE_AND_DAMAGE) {
+            l.add(iceTooltip);
+            l.add(iceDamageTooltip);
+            l.add(chillTooltip);
+        } else if (tipType == TipType.DAMAGE) {
+            l.add(iceDamageTooltip);
+            l.add(chillTooltip);
+        }
         return l;
     }
 

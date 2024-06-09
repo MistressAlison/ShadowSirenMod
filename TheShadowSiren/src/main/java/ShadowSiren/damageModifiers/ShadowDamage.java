@@ -2,7 +2,6 @@ package ShadowSiren.damageModifiers;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.icons.DarkIcon;
-import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.icons.AbstractCustomIcon;
@@ -18,7 +17,7 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     public boolean innate;
 
     public ShadowDamage() {
-        this(TipType.DAMAGE, true);
+        this(TipType.TYPE_AND_DAMAGE, true);
     }
 
     public ShadowDamage(TipType tipType) {
@@ -26,7 +25,7 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
     }
 
     public ShadowDamage(boolean innate) {
-        this(TipType.DAMAGE, innate);
+        this(TipType.TYPE_AND_DAMAGE, innate);
     }
 
     public ShadowDamage(TipType tipType, boolean innate) {
@@ -54,8 +53,12 @@ public class ShadowDamage extends AbstractVivianDamageModifier {
         if (shadowDamageTooltip == null) {
             shadowDamageTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[0], cardStrings.EXTENDED_DESCRIPTION[1]);
         }
-        l.add(shadowTooltip);
-        l.add(shadowDamageTooltip);
+        if (tipType == TipType.TYPE_AND_DAMAGE) {
+            l.add(shadowTooltip);
+            l.add(shadowDamageTooltip);
+        } else if (tipType == TipType.DAMAGE) {
+            l.add(shadowDamageTooltip);
+        }
         return l;
     }
 

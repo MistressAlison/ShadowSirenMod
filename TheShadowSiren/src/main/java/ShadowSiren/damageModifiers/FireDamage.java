@@ -21,7 +21,7 @@ public class FireDamage extends AbstractVivianDamageModifier {
     public boolean innate;
 
     public FireDamage() {
-        this(TipType.DAMAGE, true);
+        this(TipType.TYPE_AND_DAMAGE, true);
     }
 
     public FireDamage(TipType tipType) {
@@ -29,7 +29,7 @@ public class FireDamage extends AbstractVivianDamageModifier {
     }
 
     public FireDamage(boolean innate) {
-        this(TipType.DAMAGE, innate);
+        this(TipType.TYPE_AND_DAMAGE, innate);
     }
 
     public FireDamage(TipType tipType, boolean innate) {
@@ -67,9 +67,14 @@ public class FireDamage extends AbstractVivianDamageModifier {
         if (burnTooltip == null) {
             burnTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[2], cardStrings.EXTENDED_DESCRIPTION[3]);
         }
-        l.add(fireTooltip);
-        l.add(fireDamageTooltip);
-        l.add(burnTooltip);
+        if (tipType == TipType.TYPE_AND_DAMAGE) {
+            l.add(fireTooltip);
+            l.add(fireDamageTooltip);
+            l.add(burnTooltip);
+        } else if (tipType == TipType.DAMAGE) {
+            l.add(fireDamageTooltip);
+            l.add(burnTooltip);
+        }
         return l;
     }
 

@@ -8,7 +8,7 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 public abstract class AbstractFireCard extends AbstractElementalCard {
 
     public AbstractFireCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
-        this(id, img, cost, type, color, rarity, target, AbstractVivianDamageModifier.TipType.DAMAGE);
+        this(id, img, cost, type, color, rarity, target, AbstractVivianDamageModifier.TipType.TYPE_AND_DAMAGE);
     }
 
     public AbstractFireCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target, AbstractVivianDamageModifier.TipType tipType) {

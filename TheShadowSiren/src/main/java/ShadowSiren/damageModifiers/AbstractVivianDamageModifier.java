@@ -8,9 +8,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 
 public abstract class AbstractVivianDamageModifier extends AbstractDamageModifier {
     public enum TipType {
-        DAMAGE_AND_BLOCK,
+        TYPE_AND_DAMAGE,
         DAMAGE,
-        BLOCK,
         NONE
     }
 

@@ -12,7 +12,6 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.patches.DescriptorAndTooltipPatches;
 import com.evacipated.cardcrawl.mod.stslib.patches.RenderElementsOnCardPatches;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.DamageModApplyingPower;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

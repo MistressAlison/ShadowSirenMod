@@ -3,7 +3,6 @@ package ShadowSiren.damageModifiers;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.icons.ElectricIcon;
 import ShadowSiren.powers.EnergyConversionPower;
-import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
@@ -38,7 +37,7 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     public boolean innate;
 
     public ElectricDamage() {
-        this(TipType.DAMAGE, true);
+        this(TipType.TYPE_AND_DAMAGE, true);
     }
 
     public ElectricDamage(TipType tipType) {
@@ -46,7 +45,7 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
     }
 
     public ElectricDamage(boolean innate) {
-        this(TipType.DAMAGE, innate);
+        this(TipType.TYPE_AND_DAMAGE, innate);
     }
 
     public ElectricDamage(TipType tipType, boolean innate) {
@@ -102,8 +101,12 @@ public class ElectricDamage extends AbstractVivianDamageModifier {
         if (electricDamageTooltip == null) {
             electricDamageTooltip = new TooltipInfo(cardStrings.EXTENDED_DESCRIPTION[0], cardStrings.EXTENDED_DESCRIPTION[1]);
         }
-        l.add(electricTooltip);
-        l.add(electricDamageTooltip);
+        if (tipType == TipType.TYPE_AND_DAMAGE) {
+            l.add(electricTooltip);
+            l.add(electricDamageTooltip);
+        } else if (tipType == TipType.DAMAGE) {
+            l.add(electricDamageTooltip);
+        }
         return l;
     }
 

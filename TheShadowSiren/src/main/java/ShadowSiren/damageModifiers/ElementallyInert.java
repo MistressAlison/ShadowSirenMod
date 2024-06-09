@@ -12,7 +12,7 @@ public class ElementallyInert extends AbstractVivianDamageModifier {
     TooltipInfo inertTooltip = null;
 
     public ElementallyInert() {
-        super(ID, TipType.DAMAGE);
+        super(ID, TipType.TYPE_AND_DAMAGE);
         isAnElement = false;
     }
 

@@ -3,7 +3,7 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ElementalPower;
+import ShadowSiren.util.ElementManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -45,13 +45,13 @@ public class ShieldConversion extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = ElementalPower.numActiveElements();
+        int effect = ElementManager.numActiveElements();
         if (effect > 0) {
             this.addToBot(new VFXAction(new EmptyStanceEffect(p.hb.cX, p.hb.cY)));
             this.addToBot(new AbstractGameAction() {
                 @Override
                 public void update() {
-                    ElementalPower.removeAllElements();
+                    ElementManager.removeAllElements();
                     this.isDone = true;
                 }
             });

@@ -10,7 +10,7 @@ import ShadowSiren.cards.ShadeFist;
 import ShadowSiren.cards.Strike;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.cards.uniqueCards.DireStrike;
-import ShadowSiren.powers.ElementalPower;
+import ShadowSiren.util.ElementManager;
 import ShadowSiren.powers.VeilPower;
 import ShadowSiren.relics.BooSheet;
 import ShadowSiren.vfx.StarBreakerVictoryEffect;
@@ -486,7 +486,7 @@ public class Vivian extends CustomPlayer /*implements PlayerWithActionCommands*/
                 RandomChatterHelper.showChatter(RandomChatterHelper.getBattleStartText(), preTalkProbability, enablePreBattleTalkEffect);
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ElementalPower(this)));
+        //AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new ElementManager(this)));
     }
 
 //    @Override

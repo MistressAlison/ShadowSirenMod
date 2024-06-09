@@ -4,7 +4,7 @@ import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.actions.ElementalBurstAction;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ElementalPower;
+import ShadowSiren.util.ElementManager;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -43,7 +43,7 @@ public class ElementalBurst extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = ElementalPower.numActiveElements();
+        int effect = ElementManager.numActiveElements();
         if (effect > 0) {
             this.addToBot(new ElementalBurstAction(m, new DamageInfo(p, damage, damageTypeForTurn), effect));
         }

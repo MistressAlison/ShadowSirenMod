@@ -1,7 +1,6 @@
 package ShadowSiren.util;
 
 import ShadowSiren.damageModifiers.AbstractVivianDamageModifier;
-import ShadowSiren.powers.ElementalPower;
 import ShadowSiren.vfx.ElementParticleEffect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -84,13 +83,13 @@ public class ParticleOrbitRenderer {
     public static class RenderFloatyElementIcons {
         @SpirePrefixPatch
         public static void patch(AbstractPlayer __instance, SpriteBatch sb) {
-            if (__instance.hb.hovered && HitboxRightClick.rightClicked.get(__instance.hb)) {
+            /*if (__instance.hb.hovered && HitboxRightClick.rightClicked.get(__instance.hb)) {
                 if (target == TargetLocation.PLAYER) {
                     target = TargetLocation.MOUSE;
                 } else if (target == TargetLocation.MOUSE) {
                     target = TargetLocation.PLAYER;
                 }
-            }
+            }*/
             if (target == TargetLocation.PLAYER) {
                 tx = __instance.hb.cX;
                 ty = __instance.hb.cY;
@@ -110,10 +109,10 @@ public class ParticleOrbitRenderer {
             }
             angle -= BASE_ANGLE_SPEED*angleSpeedMulti*Gdx.graphics.getDeltaTime();
             angle %= 360;
-            if (__instance.hasPower(ElementalPower.POWER_ID)) {
-                da = 360f/ ElementalPower.getActiveElements().stream().filter(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement).count();
+            if (ElementManager.hasAnElement()) {
+                da = 360f/ ElementManager.getActiveElements().stream().filter(m -> m instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) m).isAnElement).count();
                 a = 0;
-                for (AbstractDamageModifier mod : ElementalPower.getActiveElements()) {
+                for (AbstractDamageModifier mod : ElementManager.getActiveElements()) {
                     if (mod instanceof AbstractVivianDamageModifier && ((AbstractVivianDamageModifier) mod).isAnElement) {
                         if (particleTimer < 0.0F) {
                             AbstractDungeon.effectList.add(new ElementParticleEffect((AbstractVivianDamageModifier) mod, x + orbitNormalOffset, y + orbitHeight, -orbitNormalOffset, -orbitHeight, renderScale, angle+a));

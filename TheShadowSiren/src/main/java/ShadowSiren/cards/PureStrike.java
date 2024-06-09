@@ -3,7 +3,7 @@ package ShadowSiren.cards;
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.cards.abstractCards.AbstractDynamicCard;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ElementalPower;
+import ShadowSiren.util.ElementManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -54,11 +54,11 @@ public class PureStrike extends AbstractDynamicCard {
     @Override
     public void applyPowers() {
         int base = baseDamage;
-        if (!ElementalPower.hasAnElement()) {
+        if (!ElementManager.hasAnElement()) {
             baseDamage *= DAMAGE_MULTIPLIER;
         }
         super.applyPowers();
-        if (!ElementalPower.hasAnElement()) {
+        if (!ElementManager.hasAnElement()) {
             baseDamage = base;
         }
         isDamageModified = damage != baseDamage;
@@ -67,11 +67,11 @@ public class PureStrike extends AbstractDynamicCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         int base = baseDamage;
-        if (!ElementalPower.hasAnElement()) {
+        if (!ElementManager.hasAnElement()) {
             baseDamage *= DAMAGE_MULTIPLIER;
         }
         super.calculateCardDamage(mo);
-        if (!ElementalPower.hasAnElement()) {
+        if (!ElementManager.hasAnElement()) {
             baseDamage = base;
         }
         isDamageModified = damage != baseDamage;
@@ -79,7 +79,7 @@ public class PureStrike extends AbstractDynamicCard {
 
     public void triggerOnGlowCheck() {
         super.triggerOnGlowCheck();
-        if (!ElementalPower.hasAnElement()) {
+        if (!ElementManager.hasAnElement()) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         } else {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();

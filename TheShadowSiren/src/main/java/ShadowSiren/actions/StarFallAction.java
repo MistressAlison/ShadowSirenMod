@@ -1,7 +1,7 @@
 package ShadowSiren.actions;
 
 import ShadowSiren.damageModifiers.*;
-import ShadowSiren.powers.ElementalPower;
+import ShadowSiren.util.ElementManager;
 import ShadowSiren.util.ParticleOrbitRenderer;
 import ShadowSiren.vfx.ElementParticleEffect;
 import basemod.helpers.VfxBuilder;
@@ -71,7 +71,7 @@ public class StarFallAction extends AbstractGameAction {
                     targets.add(m);
                 }
             }
-            for (AbstractDamageModifier mod : ElementalPower.getActiveElements()) {
+            for (AbstractDamageModifier mod : ElementManager.getActiveElements()) {
                 if (mod instanceof AbstractVivianDamageModifier) {
                     for (int i = 0; i < hitsPerElement; i++) {
                         Collections.shuffle(targets);

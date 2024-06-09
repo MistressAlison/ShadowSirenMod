@@ -2,6 +2,7 @@ package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.powers.interfaces.OnChangeElementPower;
+import ShadowSiren.util.ElementManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -64,7 +65,7 @@ public class PocketDimensionPower extends AbstractPower implements CloneablePowe
 
     @Override
     public void onChangeElement() {
-        if (ElementalPower.numActiveElements() == 4) {
+        if (ElementManager.numActiveElements() == 4) {
             flash();
             addToTop(new DrawCardAction(amount));
         }

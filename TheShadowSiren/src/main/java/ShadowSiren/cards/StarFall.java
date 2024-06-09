@@ -5,7 +5,7 @@ import ShadowSiren.actions.StarFallAction;
 import ShadowSiren.cards.abstractCards.AbstractInertCard;
 import ShadowSiren.cards.interfaces.MagicAnimation;
 import ShadowSiren.characters.Vivian;
-import ShadowSiren.powers.ElementalPower;
+import ShadowSiren.util.ElementManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -45,7 +45,7 @@ public class StarFall extends AbstractInertCard implements MagicAnimation {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = ElementalPower.numActiveElements();
+        int effect = ElementManager.numActiveElements();
         if (effect > 0) {
             this.addToBot(new StarFallAction(multiDamage, damageTypeForTurn, 1));
         }

@@ -2,6 +2,7 @@ package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
 import ShadowSiren.powers.interfaces.OnChangeElementPower;
+import ShadowSiren.util.ElementManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -41,7 +42,7 @@ public class ElementalMasteryPower extends AbstractPower implements CloneablePow
 
     @Override
     public void onChangeElement() {
-        if (ElementalPower.numActiveElements() == 4) {
+        if (ElementManager.numActiveElements() == 4) {
             flash();
             addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount)));
         }

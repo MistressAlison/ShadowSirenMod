@@ -1,6 +1,7 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
+import ShadowSiren.util.ElementManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -39,7 +40,7 @@ public class ElementalShroudPower extends AbstractPower implements CloneablePowe
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        int elements = ElementalPower.numActiveElements();
+        int elements = ElementManager.numActiveElements();
         if (elements * amount > 0) {
             flash();
             this.addToBot(new GainBlockAction(owner, owner, amount * elements));

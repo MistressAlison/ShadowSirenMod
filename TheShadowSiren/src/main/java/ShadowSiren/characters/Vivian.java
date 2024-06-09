@@ -334,7 +334,7 @@ public class Vivian extends CustomPlayer /*implements PlayerWithActionCommands*/
     public List<CutscenePanel> getCutscenePanels() {
         List<CutscenePanel> panels = new ArrayList<>();
         //panels.add(new CutscenePanel("ShadowSirenResources/images/scene/HeartPanel.png", "ATTACK_FIRE"));
-        panels.add(new CutscenePanel("ShadowSirenResources/images/scene/panel1.png", "CARD_POWER_WOOSH"));
+        panels.add(new CutscenePanel("ShadowSirenResources/images/scene/panel1.png", "ATTACK_WHIFF_2"));
         panels.add(new CutscenePanel("ShadowSirenResources/images/scene/panel2.png", "BLUNT_HEAVY"));
         panels.add(new CutscenePanel("ShadowSirenResources/images/scene/panel3.png", "RELIC_DROP_MAGICAL"));
         return panels;

@@ -247,6 +247,7 @@ public class ElementManager {
         @SpirePrefixPatch
         public static void reset() {
             con.clearModifiers();
+            updateDescription();
         }
     }
 }

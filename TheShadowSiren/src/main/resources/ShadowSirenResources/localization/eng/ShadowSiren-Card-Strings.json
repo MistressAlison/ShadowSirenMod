@@ -265,7 +265,7 @@
   },
   "ShadowSiren:PatchUp": {
     "NAME": "Patch Up",
-    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Temporary_HP. NL Exhaust."
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, draw !M! additional cards."
   },
   "ShadowSiren:Permafrost": {
     "NAME": "Permafrost",

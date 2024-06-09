@@ -289,7 +289,7 @@
   },
   "ShadowSiren:PureStrike": {
     "NAME": "Pure Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Deals 50% more damage if you have no shadowsiren:Active shadowsiren:Element."
+    "DESCRIPTION": "Deal !D! damage. NL If you have no shadowsiren:Active shadowsiren:Element, draw !M! cards."
   },
   "ShadowSiren:Pyre": {
     "NAME": "Pyre",

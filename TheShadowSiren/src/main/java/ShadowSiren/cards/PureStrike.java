@@ -6,6 +6,7 @@ import ShadowSiren.characters.Vivian;
 import ShadowSiren.util.ElementManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -35,46 +36,24 @@ public class PureStrike extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int DAMAGE = 9;
     private static final int UPGRADE_PLUS_DMG = 3;
-    private static final float DAMAGE_MULTIPLIER = 1.5f;
+    private static final int CARDS = 2;
 
     // /STAT DECLARATION/
 
     public PureStrike() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        baseMagicNumber = magicNumber = CARDS;
         this.tags.add(CardTags.STRIKE);
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-    }
-
-    @Override
-    public void applyPowers() {
-        int base = baseDamage;
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         if (!ElementManager.hasAnElement()) {
-            baseDamage *= DAMAGE_MULTIPLIER;
+            addToBot(new DrawCardAction(magicNumber));
         }
-        super.applyPowers();
-        if (!ElementManager.hasAnElement()) {
-            baseDamage = base;
-        }
-        isDamageModified = damage != baseDamage;
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        int base = baseDamage;
-        if (!ElementManager.hasAnElement()) {
-            baseDamage *= DAMAGE_MULTIPLIER;
-        }
-        super.calculateCardDamage(mo);
-        if (!ElementManager.hasAnElement()) {
-            baseDamage = base;
-        }
-        isDamageModified = damage != baseDamage;
     }
 
     public void triggerOnGlowCheck() {

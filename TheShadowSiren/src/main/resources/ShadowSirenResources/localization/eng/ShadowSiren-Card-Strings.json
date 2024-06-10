@@ -93,7 +93,7 @@
   },
   "ShadowSiren:Daydream": {
     "NAME": "Daydream",
-    "DESCRIPTION": "Draw !M! cards."
+    "DESCRIPTION": "Next turn, draw !M! additional cards."
   },
   "ShadowSiren:Defend": {
     "NAME": "Defend",

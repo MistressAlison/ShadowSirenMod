@@ -54,7 +54,8 @@
   },
   "ShadowSiren:BlastBurn": {
     "NAME": "Blast Burn",
-    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] damage. NL Add !M! *Ashes into your hand. NL Exhaust."
+    "DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] damage. NL Add !M! *Ashes into your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! [ShadowSiren:FireIcon] damage. NL Add !M! *Ashes+ into your hand."
   },
   "ShadowSiren:Blitz": {
     "NAME": "Blitz",

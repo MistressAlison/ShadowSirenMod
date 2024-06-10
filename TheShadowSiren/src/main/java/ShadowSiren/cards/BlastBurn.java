@@ -37,7 +37,7 @@ public class BlastBurn extends AbstractFireCard {
     private static final int COST = 2;
     private static final int DAMAGE = 15;
     private static final int UPGRADE_PLUS_DMG = 5;
-    private static final int ASHES = 2;
+    private static final int ASHES = 1;
     private static final int UPGRADE_PLUS_ASHES = 1;
 
     // /STAT DECLARATION/
@@ -47,7 +47,6 @@ public class BlastBurn extends AbstractFireCard {
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = ASHES;
         cardsToPreview = new Ashes();
-        exhaust = true;
     }
 
     // Actions the card should do.
@@ -65,8 +64,10 @@ public class BlastBurn extends AbstractFireCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            //upgradeMagicNumber(UPGRADE_PLUS_ASHES);
+            //upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_PLUS_ASHES);
+            //cardsToPreview.upgrade();
+            //rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

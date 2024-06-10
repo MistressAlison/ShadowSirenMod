@@ -28,8 +28,8 @@ public class ElementalMastery extends AbstractDynamicCard {
     public static final CardColor COLOR = Vivian.Enums.VOODOO_CARD_COLOR;
 
     private static final int COST = 3;
-    private static final int EFFECT = 4;
-    private static final int UPGRADE_PLUS_EFFECT = 2;
+    private static final int EFFECT = 1;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
@@ -37,7 +37,7 @@ public class ElementalMastery extends AbstractDynamicCard {
     public ElementalMastery() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
-        //isEthereal = true;
+        isEthereal = true;
         this.tags.add(BaseModCardTags.FORM);
     }
 
@@ -52,9 +52,9 @@ public class ElementalMastery extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            //isEthereal = false;
-            //rawDescription = UPGRADE_DESCRIPTION;
-            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            isEthereal = false;
+            rawDescription = UPGRADE_DESCRIPTION;
+            //upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }

@@ -195,8 +195,8 @@
                 "DESCRIPTIONS": ["Receive #b","% more damage from #yAttacks."]
         },
         "ShadowSiren:ElementalMasteryPower": {
-                "NAME": "Elemental Mastery",
-                "DESCRIPTIONS": ["Whenever you #yActivate all #b4 #yElements, gain #b"," #yStrength."]
+                "NAME": "Elemental Form",
+                "DESCRIPTIONS": ["At the start of your turn, gain #b"," #yStrength for each #yActive #yElement."]
         },
         "ShadowSiren:ShockPower": {
                 "NAME": "Shocked",

@@ -1,7 +1,6 @@
 package ShadowSiren.powers;
 
 import ShadowSiren.ShadowSirenMod;
-import ShadowSiren.powers.interfaces.OnChangeElementPower;
 import ShadowSiren.util.ElementManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,7 +10,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-public class ElementalMasteryPower extends AbstractPower implements CloneablePowerInterface, OnChangeElementPower {
+public class ElementalMasteryPower extends AbstractPower implements CloneablePowerInterface {
 
     public static final String POWER_ID = ShadowSirenMod.makeID("ElementalMasteryPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -41,10 +40,11 @@ public class ElementalMasteryPower extends AbstractPower implements CloneablePow
     }
 
     @Override
-    public void onChangeElement() {
-        if (ElementManager.numActiveElements() == 4) {
+    public void atStartOfTurnPostDraw() {
+        int elements = ElementManager.numActiveElements();
+        if (elements * amount > 0) {
             flash();
-            addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount)));
+            addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount * elements)));
         }
     }
 

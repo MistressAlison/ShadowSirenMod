@@ -130,7 +130,8 @@
   },
   "ShadowSiren:ElementalMastery": {
     "NAME": "Elemental Form",
-    "DESCRIPTION": "Whenever you shadowsiren:Activate all 4 shadowsiren:Elements, gain !M! Strength."
+    "DESCRIPTION": "Ethereal. NL At the start of your turn, gain !M! Strength for each shadowsiren:Active shadowsiren:Element.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, gain !M! Strength for each shadowsiren:Active shadowsiren:Element."
   },
   "ShadowSiren:ElementalShroud": {
     "NAME": "Elemental Shroud",

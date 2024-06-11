@@ -45,7 +45,7 @@ public class Singe extends AbstractFireCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new BurningPower(m, magicNumber)));
+        addToBot(new ApplyPowerAction(m, p, new BurningPower(m, p, magicNumber)));
         addToBot(new IntensifyAction(this, secondMagicNumber, IntensifyAction.EffectType.MAGIC));
     }
 

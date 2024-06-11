@@ -52,7 +52,7 @@ public class FireDamage extends AbstractVivianDamageModifier {
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        this.addToTop(new ApplyPowerAction(target, info.owner, new BurningPower(target, 1), 1, true));
+        this.addToTop(new ApplyPowerAction(target, info.owner, new BurningPower(target, info.owner, 1), 1, true));
     }
 
     @Override

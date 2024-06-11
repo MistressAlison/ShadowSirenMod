@@ -45,7 +45,7 @@ public class ImmolatePower extends AbstractPower implements CloneablePowerInterf
         flash();
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
             if (!mon.isDeadOrEscaped()) {
-                addToBot(new ApplyPowerAction(mon, owner, new BurningPower(mon, amount)));
+                addToBot(new ApplyPowerAction(mon, owner, new BurningPower(mon, owner, amount)));
                 /*addToBot(new AbstractGameAction() {
                     boolean firstPass = true;
                     @Override

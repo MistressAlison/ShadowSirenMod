@@ -22,11 +22,13 @@ public class BurningPower extends AbstractPower implements HealthBarRenderPower 
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static final Color color = Color.ORANGE.cpy();
     private float particleTimer;
+    private AbstractCreature source;
 
-    public BurningPower(AbstractCreature owner, int amount) {
+    public BurningPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
+        this.source = source;
         this.amount = amount;
         this.type = PowerType.DEBUFF;
         this.loadRegion("combust");
@@ -47,7 +49,7 @@ public class BurningPower extends AbstractPower implements HealthBarRenderPower 
     public void atStartOfTurn() {
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             flashWithoutSound();
-            addToBot(new BurningLoseHPAction(owner, owner, amount));
+            addToBot(new BurningLoseHPAction(owner, source, amount));
             //addToBot(new ReducePowerAction(owner, owner, this, 1));
         }
     }

@@ -64,7 +64,7 @@ public class FireFlower extends CustomRelic {
                         this.isDone = true;
                     }
                 });
-                addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new BurningPower(aM, BURN)));
+                addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new BurningPower(aM, AbstractDungeon.player, BURN)));
                 /*this.addToBot(new AbstractGameAction() {
                     @Override
                     public void update() {

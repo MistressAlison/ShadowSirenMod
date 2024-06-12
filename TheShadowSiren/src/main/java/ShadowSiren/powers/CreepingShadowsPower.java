@@ -50,7 +50,7 @@ public class CreepingShadowsPower extends AbstractPower implements CloneablePowe
             if (card.type != AbstractCard.CardType.POWER) {
                 activations++;
                 this.flash();
-                if (!card.returnToHand && !card.exhaust && !card.purgeOnUse && !owner.hasPower(RicochetPower.POWER_ID)) {
+                if (!card.returnToHand && !card.exhaust && !card.purgeOnUse && !(owner.hasPower(RicochetPower.POWER_ID) && !((RicochetPower)owner.getPower(RicochetPower.POWER_ID)).justEvoked)) {
                     action.reboundCard = true;
                 }
             }

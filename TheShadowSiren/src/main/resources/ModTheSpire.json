@@ -1,8 +1,8 @@
 {
   "modid": "${project.artifactId}",
   "name": "${project.name}",
-  "author_list": ["Mistress Alison"],
-  "credits": "Art Assets - Paper Mario TTYD (sprites), Flynn (cards)\nBaseMod, ModTheSpire, and StSLib - Bug Kiooeht\nStSDefaultModBase - Gremious\nAlpha Testing - Spookalon, Skyson, Byran\nBeta Testing - Mindbomber, Azoth, EricB\nCharacter Animation Assistance - Darkglade\nPatch Optimization - Gk\nMisc. Coding Assistance - #modding-technical",
+  "author_list": ["Mistress Autumn"],
+  "credits": "Art Assets - Paper Mario TTYD (sprites), Korvid, chocolatecake5000 (cards)\nBaseMod, ModTheSpire, and StSLib - Bug Kiooeht\nStSDefaultModBase - Gremious\nAlpha Testing - Spookalon, Skyson, Byran\nBeta Testing - Mindbomber, Azoth, EricB, Bryan\nCharacter Animation Assistance - Darkglade\nPatch Optimization - Gk\nMisc. Coding Assistance - #modding-technical",
   "description": "${project.description}",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",

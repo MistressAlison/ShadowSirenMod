@@ -84,17 +84,6 @@ public class ShadowSirenMod implements
     private static String modID;
 
     // Mod-settings settings. This is if you want an on/off savable button
-    public static Properties theShadowSirenDefaultSettings = new Properties();
-    public static Properties normaBackupVars = new Properties();
-
-    public static final String ENABLE_SELFDAMAGE_SETTING = "enableSelfDamage";
-    public static boolean enableSelfDamage = false; // The boolean we'll be setting on/off (true/false)
-
-    public static final String FIVE_STAR_WANTED_SETTING = "enableStrongerWantedEffect";
-    public static boolean enableStrongerWantedEffect = false;
-
-    public static final String DISABLE_GULL_VFX = "disableGullVfx";
-    public static boolean disableGullVfx = false;
 
     public static final String CARD_BATTLE_TALK_SETTING = "enableCardBattleTalk";
     public static boolean enableCardBattleTalkEffect = true;
@@ -115,18 +104,13 @@ public class ShadowSirenMod implements
 
     public static final String PRE_BATTLE_TALK_PROBABILITY_SETTING = "preTalkProbability";
     private static final int BASE_PRE_TALK_PROBABILITY = 0;
-   public static int preTalkProbability = BASE_PRE_TALK_PROBABILITY; //Out of 100
-
-    public static final String NORMA_NUMERATOR = "normaNumerator";
-    public static final String NORMA_DENOMINATOR = "normaDenominator";
-    public static final String NORMA_BASE = "normaBase";
-    public static final String NORMA_SKILLS_ONLY = "normaSkillsOnly";
+    public static int preTalkProbability = BASE_PRE_TALK_PROBABILITY; //Out of 100
 
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "The Shadow Siren";
-    private static final String AUTHOR = "Mistress Alison";
-    private static final String DESCRIPTION = "Adds Vivian from Paper Mario - TTYD! NL See the Mod Options if you would like to change any configurations!";
+    private static final String AUTHOR = "Mistress Autumn";
+    private static final String DESCRIPTION = "Adds Vivian from Paper Mario: The Thousand-Year Door!";
     
     // =============== INPUT TEXTURE LOCATION =================
     
@@ -332,106 +316,9 @@ public class ShadowSirenMod implements
         logger.info("Done creating the color");
         
         
-        logger.info("Adding mod settings");
-        // This loads the mod settings.
-        // The actual mod Button is added below in receivePostInitialize()
-        theShadowSirenDefaultSettings.setProperty(ENABLE_SELFDAMAGE_SETTING, "FALSE"); // This is the default setting. It's actually set...
-        try {
-            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings); // ...right here
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enableSelfDamage = config.getBool(ENABLE_SELFDAMAGE_SETTING);
-            //enableStrongerWantedEffect = config.getBool(FIVE_STAR_WANTED_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        //logger.info("Adding mod settings");
 
-        theShadowSirenDefaultSettings.setProperty(FIVE_STAR_WANTED_SETTING, "FALSE");
-        try {
-            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enableStrongerWantedEffect = config.getBool(FIVE_STAR_WANTED_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(DISABLE_GULL_VFX, "FALSE");
-        try {
-            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            disableGullVfx = config.getBool(DISABLE_GULL_VFX);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(CARD_BATTLE_TALK_SETTING, "TRUE");
-        try {
-            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enableCardBattleTalkEffect = config.getBool(CARD_BATTLE_TALK_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(CARD_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_CARD_TALK_PROBABILITY));
-        try {
-            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            cardTalkProbability = config.getInt(CARD_BATTLE_TALK_PROBABILITY_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(DAMAGED_BATTLE_TALK_SETTING, "TRUE");
-        try {
-            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enableDamagedBattleTalkEffect = config.getBool(DAMAGED_BATTLE_TALK_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_DAMAGED_TALK_PROBABILITY));
-        try {
-            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            damagedTalkProbability = config.getInt(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(PRE_BATTLE_TALK_SETTING, "TRUE");
-        try {
-            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enablePreBattleTalkEffect = config.getBool(PRE_BATTLE_TALK_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(PRE_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_PRE_TALK_PROBABILITY));
-        try {
-            SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            preTalkProbability = config.getInt(PRE_BATTLE_TALK_PROBABILITY_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        logger.info("Done adding mod settings");
-
-        normaBackupVars.setProperty(NORMA_NUMERATOR, String.valueOf(0));
-        normaBackupVars.setProperty(NORMA_DENOMINATOR, String.valueOf(10));
-        normaBackupVars.setProperty(NORMA_BASE, String.valueOf(0));
-        normaBackupVars.setProperty(NORMA_SKILLS_ONLY, "FALSE");
+        //logger.info("Done adding mod settings");
         
     }
     
@@ -544,177 +431,6 @@ public class ShadowSirenMod implements
         labelStrings.clear();
         float currentYposition = 740f;
         float spacingY = 55f;
-        
-        // Create the on/off button:
-        ModLabeledToggleButton enableSelfDamageButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(ShadowSirenMod.makeID("ModConfigSeagulls")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enableSelfDamage, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-            
-            enableSelfDamage = button.enabled; // The boolean true/false will be whether the button is enabled or not
-            try {
-                // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-                config.setBool(ENABLE_SELFDAMAGE_SETTING, enableSelfDamage);
-                config.save();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        currentYposition -= spacingY;
-        ModLabeledToggleButton enableStrongerWantedButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(ShadowSirenMod.makeID("ModConfigWanted")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enableStrongerWantedEffect, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-
-                    enableStrongerWantedEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-                        config.setBool(FIVE_STAR_WANTED_SETTING, enableStrongerWantedEffect);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        currentYposition -= spacingY;
-        ModLabeledToggleButton disableGullVFXButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(ShadowSirenMod.makeID("ModConfigGullVFXButton")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                disableGullVfx, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-
-                    disableGullVfx = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-                        config.setBool(DISABLE_GULL_VFX, disableGullVfx);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        currentYposition -= spacingY;
-        //Used for randomly talking when playing cards
-        ModLabeledToggleButton enableCardBattleTalkButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(ShadowSirenMod.makeID("ModConfigBattleTalkButton")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enableCardBattleTalkEffect, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-
-                    enableCardBattleTalkEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-                        config.setBool(CARD_BATTLE_TALK_SETTING, enableCardBattleTalkEffect);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        ModMinMaxSlider cardBattleTalkSlider = new ModMinMaxSlider("",
-                enableCardBattleTalkButton.getX() + sliderOffset,
-                enableCardBattleTalkButton.getY() + 20f,
-                0, 100, cardTalkProbability, "%.0f",
-                settingsPanel,
-                slider -> {
-                    cardTalkProbability = (int)slider.getValue();
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-                        config.setInt(CARD_BATTLE_TALK_PROBABILITY_SETTING, (int) slider.getValue());
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        currentYposition -= spacingY;
-        //Used for randomly talking when taking damage
-        ModLabeledToggleButton enableDamagedBattleTalkButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(ShadowSirenMod.makeID("ModConfigDamagedTalkButton")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enableDamagedBattleTalkEffect, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-
-                    enableDamagedBattleTalkEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-                        config.setBool(DAMAGED_BATTLE_TALK_SETTING, enableDamagedBattleTalkEffect);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        ModMinMaxSlider damagedBattleTalkSlider = new ModMinMaxSlider("",
-                enableDamagedBattleTalkButton.getX() + sliderOffset,
-                enableDamagedBattleTalkButton.getY() + 20f,
-                0, 100, damagedTalkProbability, "%.0f",
-                settingsPanel,
-                slider -> {
-                    damagedTalkProbability = (int)slider.getValue();
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-                        config.setInt(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING, (int) slider.getValue());
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        currentYposition -= spacingY;
-        //Used for randomly talking when combat starts and ends
-        ModLabeledToggleButton enablePreBattleTalkButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(ShadowSirenMod.makeID("ModConfigPreBattleTalkButton")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enablePreBattleTalkEffect, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-
-                    enablePreBattleTalkEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-                        config.setBool(PRE_BATTLE_TALK_SETTING, enablePreBattleTalkEffect);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        ModMinMaxSlider preBattleTalkSlider = new ModMinMaxSlider("",
-                enablePreBattleTalkButton.getX() + sliderOffset,
-                enablePreBattleTalkButton.getY() + 20f,
-                0, 100, preTalkProbability, "%.0f",
-                settingsPanel,
-                slider -> {
-                    preTalkProbability = (int)slider.getValue();
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("ShadowSiren", "ShadowSirenConfig", theShadowSirenDefaultSettings);
-                        config.setInt(PRE_BATTLE_TALK_PROBABILITY_SETTING, (int) slider.getValue());
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        //currentYposition -= spacingY;
-
-        settingsPanel.addUIElement(enableSelfDamageButton); // Add the button to the settings panel. Button is a go.
-        settingsPanel.addUIElement(enableStrongerWantedButton); // Add the button to the settings panel. Button is a go.
-        settingsPanel.addUIElement(disableGullVFXButton);
-        settingsPanel.addUIElement(enableCardBattleTalkButton);
-        settingsPanel.addUIElement(cardBattleTalkSlider);
-        settingsPanel.addUIElement(enableDamagedBattleTalkButton);
-        settingsPanel.addUIElement(damagedBattleTalkSlider);
-        settingsPanel.addUIElement(enablePreBattleTalkButton);
-        settingsPanel.addUIElement(preBattleTalkSlider);
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 

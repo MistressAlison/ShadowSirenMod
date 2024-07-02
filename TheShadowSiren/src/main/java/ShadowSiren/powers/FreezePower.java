@@ -91,8 +91,11 @@ public class FreezePower extends AbstractPower implements CloneablePowerInterfac
             AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
                 public void update() {
                     if (FreezePower.this.owner instanceof AbstractMonster) {
-                        FreezePower.this.moveByte = ((AbstractMonster)FreezePower.this.owner).nextMove;
-                        FreezePower.this.moveIntent = ((AbstractMonster)FreezePower.this.owner).intent;
+                        moveByte = ((AbstractMonster)FreezePower.this.owner).nextMove;
+                        moveIntent = ((AbstractMonster)FreezePower.this.owner).intent;
+                        if (moveIntent == null) {
+                            moveIntent = AbstractMonster.Intent.STUN;
+                        }
 
                         try {
                             Field f = AbstractMonster.class.getDeclaredField("move");

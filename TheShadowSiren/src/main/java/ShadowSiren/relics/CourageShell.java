@@ -49,12 +49,11 @@ public class CourageShell extends CustomRelic {
     }
 
     @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
+    public void onLoseHp(int damageAmount) {
         if (damageAmount > 0 && !removed) {
             removed = true;
             this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, -DEX), -DEX, true));
         }
-        return super.onAttacked(info, damageAmount);
     }
 
     @Override

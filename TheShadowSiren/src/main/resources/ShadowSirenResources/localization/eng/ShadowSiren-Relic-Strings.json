@@ -28,7 +28,7 @@
     "NAME": "Courage Shell",
     "FLAVOR": "Going home has never been faster.",
     "DESCRIPTIONS": [
-      "At the beginning of combat, gain #b"," #yDexterity. Upon taking unblocked attack damage, this #yDexterity is removed.",
+      "At the beginning of combat, gain #b"," #yDexterity. Upon taking unblocked damage, this #yDexterity is removed.",
       "Effective turns: "," NL Per combat: "," NL Upkeep: "
     ]
   },
